@@ -1,0 +1,206 @@
+{
+  "module.appcast": [
+    "投屏",
+    "Application projection"
+  ],
+  "module.appcast.desc": [
+    "把自己选择的应用窗口实时显示在游戏内的 3D 平面，可固定位置或只跟随人物平移，朝向独立，不向应用发送操作",
+    "Display a selected application window on a true world plane; fixed or translation-only following, independently oriented and read-only"
+  ],
+  "setting.appcast.windowTitle": [
+    "所选窗口标题",
+    "Selected window title"
+  ],
+  "setting.appcast.windowProcess": [
+    "所选应用进程",
+    "Selected application process"
+  ],
+  "setting.appcast.anchor": [
+    "放置方式",
+    "Anchoring"
+  ],
+  "setting.appcast.width": [
+    "屏幕宽度",
+    "Screen width"
+  ],
+  "setting.appcast.x": [
+    "X 位置／跟随偏移",
+    "X position / follow offset"
+  ],
+  "setting.appcast.y": [
+    "Y 位置／跟随偏移",
+    "Y position / follow offset"
+  ],
+  "setting.appcast.z": [
+    "Z 位置／跟随偏移",
+    "Z position / follow offset"
+  ],
+  "setting.appcast.yaw": [
+    "水平角度",
+    "Yaw"
+  ],
+  "setting.appcast.pitch": [
+    "俯仰角度",
+    "Pitch"
+  ],
+  "setting.appcast.roll": [
+    "平面旋转角度",
+    "Roll"
+  ],
+  "setting.appcast.fps": [
+    "捕获帧率上限",
+    "Maximum capture FPS"
+  ],
+  "setting.appcast.resolution": [
+    "捕获宽度上限",
+    "Maximum capture width"
+  ],
+  "setting.appcast.opacity": [
+    "画面透明度",
+    "Image opacity"
+  ],
+  "setting.appcast.throughWalls": [
+    "透过方块显示",
+    "Show through blocks"
+  ],
+  "setting.appcast.border": [
+    "显示屏幕边框",
+    "Screen border"
+  ],
+  "mode.appcast_fixed": [
+    "固定世界位置",
+    "Fixed world position"
+  ],
+  "mode.appcast_follow": [
+    "跟随人物平移，朝向固定",
+    "Follow translation, fixed orientation"
+  ],
+  "ui.appcast.title": [
+    "投屏 · 应用窗口",
+    "Application window projection"
+  ],
+  "ui.appcast.open": [
+    "选择应用／编辑投屏",
+    "Select application / edit projection"
+  ],
+  "ui.appcast.readOnly": [
+    "只在本机捕获所选窗口的画面；拖动只调整游戏中的屏幕，不会操作应用。",
+    "Locally captures only the selected window. Dragging edits the game plane and never controls the application."
+  ],
+  "ui.appcast.search": [
+    "搜索窗口标题或应用",
+    "Search window title or application"
+  ],
+  "ui.appcast.refresh": [
+    "刷新",
+    "Refresh"
+  ],
+  "ui.appcast.loading": [
+    "读取窗口中…",
+    "Reading windows…"
+  ],
+  "ui.appcast.noWindows": [
+    "没有匹配的可见应用窗口",
+    "No matching visible application windows"
+  ],
+  "ui.appcast.listFailed": [
+    "无法读取应用窗口，请刷新或重试",
+    "Cannot enumerate application windows; refresh or retry"
+  ],
+  "ui.appcast.notFound": [
+    "未找到上次选择的窗口，请重新选择",
+    "Previously selected window not found; choose a window again"
+  ],
+  "ui.appcast.choose": [
+    "先选择一个应用窗口",
+    "Choose an application window first"
+  ],
+  "ui.appcast.idle": [
+    "投屏已停止",
+    "Projection stopped"
+  ],
+  "ui.appcast.starting": [
+    "准备本地捕获组件…",
+    "Preparing local capture helper…"
+  ],
+  "ui.appcast.live": [
+    "正在投屏",
+    "Projection live"
+  ],
+  "ui.appcast.minimized": [
+    "应用已最小化；恢复窗口后继续，不会自动恢复或切到前台",
+    "Application minimized; restore it to resume. The client never restores or activates it."
+  ],
+  "ui.appcast.minimizedShort": [
+    "已最小化",
+    "Minimized"
+  ],
+  "ui.appcast.closed": [
+    "所选窗口已关闭，请重新选择",
+    "Selected window closed; choose a window again"
+  ],
+  "ui.appcast.cloaked": [
+    "窗口不可见或被系统隐藏，暂时无法捕获",
+    "Window hidden or cloaked by Windows; capture unavailable"
+  ],
+  "ui.appcast.protected": [
+    "窗口设置了捕获保护，无法投屏",
+    "Window has capture protection; projection unavailable"
+  ],
+  "ui.appcast.dimensions": [
+    "窗口尺寸无效或过大，请调整原应用窗口",
+    "Invalid or oversized window; resize the application window"
+  ],
+  "ui.appcast.black": [
+    "应用返回黑色画面；可能不支持此捕获方式或含受保护内容",
+    "Application returned a black image; it may not support this capture method or may contain protected content"
+  ],
+  "ui.appcast.failed": [
+    "应用无法返回画面，请重试或选择其他窗口",
+    "Application could not provide an image; retry or select another window"
+  ],
+  "ui.appcast.timeout": [
+    "应用捕获超时，已停止后台组件；可手动重试",
+    "Application capture timed out; the helper stopped. Retry manually."
+  ],
+  "ui.appcast.unsupported": [
+    "应用投屏目前需要 Windows",
+    "Application projection currently requires Windows"
+  ],
+  "ui.appcast.captureHint": [
+    "使用 Windows PrintWindow 捕获后台窗口；部分 GPU 应用、最小化和受保护窗口无法提供画面。无音频捕获，不会切换应用。切换世界会重设到面前，避免把位置带到其他服务器。",
+    "Captures background windows using Windows PrintWindow. Some GPU applications, minimized and protected windows cannot provide images. No audio capture or application activation. Entering another world resets placement in front of you."
+  ],
+  "ui.appcast.retry": [
+    "重新捕获",
+    "Retry capture"
+  ],
+  "ui.appcast.edit": [
+    "在世界中调整",
+    "Edit in world"
+  ],
+  "ui.appcast.enable": [
+    "开启投屏",
+    "Enable projection"
+  ],
+  "ui.appcast.disable": [
+    "关闭投屏",
+    "Disable projection"
+  ],
+  "ui.appcast.fixed": [
+    "固定位置",
+    "Fixed position"
+  ],
+  "ui.appcast.follow": [
+    "跟随人物平移",
+    "Follow translation"
+  ],
+  "ui.appcast.place": [
+    "放到面前 · F",
+    "Place in front · F"
+  ],
+  "ui.appcast.editHint": [
+    "左拖移动 · 右拖旋转 · Ctrl＋右拖平面旋转 · 滚轮缩放 · Shift＋滚轮调深度 · Esc 返回",
+    "Left drag: move · Right drag: rotate · Ctrl + right drag: roll · Wheel: resize · Shift + wheel: depth · Esc: back"
+  ]
+}

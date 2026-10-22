@@ -1,0 +1,11 @@
+{
+    "vertex": "cheatprogram:core/fullscreen",
+    "fragment": "cheatprogram:core/blur_down",
+    "samplers": [
+        { "name": "InSampler" }
+    ],
+    "uniforms": [
+        { "name": "HalfPixel", "type": "float", "count": 2, "values": [ 0.001, 0.001 ] },
+        { "name": "Offset", "type": "float", "count": 1, "values": [ 1.0 ] }
+    ]
+}

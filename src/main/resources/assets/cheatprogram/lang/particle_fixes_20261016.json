@@ -1,0 +1,498 @@
+{
+  "particle.minecraft.angry_villager": [
+    "愤怒村民",
+    "Angry villager"
+  ],
+  "particle.minecraft.block": [
+    "方块碎屑",
+    "Block fragments"
+  ],
+  "particle.minecraft.block_marker": [
+    "方块标记",
+    "Block marker"
+  ],
+  "particle.minecraft.bubble": [
+    "气泡",
+    "Bubble"
+  ],
+  "particle.minecraft.cloud": [
+    "云雾",
+    "Cloud"
+  ],
+  "particle.minecraft.crit": [
+    "暴击",
+    "Critical hit"
+  ],
+  "particle.minecraft.damage_indicator": [
+    "伤害提示",
+    "Damage indicator"
+  ],
+  "particle.minecraft.dragon_breath": [
+    "龙息",
+    "Dragon breath"
+  ],
+  "particle.minecraft.dripping_lava": [
+    "滴落前的熔岩",
+    "Dripping lava"
+  ],
+  "particle.minecraft.falling_lava": [
+    "下落的熔岩",
+    "Falling lava"
+  ],
+  "particle.minecraft.landing_lava": [
+    "落地的熔岩",
+    "Landed lava"
+  ],
+  "particle.minecraft.dripping_water": [
+    "滴落前的水滴",
+    "Dripping water"
+  ],
+  "particle.minecraft.falling_water": [
+    "下落的水滴",
+    "Falling water"
+  ],
+  "particle.minecraft.dust": [
+    "彩色尘埃",
+    "Colored dust"
+  ],
+  "particle.minecraft.dust_color_transition": [
+    "渐变尘埃",
+    "Color-transition dust"
+  ],
+  "particle.minecraft.effect": [
+    "状态效果",
+    "Status effect"
+  ],
+  "particle.minecraft.elder_guardian": [
+    "远古守卫者幻影",
+    "Elder guardian apparition"
+  ],
+  "particle.minecraft.enchanted_hit": [
+    "附魔命中",
+    "Enchanted hit"
+  ],
+  "particle.minecraft.enchant": [
+    "附魔符文",
+    "Enchantment runes"
+  ],
+  "particle.minecraft.end_rod": [
+    "末地烛",
+    "End rod"
+  ],
+  "particle.minecraft.entity_effect": [
+    "实体状态效果",
+    "Entity effect"
+  ],
+  "particle.minecraft.explosion_emitter": [
+    "连续爆炸发射器",
+    "Explosion emitter"
+  ],
+  "particle.minecraft.explosion": [
+    "爆炸",
+    "Explosion"
+  ],
+  "particle.minecraft.gust": [
+    "阵风",
+    "Gust"
+  ],
+  "particle.minecraft.small_gust": [
+    "小阵风",
+    "Small gust"
+  ],
+  "particle.minecraft.gust_emitter_large": [
+    "大型阵风发射器",
+    "Large gust emitter"
+  ],
+  "particle.minecraft.gust_emitter_small": [
+    "小型阵风发射器",
+    "Small gust emitter"
+  ],
+  "particle.minecraft.sonic_boom": [
+    "音爆",
+    "Sonic boom"
+  ],
+  "particle.minecraft.falling_dust": [
+    "下落的方块尘埃",
+    "Falling block dust"
+  ],
+  "particle.minecraft.firework": [
+    "烟花火星",
+    "Firework spark"
+  ],
+  "particle.minecraft.fishing": [
+    "钓鱼水波",
+    "Fishing ripple"
+  ],
+  "particle.minecraft.flame": [
+    "火焰",
+    "Flame"
+  ],
+  "particle.minecraft.infested": [
+    "虫蚀",
+    "Infested"
+  ],
+  "particle.minecraft.cherry_leaves": [
+    "樱花落叶",
+    "Cherry leaves"
+  ],
+  "particle.minecraft.pale_oak_leaves": [
+    "苍白橡树落叶",
+    "Pale oak leaves"
+  ],
+  "particle.minecraft.sculk_soul": [
+    "幽匿灵魂",
+    "Sculk soul"
+  ],
+  "particle.minecraft.sculk_charge": [
+    "幽匿充能",
+    "Sculk charge"
+  ],
+  "particle.minecraft.sculk_charge_pop": [
+    "幽匿充能迸发",
+    "Sculk charge pop"
+  ],
+  "particle.minecraft.soul_fire_flame": [
+    "灵魂火焰",
+    "Soul flame"
+  ],
+  "particle.minecraft.soul": [
+    "灵魂",
+    "Soul"
+  ],
+  "particle.minecraft.flash": [
+    "闪光",
+    "Flash"
+  ],
+  "particle.minecraft.happy_villager": [
+    "快乐村民",
+    "Happy villager"
+  ],
+  "particle.minecraft.composter": [
+    "堆肥成功",
+    "Composting success"
+  ],
+  "particle.minecraft.heart": [
+    "爱心",
+    "Heart"
+  ],
+  "particle.minecraft.instant_effect": [
+    "瞬间状态效果",
+    "Instant effect"
+  ],
+  "particle.minecraft.item": [
+    "物品碎屑",
+    "Item fragments"
+  ],
+  "particle.minecraft.vibration": [
+    "振动信号",
+    "Vibration signal"
+  ],
+  "particle.minecraft.trail": [
+    "追踪轨迹",
+    "Targeted trail"
+  ],
+  "particle.minecraft.item_slime": [
+    "黏液球碎屑",
+    "Slimeball fragments"
+  ],
+  "particle.minecraft.item_cobweb": [
+    "蜘蛛网碎屑",
+    "Cobweb fragments"
+  ],
+  "particle.minecraft.item_snowball": [
+    "雪球碎屑",
+    "Snowball fragments"
+  ],
+  "particle.minecraft.large_smoke": [
+    "大烟雾",
+    "Large smoke"
+  ],
+  "particle.minecraft.lava": [
+    "熔岩火星",
+    "Lava spark"
+  ],
+  "particle.minecraft.mycelium": [
+    "菌丝孢子",
+    "Mycelium spores"
+  ],
+  "particle.minecraft.note": [
+    "音符",
+    "Music note"
+  ],
+  "particle.minecraft.poof": [
+    "消散烟雾",
+    "Poof"
+  ],
+  "particle.minecraft.portal": [
+    "传送门",
+    "Portal"
+  ],
+  "particle.minecraft.rain": [
+    "雨滴",
+    "Raindrop"
+  ],
+  "particle.minecraft.smoke": [
+    "烟雾",
+    "Smoke"
+  ],
+  "particle.minecraft.white_smoke": [
+    "白色烟雾",
+    "White smoke"
+  ],
+  "particle.minecraft.sneeze": [
+    "喷嚏",
+    "Sneeze"
+  ],
+  "particle.minecraft.spit": [
+    "唾沫",
+    "Spit"
+  ],
+  "particle.minecraft.squid_ink": [
+    "鱿鱼墨汁",
+    "Squid ink"
+  ],
+  "particle.minecraft.sweep_attack": [
+    "横扫攻击",
+    "Sweeping attack"
+  ],
+  "particle.minecraft.totem_of_undying": [
+    "不死图腾",
+    "Totem of undying"
+  ],
+  "particle.minecraft.underwater": [
+    "水下悬浮颗粒",
+    "Underwater motes"
+  ],
+  "particle.minecraft.splash": [
+    "水花",
+    "Splash"
+  ],
+  "particle.minecraft.witch": [
+    "女巫魔法",
+    "Witch magic"
+  ],
+  "particle.minecraft.bubble_pop": [
+    "气泡破裂",
+    "Bubble pop"
+  ],
+  "particle.minecraft.current_down": [
+    "向下水流",
+    "Downward current"
+  ],
+  "particle.minecraft.bubble_column_up": [
+    "向上气泡柱",
+    "Upward bubble column"
+  ],
+  "particle.minecraft.nautilus": [
+    "鹦鹉螺壳",
+    "Nautilus"
+  ],
+  "particle.minecraft.dolphin": [
+    "海豚水迹",
+    "Dolphin wake"
+  ],
+  "particle.minecraft.campfire_cosy_smoke": [
+    "营火炊烟",
+    "Cosy campfire smoke"
+  ],
+  "particle.minecraft.campfire_signal_smoke": [
+    "营火信号烟",
+    "Campfire signal smoke"
+  ],
+  "particle.minecraft.dripping_honey": [
+    "滴落前的蜂蜜",
+    "Dripping honey"
+  ],
+  "particle.minecraft.falling_honey": [
+    "下落的蜂蜜",
+    "Falling honey"
+  ],
+  "particle.minecraft.landing_honey": [
+    "落地的蜂蜜",
+    "Landed honey"
+  ],
+  "particle.minecraft.falling_nectar": [
+    "下落的花蜜",
+    "Falling nectar"
+  ],
+  "particle.minecraft.falling_spore_blossom": [
+    "下落的孢子花颗粒",
+    "Falling spore blossom motes"
+  ],
+  "particle.minecraft.ash": [
+    "灰烬",
+    "Ash"
+  ],
+  "particle.minecraft.crimson_spore": [
+    "绯红孢子",
+    "Crimson spores"
+  ],
+  "particle.minecraft.warped_spore": [
+    "诡异孢子",
+    "Warped spores"
+  ],
+  "particle.minecraft.spore_blossom_air": [
+    "空气中的孢子花颗粒",
+    "Airborne spore blossom motes"
+  ],
+  "particle.minecraft.dripping_obsidian_tear": [
+    "滴落前的黑曜石泪",
+    "Dripping obsidian tear"
+  ],
+  "particle.minecraft.falling_obsidian_tear": [
+    "下落的黑曜石泪",
+    "Falling obsidian tear"
+  ],
+  "particle.minecraft.landing_obsidian_tear": [
+    "落地的黑曜石泪",
+    "Landed obsidian tear"
+  ],
+  "particle.minecraft.reverse_portal": [
+    "反向传送门",
+    "Reverse portal"
+  ],
+  "particle.minecraft.white_ash": [
+    "白色灰烬",
+    "White ash"
+  ],
+  "particle.minecraft.small_flame": [
+    "小火焰",
+    "Small flame"
+  ],
+  "particle.minecraft.snowflake": [
+    "雪花",
+    "Snowflake"
+  ],
+  "particle.minecraft.dripping_dripstone_lava": [
+    "滴水石锥熔岩滴落前",
+    "Dripstone lava drip"
+  ],
+  "particle.minecraft.falling_dripstone_lava": [
+    "滴水石锥下落熔岩",
+    "Falling dripstone lava"
+  ],
+  "particle.minecraft.dripping_dripstone_water": [
+    "滴水石锥水滴落前",
+    "Dripstone water drip"
+  ],
+  "particle.minecraft.falling_dripstone_water": [
+    "滴水石锥下落水滴",
+    "Falling dripstone water"
+  ],
+  "particle.minecraft.glow_squid_ink": [
+    "发光鱿鱼墨汁",
+    "Glow squid ink"
+  ],
+  "particle.minecraft.glow": [
+    "荧光",
+    "Glow"
+  ],
+  "particle.minecraft.wax_on": [
+    "涂蜡",
+    "Wax applied"
+  ],
+  "particle.minecraft.wax_off": [
+    "去蜡",
+    "Wax removed"
+  ],
+  "particle.minecraft.electric_spark": [
+    "电火花",
+    "Electric spark"
+  ],
+  "particle.minecraft.scrape": [
+    "刮除锈迹",
+    "Oxidation scraping"
+  ],
+  "particle.minecraft.shriek": [
+    "尖啸波纹",
+    "Shriek ripple"
+  ],
+  "particle.minecraft.egg_crack": [
+    "蛋壳裂纹",
+    "Egg crack"
+  ],
+  "particle.minecraft.dust_plume": [
+    "扬起的尘土",
+    "Dust plume"
+  ],
+  "particle.minecraft.trial_spawner_detection": [
+    "试炼刷怪笼侦测",
+    "Trial spawner detection"
+  ],
+  "particle.minecraft.trial_spawner_detection_ominous": [
+    "不祥试炼刷怪笼侦测",
+    "Ominous trial spawner detection"
+  ],
+  "particle.minecraft.vault_connection": [
+    "宝库连接",
+    "Vault connection"
+  ],
+  "particle.minecraft.dust_pillar": [
+    "尘埃柱",
+    "Dust pillar"
+  ],
+  "particle.minecraft.ominous_spawning": [
+    "不祥生成",
+    "Ominous spawning"
+  ],
+  "particle.minecraft.raid_omen": [
+    "袭击之兆",
+    "Raid omen"
+  ],
+  "particle.minecraft.trial_omen": [
+    "试炼之兆",
+    "Trial omen"
+  ],
+  "particle.minecraft.block_crumble": [
+    "方块崩落碎屑",
+    "Crumbling block fragments"
+  ],
+  "ui.particles.noWorldModel": [
+    "进入世界后显示自己的皮肤模型",
+    "Enter a world to preview your skin"
+  ],
+  "ui.particles.modelFailed": [
+    "人物预览未能绘制，可点击复位重试",
+    "Player preview unavailable; reset to retry"
+  ],
+  "ui.particles.search": [
+    "搜索粒子名称或 ID，例如 火焰／flame",
+    "Search particle name or ID, e.g. flame"
+  ],
+  "ui.particles.layoutHint": [
+    "本人位于坐标原点；可切换布局与原粒子预览",
+    "Your feet mark the origin. Toggle original particles to preview their appearance."
+  ],
+  "ui.particles.rotateBodyOn": [
+    "跟随身体转向：开启（含已生成粒子）",
+    "Follow body rotation: on (includes existing particles)"
+  ],
+  "ui.particles.rotateBodyOff": [
+    "跟随身体转向：关闭（仅跟随位置）",
+    "Follow body rotation: off (position only)"
+  ],
+  "ui.particles.previewMouse": [
+    "拖点移动 · Alt 拖点转角 · 空白旋转 · 右拖平移 · 滚轮缩放 · 点击数值精调",
+    "Drag a point to move · Alt-drag to rotate · Drag empty space to orbit · Right-drag to pan · Scroll to zoom · Click values for precision"
+  ],
+  "setting.particleeffects.previewOriginal": [
+    "显示原粒子预览",
+    "Show original particles"
+  ],
+  "setting.particleeffects.previewOriginal.hint": [
+    "在编辑器独立模拟原版粒子，不生成世界粒子。部分粒子依赖水或方块环境。",
+    "Simulate original particles privately in the editor. Some particles depend on water or blocks."
+  ],
+  "ui.particles.originalPreviewOn": [
+    "显示原粒子：开启",
+    "Original particles: on"
+  ],
+  "ui.particles.originalPreviewOff": [
+    "显示原粒子：关闭",
+    "Original particles: off"
+  ],
+  "ui.particles.originalPreviewState": [
+    "独立预览 · {0}s · {1} 个粒子",
+    "Private preview · {0}s · {1} particles"
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "ui.voice.env.detect": [
+    "检测环境配置",
+    "Check environment"
+  ],
+  "ui.voice.env.checking": [
+    "正在检测环境…",
+    "Checking environment…"
+  ],
+  "ui.voice.env.oneClick": [
+    "一键配置本地语音环境",
+    "Set up local voice environment"
+  ],
+  "ui.voice.env.installing": [
+    "正在下载和配置，详情见 setup.log…",
+    "Downloading and preparing; see setup.log…"
+  ],
+  "ui.voice.env.cancel": [
+    "取消配置",
+    "Cancel setup"
+  ],
+  "ui.voice.env.cancelling": [
+    "正在取消配置…",
+    "Cancelling setup…"
+  ],
+  "ui.voice.env.cancelled": [
+    "配置已取消",
+    "Setup cancelled"
+  ],
+  "ui.voice.env.openPacks": [
+    "打开音色包文件夹",
+    "Open voice pack folder"
+  ],
+  "ui.voice.env.withPack": [
+    "另下载官方中文音色包",
+    "Also download official Chinese voices"
+  ],
+  "ui.voice.env.folder": [
+    "环境、依赖、下载和日志位置：{0}",
+    "Environment, packages, downloads and logs: {0}"
+  ],
+  "ui.voice.env.packFolder": [
+    "把与模型匹配的 .bin / .npz 音色包放在：{0}",
+    "Place a matching .bin / .npz voice pack in: {0}"
+  ],
+  "ui.voice.env.hint": [
+    "一键配置包含专用 Python、依赖和基础 ONNX 模型；默认不下载音色包。放入音色包后自动识别；每个角色仍可选择自己的包。环境检测不合成语音，缺少音色包单独提示。",
+    "Setup includes dedicated Python, dependencies and the base ONNX model; voices are optional. Packs placed in the folder are detected automatically; each actor can override them. Checks do not synthesize speech; missing voices are reported separately."
+  ],
+  "ui.voice.env.prepared": [
+    "环境已准备；把配套音色包放入 {0} 后即可读取音色。尚未进行语音合成验证。",
+    "Environment prepared. Place matching voices in {0} and read the voice list. Speech synthesis has not been tested."
+  ],
+  "ui.voice.env.readyNoPack": [
+    "通过 · 除音色包外的环境已就绪；放入匹配音色包即可使用",
+    "Passed · Prerequisites are ready; add a matching voice pack"
+  ],
+  "ui.voice.env.readyWithPack": [
+    "通过 · 环境与音色包已找到；尚未进行合成验证",
+    "Passed · Environment and voices found; synthesis not tested"
+  ],
+  "ui.voice.env.notReady": [
+    "不通过 · 请修复下列环境项目后再放入音色包",
+    "Failed · Fix the prerequisites listed below"
+  ],
+  "ui.voice.env.pass": [
+    "通过",
+    "Passed"
+  ],
+  "ui.voice.env.fail": [
+    "不通过",
+    "Failed"
+  ],
+  "ui.voice.env.busy": [
+    "正在配置环境，请完成或取消后再检测",
+    "Setup is running; finish or cancel it before checking"
+  ],
+  "ui.voice.env.timeout": [
+    "环境检测超时，请检查所选 Python 和依赖",
+    "Environment check timed out; check Python and dependencies"
+  ],
+  "ui.voice.env.installTimeout": [
+    "下载或配置超时（45 分钟），已停止；请查看 setup.log 后重试",
+    "Download or setup exceeded 45 minutes and stopped; see setup.log and retry"
+  ],
+  "ui.voice.env.installError": [
+    "环境配置未完成：{0}",
+    "Environment setup did not complete: {0}"
+  ],
+  "ui.voice.env.checkFailed": [
+    "未能完成环境检测，请检查 Python 路径或重新配置",
+    "Environment check could not complete; check Python or run setup again"
+  ],
+  "ui.voice.env.changed": [
+    "设置已改变，请重新检测当前环境",
+    "Settings changed; check the current environment again"
+  ],
+  "ui.voice.env.packDetail": [
+    "音色包单独检测：{0}",
+    "Separate voice pack check: {0}"
+  ],
+  "ui.voice.env.reset": [
+    "初始化后请重启游戏再配置语音环境",
+    "Restart the game after initialization before preparing speech"
+  ],
+  "ui.voice.env.item.python": [
+    "Python 版本与位数",
+    "Python version and architecture"
+  ],
+  "ui.voice.env.item.numpy": [
+    "NumPy 数值依赖",
+    "NumPy dependency"
+  ],
+  "ui.voice.env.item.onnxruntime": [
+    "ONNX Runtime",
+    "ONNX Runtime"
+  ],
+  "ui.voice.env.item.kokoro_onnx": [
+    "Kokoro 本地引擎",
+    "Kokoro engine"
+  ],
+  "ui.voice.env.item.librosa": [
+    "音高处理依赖",
+    "Pitch processing dependency"
+  ],
+  "ui.voice.env.item.misaki_zh": [
+    "中文 G2P 依赖",
+    "Chinese G2P dependency"
+  ],
+  "ui.voice.env.item.phonemizer": [
+    "语音前端依赖",
+    "Phonemizer dependency"
+  ],
+  "ui.voice.env.item.espeak": [
+    "本地词典与语音库",
+    "Local dictionary and speech library"
+  ],
+  "ui.voice.env.item.chinese_data": [
+    "中文前端资源",
+    "Chinese frontend data"
+  ],
+  "ui.voice.env.item.device": [
+    "所选 CPU / GPU 设备",
+    "Selected CPU / GPU device"
+  ],
+  "ui.voice.env.item.model": [
+    "基础模型与词表",
+    "Base model and vocabulary"
+  ]
+}

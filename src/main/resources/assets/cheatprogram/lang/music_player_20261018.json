@@ -1,0 +1,382 @@
+{
+  "ui.music.title": [
+    "音乐播放器",
+    "Music player"
+  ],
+  "ui.music.subtitle": [
+    "账号、收藏与歌单",
+    "Account, likes and playlists"
+  ],
+  "ui.music.account": [
+    "未登录",
+    "Not signed in"
+  ],
+  "ui.music.login": [
+    "登录平台",
+    "Sign in"
+  ],
+  "ui.music.logout": [
+    "退出账号",
+    "Sign out"
+  ],
+  "ui.music.liked": [
+    "我喜欢的音乐",
+    "Liked songs"
+  ],
+  "ui.music.playlists": [
+    "我的歌单",
+    "My playlists"
+  ],
+  "ui.music.captions": [
+    "悬浮字幕设置",
+    "Caption settings"
+  ],
+  "ui.music.swipe": [
+    "左右拖动封面，松手切歌",
+    "Drag covers; release to play"
+  ],
+  "ui.music.empty": [
+    "登录后同步此平台的真实收藏与歌单",
+    "Sign in to load this platform's liked songs and playlists"
+  ],
+  "ui.music.noTracks": [
+    "此列表暂无可用歌曲",
+    "No tracks in this list"
+  ],
+  "ui.music.loading": [
+    "正在同步平台数据…",
+    "Loading platform data…"
+  ],
+  "ui.music.track": [
+    "歌曲",
+    "Track"
+  ],
+  "ui.music.artist": [
+    "歌手",
+    "Artist"
+  ],
+  "ui.music.album": [
+    "专辑",
+    "Album"
+  ],
+  "ui.music.duration": [
+    "时长",
+    "Time"
+  ],
+  "ui.music.qr": [
+    "使用平台官方客户端扫码登录",
+    "Scan with the platform's official app"
+  ],
+  "ui.music.browser": [
+    "在平台页面继续",
+    "Continue on the platform"
+  ],
+  "ui.music.play": [
+    "播放",
+    "Play"
+  ],
+  "ui.music.pause": [
+    "暂停",
+    "Pause"
+  ],
+  "ui.music.previous": [
+    "上一首",
+    "Previous"
+  ],
+  "ui.music.next": [
+    "下一首",
+    "Next"
+  ],
+  "ui.music.volume": [
+    "音量",
+    "Volume"
+  ],
+  "ui.music.coverUnavailable": [
+    "封面预览暂不可用",
+    "Album preview unavailable"
+  ],
+  "ui.music.privacy": [
+    "登录信息仅用于所选平台",
+    "Sign-in details stay with this platform"
+  ],
+  "ui.music.ready": [
+    "选择平台或歌曲以开始播放",
+    "Choose a platform or track to begin"
+  ],
+  "ui.music.open": [
+    "打开音乐播放器",
+    "Open music player"
+  ],
+  "ui.music.captionHint": [
+    "歌词来自内置播放器当前歌曲，保留平台原文与时间轴",
+    "Lyrics follow the built-in player's current track, preserving the platform's original text and timing"
+  ],
+  "ui.music.privacyDetails": [
+    "登录信息仅在本机加密保存，并仅发送至所选平台的账号服务。封面与音频从平台资源域名加载。",
+    "Sign-in details are encrypted locally and sent only to the selected platform's account services. Artwork and audio load from that platform's media domains."
+  ],
+  "ui.music.settings": [
+    "平台连接设置",
+    "Platform settings"
+  ],
+  "ui.music.clientId": [
+    "平台应用 Client ID",
+    "Platform app Client ID"
+  ],
+  "ui.music.redirect": [
+    "授权回调地址",
+    "Authorization redirect URI"
+  ],
+  "ui.music.cookie": [
+    "平台会话 Cookie（手动粘贴）",
+    "Platform session Cookie (paste manually)"
+  ],
+  "ui.music.save": [
+    "保存",
+    "Save"
+  ],
+  "ui.music.cancel": [
+    "取消",
+    "Cancel"
+  ],
+  "ui.music.accountDetails": [
+    "平台账号资料",
+    "Platform account details"
+  ],
+  "ui.music.previewSource": [
+    "音乐播放器",
+    "Music player"
+  ],
+  "ui.music.previewTitle": [
+    "音乐动画预览",
+    "Music animation preview"
+  ],
+  "ui.music.player": [
+    "音乐播放器",
+    "Music player"
+  ],
+  "ui.musicPlayer.idle": [
+    "播放器已就绪",
+    "Player ready"
+  ],
+  "ui.musicPlayer.ready": [
+    "账号资料已同步",
+    "Account library synchronized"
+  ],
+  "ui.musicPlayer.loading": [
+    "正在加载平台数据…",
+    "Loading platform data…"
+  ],
+  "ui.musicPlayer.loginRequired": [
+    "请先登录此音乐平台",
+    "Sign in to this music platform first"
+  ],
+  "ui.musicPlayer.loginPending": [
+    "等待平台登录…",
+    "Waiting for platform sign-in…"
+  ],
+  "ui.musicPlayer.qrWaiting": [
+    "等待扫码",
+    "Waiting for QR scan"
+  ],
+  "ui.musicPlayer.qrConfirm": [
+    "已扫码，请在平台确认",
+    "Scanned; confirm in the platform app"
+  ],
+  "ui.musicPlayer.qrExpired": [
+    "二维码已过期，请重新登录",
+    "QR code expired; sign in again"
+  ],
+  "ui.musicPlayer.connected": [
+    "平台账号已验证",
+    "Platform account verified"
+  ],
+  "ui.musicPlayer.loginDeclined": [
+    "已取消平台登录",
+    "Platform sign-in declined"
+  ],
+  "ui.musicPlayer.loginAuthorizationRequired": [
+    "平台登录还需要授权确认",
+    "Platform sign-in needs authorization confirmation"
+  ],
+  "ui.musicPlayer.compatibility": [
+    "通过平台自身接口连接；平台更新可能需要重新验证",
+    "Uses the platform's own interfaces; updates may require verification"
+  ],
+  "ui.musicPlayer.qishuiCompatibility": [
+    "汽水官方账号登录可能使用抖音身份；安全验证须在平台完成",
+    "Qishui's own sign-in may use a Douyin identity; complete security checks on the platform"
+  ],
+  "ui.musicPlayer.platformVerification": [
+    "平台要求额外安全验证，请使用其官方客户端或返回的验证页面",
+    "The platform requires extra verification; use its official app or returned verification page"
+  ],
+  "ui.musicPlayer.captchaRequired": [
+    "平台要求验证码或二次验证",
+    "The platform requires CAPTCHA or additional verification"
+  ],
+  "ui.musicPlayer.buffering": [
+    "正在缓冲…",
+    "Buffering…"
+  ],
+  "ui.musicPlayer.playing": [
+    "正在播放",
+    "Playing"
+  ],
+  "ui.musicPlayer.paused": [
+    "已暂停",
+    "Paused"
+  ],
+  "ui.musicPlayer.ended": [
+    "播放结束",
+    "Playback ended"
+  ],
+  "ui.musicPlayer.audioUnavailable": [
+    "当前音频设备不可用",
+    "The audio device is unavailable"
+  ],
+  "ui.musicPlayer.decoderRequired": [
+    "需要本地解码器，或平台加密音频格式暂不支持",
+    "A local decoder is required, or this platform's encrypted format is unsupported"
+  ],
+  "ui.musicPlayer.rightsRequired": [
+    "平台未提供此歌曲的完整播放权限",
+    "The platform has not granted full playback rights for this track"
+  ],
+  "ui.musicPlayer.rightsRestricted": [
+    "当前账号没有完整播放权限",
+    "This account lacks full playback rights"
+  ],
+  "ui.musicPlayer.unavailable": [
+    "平台未返回可播放的音频",
+    "The platform returned no playable audio"
+  ],
+  "ui.musicPlayer.failed": [
+    "操作失败，请重试",
+    "Operation failed; try again"
+  ],
+  "ui.musicPlayer.hostBlocked": [
+    "已阻止非平台地址或不安全跳转",
+    "A non-platform address or unsafe redirect was blocked"
+  ],
+  "ui.musicPlayer.networkFailed": [
+    "平台网络请求失败",
+    "Platform network request failed"
+  ],
+  "ui.musicPlayer.rateLimited": [
+    "平台请求过于频繁，请稍后重试",
+    "Too many platform requests; try again later"
+  ],
+  "ui.musicPlayer.protocolChanged": [
+    "平台响应格式已更改，暂时无法读取",
+    "The platform response format changed and cannot be read"
+  ],
+  "ui.musicPlayer.responseTooLarge": [
+    "平台响应超过大小限制",
+    "Platform response exceeded the size limit"
+  ],
+  "ui.musicPlayer.credentialTooLarge": [
+    "平台登录信息过长，无法安全保存",
+    "Platform sign-in details are too large to save safely"
+  ],
+  "ui.musicPlayer.accountRestricted": [
+    "此账号当前无法使用该功能",
+    "This account cannot use this feature right now"
+  ],
+  "ui.musicPlayer.invalidTrack": [
+    "歌曲标识无效或来自其他平台",
+    "The track ID is invalid or belongs to another platform"
+  ],
+  "ui.musicPlayer.partialLibrary": [
+    "部分平台数据尚未加载，请重试",
+    "Some platform library data is missing; try again"
+  ],
+  "ui.musicPlayer.libraryLimit": [
+    "歌库超过加载上限，当前列表未完整加载",
+    "Library exceeds the load limit; the current list is incomplete"
+  ],
+  "ui.musicPlayer.likedUnavailable": [
+    "平台未返回可确认的喜欢列表",
+    "The platform returned no verifiable liked-song list"
+  ],
+  "ui.musicPlayer.originalLyricsUnavailable": [
+    "平台未提供此歌曲的原文歌词",
+    "The platform provided no original lyrics for this track"
+  ],
+  "ui.musicPlayer.noLyrics": [
+    "此歌曲暂无原文歌词",
+    "No original lyrics for this track"
+  ],
+  "ui.musicPlayer.noTimedLyrics": [
+    "平台未提供同步歌词时间",
+    "The platform provided no synchronized lyric timing"
+  ],
+  "ui.musicPlayer.unsupported": [
+    "此平台当前连接方式暂不可用",
+    "This platform connection is currently unavailable"
+  ],
+  "ui.musicPlayer.providerPending": [
+    "此平台尚需完成真实账号授权适配",
+    "This platform still needs a verified account authorization adapter"
+  ],
+  "ui.musicPlayer.remoteDeviceRequired": [
+    "请先在平台客户端选择可用播放设备",
+    "Choose an available playback device in the platform app first"
+  ],
+  "ui.musicPlayer.premiumRequired": [
+    "此平台功能需要有效订阅",
+    "This platform feature requires an active subscription"
+  ],
+  "ui.musicPlayer.clientIdRequired": [
+    "请先填写平台应用 Client ID",
+    "Enter the platform app Client ID first"
+  ],
+  "ui.musicPlayer.cookieRequired": [
+    "请粘贴你主动复制的平台会话 Cookie",
+    "Paste the platform session Cookie you explicitly copied"
+  ],
+  "ui.musicPlayer.cookieUnsupported": [
+    "此平台暂不支持可验证的会话导入",
+    "Verified session import is unavailable for this platform"
+  ],
+  "module.floatingsubtitles.desc": [
+    "内置音乐播放器：登录平台、同步真实收藏与歌单，并在世界中显示歌曲原文歌词",
+    "Built-in music player: sign in, sync real liked songs and playlists, and display original lyrics in the world"
+  ],
+  "setting.floatingsubtitles.timeOffset": [
+    "歌词时间偏移",
+    "Lyric time offset"
+  ],
+  "setting.floatingsubtitles.lineCount": [
+    "显示歌词行数",
+    "Visible lyric lines"
+  ],
+  "ui.music.spotifySetup": [
+    "先填写你在 Spotify 开发者页面创建的应用 Client ID，并登记下方回调地址；随后在本机浏览器登录。播放通过已激活的 Spotify Connect 设备进行，需要相应账户权限。",
+    "Enter your Spotify app Client ID and register the redirect URI below, then sign in using a browser on this PC. Playback uses an active Spotify Connect device and requires the corresponding account permissions."
+  ],
+  "ui.music.kuwoSetup": [
+    "在酷我官方网页完成登录后，手动粘贴该平台的会话 Cookie。只有酷我服务器验证通过后才会连接；本功能不会读取浏览器中的其他账号。",
+    "Sign in on the official Kuwo website, then manually paste its session Cookie. Connection requires verification by Kuwo; this feature does not read other browser accounts."
+  ],
+  "ui.musicPlayer.spotifyClientRequired": [
+    "请先设置 Spotify 应用 Client ID",
+    "Set your Spotify app Client ID first"
+  ],
+  "ui.musicPlayer.spotifyConnect": [
+    "Spotify Connect 播放；该接口不提供同步歌词",
+    "Spotify Connect playback; this API supplies no timed lyrics"
+  ],
+  "ui.musicPlayer.spotifyDeviceRequired": [
+    "请先在 Spotify 中激活一个播放设备",
+    "Activate a playback device in Spotify first"
+  ],
+  "ui.musicPlayer.spotifyPremiumRequired": [
+    "Spotify 要求 Premium 播放权限",
+    "Spotify requires Premium playback access"
+  ],
+  "ui.musicPlayer.spotifyAccessRequired": [
+    "Spotify 未授予该应用或账号访问权限",
+    "Spotify has not granted access to this app or account"
+  ]
+}

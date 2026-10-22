@@ -1,0 +1,79 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}" apply false
+	id 'net.fabricmc.fabric-loom' version "${loom_version}" apply false
+}
+
+// Loom/Java fixes several task destinations when it is applied. Select the
+// output root first so separate Minecraft targets cannot share class files.
+def compatibilityMatrix = new groovy.json.JsonSlurper().parse(file('compatibility/matrix.json'))
+def selectedVersion = project.minecraft_version.toString()
+def selectedTarget = compatibilityMatrix.targets.find { it.minecraft == selectedVersion }
+if (selectedTarget == null) throw new GradleException("Unknown Minecraft target '${selectedVersion}'.")
+if (selectedVersion != compatibilityMatrix.baseMinecraft) {
+	layout.buildDirectory.set(layout.projectDirectory.dir("build/versions/${selectedVersion}"))
+}
+def officialUnobfuscated = selectedTarget.mapping == 'official-unobfuscated'
+apply plugin: officialUnobfuscated ? 'net.fabricmc.fabric-loom' : 'net.fabricmc.fabric-loom-remap'
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+java { withSourcesJar() }
+apply from: 'gradle/minecraft-compatibility.gradle'
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	if (officialUnobfuscated) {
+		implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	} else {
+		mappings loom.officialMojangMappings()
+		modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	}
+	// QR encoding runs locally; login data never goes to an external image service.
+	implementation 'com.google.zxing:core:3.5.3'
+	include 'com.google.zxing:core:3.5.3'
+}
+
+loom {
+	runs {
+		client {
+			// Dev-only switch used to auto-capture GUI screenshots; never set in a normal install.
+			property "cheatprogram.dev", System.getProperty("cheatprogram.dev", "")
+			programArgs "--width", "1600", "--height", "900"
+		}
+	}
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+	inputs.property "minecraft_version", minecraftTargetVersion
+	inputs.property "java_version", minecraftTarget.java
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version, "minecraft_version": minecraftTargetVersion, "java_version": minecraftTarget.java
+	}
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(minecraftTarget.java as int)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = minecraftTarget.java as int
+	it.options.encoding = 'UTF-8'
+	it.options.compilerArgs += ['-Xmaxerrs', '2000']
+}
+
+if (providers.gradleProperty('open_checks').isPresent()) {
+    layout.buildDirectory.set(layout.projectDirectory.dir('build/open-checks'))
+    sourceSets.main.java.srcDir('verification/java')
+}
+
+tasks.named("jar") { from("LICENSE") }

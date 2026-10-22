@@ -1,0 +1,46 @@
+{
+  "ui.spatial.runtime.off": [
+    "已关闭",
+    "Disabled"
+  ],
+  "ui.spatial.runtime.backend": [
+    "等待音频后端",
+    "Waiting for audio backend"
+  ],
+  "ui.spatial.runtime.noSource": [
+    "未选择有效声源",
+    "No valid source selected"
+  ],
+  "ui.spatial.runtime.unisolated": [
+    "原声未隔离",
+    "Original audio not isolated"
+  ],
+  "ui.spatial.runtime.failed": [
+    "采集失败",
+    "Capture failed"
+  ],
+  "ui.spatial.runtime.waitingAudio": [
+    "等待声音",
+    "Waiting for audio"
+  ],
+  "ui.spatial.runtime.isolated": [
+    "已隔离处理",
+    "Isolated audio processing"
+  ],
+  "ui.spatial.runtime.mixed": [
+    "原声叠加",
+    "Original audio mixed in"
+  ],
+  "ui.spatial.runtime.game": [
+    "游戏声音处理中",
+    "Processing game audio"
+  ],
+  "ui.spatial.runtime.sessions": [
+    "已隔离 {0}/{1} 个活动音频会话",
+    "Isolated {0}/{1} active audio sessions"
+  ],
+  "ui.spatial.runtime.retryHint": [
+    "若一直未隔离，请暂停后重新播放，或重启所选应用；部分应用不会迁移已打开的音频流。",
+    "If isolation stays pending, pause and resume playback or restart the selected app; some apps keep an already open audio stream on its original output."
+  ]
+}

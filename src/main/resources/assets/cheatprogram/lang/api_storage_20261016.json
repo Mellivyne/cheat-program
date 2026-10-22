@@ -1,0 +1,34 @@
+{
+  "ui.ai.keyMemory": [
+    "Key 自动加密保存在本机，永不进入配置码",
+    "Keys are encrypted locally and never enter configuration codes"
+  ],
+  "ui.ai.clearKey": [
+    "删除已保存 Key",
+    "Delete saved key"
+  ],
+  "ui.ai.credential.noKey": [
+    "本地没有保存此 Key",
+    "No key saved for this connection"
+  ],
+  "ui.ai.credential.saving": [
+    "正在保存或删除本地加密凭据…",
+    "Saving or deleting encrypted credentials…"
+  ],
+  "ui.ai.credential.saved": [
+    "已由 Windows 当前用户加密保存",
+    "Saved with Windows current-user encryption"
+  ],
+  "ui.ai.credential.failed": [
+    "凭据保存／读取失败；本次内存值仍可编辑，请重新保存",
+    "Credential save or load failed; the session value is editable. Save again"
+  ],
+  "ui.ai.credential.unsupported": [
+    "此平台不支持 Windows 凭据加密，仅本次运行保留",
+    "Windows credential encryption is unavailable; session only"
+  ],
+  "ui.ai.providerKeyCleared": [
+    "接口已改变，请输入此接口的 Key",
+    "Connection changed; enter the key for this endpoint"
+  ]
+}

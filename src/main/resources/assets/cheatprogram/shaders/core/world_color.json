@@ -1,0 +1,1 @@
+{"vertex":"cheatprogram:core/fullscreen","fragment":"cheatprogram:core/world_color","samplers":[{"name":"InSampler"}],"uniforms":[{"name":"Params","type":"float","count":4,"values":[1,1,0,1]},{"name":"Tint","type":"float","count":4,"values":[1,1,1,1]},{"name":"HalfPixel","type":"float","count":2,"values":[0.001,0.001]}]}

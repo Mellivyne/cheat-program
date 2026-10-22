@@ -1,0 +1,382 @@
+{
+  "module.particleeffects": [
+    "粒子特效",
+    "Particle Effects"
+  ],
+  "module.particleeffects.desc": [
+    "在自己身上或世界固定位置编排多轮粒子组合，支持完整粒子列表、独立时序和三维编辑。",
+    "Compose independent particle rounds on your character or at world anchors, with the full particle registry, per-emitter timing and 3D editing."
+  ],
+  "setting.particleeffects.budget": [
+    "每刻新粒子预算",
+    "New particle budget per tick"
+  ],
+  "setting.particleeffects.budget.hint": [
+    "包含发射器生成的子粒子；只限制本功能，达到预算后跳过本刻额外生成。",
+    "Includes children spawned by emitters. Only this feature is limited; excess emissions are skipped for that tick."
+  ],
+  "setting.particleeffects.liveBudget": [
+    "同时存活粒子预算",
+    "Live particle budget"
+  ],
+  "setting.particleeffects.distance": [
+    "显示距离",
+    "Display distance"
+  ],
+  "setting.particleeffects.guides": [
+    "常显位置辅助线",
+    "Keep position guides visible"
+  ],
+  "setting.particleeffects.guideBudget": [
+    "辅助标记数量预算",
+    "Guide marker budget"
+  ],
+  "setting.particleeffects.guideBudget.hint": [
+    "只限制三维方框辅助标记，不改变实际粒子；优先显示选中的粒子。",
+    "Limits 3D guide boxes only, with selected emitters prioritized. Actual particles are unchanged."
+  ],
+  "ui.particles.title": [
+    "粒子特效编辑器",
+    "Particle Effects Studio"
+  ],
+  "ui.particles.editor": [
+    "打开粒子编辑器",
+    "Open particle studio"
+  ],
+  "ui.particles.open": [
+    "打开粒子编辑器",
+    "Open particle studio"
+  ],
+  "ui.particles.local": [
+    "本机视觉 · 关闭仅清理本功能创建的粒子 · 设置自动保存",
+    "Local visual effects · stopping removes only particles created here · edits save automatically"
+  ],
+  "ui.particles.round": [
+    "第",
+    "Round"
+  ],
+  "ui.particles.roundName": [
+    "本轮名称（可选）",
+    "Round name (optional)"
+  ],
+  "ui.particles.addRound": [
+    "新增一轮",
+    "Add round"
+  ],
+  "ui.particles.copyRound": [
+    "复制本轮",
+    "Copy round"
+  ],
+  "ui.particles.deleteRound": [
+    "删除本轮",
+    "Delete round"
+  ],
+  "ui.particles.confirmDelete": [
+    "再次点击删除",
+    "Click again to delete"
+  ],
+  "ui.particles.emitters": [
+    "本轮粒子",
+    "Round emitters"
+  ],
+  "ui.particles.add": [
+    "添加粒子",
+    "Add particle"
+  ],
+  "ui.particles.empty": [
+    "点击上方添加粒子",
+    "Add your first particle above"
+  ],
+  "ui.particles.roundSettings": [
+    "本轮独立设置",
+    "Independent round settings"
+  ],
+  "ui.particles.holdOn": [
+    "持续停留：开启",
+    "Hold round: on"
+  ],
+  "ui.particles.holdOff": [
+    "持续停留：关闭",
+    "Hold round: off"
+  ],
+  "ui.particles.roundDuration": [
+    "本轮停留时间（秒）",
+    "Round duration (seconds)"
+  ],
+  "ui.particles.roundHint": [
+    "单轮反复循环；多轮按序循环；持续停留需手动切下一轮。",
+    "One round loops; multiple rounds cycle in order. Held rounds advance manually."
+  ],
+  "ui.particles.changeType": [
+    "更换粒子类型",
+    "Change particle type"
+  ],
+  "ui.particles.shown": [
+    "此粒子：显示",
+    "Emitter: shown"
+  ],
+  "ui.particles.hidden": [
+    "此粒子：隐藏",
+    "Emitter: hidden"
+  ],
+  "ui.particles.options": [
+    "原版粒子参数（SNBT）",
+    "Vanilla particle options (SNBT)"
+  ],
+  "ui.particles.optionsPlaceholder": [
+    "简单粒子无需参数；复杂粒子使用下方模板",
+    "Simple types need no options; use a template for complex types"
+  ],
+  "ui.particles.validate": [
+    "验证参数",
+    "Validate options"
+  ],
+  "ui.particles.template": [
+    "恢复该类型参数模板",
+    "Restore this type's template"
+  ],
+  "ui.particles.playerAnchor": [
+    "跟随自己",
+    "Follow self"
+  ],
+  "ui.particles.worldAnchor": [
+    "固定世界位置",
+    "Fixed world anchor"
+  ],
+  "ui.particles.wholeRound": [
+    "整轮",
+    "Whole round"
+  ],
+  "ui.particles.pinHere": [
+    "固定在当前位置",
+    "Anchor at player"
+  ],
+  "ui.particles.pinLook": [
+    "固定在准心位置",
+    "Anchor at crosshair"
+  ],
+  "ui.particles.anchorValid": [
+    "固定点属于当前世界和维度",
+    "Anchor belongs to the current world and dimension"
+  ],
+  "ui.particles.anchorElsewhere": [
+    "固定点属于其他世界或维度，本地不会绘制",
+    "Anchor belongs to another world or dimension and will not render here"
+  ],
+  "ui.particles.anchorX": [
+    "固定点 X",
+    "Anchor X"
+  ],
+  "ui.particles.anchorY": [
+    "固定点 Y",
+    "Anchor Y"
+  ],
+  "ui.particles.anchorZ": [
+    "固定点 Z",
+    "Anchor Z"
+  ],
+  "ui.particles.rotateBodyOn": [
+    "随人物身体朝向：开启",
+    "Follow body yaw: on"
+  ],
+  "ui.particles.rotateBodyOff": [
+    "随人物身体朝向：关闭",
+    "Follow body yaw: off"
+  ],
+  "ui.particles.offset": [
+    "位置偏移",
+    "Position offset"
+  ],
+  "ui.particles.symmetry": [
+    "对称坐标轴",
+    "Mirror coordinate axes"
+  ],
+  "ui.particles.none": [
+    "无",
+    "None"
+  ],
+  "ui.particles.mirrorHint": [
+    "X/Y/Z 翻转对应坐标；组合可生成最多八个镜像位置。",
+    "X/Y/Z reflect the corresponding coordinates; combinations create up to eight mirrored positions."
+  ],
+  "ui.particles.pitch": [
+    "俯仰角（度）",
+    "Pitch (degrees)"
+  ],
+  "ui.particles.yaw": [
+    "偏航角（度）",
+    "Yaw (degrees)"
+  ],
+  "ui.particles.roll": [
+    "滚转角（度）",
+    "Roll (degrees)"
+  ],
+  "ui.particles.angleHint": [
+    "角度旋转发射速度方向；原版面向相机的贴图保持原版朝向。",
+    "Angles rotate the emission velocity. Camera-facing vanilla sprites retain their original facing rules."
+  ],
+  "ui.particles.velocity": [
+    "原版发射速度参数",
+    "Vanilla emission velocity parameter"
+  ],
+  "ui.particles.spread": [
+    "位置散布半径",
+    "Position spread"
+  ],
+  "ui.particles.scale": [
+    "贴图粒子尺寸倍率",
+    "Quad particle scale"
+  ],
+  "ui.particles.scaleHint": [
+    "缩放仅应用于原版四边形粒子；自定义几何和发射器保持原尺寸。",
+    "Scaling applies to vanilla quad particles. Custom geometry and emitters retain their native scale."
+  ],
+  "ui.particles.count": [
+    "每次生成数量",
+    "Count per emission"
+  ],
+  "ui.particles.interval": [
+    "生成间隔（秒）",
+    "Emission interval (seconds)"
+  ],
+  "ui.particles.start": [
+    "本轮内开始时间（秒）",
+    "Start within this round (seconds)"
+  ],
+  "ui.particles.duration": [
+    "本轮内停留时间（秒）",
+    "Emitter duration within round (seconds)"
+  ],
+  "ui.particles.durationHint": [
+    "0 表示从开始时间持续到本轮结束；各粒子独立设置。",
+    "0 emits from its start until the round ends. Each emitter has its own timing."
+  ],
+  "ui.particles.lifetime": [
+    "单颗粒子寿命（秒，0 为原版）",
+    "Individual particle lifetime (seconds; 0 = vanilla)"
+  ],
+  "ui.particles.lifetimeHint": [
+    "持续停留会持续补发。原版粒子可能因碰撞、介质或自身行为提前消失；切轮和结束停留会清理该轮粒子。",
+    "Held effects continually emit. Vanilla particles can expire early due to collisions, surroundings or native behavior. Round changes and emitter end times remove their particles."
+  ],
+  "ui.particles.copy": [
+    "复制此粒子",
+    "Copy emitter"
+  ],
+  "ui.particles.delete": [
+    "删除此粒子",
+    "Delete emitter"
+  ],
+  "ui.particles.selectHint": [
+    "选择一个粒子，或从列表添加新的粒子。",
+    "Select an emitter or add a new particle from the registry."
+  ],
+  "ui.particles.library": [
+    "全部注册粒子",
+    "All registered particles"
+  ],
+  "ui.particles.search": [
+    "搜索粒子 ID，例如 flame、dust、cherry",
+    "Search particle IDs, e.g. flame, dust, cherry"
+  ],
+  "ui.particles.parameters": [
+    "需要参数",
+    "Options required"
+  ],
+  "ui.particles.simple": [
+    "简单粒子",
+    "Simple particle"
+  ],
+  "ui.particles.libraryHint": [
+    "完整注册表，包括带参数的类型；参数由原版解析，新增模组类型可自行填写 SNBT。",
+    "Full registry including parameterized types. Options use the vanilla parser; modded types accept editable SNBT."
+  ],
+  "ui.particles.apply": [
+    "应用",
+    "Apply"
+  ],
+  "ui.particles.cancel": [
+    "取消",
+    "Cancel"
+  ],
+  "ui.particles.invalidNumber": [
+    "请输入范围内的有效数字",
+    "Enter a valid number within the range"
+  ],
+  "ui.particles.layoutPreview": [
+    "三维发射点布局预览",
+    "3D emitter layout preview"
+  ],
+  "ui.particles.layoutHint": [
+    "此处预览位置与方向；真实粒子外观请点回世界预览。",
+    "Preview position and direction here; use World Preview for actual particles."
+  ],
+  "ui.particles.free": [
+    "自由",
+    "Free"
+  ],
+  "ui.particles.previewMouse": [
+    "拖点移动 · Alt 拖点转角度 · 空白左拖旋转 · 右拖平移 · 滚轮缩放",
+    "Drag points to move · Alt-drag to rotate · drag empty space to orbit · right-drag pan · wheel zoom"
+  ],
+  "ui.particles.worldPreview": [
+    "回世界真实预览",
+    "World Preview"
+  ],
+  "ui.particles.worldMouse": [
+    "点击方框选中并拖动 · Alt 拖动改角度 · 右拖观察 · 滚轮改尺寸",
+    "Select and drag markers · Alt-drag angles · right-drag view · wheel changes scale"
+  ],
+  "ui.particles.worldExit": [
+    "Esc 返回编辑器；粒子仍按本轮与组合设置播放。",
+    "Esc returns to the editor. Particles continue using the composition's round settings."
+  ],
+  "ui.particles.backEditor": [
+    "返回编辑器",
+    "Back to editor"
+  ],
+  "ui.particles.nextRound": [
+    "切换下一轮",
+    "Next round"
+  ],
+  "ui.particles.play": [
+    "播放粒子",
+    "Play effects"
+  ],
+  "ui.particles.stop": [
+    "停止粒子",
+    "Stop effects"
+  ],
+  "ui.particles.running": [
+    "播放轮次",
+    "Playing round"
+  ],
+  "ui.particles.alive": [
+    "存活粒子",
+    "Live particles"
+  ],
+  "ui.particles.noProvider": [
+    "此类型没有可用的客户端粒子提供器",
+    "This type has no available client particle provider"
+  ],
+  "ui.particles.providerError": [
+    "粒子创建失败",
+    "Particle creation failed"
+  ],
+  "ui.particles.invalidOptions": [
+    "粒子参数无效",
+    "Invalid particle options"
+  ],
+  "ui.particles.noWorld": [
+    "请进入世界后验证粒子参数",
+    "Enter a world to validate particle options"
+  ],
+  "ui.particles.loadFailed": [
+    "读取粒子方案失败；原文件保留，当前使用空方案。",
+    "Could not read the composition. The original file is retained; an empty composition is in use."
+  ],
+  "ui.particles.saveFailed": [
+    "粒子方案保存失败，请检查文件写入权限。",
+    "Could not save the composition; check file write permissions."
+  ]
+}

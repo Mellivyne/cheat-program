@@ -1,0 +1,302 @@
+{
+  "module.appcast.desc": [
+    "把多个后台应用的实时画面放在世界内；独立画质、固定或跟随位置，并可明确开启按住键操作。",
+    "Place multiple live application windows in the world, with independent quality, fixed/follow anchors and opt-in held-key interaction."
+  ],
+  "setting.appcast.width": [
+    "屏幕宽度／大小",
+    "Screen width / size"
+  ],
+  "setting.appcast.width.hint": [
+    "调整世界内平面的宽度，不会改变亮度或原始像素。",
+    "World-plane width. Does not change brightness or source pixels."
+  ],
+  "setting.appcast.x": [
+    "附近左右偏移 X",
+    "Nearby lateral offset X"
+  ],
+  "setting.appcast.y": [
+    "附近高度偏移 Y",
+    "Nearby height offset Y"
+  ],
+  "setting.appcast.z": [
+    "附近前后偏移 Z",
+    "Nearby forward offset Z"
+  ],
+  "setting.appcast.x.hint": [
+    "相对选定瞬间的玩家位置与方向，整体偏移限制在 8 格内。",
+    "Relative to the player's position and yaw at placement. Total offset is limited to 8 blocks."
+  ],
+  "setting.appcast.backend": [
+    "捕获后端",
+    "Capture backend"
+  ],
+  "setting.appcast.backend.hint": [
+    "自动使用 WGC 捕获硬件加速画面；GDI 只作为手动选择的兼容方式。",
+    "Automatic uses WGC for hardware-accelerated content. GDI is available as an explicit compatibility choice."
+  ],
+  "setting.appcast.nativeResolution": [
+    "原生分辨率 1:1",
+    "Native resolution 1:1"
+  ],
+  "setting.appcast.nativeResolution.hint": [
+    "使用真实客户端像素，不放大伪装高清；支持边长 8192、约 33MP。关闭后可设降采样上限。",
+    "Use real client pixels without artificial enlargement, up to 8192 per edge and about 33 MP. Disable to set downsampling limits."
+  ],
+  "setting.appcast.resolution": [
+    "自定义分辨率边长上限",
+    "Custom resolution edge limit"
+  ],
+  "setting.appcast.pixelLimit": [
+    "自定义总像素上限",
+    "Custom pixel-count limit"
+  ],
+  "setting.appcast.nativeFrameRate": [
+    "跟随源帧更新",
+    "Follow source frame updates"
+  ],
+  "setting.appcast.nativeFrameRate.hint": [
+    "WGC 帧到即取最新画面，不强制限帧；实际速度受源程序、采集、传输与硬件限制。",
+    "Take the newest WGC frame as it arrives without a fixed frame-rate cap. Actual speed depends on source, capture, transfer and hardware."
+  ],
+  "setting.appcast.fps": [
+    "自定义采集帧率上限",
+    "Custom capture FPS limit"
+  ],
+  "setting.appcast.sharp": [
+    "锐利像素过滤",
+    "Sharp pixel filtering"
+  ],
+  "setting.appcast.sharp.hint": [
+    "开启使用最近邻；关闭使用线性过滤，原生像素不会重新压缩。",
+    "Enable nearest-neighbor filtering; disable for linear filtering. Native pixel data is not recompressed."
+  ],
+  "setting.appcast.uploadBudget": [
+    "限帧模式上传预算",
+    "Capped-mode upload budget"
+  ],
+  "setting.appcast.uploadBudget.hint": [
+    "仅限帧模式按预算分条上传；跟随源帧模式每次绘制完整上传最新一帧。",
+    "Only capped mode spreads uploads across strips. Source-update mode uploads the complete newest frame in one render."
+  ],
+  "setting.appcast.brightness": [
+    "画面亮度",
+    "Image brightness"
+  ],
+  "setting.appcast.interaction": [
+    "允许操作所选应用",
+    "Allow selected application input"
+  ],
+  "setting.appcast.interaction.hint": [
+    "默认关闭。开启后准心指向画面并按住交互键，鼠标和键盘只发送到所选窗口。",
+    "Disabled by default. Aim at a plane and hold the interaction key to send mouse/keyboard input only to its selected window."
+  ],
+  "setting.appcast.typing": [
+    "键盘默认模式",
+    "Default keyboard mode"
+  ],
+  "setting.appcast.pointerSpeed": [
+    "应用鼠标速度倍率",
+    "Application pointer multiplier"
+  ],
+  "setting.appcast.pointerSpeed.hint": [
+    "默认 1，按真实窗口鼠标像素移动，不使用游戏镜头灵敏度。",
+    "Default 1. Uses physical window mouse-pixel movement, independently of Minecraft camera sensitivity."
+  ],
+  "mode.appcast_auto": [
+    "自动：WGC 优先",
+    "Automatic: prefer WGC"
+  ],
+  "mode.appcast_wgc": [
+    "Windows Graphics Capture",
+    "Windows Graphics Capture"
+  ],
+  "mode.appcast_gdi": [
+    "PrintWindow 兼容后端",
+    "PrintWindow compatibility backend"
+  ],
+  "mode.appcast_move_first": [
+    "默认人物移动，左 Ctrl 切换文字",
+    "Movement first; Left Ctrl switches to typing"
+  ],
+  "mode.appcast_type_first": [
+    "默认文字输入，左 Ctrl 切换移动",
+    "Typing first; Left Ctrl switches to movement"
+  ],
+  "ui.appcast.readOnly": [
+    "本地独立窗口投屏；操作默认关闭，需自行开启并按住绑定键。",
+    "Local independent window capture. Input is disabled until explicitly enabled and its bound key is held."
+  ],
+  "ui.appcast.screen": [
+    "画面",
+    "Screen"
+  ],
+  "ui.appcast.addScreen": [
+    "新增",
+    "Add"
+  ],
+  "ui.appcast.deleteScreen": [
+    "删除",
+    "Delete"
+  ],
+  "ui.appcast.unassigned": [
+    "未选择应用",
+    "No application selected"
+  ],
+  "ui.appcast.allowInput": [
+    "允许后台应用交互",
+    "Allow background application input"
+  ],
+  "ui.appcast.holdKey": [
+    "按住交互键",
+    "Hold interaction key"
+  ],
+  "ui.appcast.reservedKey": [
+    "此键用于面板退出或输入模式，请选择其他键",
+    "Reserved for panel exit or input mode. Choose another key."
+  ],
+  "ui.appcast.received": [
+    "收到帧",
+    "Received frames"
+  ],
+  "ui.appcast.uploaded": [
+    "显示帧",
+    "Displayed frames"
+  ],
+  "ui.appcast.captureFps": [
+    "采集",
+    "Capture"
+  ],
+  "ui.appcast.displayFps": [
+    "显示",
+    "Display"
+  ],
+  "ui.appcast.sampleUnchanged": [
+    "采样画面未变化",
+    "Sampled image unchanged for"
+  ],
+  "ui.appcast.inputIdle": [
+    "尚未操作",
+    "Input idle"
+  ],
+  "ui.appcast.inputReady": [
+    "可发送后台消息",
+    "Background input available"
+  ],
+  "ui.appcast.inputDisabled": [
+    "应用操作未开启",
+    "Application input disabled"
+  ],
+  "ui.appcast.inputQueued": [
+    "输入已入队，应用是否响应由其决定",
+    "Input queued; processing depends on the application"
+  ],
+  "ui.appcast.inputDenied": [
+    "窗口拒绝输入或权限等级不匹配",
+    "Window rejected input or has a different integrity level"
+  ],
+  "ui.appcast.inputRejected": [
+    "输入无效或窗口状态不可操作",
+    "Invalid input or window not interactive"
+  ],
+  "ui.appcast.inputReleased": [
+    "鼠标与按键已释放请求",
+    "Mouse and key release requested"
+  ],
+  "ui.appcast.inputFailed": [
+    "后台输入失败",
+    "Background input failed"
+  ],
+  "ui.appcast.inputBusy": [
+    "输入队列繁忙，已请求释放",
+    "Input queue busy; release requested"
+  ],
+  "ui.appcast.gpuLimit": [
+    "显卡纹理边长不足，请降低分辨率上限",
+    "GPU texture limit exceeded; lower the resolution limit"
+  ],
+  "ui.appcast.waitingFrame": [
+    "等待源窗口更新",
+    "Waiting for source window updates"
+  ],
+  "ui.appcast.wgcUnavailable": [
+    "WGC 不可用，请选择自动或 PrintWindow",
+    "WGC unavailable; choose Automatic or PrintWindow"
+  ],
+  "ui.appcast.sourceStalled": [
+    "源窗口持续没有新帧，可重试捕获",
+    "Source window has no new frames; retry capture if needed"
+  ],
+  "ui.appcast.nativeHint": [
+    "原生模式保留源像素和可取得的帧更新。高分辨率／多画面占用更多内存与显卡带宽；上面的采集与显示 FPS 均来自真实计数。",
+    "Native mode preserves source pixels and available updates. Large or multiple screens need more memory and GPU bandwidth. Capture and display FPS above use real counts."
+  ],
+  "ui.appcast.inputHint": [
+    "按住交互键操作，松开或 Esc 退出。移动／文字模式下左 Ctrl 切换；全部按键模式下人物不移动。双击界面键返回普通面板。部分应用可能忽略后台输入；不会主动切换到源应用或发送全局输入。",
+    "Hold the interaction key; release it or press Esc to exit. Left Ctrl switches movement/typing modes; all-keys mode keeps the player stationary. Double-press the panel key for the ordinary panel. Some apps ignore background input; the source app is not activated and no global input is sent."
+  ],
+  "ui.appcast.captureHint": [
+    "自动优先 WGC，持续取得硬件加速画面。最小化、受保护／DRM、被浏览器暂停的内容可能不更新；不会擅自更改播放、浏览器设置或切换到前台。",
+    "Automatic prefers WGC and continuously receives GPU-rendered frames. Minimized, protected/DRM or browser-suspended content may not update. Playback, browser settings and foreground focus are never changed automatically."
+  ],
+  "ui.appcast.moveControls": [
+    "人物移动模式 · 左 Ctrl 切换文字 · 松开交互键／Esc 退出",
+    "Movement mode · Left Ctrl for typing · release interaction key / Esc to exit"
+  ],
+  "ui.appcast.typeControls": [
+    "文字输入模式 · 左 Ctrl 切换移动 · 松开交互键／Esc 退出",
+    "Typing mode · Left Ctrl for movement · release interaction key / Esc to exit"
+  ],
+  "ui.appcast.place": [
+    "重放到身前 3 格、上方 0.3 格",
+    "Place 3 blocks ahead and 0.3 above"
+  ],
+  "ui.appcast.fixed": [
+    "固定：绑定放置时的位置与方向",
+    "Fixed: anchored to placement position and yaw"
+  ],
+  "ui.appcast.follow": [
+    "跟随人物平移，方向固定",
+    "Follow player translation; keep orientation"
+  ],
+  "setting.appcast.keyboardOnly": [
+    "全部按键控制投屏",
+    "Send all keys to application"
+  ],
+  "setting.appcast.keyboardOnly.hint": [
+    "交互时键盘控制所选应用，人物不移动。关闭后恢复移动／文字模式；退出键保留。",
+    "While interacting, the keyboard controls the selected app and player movement stops. Disable to restore movement/typing modes. Exit keys stay reserved."
+  ],
+  "ui.appcast.keyboardControls": [
+    "键盘控制投屏 · 人物不移动 · 松开交互键／Esc 退出",
+    "Application keyboard · player stationary · release interaction key / Esc to exit"
+  ],
+  "ui.appcast.keyboardOnlyHint": [
+    "适合站立操作：WASD、空格、Shift 和 Ctrl 交给所选应用，人物不移动。Esc、交互键与双击界面键用于退出。",
+    "For stationary use: WASD, Space, Shift and Ctrl control the selected app. Esc, the interaction key and a double press of the panel key remain exit controls."
+  ],
+  "setting.appcast.windowedLiveCompatible": [
+    "窗口模式实时兼容",
+    "Live capture in windowed mode"
+  ],
+  "setting.appcast.windowedLiveCompatible.hint": [
+    "投屏期间将游戏窗口透明度调整为 254/255，减少浏览器被完全遮挡后暂停刷新的情况；关闭投屏或全屏时恢复。不会修改源应用，仍保留原生画质与帧率选项。",
+    "While casting, sets the game window opacity to 254/255 so browsers are less likely to suspend fully covered content. Restores it when casting stops or fullscreen starts. Source apps and native quality/frame-rate options stay unchanged."
+  ],
+  "ui.appcast.scrollUnsupported": [
+    "该区域不支持后台滚动",
+    "This area does not support background scrolling"
+  ],
+  "ui.appcast.scrollHint": [
+    "浏览器普通页面和嵌套滚动区使用后台滚动，无需唤起原程序。自定义画布、网页缩放或音量滚轮不属于页面滚动，部分应用可能不支持。",
+    "Browser pages and nested scroll areas scroll in the background without bringing the source forward. Custom canvas, zoom and volume wheel actions are not page scrolling and may be unsupported."
+  ],
+  "setting.appcast.nativePointer": [
+    "使用系统鼠标速度",
+    "Use system pointer speed"
+  ],
+  "setting.appcast.nativePointer.hint": [
+    "默认开启。保留系统鼠标移动与加速设置，不应用游戏镜头灵敏度或额外速度倍率。",
+    "Enabled by default. Preserve system pointer movement and acceleration without camera sensitivity or an extra speed multiplier."
+  ]
+}

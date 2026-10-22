@@ -1,0 +1,1242 @@
+{
+  "module.motiontrails": [
+    "运动尾迹与残影",
+    "Motion trails and afterimages"
+  ],
+  "module.motiontrails.desc": [
+    "疾跑、跳跃和飞行留下渐隐轨迹及人物线条残影，可调颜色、长度与柔光",
+    "Fading movement trails and outlined silhouettes with adjustable color, duration and glow"
+  ],
+  "setting.motiontrails.lifetime": [
+    "尾迹保留时间",
+    "Trail lifetime"
+  ],
+  "setting.motiontrails.interval": [
+    "采样间隔",
+    "Sample interval"
+  ],
+  "setting.motiontrails.width": [
+    "线条宽度",
+    "Line width"
+  ],
+  "setting.motiontrails.afterimages": [
+    "人物线条残影",
+    "Outlined player afterimages"
+  ],
+  "setting.motiontrails.imageSpacing": [
+    "残影间隔",
+    "Afterimage spacing"
+  ],
+  "setting.motiontrails.glow": [
+    "柔光",
+    "Soft glow"
+  ],
+  "setting.motiontrails.firstPerson": [
+    "第一人称显示",
+    "Show in first person"
+  ],
+  "setting.motiontrails.throughWalls": [
+    "穿墙显示",
+    "Show through walls"
+  ],
+  "module.worldcolors": [
+    "世界色彩与雾效",
+    "World colors and fog"
+  ],
+  "module.worldcolors.desc": [
+    "编辑世界画面的色调、饱和度、亮度、柔光、雾距与本地天气；关闭恢复原画面",
+    "Edit world tint, saturation, exposure, glow, fog distance and local weather; disabling restores the original rendering"
+  ],
+  "setting.worldcolors.preset": [
+    "色彩预设",
+    "Color preset"
+  ],
+  "mode.tone_custom": [
+    "自定义色调",
+    "Custom tint"
+  ],
+  "mode.tone_warm": [
+    "暖阳",
+    "Warm sunlight"
+  ],
+  "mode.tone_ice": [
+    "冰蓝",
+    "Icy blue"
+  ],
+  "mode.tone_dream": [
+    "梦幻紫",
+    "Dream violet"
+  ],
+  "mode.tone_monochrome": [
+    "黑白",
+    "Monochrome"
+  ],
+  "setting.worldcolors.strength": [
+    "整体效果强度",
+    "Overall effect strength"
+  ],
+  "setting.worldcolors.saturation": [
+    "饱和度",
+    "Saturation"
+  ],
+  "setting.worldcolors.exposure": [
+    "画面亮度",
+    "Exposure"
+  ],
+  "setting.worldcolors.bloom": [
+    "高光柔光",
+    "Highlight glow"
+  ],
+  "setting.worldcolors.fog": [
+    "自定义雾效",
+    "Custom fog"
+  ],
+  "setting.worldcolors.fogStart": [
+    "雾起始距离",
+    "Fog start distance"
+  ],
+  "setting.worldcolors.fogEnd": [
+    "雾结束距离",
+    "Fog end distance"
+  ],
+  "setting.worldcolors.preserveFluids": [
+    "保留水中与岩浆原雾效",
+    "Preserve water and lava fog"
+  ],
+  "setting.worldcolors.weather": [
+    "本地天气效果",
+    "Local weather"
+  ],
+  "setting.worldcolors.transition": [
+    "天气过渡时长",
+    "Weather transition"
+  ],
+  "mode.weather_original": [
+    "原天气",
+    "Original weather"
+  ],
+  "mode.weather_clear": [
+    "晴天",
+    "Clear"
+  ],
+  "mode.weather_rain": [
+    "下雨",
+    "Rain"
+  ],
+  "mode.weather_storm": [
+    "雷雨",
+    "Thunderstorm"
+  ],
+  "setting.droppeditems3d.rareGlow": [
+    "稀有物品柔光",
+    "Rare item glow"
+  ],
+  "setting.droppeditems3d.commonGlow": [
+    "普通物品也发光",
+    "Include common items"
+  ],
+  "setting.droppeditems3d.glowRange": [
+    "柔光显示范围",
+    "Glow range"
+  ],
+  "setting.droppeditems3d.glowStrength": [
+    "柔光强度",
+    "Glow intensity"
+  ],
+  "setting.droppeditems3d.glowLimit": [
+    "柔光物品数量上限",
+    "Maximum glowing items"
+  ],
+  "module.deathrecovery": [
+    "死亡点与回收路线",
+    "Death recovery"
+  ],
+  "module.deathrecovery.desc": [
+    "保存死亡坐标和死亡前物品快照，在已加载地形内规划步行回收路线",
+    "Save death locations and pre-death inventory snapshots, and plan walking recovery routes through loaded terrain"
+  ],
+  "setting.deathrecovery.route": [
+    "步行回收路线",
+    "Walking recovery route"
+  ],
+  "setting.deathrecovery.marker": [
+    "死亡点标记",
+    "Death marker"
+  ],
+  "setting.deathrecovery.historyLimit": [
+    "保存记录数量",
+    "History count"
+  ],
+  "setting.deathrecovery.lineWidth": [
+    "路线宽度",
+    "Route width"
+  ],
+  "ui.recovery.open": [
+    "查看死亡记录",
+    "Browse death records"
+  ],
+  "ui.recovery.scope": [
+    "按世界和维度隔离；物品快照为死亡前最后观察，不代表物品仍存在",
+    "Isolated by world and dimension; snapshots are the last pre-death observation, not a guarantee items remain"
+  ],
+  "ui.recovery.empty": [
+    "开启功能后会记录新的死亡点",
+    "Enable this feature to record new deaths"
+  ],
+  "ui.recovery.searching": [
+    "正在分析已加载地形",
+    "Searching loaded terrain"
+  ],
+  "ui.recovery.far": [
+    "距离较远，请先靠近到 64 格内",
+    "Move within 64 blocks to calculate a route"
+  ],
+  "ui.recovery.noPath": [
+    "已知地形中没有找到可行路线",
+    "No route found in known terrain"
+  ],
+  "ui.recovery.route": [
+    "已加载地形的步行路线",
+    "Walking route through loaded terrain"
+  ],
+  "ui.recovery.noRoute": [
+    "选择记录查看路线",
+    "Select a record to view its route"
+  ],
+  "ui.recovery.hud": [
+    "死亡点 {0} 格 · 已过 {1}分{2}秒",
+    "Death point {0} blocks · {1}m {2}s elapsed"
+  ],
+  "module.taskqueue": [
+    "自动化任务队列",
+    "Automation task queue"
+  ],
+  "module.taskqueue.desc": [
+    "顺序执行穿装、整理、拿取、补给、蓝图导出和等待，危险或手动操作暂停，结束恢复原设置",
+    "Run equip, clean, loot, refill, loaded blueprint placement and wait steps; pause on danger or input and restore original settings"
+  ],
+  "setting.taskqueue.plan": [
+    "任务顺序",
+    "Task order"
+  ],
+  "setting.taskqueue.plan.hint": [
+    "逗号分隔：equip, clean, loot, refill, build, wait",
+    "Comma separated: equip, clean, loot, refill, build, wait"
+  ],
+  "setting.taskqueue.timeout": [
+    "单项任务超时",
+    "Task timeout"
+  ],
+  "setting.taskqueue.waitSeconds": [
+    "等待步骤时长",
+    "Wait step duration"
+  ],
+  "setting.taskqueue.health": [
+    "暂停血量阈值",
+    "Pause health threshold"
+  ],
+  "setting.taskqueue.pauseManual": [
+    "手动操作时暂停",
+    "Pause on manual input"
+  ],
+  "setting.taskqueue.autoResume": [
+    "安全后自动继续",
+    "Resume automatically when safe"
+  ],
+  "queue.step.equip": [
+    "穿装备",
+    "Equip armor"
+  ],
+  "queue.step.clean": [
+    "整理背包",
+    "Clean inventory"
+  ],
+  "queue.step.loot": [
+    "附近拿取",
+    "Loot nearby"
+  ],
+  "queue.step.refill": [
+    "快捷栏补给",
+    "Refill hotbar"
+  ],
+  "queue.step.build": [
+    "导出已选建筑",
+    "Place loaded blueprint"
+  ],
+  "queue.step.wait": [
+    "等待",
+    "Wait"
+  ],
+  "ui.queue.ready": [
+    "准备就绪",
+    "Ready"
+  ],
+  "ui.queue.noWorld": [
+    "请先进入世界",
+    "Enter a world first"
+  ],
+  "ui.queue.invalid": [
+    "任务名无效或队列为空",
+    "Invalid task name or empty queue"
+  ],
+  "ui.queue.needBlueprint": [
+    "请先加载建筑并设置导出原点",
+    "Load a blueprint and set its placement origin first"
+  ],
+  "ui.queue.running": [
+    "执行中",
+    "Running"
+  ],
+  "ui.queue.paused": [
+    "已暂停",
+    "Paused"
+  ],
+  "ui.queue.stopped": [
+    "已停止并恢复设置",
+    "Stopped and settings restored"
+  ],
+  "ui.queue.worldChanged": [
+    "世界已变化，队列停止",
+    "World changed; queue stopped"
+  ],
+  "ui.queue.danger": [
+    "危险状态暂停",
+    "Paused for danger"
+  ],
+  "ui.queue.manual": [
+    "手动操作暂停",
+    "Paused for manual input"
+  ],
+  "ui.queue.timeout": [
+    "任务超时，已停止",
+    "Task timed out; stopped"
+  ],
+  "ui.queue.buildFailed": [
+    "建筑导出未完成，已停止",
+    "Blueprint placement failed; stopped"
+  ],
+  "ui.queue.complete": [
+    "全部任务完成",
+    "All tasks completed"
+  ],
+  "ui.queue.open": [
+    "编辑任务队列",
+    "Edit task queue"
+  ],
+  "ui.queue.hint": [
+    "建筑步骤使用已加载蓝图及原点；停止会取消当前导出并保留撤回记录",
+    "Build uses the loaded blueprint and origin; stopping cancels placement and retains undo"
+  ],
+  "ui.queue.start": [
+    "开始队列",
+    "Start queue"
+  ],
+  "ui.queue.pause": [
+    "暂停／继续",
+    "Pause / resume"
+  ],
+  "ui.queue.stop": [
+    "停止",
+    "Stop"
+  ],
+  "setting.motiontrails.red": [
+    "红色",
+    "Red"
+  ],
+  "setting.motiontrails.green": [
+    "绿色",
+    "Green"
+  ],
+  "setting.motiontrails.blue": [
+    "蓝色",
+    "Blue"
+  ],
+  "setting.worldcolors.red": [
+    "红色",
+    "Red"
+  ],
+  "setting.worldcolors.green": [
+    "绿色",
+    "Green"
+  ],
+  "setting.worldcolors.blue": [
+    "蓝色",
+    "Blue"
+  ],
+  "module.wearableweapons": [
+    "武器穿戴",
+    "Wearable weapons"
+  ],
+  "module.wearableweapons.desc": [
+    "在背部交叉穿戴两件背包武器，左右腿各一把弓或弩；本地外观与可旋转预览，不改变真实装备",
+    "Display two backpack weapons on your back and a bow or crossbow on each leg; local cosmetics and an orbitable preview"
+  ],
+  "setting.wearableweapons.preview": [
+    "控制面板内预览",
+    "Preview in control panel"
+  ],
+  "setting.wearableweapons.part": [
+    "编辑部位",
+    "Edit attachment"
+  ],
+  "mode.wear_back_left": [
+    "背部左侧",
+    "Back left"
+  ],
+  "mode.wear_back_right": [
+    "背部右侧",
+    "Back right"
+  ],
+  "mode.wear_leg_left": [
+    "左腿弓位",
+    "Left leg bow"
+  ],
+  "mode.wear_leg_right": [
+    "右腿弓位",
+    "Right leg bow"
+  ],
+  "setting.wearableweapons.backLeftShown": [
+    "背部左侧 · 显示",
+    "Back left · Visible"
+  ],
+  "setting.wearableweapons.backLeftSlot": [
+    "背部左侧 · 背包槽（0 自动）",
+    "Back left · Inventory slot (0 = automatic)"
+  ],
+  "setting.wearableweapons.backLeftX": [
+    "背部左侧 · X 位置",
+    "Back left · X offset"
+  ],
+  "setting.wearableweapons.backLeftY": [
+    "背部左侧 · Y 位置",
+    "Back left · Y offset"
+  ],
+  "setting.wearableweapons.backLeftZ": [
+    "背部左侧 · Z 位置",
+    "Back left · Z offset"
+  ],
+  "setting.wearableweapons.backLeftAngleX": [
+    "背部左侧 · X 角度",
+    "Back left · X angle"
+  ],
+  "setting.wearableweapons.backLeftAngleY": [
+    "背部左侧 · Y 角度",
+    "Back left · Y angle"
+  ],
+  "setting.wearableweapons.backLeftAngleZ": [
+    "背部左侧 · Z 角度",
+    "Back left · Z angle"
+  ],
+  "setting.wearableweapons.backLeftSize": [
+    "背部左侧 · 大小",
+    "Back left · Size"
+  ],
+  "setting.wearableweapons.backRightShown": [
+    "背部右侧 · 显示",
+    "Back right · Visible"
+  ],
+  "setting.wearableweapons.backRightSlot": [
+    "背部右侧 · 背包槽（0 自动）",
+    "Back right · Inventory slot (0 = automatic)"
+  ],
+  "setting.wearableweapons.backRightX": [
+    "背部右侧 · X 位置",
+    "Back right · X offset"
+  ],
+  "setting.wearableweapons.backRightY": [
+    "背部右侧 · Y 位置",
+    "Back right · Y offset"
+  ],
+  "setting.wearableweapons.backRightZ": [
+    "背部右侧 · Z 位置",
+    "Back right · Z offset"
+  ],
+  "setting.wearableweapons.backRightAngleX": [
+    "背部右侧 · X 角度",
+    "Back right · X angle"
+  ],
+  "setting.wearableweapons.backRightAngleY": [
+    "背部右侧 · Y 角度",
+    "Back right · Y angle"
+  ],
+  "setting.wearableweapons.backRightAngleZ": [
+    "背部右侧 · Z 角度",
+    "Back right · Z angle"
+  ],
+  "setting.wearableweapons.backRightSize": [
+    "背部右侧 · 大小",
+    "Back right · Size"
+  ],
+  "setting.wearableweapons.legLeftShown": [
+    "左腿 · 显示",
+    "Left leg · Visible"
+  ],
+  "setting.wearableweapons.legLeftSlot": [
+    "左腿 · 背包槽（0 自动）",
+    "Left leg · Inventory slot (0 = automatic)"
+  ],
+  "setting.wearableweapons.legLeftX": [
+    "左腿 · X 位置",
+    "Left leg · X offset"
+  ],
+  "setting.wearableweapons.legLeftY": [
+    "左腿 · Y 位置",
+    "Left leg · Y offset"
+  ],
+  "setting.wearableweapons.legLeftZ": [
+    "左腿 · Z 位置",
+    "Left leg · Z offset"
+  ],
+  "setting.wearableweapons.legLeftAngleX": [
+    "左腿 · X 角度",
+    "Left leg · X angle"
+  ],
+  "setting.wearableweapons.legLeftAngleY": [
+    "左腿 · Y 角度",
+    "Left leg · Y angle"
+  ],
+  "setting.wearableweapons.legLeftAngleZ": [
+    "左腿 · Z 角度",
+    "Left leg · Z angle"
+  ],
+  "setting.wearableweapons.legLeftSize": [
+    "左腿 · 大小",
+    "Left leg · Size"
+  ],
+  "setting.wearableweapons.legRightShown": [
+    "右腿 · 显示",
+    "Right leg · Visible"
+  ],
+  "setting.wearableweapons.legRightSlot": [
+    "右腿 · 背包槽（0 自动）",
+    "Right leg · Inventory slot (0 = automatic)"
+  ],
+  "setting.wearableweapons.legRightX": [
+    "右腿 · X 位置",
+    "Right leg · X offset"
+  ],
+  "setting.wearableweapons.legRightY": [
+    "右腿 · Y 位置",
+    "Right leg · Y offset"
+  ],
+  "setting.wearableweapons.legRightZ": [
+    "右腿 · Z 位置",
+    "Right leg · Z offset"
+  ],
+  "setting.wearableweapons.legRightAngleX": [
+    "右腿 · X 角度",
+    "Right leg · X angle"
+  ],
+  "setting.wearableweapons.legRightAngleY": [
+    "右腿 · Y 角度",
+    "Right leg · Y angle"
+  ],
+  "setting.wearableweapons.legRightAngleZ": [
+    "右腿 · Z 角度",
+    "Right leg · Z angle"
+  ],
+  "setting.wearableweapons.legRightSize": [
+    "右腿 · 大小",
+    "Right leg · Size"
+  ],
+  "ui.wearable.title": [
+    "武器穿戴",
+    "Wearable weapons"
+  ],
+  "ui.wearable.preview": [
+    "人物与武器预览",
+    "Player and weapon preview"
+  ],
+  "ui.wearable.edit": [
+    "选择背包武器／调整穿戴",
+    "Select weapons / edit attachments"
+  ],
+  "ui.wearable.noworld": [
+    "进入世界后可预览和选择背包武器",
+    "Join a world to preview and select inventory weapons"
+  ],
+  "ui.wearable.previewFailed": [
+    "预览暂不可用，双击重试",
+    "Preview unavailable; double-click to retry"
+  ],
+  "ui.wearable.previewOff": [
+    "已关闭穿戴预览",
+    "Attachment preview is off"
+  ],
+  "ui.wearable.previewHint": [
+    "左拖旋转 · 右拖平移 · 滚轮缩放 · 双击复位",
+    "Left drag: rotate · Right drag: pan · Wheel: zoom · Double-click: reset"
+  ],
+  "ui.wearable.autoSelect": [
+    "自动选择未占用武器",
+    "Choose unused weapons automatically"
+  ],
+  "ui.wearable.hidePart": [
+    "隐藏此部位",
+    "Hide attachment"
+  ],
+  "ui.wearable.showPart": [
+    "显示此部位",
+    "Show attachment"
+  ],
+  "ui.wearable.inventoryHint": [
+    "点击背包内武器；腿部仅支持弓／弩",
+    "Select an inventory weapon; legs accept bows or crossbows"
+  ],
+  "ui.wearable.resetPart": [
+    "恢复此部位的默认摆放",
+    "Reset this attachment transform"
+  ],
+  "ui.wearable.enable": [
+    "开启武器穿戴",
+    "Enable attachments"
+  ],
+  "ui.wearable.disable": [
+    "关闭武器穿戴",
+    "Disable attachments"
+  ],
+  "ui.wearable.localHint": [
+    "仅改变本地外观；关闭立即恢复，背包物品不会移动",
+    "Local cosmetics only; disabling restores immediately without moving items"
+  ],
+  "module.sounddirections": [
+    "声音方向提示",
+    "Sound directions"
+  ],
+  "module.sounddirections.desc": [
+    "将已收到的脚步、爆炸和弹射物音效显示为方向、距离字幕；不探测未收到的声音",
+    "Show direction and distance captions for received footsteps, explosions and projectiles; no hidden-sound probing"
+  ],
+  "hud.sounddirections": [
+    "声音方向提示",
+    "Sound directions"
+  ],
+  "setting.sounddirections.footsteps": [
+    "脚步／游泳",
+    "Footsteps / swimming"
+  ],
+  "setting.sounddirections.explosions": [
+    "爆炸",
+    "Explosions"
+  ],
+  "setting.sounddirections.projectiles": [
+    "箭／弹射物",
+    "Arrows / projectiles"
+  ],
+  "setting.sounddirections.other": [
+    "其他声音",
+    "Other sounds"
+  ],
+  "setting.sounddirections.ignoreOwn": [
+    "忽略自身音效",
+    "Ignore own sounds"
+  ],
+  "setting.sounddirections.range": [
+    "最大显示距离",
+    "Maximum distance"
+  ],
+  "setting.sounddirections.lifetime": [
+    "字幕保留时间",
+    "Caption lifetime"
+  ],
+  "setting.sounddirections.rows": [
+    "同时显示数量",
+    "Visible captions"
+  ],
+  "setting.sounddirections.size": [
+    "面板大小",
+    "Panel size"
+  ],
+  "ui.sounddirections.step": [
+    "脚步声",
+    "Footsteps"
+  ],
+  "ui.sounddirections.explosion": [
+    "爆炸声",
+    "Explosion"
+  ],
+  "ui.sounddirections.projectile": [
+    "弹射物",
+    "Projectile"
+  ],
+  "ui.sounddirections.other": [
+    "声音",
+    "Sound"
+  ],
+  "ui.sounddirections.above": [
+    "上方",
+    "Above"
+  ],
+  "ui.sounddirections.below": [
+    "下方",
+    "Below"
+  ],
+  "ui.sounddirections.waiting": [
+    "等待接收到的声音",
+    "Waiting for received sounds"
+  ],
+  "module.networktrends": [
+    "网络与性能趋势",
+    "Network and performance trends"
+  ],
+  "module.networktrends.desc": [
+    "被动记录帧耗时、服务器提供的延迟、收包间隔与估算 TPS；标记尖峰时间，可拖动和调整趋势范围",
+    "Passive frame-time, server latency, packet-gap and estimated TPS trends, with timestamped spikes and an editable HUD"
+  ],
+  "hud.networktrends": [
+    "网络与性能趋势",
+    "Network / performance trends"
+  ],
+  "setting.networktrends.frames": [
+    "帧耗时图表",
+    "Frame-time chart"
+  ],
+  "setting.networktrends.latency": [
+    "延迟图表",
+    "Latency chart"
+  ],
+  "setting.networktrends.packetGaps": [
+    "收包间隔图表",
+    "Packet-gap chart"
+  ],
+  "setting.networktrends.serverTps": [
+    "估算 TPS 图表",
+    "Estimated TPS chart"
+  ],
+  "setting.networktrends.showSpikes": [
+    "显示尖峰时间",
+    "Show spike timestamps"
+  ],
+  "setting.networktrends.history": [
+    "趋势时间范围",
+    "History range"
+  ],
+  "setting.networktrends.width": [
+    "面板宽度",
+    "Panel width"
+  ],
+  "setting.networktrends.size": [
+    "面板大小",
+    "Panel size"
+  ],
+  "setting.networktrends.frameThreshold": [
+    "帧耗时尖峰阈值",
+    "Frame-time spike threshold"
+  ],
+  "setting.networktrends.pingThreshold": [
+    "延迟尖峰阈值",
+    "Latency spike threshold"
+  ],
+  "setting.networktrends.packetThreshold": [
+    "收包间隔尖峰阈值",
+    "Packet-gap spike threshold"
+  ],
+  "setting.networktrends.tpsThreshold": [
+    "低 TPS 提醒阈值",
+    "Low-TPS threshold"
+  ],
+  "ui.networktrends.frames": [
+    "帧耗时",
+    "Frame time"
+  ],
+  "ui.networktrends.ping": [
+    "延迟",
+    "Latency"
+  ],
+  "ui.networktrends.gap": [
+    "收包间隔",
+    "Packet gap"
+  ],
+  "ui.networktrends.tps": [
+    "估算 TPS",
+    "Estimated TPS"
+  ],
+  "ui.networktrends.passive": [
+    "被动采样；收包空闲不等于延迟，TPS 仅估算",
+    "Passive sampling; packet quiet is not latency; TPS is estimated"
+  ],
+  "module.autotrap": [
+    "自动蛛网／围困",
+    "Auto Web / Trap"
+  ],
+  "module.autotrap.desc": [
+    "按目标位置预览蛛网、脚围或全身围困；使用真实背包材料和可见可达支撑面，服务器拒绝时等待重试。",
+    "Preview and place real inventory materials around eligible targets through visible, reachable supporting faces; back off on refusal."
+  ],
+  "module.projectileaim": [
+    "抛射预判辅助",
+    "Projectile Aim Assist"
+  ],
+  "module.projectileaim.desc": [
+    "拉弓／使用三叉戟时平滑辅助瞄准，按原版发射速度、空气阻力和重力预测移动目标；大幅手动转向立即接管，预测不保证命中。",
+    "Smooth held-use bow/trident assistance using vanilla launch speed, drag and gravity; large manual turns take over. Predictions do not guarantee a hit."
+  ],
+  "module.landingrescue": [
+    "落地救援",
+    "Landing Rescue"
+  ],
+  "module.landingrescue.desc": [
+    "预测已加载地形的真实落点，按优先级尝试水桶、蛛网或有侧面支撑的梯子；遵守真实交互距离，不能保证救援成功。",
+    "Predict loaded collision surfaces and try a real water bucket, cobweb or supported ladder within actual reach. Rescue is not guaranteed."
+  ],
+  "module.farmassist": [
+    "农场收获补种",
+    "Farm Harvest / Replant"
+  ],
+  "module.farmassist.desc": [
+    "收获可见可达的成熟作物，收到服务端更新后补种；兼容背包整理保留种子。只统计服务端确认的收获和补种。",
+    "Harvest reachable, visible mature crops, wait for server updates, then replant. Preserves seeds during inventory cleaning and counts server-confirmed work."
+  ],
+  "mode.trap_web": [
+    "自动蛛网",
+    "Cobweb"
+  ],
+  "mode.trap_feet": [
+    "脚部围困",
+    "Feet trap"
+  ],
+  "mode.trap_full": [
+    "全身围困",
+    "Full trap"
+  ],
+  "mode.rescue_water": [
+    "水桶优先",
+    "Water first"
+  ],
+  "mode.rescue_web": [
+    "蛛网优先",
+    "Cobweb first"
+  ],
+  "mode.rescue_ladder": [
+    "梯子优先",
+    "Ladder first"
+  ],
+  "setting.autotrap.mode": [
+    "围困方式",
+    "Trap mode"
+  ],
+  "setting.autotrap.players": [
+    "玩家",
+    "Players"
+  ],
+  "setting.autotrap.friendly": [
+    "友好生物",
+    "Friendly mobs"
+  ],
+  "setting.autotrap.hostile": [
+    "敌对生物",
+    "Hostile mobs"
+  ],
+  "setting.autotrap.range": [
+    "目标范围",
+    "Target range"
+  ],
+  "setting.autotrap.delay": [
+    "放置间隔",
+    "Placement interval"
+  ],
+  "setting.autotrap.rotation": [
+    "人物朝向",
+    "Orientation"
+  ],
+  "setting.autotrap.preview": [
+    "放置预览",
+    "Placement preview"
+  ],
+  "setting.autotrap.returnSlot": [
+    "完成后归还快捷栏",
+    "Restore hotbar selection"
+  ],
+  "setting.projectileaim.players": [
+    "玩家",
+    "Players"
+  ],
+  "setting.projectileaim.friendly": [
+    "友好生物",
+    "Friendly mobs"
+  ],
+  "setting.projectileaim.hostile": [
+    "敌对生物",
+    "Hostile mobs"
+  ],
+  "setting.projectileaim.range": [
+    "目标范围",
+    "Target range"
+  ],
+  "setting.projectileaim.fov": [
+    "辅助视角范围",
+    "Assist field of view"
+  ],
+  "setting.projectileaim.strength": [
+    "辅助强度",
+    "Assist strength"
+  ],
+  "setting.projectileaim.smoothness": [
+    "瞄准跟随速度",
+    "Aim response"
+  ],
+  "setting.projectileaim.turnSpeed": [
+    "最大转向速度",
+    "Maximum turn speed"
+  ],
+  "setting.projectileaim.lead": [
+    "移动预判强度",
+    "Motion prediction"
+  ],
+  "setting.projectileaim.maxFlight": [
+    "最长预测飞行刻",
+    "Maximum flight ticks"
+  ],
+  "setting.projectileaim.manualThreshold": [
+    "手动接管转向阈值",
+    "Manual takeover threshold"
+  ],
+  "setting.projectileaim.preview": [
+    "预判目标预览",
+    "Predicted target preview"
+  ],
+  "setting.landingrescue.priority": [
+    "救援优先级",
+    "Rescue priority"
+  ],
+  "setting.landingrescue.water": [
+    "允许水桶",
+    "Allow water bucket"
+  ],
+  "setting.landingrescue.web": [
+    "允许蛛网",
+    "Allow cobweb"
+  ],
+  "setting.landingrescue.ladder": [
+    "允许梯子",
+    "Allow ladder"
+  ],
+  "setting.landingrescue.minimumFall": [
+    "最小跌落距离",
+    "Minimum fall distance"
+  ],
+  "setting.landingrescue.triggerTicks": [
+    "落地前触发刻数",
+    "Ticks before landing"
+  ],
+  "setting.landingrescue.horizon": [
+    "预测刻数",
+    "Prediction ticks"
+  ],
+  "setting.landingrescue.rotation": [
+    "人物朝向",
+    "Orientation"
+  ],
+  "setting.landingrescue.preview": [
+    "落点与轨迹预览",
+    "Landing / path preview"
+  ],
+  "setting.landingrescue.returnSlot": [
+    "完成后归还快捷栏",
+    "Restore hotbar selection"
+  ],
+  "setting.farmassist.wheat": [
+    "小麦",
+    "Wheat"
+  ],
+  "setting.farmassist.carrots": [
+    "胡萝卜",
+    "Carrots"
+  ],
+  "setting.farmassist.potatoes": [
+    "马铃薯",
+    "Potatoes"
+  ],
+  "setting.farmassist.beetroot": [
+    "甜菜",
+    "Beetroot"
+  ],
+  "setting.farmassist.netherWart": [
+    "下界疣",
+    "Nether wart"
+  ],
+  "setting.farmassist.replant": [
+    "收获后补种",
+    "Replant after harvest"
+  ],
+  "setting.farmassist.keepSeeds": [
+    "背包整理保留种子",
+    "Preserve seeds when cleaning"
+  ],
+  "setting.farmassist.range": [
+    "工作范围",
+    "Working range"
+  ],
+  "setting.farmassist.delay": [
+    "操作间隔",
+    "Operation interval"
+  ],
+  "setting.farmassist.rotation": [
+    "人物朝向",
+    "Orientation"
+  ],
+  "setting.farmassist.returnSlot": [
+    "完成后归还快捷栏",
+    "Restore hotbar selection"
+  ],
+  "setting.farmassist.preview": [
+    "当前作物预览",
+    "Current crop preview"
+  ],
+  "farm.harvested": [
+    "收获",
+    "Harvested"
+  ],
+  "farm.planted": [
+    "补种",
+    "Replanted"
+  ],
+  "setting.swimstate.mode": [
+    "状态范围",
+    "State scope"
+  ],
+  "mode.swim_authorized": [
+    "单人／配套服务器同步",
+    "Singleplayer / companion sync"
+  ],
+  "mode.swim_local": [
+    "仅本地预览",
+    "Local preview only"
+  ],
+  "setting.antikick.idleActivity": [
+    "真实 AFK 动作",
+    "Real idle activity"
+  ],
+  "setting.antikick.idleInterval": [
+    "空闲动作间隔",
+    "Idle activity interval"
+  ],
+  "setting.antikick.downwardPulse": [
+    "浮空下降脉冲",
+    "Airborne downward pulse"
+  ],
+  "setting.antikick.pulseInterval": [
+    "下降间隔",
+    "Descent interval"
+  ],
+  "setting.antikick.pulseDepth": [
+    "下降幅度",
+    "Descent depth"
+  ],
+  "setting.antikick.paperExemption": [
+    "Paper 授权例外",
+    "Authorized Paper exemption"
+  ],
+  "setting.antikick.allowAfk": [
+    "AFK 踢出例外",
+    "AFK exemption"
+  ],
+  "setting.antikick.allowFloating": [
+    "浮空踢出例外",
+    "Floating exemption"
+  ],
+  "ui.antikick.client": [
+    "客户端真实动作",
+    "Real client activity"
+  ],
+  "setting.hiddenitems.itemIds": [
+    "标记物品 ID",
+    "Marked item IDs"
+  ],
+  "setting.hiddenitems.itemIds.hint": [
+    "逗号分隔，例如 diamond_sword, ender_pearl",
+    "Comma separated, e.g. diamond_sword, ender_pearl"
+  ],
+  "setting.hiddenitems.slots": [
+    "标记槽位",
+    "Marked slots"
+  ],
+  "setting.hiddenitems.slots.hint": [
+    "1–9 快捷栏，10–36 背包，37–40 护甲，41/offhand 副手",
+    "1–9 hotbar, 10–36 storage, 37–40 armor, 41/offhand offhand"
+  ],
+  "setting.hiddenitems.restoreOnDisable": [
+    "关闭后取回",
+    "Retrieve when disabled"
+  ],
+  "ui.hiddenitems.stored": [
+    "封存 {0} 组",
+    "{0} stacks escrowed"
+  ],
+  "ui.hiddenitems.seal": [
+    "封存标记物品",
+    "Escrow marked items"
+  ],
+  "ui.hiddenitems.retrieve": [
+    "取回全部",
+    "Retrieve all"
+  ],
+  "ui.hiddenitems.refresh": [
+    "刷新封存数量",
+    "Refresh escrow count"
+  ],
+  "ui.hiddenitems.help": [
+    "封存会真实移出背包，期间不能使用；普通查包见空槽，服务器管理员仍可读取保险库文件。",
+    "Escrowed items leave inventory and cannot be used; normal inventory inspection sees empty slots, but server administrators can still read escrow files."
+  ],
+  "ui.companion.retry": [
+    "重新连接 Paper 配套",
+    "Reconnect Paper companion"
+  ],
+  "ui.companion.required": [
+    "需要 Paper 配套",
+    "Paper companion required"
+  ],
+  "ui.companion.connecting": [
+    "确认服务器配套中",
+    "Confirming companion"
+  ],
+  "ui.companion.ready": [
+    "配套已确认",
+    "Companion confirmed"
+  ],
+  "ui.companion.enabled": [
+    "服务器已开启",
+    "Server confirmed enabled"
+  ],
+  "ui.companion.disabled": [
+    "服务器已关闭",
+    "Server confirmed disabled"
+  ],
+  "ui.companion.denied": [
+    "服务器未授权",
+    "Not authorized by server"
+  ],
+  "ui.companion.error": [
+    "操作失败，数据保留",
+    "Operation failed; data preserved"
+  ],
+  "mode.motion_burst": [
+    "快速位移（多人实验）",
+    "Fast displacement (multiplayer experimental)"
+  ],
+  "ui.targetmotion.rebasing": [
+    "位置重同步中",
+    "Rebasing position"
+  ],
+  "ui.targetmotion.corrections": [
+    "纠正 {0} 次",
+    "{0} corrections"
+  ],
+  "module.swimstate": [
+    "游泳状态",
+    "Swim state"
+  ],
+  "module.swimstate.desc": [
+    "立即切换游泳姿态；单人真实同步，配套服务器同步，或选择本地预览",
+    "Use a swimming pose: authoritative singleplayer / companion server, or an explicit local preview"
+  ],
+  "module.antikick": [
+    "防踢",
+    "Anti kick"
+  ],
+  "module.antikick.desc": [
+    "真实 AFK 动作与下降脉冲；可选配套服务器授权的 AFK／浮空踢出例外",
+    "Real idle activity and downward pulses; optional authorized companion AFK / floating exemptions"
+  ],
+  "module.hidename": [
+    "隐藏名字",
+    "Hide name"
+  ],
+  "module.hidename.desc": [
+    "配套服务器隐藏自己的头顶名字，关闭后恢复原团队；不隐藏聊天／Tab",
+    "Companion server hides your overhead name and restores your original team when disabled; chat / Tab remain visible"
+  ],
+  "module.hiddenitems": [
+    "隐藏指定物品",
+    "Hidden items"
+  ],
+  "module.hiddenitems.desc": [
+    "配套服务器封存标记物品，背包槽位真实为空；封存时不可使用，可取回",
+    "Companion escrow removes marked items from inventory; items are unavailable until retrieved"
+  ],
+  "setting.entityorbit.stepHeight": [
+    "落脚高度搜索",
+    "Landing height search"
+  ],
+  "setting.entityorbit.edgeGuard": [
+    "沿途检查落脚",
+    "Check footing along route"
+  ],
+  "setting.entityorbit.lookRate": [
+    "转头最大速度",
+    "Maximum look speed"
+  ],
+  "setting.entityorbit.tolerance": [
+    "到达误差",
+    "Arrival tolerance"
+  ],
+  "setting.entityorbit.leadTicks": [
+    "目标移动提前量",
+    "Target movement lead"
+  ],
+  "setting.entityorbit.autoJump": [
+    "遇障自动跳跃",
+    "Jump over obstacles"
+  ],
+  "setting.entityorbit.maxStep": [
+    "每次最大位移",
+    "Maximum displacement per step"
+  ],
+  "setting.entityorbit.acceleration": [
+    "加速度（0 为即时）",
+    "Acceleration (0 = instant)"
+  ],
+  "setting.entityorbit.correctionPause": [
+    "服务器纠正后暂停",
+    "Pause after server correction"
+  ],
+  "setting.backlock.stepHeight": [
+    "落脚高度搜索",
+    "Landing height search"
+  ],
+  "setting.backlock.edgeGuard": [
+    "沿途检查落脚",
+    "Check footing along route"
+  ],
+  "setting.backlock.lookRate": [
+    "转头最大速度",
+    "Maximum look speed"
+  ],
+  "setting.backlock.tolerance": [
+    "到达误差",
+    "Arrival tolerance"
+  ],
+  "setting.backlock.leadTicks": [
+    "目标移动提前量",
+    "Target movement lead"
+  ],
+  "setting.backlock.autoJump": [
+    "遇障自动跳跃",
+    "Jump over obstacles"
+  ],
+  "setting.backlock.maxStep": [
+    "每次最大位移",
+    "Maximum displacement per step"
+  ],
+  "setting.backlock.acceleration": [
+    "加速度（0 为即时）",
+    "Acceleration (0 = instant)"
+  ],
+  "setting.backlock.correctionPause": [
+    "服务器纠正后暂停",
+    "Pause after server correction"
+  ],
+  "module.entityorbit.desc": [
+    "绕目标平滑或高速位移，可选单人瞬移；调整角速度、半径、加速度和落脚，保留服务器纠正",
+    "Orbit targets with smooth or fast displacement and optional singleplayer teleport; configure angular speed, radius, acceleration and footing; server corrections remain authoritative"
+  ],
+  "module.backlock.desc": [
+    "持续跟到目标身后，可调速度、左右及高度偏移和提前量，支持高速位移与纠正恢复",
+    "Stay behind a target with configurable speed, side/height offsets, prediction and fast displacement with correction recovery"
+  ],
+  "ui.queue.workerFailed": [
+    "操作被服务端拒绝，队列已停止",
+    "Worker action was refused; queue stopped"
+  ]
+}

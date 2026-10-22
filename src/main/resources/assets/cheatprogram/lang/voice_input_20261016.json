@@ -1,0 +1,230 @@
+{
+  "ui.voiceInput.title": [
+    "AI 语音控制",
+    "AI voice control"
+  ],
+  "ui.voiceInput.short": [
+    "语音控制",
+    "Voice control"
+  ],
+  "ui.voiceInput.enable": [
+    "启用按键录音",
+    "Enable voice hotkey"
+  ],
+  "ui.voiceInput.bind": [
+    "录音快捷键",
+    "Recording hotkey"
+  ],
+  "ui.voiceInput.unbind": [
+    "清除绑定",
+    "Unbind"
+  ],
+  "ui.voiceInput.useHint": [
+    "按一次开始录音，再按一次结束并识别；静音自动结束可关闭。识别后可自动发送给 AI 操控。",
+    "Press once to record, again to finish and recognize. Silence detection and automatic AI submission are optional."
+  ],
+  "ui.voiceInput.autoSend": [
+    "识别后自动交给 AI 执行",
+    "Automatically submit recognized instructions"
+  ],
+  "ui.voiceInput.autoStop": [
+    "说完后静音自动结束",
+    "Stop automatically after silence"
+  ],
+  "ui.voiceInput.showHud": [
+    "显示聆听和思考玻璃动画",
+    "Show listening and thinking animations"
+  ],
+  "ui.voiceInput.engine": [
+    "本地识别引擎",
+    "Local recognition engine"
+  ],
+  "ui.voiceInput.windows": [
+    "Windows 已安装识别器",
+    "Installed Windows recognizer"
+  ],
+  "ui.voiceInput.whisper": [
+    "faster-whisper 本地模型",
+    "Local faster-whisper model"
+  ],
+  "ui.voiceInput.language": [
+    "识别语言",
+    "Recognition language"
+  ],
+  "ui.voiceInput.microphone": [
+    "麦克风",
+    "Microphone"
+  ],
+  "ui.voiceInput.defaultMic": [
+    "系统默认",
+    "System default"
+  ],
+  "ui.voiceInput.loading": [
+    "读取中",
+    "Loading"
+  ],
+  "ui.voiceInput.refresh": [
+    "刷新",
+    "Refresh"
+  ],
+  "ui.voiceInput.maxSeconds": [
+    "最长录音时长",
+    "Maximum recording length"
+  ],
+  "ui.voiceInput.silenceMillis": [
+    "说完后的静音等待",
+    "End silence duration"
+  ],
+  "ui.voiceInput.threshold": [
+    "语音活动阈值",
+    "Voice activity threshold"
+  ],
+  "ui.voiceInput.timeout": [
+    "识别超时时间",
+    "Recognition timeout"
+  ],
+  "ui.voiceInput.python": [
+    "Python 可执行文件",
+    "Python executable"
+  ],
+  "ui.voiceInput.model": [
+    "本地 Whisper 模型文件夹",
+    "Local Whisper model folder"
+  ],
+  "ui.voiceInput.modelHint": [
+    "选择已下载的 CTranslate2 / faster-whisper 模型目录",
+    "Select a downloaded CTranslate2 / faster-whisper model directory"
+  ],
+  "ui.voiceInput.browse": [
+    "选择文件夹",
+    "Choose folder"
+  ],
+  "ui.voiceInput.device": [
+    "本地推理设备",
+    "Inference device"
+  ],
+  "ui.voiceInput.windowsHint": [
+    "Windows 模式使用本机已安装的语音识别语言；缺少识别器时会提示。与界面语言一致不代表系统已安装对应识别器。",
+    "Windows mode uses installed speech recognition languages. Missing recognizers are reported; selecting a UI language does not install one."
+  ],
+  "ui.voiceInput.whisperHint": [
+    "faster-whisper 需要你选择已有 Python 环境和本地模型；CPU / NVIDIA CUDA 可选，不自动下载或上传音频。",
+    "faster-whisper needs an existing Python environment and local model. CPU or NVIDIA CUDA is selectable; audio is not uploaded and models are not downloaded automatically."
+  ],
+  "ui.voiceInput.privacy": [
+    "只有手动触发才录音；换世界、退出或窗口失去焦点会取消。临时录音识别后删除，只有识别文字交给已配置的 AI 接口。录音设置和 API Key 永不进入配置码。",
+    "Recording starts only when triggered. World changes, exit or focus loss cancel it. Temporary audio is deleted; only recognized text reaches the configured AI service. Microphone settings and API keys never enter share codes."
+  ],
+  "ui.voiceInput.micFailed": [
+    "无法读取麦克风列表",
+    "Could not list microphones"
+  ],
+  "ui.voiceInput.cancel": [
+    "取消录音／识别",
+    "Cancel recording / recognition"
+  ],
+  "ui.voiceInput.start": [
+    "开始录音",
+    "Start recording"
+  ],
+  "ui.voiceInput.sendTranscript": [
+    "发送识别结果",
+    "Send transcript"
+  ],
+  "ui.voiceInput.save": [
+    "保存设置",
+    "Save settings"
+  ],
+  "ui.voiceInput.reservedKey": [
+    "该按键用于打开界面，请选其他按键",
+    "This key opens the GUI; choose another key"
+  ],
+  "ui.voiceInput.idle": [
+    "语音控制就绪",
+    "Voice control ready"
+  ],
+  "ui.voiceInput.disabled": [
+    "请先开启按键录音",
+    "Enable voice control first"
+  ],
+  "ui.voiceInput.needKey": [
+    "请先在 AI 操控保存 API Key",
+    "Save an API key in AI Control first"
+  ],
+  "ui.voiceInput.needModel": [
+    "请选择有效的本地 Whisper 模型文件夹",
+    "Choose a valid local Whisper model directory"
+  ],
+  "ui.voiceInput.windowsOnly": [
+    "Windows 识别器仅在 Windows 上可用",
+    "The Windows recognizer requires Windows"
+  ],
+  "ui.voiceInput.listening": [
+    "正在聆听…",
+    "Listening…"
+  ],
+  "ui.voiceInput.cancelled": [
+    "录音已取消",
+    "Recording cancelled"
+  ],
+  "ui.voiceInput.sent": [
+    "要求已交给 AI",
+    "Instructions sent to AI"
+  ],
+  "ui.voiceInput.rejected": [
+    "AI 暂未接收，请检查任务和角色状态",
+    "AI could not accept this request; check task and player state"
+  ],
+  "ui.voiceInput.recordFailed": [
+    "录音失败，请检查麦克风和系统权限",
+    "Recording failed; check microphone and system access"
+  ],
+  "ui.voiceInput.noSpeech": [
+    "没有识别到有效语音",
+    "No speech recognized"
+  ],
+  "ui.voiceInput.transcribing": [
+    "正在识别语音…",
+    "Recognizing speech…"
+  ],
+  "ui.voiceInput.recognizeFailed": [
+    "本地识别失败，请检查引擎和模型",
+    "Local recognition failed; check the engine and model"
+  ],
+  "ui.voiceInput.ready": [
+    "识别完成",
+    "Recognition complete"
+  ],
+  "ui.voiceInput.noLanguage": [
+    "未安装对应 Windows 识别器，可换语言或本地 Whisper",
+    "No matching Windows recognizer is installed; choose another language or local Whisper"
+  ],
+  "ui.voiceInput.noDependency": [
+    "所选 Python 环境未安装 faster-whisper",
+    "faster-whisper is missing in the selected Python environment"
+  ],
+  "ui.voiceInput.thinking": [
+    "AI 正在思考…",
+    "AI is thinking…"
+  ],
+  "ui.voiceInput.thinkingHint": [
+    "正在等待真实模型回复",
+    "Waiting for the model response"
+  ],
+  "ui.voiceInput.executing": [
+    "AI 正在执行",
+    "AI is executing"
+  ],
+  "ui.voiceInput.waiting": [
+    "正在准备任务",
+    "Preparing the task"
+  ],
+  "ui.voiceInput.paused": [
+    "AI 已暂停",
+    "AI is paused"
+  ],
+  "ui.voiceInput.hotkeyHint": [
+    "再次按录音键结束 · 可在 AI 操控调整设置",
+    "Press the recording key again to finish · Settings are in AI Control"
+  ]
+}

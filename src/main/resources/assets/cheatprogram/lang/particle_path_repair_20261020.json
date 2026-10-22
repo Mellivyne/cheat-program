@@ -1,0 +1,26 @@
+{
+  "ui.particles.path.clock": [
+    "路径时间",
+    "Path timing"
+  ],
+  "ui.particles.path.clock.emitter": [
+    "同步发射器",
+    "Emitter timeline"
+  ],
+  "ui.particles.path.clock.particle": [
+    "每粒子独立",
+    "Per particle"
+  ],
+  "ui.particles.path.clockHint": [
+    "同步：短命粒子也会沿整条轨道生成。独立：每个粒子从起点运行，单程应短于寿命。",
+    "Timeline: even short-lived particles spawn along the whole path. Per particle: each starts at the beginning; keep travel time below its lifetime."
+  ],
+  "ui.particles.path.kind.spiral": [
+    "盘旋",
+    "Spiral"
+  ],
+  "ui.particles.path.kind.bounce": [
+    "抛物线",
+    "Parabolic arc"
+  ]
+}

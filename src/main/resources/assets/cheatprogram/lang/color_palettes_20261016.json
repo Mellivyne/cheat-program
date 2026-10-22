@@ -1,0 +1,114 @@
+{
+  "mode.palette_custom": [
+    "自定义颜色",
+    "Custom color"
+  ],
+  "mode.palette_white": [
+    "原版白色",
+    "Original white"
+  ],
+  "mode.palette_rainbow": [
+    "彩虹",
+    "Rainbow"
+  ],
+  "mode.palette_trans": [
+    "跨性别配色",
+    "Transgender colors"
+  ],
+  "mode.palette_flow_left": [
+    "向左流动",
+    "Flow left"
+  ],
+  "mode.palette_flow_right": [
+    "向右流动",
+    "Flow right"
+  ],
+  "setting.hud.arrayPalette": [
+    "功能列表配色",
+    "Feature list palette"
+  ],
+  "setting.hud.arrayPalette.hint": [
+    "保留原版白色，或使用横向彩虹、蓝粉白粉蓝五等分配色；可以叠加原有灰度扫光。",
+    "Keep original white, or use a spatial rainbow or five equal blue/pink/white/pink/blue bands. The existing grayscale sweep can be overlaid."
+  ],
+  "setting.hud.arrayColorAnimation": [
+    "配色动画",
+    "Animate colors"
+  ],
+  "setting.hud.arrayColorAnimation.hint": [
+    "关闭后保留静态渐变；不影响功能列表原来的出入场动画。",
+    "Disable for a static gradient; the list's existing entrance and exit animations are preserved."
+  ],
+  "setting.hud.arrayColorPeriod": [
+    "配色循环周期",
+    "Color cycle duration"
+  ],
+  "setting.hud.arrayColorPeriod.hint": [
+    "一次完整循环的时长，越大越慢。",
+    "Duration of one complete cycle. Higher values move more slowly."
+  ],
+  "setting.hud.arrayColorStrength": [
+    "配色非线性强度",
+    "Color easing strength"
+  ],
+  "setting.hud.arrayColorStrength.hint": [
+    "100% 在循环起止处放慢、中段加速；0% 为匀速，两端颜色连续。",
+    "At 100%, colors slow near the cycle seam and accelerate through the middle. At 0%, motion is uniform. Colors remain seamless."
+  ],
+  "setting.hud.arrayColorDirection": [
+    "配色流动方向",
+    "Color flow direction"
+  ],
+  "setting.hud.arrayColorPhase": [
+    "配色起始位置",
+    "Color starting phase"
+  ],
+  "setting.hud.arrayColorPhase.hint": [
+    "移动整个配色分布；静态模式也可以调节。",
+    "Shift the entire palette. Also available when animation is disabled."
+  ],
+  "setting.watermark.palette": [
+    "水印配色",
+    "Watermark palette"
+  ],
+  "setting.watermark.palette.hint": [
+    "原来的 RGB 自定义颜色保留；彩虹和跨性别渐变同样支持平面与 3D 水印。",
+    "The existing custom RGB color is preserved. Rainbow and transgender gradients support both flat and 3D text."
+  ],
+  "setting.watermark.colorAnimation": [
+    "配色动画",
+    "Animate colors"
+  ],
+  "setting.watermark.colorAnimation.hint": [
+    "关闭后保留静态渐变，字体与通用设置同步。",
+    "Disable for a static gradient. Text continues using the font selected in General."
+  ],
+  "setting.watermark.colorPeriod": [
+    "配色循环周期",
+    "Color cycle duration"
+  ],
+  "setting.watermark.colorPeriod.hint": [
+    "一次完整循环的时长，越大越慢。",
+    "Duration of one complete cycle. Higher values move more slowly."
+  ],
+  "setting.watermark.colorStrength": [
+    "配色非线性强度",
+    "Color easing strength"
+  ],
+  "setting.watermark.colorStrength.hint": [
+    "100% 在循环起止处放慢、中段加速；0% 为匀速。",
+    "At 100%, colors slow near the cycle seam and accelerate through the middle. At 0%, motion is uniform."
+  ],
+  "setting.watermark.colorDirection": [
+    "配色流动方向",
+    "Color flow direction"
+  ],
+  "setting.watermark.colorPhase": [
+    "配色起始位置",
+    "Color starting phase"
+  ],
+  "setting.watermark.colorPhase.hint": [
+    "移动整个配色分布；静态模式也可以调节。",
+    "Shift the entire palette. Also available when animation is disabled."
+  ]
+}

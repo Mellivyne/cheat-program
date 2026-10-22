@@ -1,0 +1,82 @@
+{
+  "setting.spatialaudio.frameBudget": [
+    "每刻声学计算预算",
+    "Acoustic CPU budget per tick"
+  ],
+  "setting.spatialaudio.captureDenoise": [
+    "采集声音降噪",
+    "Captured audio denoising"
+  ],
+  "setting.spatialaudio.denoiseStrength": [
+    "降噪强度",
+    "Denoising strength"
+  ],
+  "mode.spatial_denoise_off": [
+    "关闭，保留原音",
+    "Off, preserve original audio"
+  ],
+  "mode.spatial_denoise_cpu": [
+    "轻度降噪",
+    "Light noise reduction"
+  ],
+  "mode.spatial_denoise_nvidia": [
+    "NVIDIA RTX 语音降噪",
+    "NVIDIA RTX speech denoising"
+  ],
+  "ui.spatialAudio.denoiseOff": [
+    "降噪已关闭",
+    "Denoising off"
+  ],
+  "ui.spatialAudio.denoiseCpu": [
+    "轻度降噪正在处理",
+    "Light denoising active"
+  ],
+  "ui.spatialAudio.denoiseNvidia": [
+    "NVIDIA 降噪正在处理",
+    "NVIDIA denoising active"
+  ],
+  "ui.spatialAudio.denoiseCpuFallback": [
+    "NVIDIA 不可用，正在使用轻度降噪",
+    "NVIDIA unavailable; using light denoising"
+  ],
+  "ui.spatialAudio.denoisePreparing": [
+    "正在准备降噪音频帧",
+    "Preparing denoising frames"
+  ],
+  "ui.spatial.nvidia.idle": [
+    "NVIDIA 尚未启动",
+    "NVIDIA not started"
+  ],
+  "ui.spatial.nvidia.loading": [
+    "正在加载本机 NVIDIA 模型",
+    "Loading local NVIDIA model"
+  ],
+  "ui.spatial.nvidia.unavailable": [
+    "未检测到可用的本机 AFX 运行库及模型",
+    "No usable local AFX runtime and model found"
+  ],
+  "ui.spatial.nvidia.active": [
+    "本机 NVIDIA AFX 已成功处理音频",
+    "Local NVIDIA AFX successfully processed audio"
+  ],
+  "ui.spatial.nvidia.failed": [
+    "NVIDIA 处理失败或超时，已回退",
+    "NVIDIA processing failed or timed out; fallback active"
+  ],
+  "ui.spatial.nvidia.folder": [
+    "打开本机 NVIDIA SDK 文件夹",
+    "Open local NVIDIA SDK folder"
+  ],
+  "ui.spatial.nvidia.docs": [
+    "NVIDIA 官方安装说明",
+    "Official NVIDIA installation guide"
+  ],
+  "ui.spatial.nvidia.hint": [
+    "此选项适合语音，可能滤掉音乐和游戏音效。需本机安装官方 AFX 运行库与 48 kHz 降噪模型；未安装时自动使用轻度降噪。它不加速声学射线，也不改变麦克风。",
+    "For speech; it may remove music and game effects. Requires the official local AFX runtime and 48 kHz denoiser model; otherwise light denoising is used. It does not accelerate acoustic rays or change the microphone."
+  ],
+  "ui.spatial.cacheHint": [
+    "声线按预算逐刻计算；缓存间隔是重新采样的最短等待时间，复杂场景可能需要更久。增大预算会占用更多游戏线程时间。",
+    "Rays advance within a per-tick budget. The cache interval is the minimum wait before another bake; complex scenes may take longer. Larger budgets use more game-thread time."
+  ]
+}

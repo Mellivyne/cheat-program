@@ -1,0 +1,142 @@
+{
+  "ui.profileCode.title": [
+    "配置码",
+    "Configuration code"
+  ],
+  "ui.profileCode.import": [
+    "导入配置码",
+    "Import code"
+  ],
+  "ui.profileCode.share": [
+    "配置码",
+    "Share code"
+  ],
+  "ui.profileCode.importDesc": [
+    "粘贴他人的配置码，校验通过后另存并使用",
+    "Paste a shared code to validate, save separately and apply"
+  ],
+  "ui.profileCode.offlineHint": [
+    "离线配置码，可直接复制分享；不需要账号或服务器",
+    "Self-contained offline codes: copy and share without an account or server"
+  ],
+  "ui.profileCode.exportLabel": [
+    "这套配置的分享码",
+    "Share code for this configuration"
+  ],
+  "ui.profileCode.inputLabel": [
+    "粘贴完整配置码",
+    "Paste the complete configuration code"
+  ],
+  "ui.profileCode.refresh": [
+    "更新配置码",
+    "Refresh code"
+  ],
+  "ui.profileCode.copy": [
+    "复制完整配置码",
+    "Copy complete code"
+  ],
+  "ui.profileCode.identityHint": [
+    "每套配置有独立身份；可分享内容不变，配置码就不变。修改参数后请重新复制，旧码仍保留旧参数。",
+    "Each configuration has its own identity. Its code stays identical while portable content is unchanged. Copy again after editing; old codes retain the old parameters."
+  ],
+  "ui.profileCode.nameLabel": [
+    "导入后的配置名称",
+    "Name for the imported configuration"
+  ],
+  "ui.profileCode.nameHint": [
+    "可不填；重名时自动添加后缀",
+    "Optional; duplicate names receive a suffix"
+  ],
+  "ui.profileCode.validate": [
+    "检查配置码",
+    "Validate code"
+  ],
+  "ui.profileCode.apply": [
+    "导入并使用",
+    "Import and apply"
+  ],
+  "ui.profileCode.independentHint": [
+    "导入会创建独立配置并立即使用，不覆盖现有配置；名称相同会自动编号。",
+    "Import creates and applies a separate local configuration. Existing configurations are preserved; duplicate names are numbered."
+  ],
+  "ui.profileCode.privacyHint": [
+    "只分享模块状态、快捷键、收藏及可移植参数。API Key、服务器地址、个人头像、玩家 ID、私信、聊天内容、脚本、任务文本与本地路径不会分享。",
+    "Shares module states, key bindings, favorites and portable parameters. API keys, server addresses, avatars, player IDs, private/chat text, scripts, task text and local paths are excluded."
+  ],
+  "ui.profileCode.localResourceHint": [
+    "图片、视频、字体文件、音色及独立粒子／建筑方案不包含在码内，需另行传递。通用语言与字体选择保留本机设置；投屏、世界内面板、粒子方案、图片背景与披风导入后保持关闭。",
+    "Images, videos, font files, voices and separate particle/building plans must be shared separately. Global language and fonts remain local. App casting, the world panel, particle plans, image backgrounds and capes stay off after import."
+  ],
+  "ui.profileCode.validated": [
+    "已检查 %s 个模块，其中 %s 个开启",
+    "Validated %s modules, with %s enabled"
+  ],
+  "ui.profileCode.ready": [
+    "配置码已生成，共 %s 个字符；请复制完整内容",
+    "Code generated: %s characters. Copy the entire code."
+  ],
+  "ui.profileCode.copied": [
+    "完整配置码已复制",
+    "Complete code copied"
+  ],
+  "ui.profileCode.valid": [
+    "配置码有效，可以导入使用",
+    "Code is valid and ready to import"
+  ],
+  "ui.profileCode.imported": [
+    "配置码已导入并使用",
+    "Configuration imported and applied"
+  ],
+  "ui.profileCode.tooLarge": [
+    "配置码过长或解压内容超出限制，请重新导出",
+    "The code or its decompressed content exceeds the size limit. Export it again."
+  ],
+  "ui.profileCode.version": [
+    "配置码格式或版本不匹配，请粘贴以 CP1. 开头的完整代码",
+    "Unsupported code format/version. Paste the complete code beginning with CP1."
+  ],
+  "ui.profileCode.invalid": [
+    "配置码内容无效，请检查是否完整复制、是否多了空格",
+    "Invalid code content. Check that it is complete and has no extra spaces."
+  ],
+  "ui.profileCode.checksum": [
+    "配置码校验不通过，内容可能缺失或被修改，请重新复制",
+    "The code checksum does not match. Copy it again; some content is missing or changed."
+  ],
+  "ui.profileCode.incompatible": [
+    "配置码包含本版本不支持的功能或参数，请使用相同版本",
+    "The code contains unsupported modules or settings. Use the same mod version."
+  ],
+  "ui.profileCode.privateContent": [
+    "配置码包含不可分享的字段或无效文本，请由原作者重新导出",
+    "The code contains private/non-portable fields or invalid text. Ask its author to export it again."
+  ],
+  "ui.profileCode.saveFailed": [
+    "无法保存或使用配置，请检查配置文件夹是否可写",
+    "Could not save or apply the configuration. Check that the configuration folder is writable."
+  ],
+  "ui.profileCode.deleteTitle": [
+    "删除配置",
+    "Delete configuration"
+  ],
+  "ui.profileCode.deleteName": [
+    "将删除：%s",
+    "Configuration to delete: %s"
+  ],
+  "ui.profileCode.deleteHint": [
+    "删除当前使用的配置后，会切换到其他有效配置；没有其他配置时会新建默认配置。已分享出去的配置码仍可导入。",
+    "Deleting the active configuration switches to another valid one, or creates fresh defaults if none remain. Previously shared codes can still be imported."
+  ],
+  "ui.profileCode.deleteConfirm": [
+    "删除这套配置",
+    "Delete this configuration"
+  ],
+  "ui.profileCode.deleted": [
+    "配置已删除",
+    "Configuration deleted"
+  ],
+  "ui.profileCode.deleteFailed": [
+    "配置未删除，请检查文件夹权限或是否已被移除",
+    "Configuration was not deleted. Check folder permissions or whether it was already removed."
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "ui.font.title": [
+    "全局字体",
+    "Global font"
+  ],
+  "ui.font.globalHint": [
+    "字体选择会立即应用于所有自定义页面与界面元素",
+    "Font changes apply immediately to all custom pages and interface elements"
+  ],
+  "ui.font.preview": [
+    "实时预览（常规／粗体）",
+    "Live preview (regular / bold)"
+  ],
+  "ui.font.sample": [
+    "玻璃界面 · 世界探索 · 0123456789",
+    "Glass interface · Explore the world · 0123456789"
+  ],
+  "ui.font.family": [
+    "系统字体族名称",
+    "System font family"
+  ],
+  "ui.font.familyHint": [
+    "输入准确字体族名称，或从下方选择",
+    "Enter an exact family name, or choose below"
+  ],
+  "ui.font.file": [
+    "导入 TTF／OTF 字体",
+    "Import TTF / OTF font"
+  ],
+  "ui.font.fileHint": [
+    "本地字体文件完整路径",
+    "Full path to a local font file"
+  ],
+  "ui.font.apply": [
+    "应用",
+    "Apply"
+  ],
+  "ui.font.import": [
+    "导入字体",
+    "Import font"
+  ],
+  "ui.font.loading": [
+    "读取中…",
+    "Loading…"
+  ],
+  "ui.font.invalidFile": [
+    "无法读取该字体，已回退平滑默认字体。请选择有效 TTF 或 OTF 文件",
+    "Cannot read this font; using the smooth default. Choose a valid TTF or OTF file"
+  ],
+  "ui.font.invalidFamily": [
+    "找不到该系统字体族，已回退平滑默认字体",
+    "System font family not found; using the smooth default"
+  ],
+  "ui.font.chooseCustom": [
+    "请填写系统字体族名称，或导入字体文件",
+    "Enter a system font family or import a font file"
+  ],
+  "ui.font.fallbackHint": [
+    "缺失字符自动回退；导入文件复制到配置 fonts 文件夹，原版字体使用当前资源包字体",
+    "Missing characters use fallback fonts. Imports are copied into config/fonts; Minecraft mode uses current resource-pack fonts"
+  ],
+  "ui.font.search": [
+    "搜索本机字体…",
+    "Search installed fonts…"
+  ],
+  "ui.font.noFamilies": [
+    "没有匹配的系统字体",
+    "No matching system fonts"
+  ],
+  "ui.font.reset": [
+    "恢复默认字体",
+    "Restore default font"
+  ],
+  "ui.fontMode": [
+    "字体模式",
+    "Font mode"
+  ],
+  "ui.fontFamily": [
+    "自定义字体族",
+    "Custom font family"
+  ],
+  "ui.fontPath": [
+    "自定义字体文件",
+    "Custom font file"
+  ],
+  "mode.smooth": [
+    "平滑默认字体",
+    "Smooth default"
+  ],
+  "mode.vanilla": [
+    "Minecraft 原版字体",
+    "Minecraft font"
+  ],
+  "mode.custom": [
+    "自定义字体",
+    "Custom font"
+  ],
+  "mode.zh": [
+    "简体中文",
+    "简体中文"
+  ],
+  "mode.en": [
+    "English",
+    "English"
+  ],
+  "mode.ja": [
+    "日本語",
+    "日本語"
+  ],
+  "mode.ko": [
+    "한국어",
+    "한국어"
+  ],
+  "mode.zh_tw": [
+    "繁體中文",
+    "繁體中文"
+  ],
+  "mode.es": [
+    "Español",
+    "Español"
+  ],
+  "mode.fr": [
+    "Français",
+    "Français"
+  ],
+  "mode.de": [
+    "Deutsch",
+    "Deutsch"
+  ],
+  "unit.tick": [
+    "刻",
+    "ticks"
+  ],
+  "unit.hp": [
+    "生命值",
+    "HP"
+  ],
+  "unit.second": [
+    "秒",
+    "s"
+  ],
+  "unit.pixel": [
+    "像素",
+    "px"
+  ]
+}

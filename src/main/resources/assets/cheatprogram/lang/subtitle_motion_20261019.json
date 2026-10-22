@@ -1,0 +1,110 @@
+{
+  "ui.music.quality": [
+    "音质",
+    "Audio quality"
+  ],
+  "ui.music.platformDefault": [
+    "平台默认",
+    "Platform default"
+  ],
+  "ui.music.qualityApplied": [
+    "实际音源",
+    "Returned source"
+  ],
+  "ui.music.qualityPlatformManaged": [
+    "音质由平台或播放设备管理",
+    "Quality is managed by the platform or playback device"
+  ],
+  "ui.music.qualityUnknown": [
+    "平台未返回音质信息",
+    "The platform did not report the source quality"
+  ],
+  "ui.musicPlayer.qualityUnavailable": [
+    "此账号或歌曲暂不支持所选音质，请选择其他音质",
+    "This account or track does not support the selected quality. Choose another tier."
+  ],
+  "ui.music.layout": [
+    "专辑布局",
+    "Album layout"
+  ],
+  "ui.music.ringSwipe": [
+    "拖动旋转专辑环，松手切歌；点击前方专辑播放",
+    "Drag to rotate the album ring; release to switch tracks. Click the front cover to play."
+  ],
+  "mode.music_layout_coverflow": [
+    "原版专辑排列",
+    "Original cover flow"
+  ],
+  "mode.music_layout_ring": [
+    "3D 环形专辑",
+    "3D album ring"
+  ],
+  "setting.criticals.mode": [
+    "暴击方式（发包仅单人）",
+    "Critical mode (packet mode: single-player only)"
+  ],
+  "mode.lyrics_shake": [
+    "逐字抖动",
+    "Letter shake"
+  ],
+  "mode.lyrics_wave": [
+    "逐字波浪",
+    "Letter wave"
+  ],
+  "mode.lyrics_bounce": [
+    "逐字跳动",
+    "Letter bounce"
+  ],
+  "mode.lyrics_spin": [
+    "旋转入场",
+    "Rotating entrance"
+  ],
+  "setting.floatingsubtitles.shakeAmount": [
+    "文字运动幅度",
+    "Letter motion amount"
+  ],
+  "setting.floatingsubtitles.shakeSpeed": [
+    "文字运动频率",
+    "Letter motion frequency"
+  ],
+  "setting.floatingsubtitles.edgeGlow": [
+    "字体边缘柔光",
+    "Soft glyph edge glow"
+  ],
+  "setting.floatingsubtitles.glow": [
+    "柔光强度",
+    "Glow strength"
+  ],
+  "setting.floatingsubtitles.glowRadius": [
+    "柔光范围",
+    "Glow radius"
+  ],
+  "setting.floatingsubtitles.lineCount": [
+    "当前与已播放行数",
+    "Current and played lines"
+  ],
+  "setting.floatingsubtitles.secondaryOpacity": [
+    "已播放歌词不透明度",
+    "Played lyrics opacity"
+  ],
+  "ui.lyrics.historyOnly": [
+    "只显示当前句和已经播放的歌词，不提前显示下一句。",
+    "Only the current cue and already played lyrics are shown. Upcoming lyrics stay hidden."
+  ],
+  "ui.lyrics.positionHint": [
+    "调整左右、距离和高度会平滑移动现有位置；可用数值旁的 − / + 微调。默认距离为正前方 3.5 格。",
+    "Side, distance and height smoothly move the existing anchor. Use − / + for fine adjustments. The default distance is 3.5 blocks ahead."
+  ],
+  "setting.scaffold.bridgeBoost": [
+    "搭路加速（仅单人）",
+    "Bridge boost (single-player only)"
+  ],
+  "setting.scaffold.bridgeMultiplier": [
+    "搭路移动倍率（仅单人）",
+    "Bridge movement multiplier (single-player only)"
+  ],
+  "setting.killaura.throughWalls": [
+    "穿墙攻击（仅单人）",
+    "Attack through walls (single-player only)"
+  ]
+}

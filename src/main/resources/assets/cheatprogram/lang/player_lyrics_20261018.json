@@ -1,0 +1,86 @@
+{
+  "ui.playerLyrics.disabled": [
+    "已关闭",
+    "Disabled"
+  ],
+  "ui.playerLyrics.waitingPlayer": [
+    "等待音乐播放器",
+    "Waiting for a music player"
+  ],
+  "ui.playerLyrics.selectPlayer": [
+    "选择一个音乐播放器",
+    "Select a music player"
+  ],
+  "ui.playerLyrics.starting": [
+    "读取播放器歌词…",
+    "Reading player lyrics…"
+  ],
+  "ui.playerLyrics.enableLyrics": [
+    "请在播放器内打开桌面歌词",
+    "Enable desktop lyrics in the player"
+  ],
+  "ui.playerLyrics.unreadable": [
+    "播放器未提供可读取的歌词",
+    "The player does not expose readable lyrics"
+  ],
+  "ui.playerLyrics.live": [
+    "正在读取播放器原文歌词",
+    "Reading original player lyrics"
+  ],
+  "ui.playerLyrics.relocated": [
+    "歌词已移到游戏中",
+    "Lyrics relocated into the game"
+  ],
+  "ui.playerLyrics.restoreFailed": [
+    "歌词窗口恢复失败",
+    "Could not restore the lyrics window"
+  ],
+  "ui.playerLyrics.unsupported": [
+    "此系统不支持播放器歌词读取",
+    "Player lyrics are unavailable on this system"
+  ],
+  "ui.playerLyrics.failed": [
+    "播放器歌词读取失败",
+    "Could not read player lyrics"
+  ],
+  "ui.playerLyrics.hint": [
+    "音乐播放器需要在应用内打开字幕显示功能",
+    "Enable lyric or subtitle display inside your music player"
+  ],
+  "ui.playerLyrics.subtitle": [
+    "仅显示音乐播放器原文歌词，可调整世界内的位置与样式",
+    "Show original music-player lyrics with adjustable world placement and style"
+  ],
+  "ui.playerLyrics.sources": [
+    "音乐播放器",
+    "Music player"
+  ],
+  "ui.playerLyrics.autoPlayer": [
+    "自动选择唯一播放的音乐播放器",
+    "Automatically select the only playing music player"
+  ],
+  "ui.playerLyrics.playerUnavailable": [
+    "所选音乐播放器不可用",
+    "Selected music player unavailable"
+  ],
+  "ui.playerLyrics.originalLanguage": [
+    "保持播放器原文，不自动翻译",
+    "Keep the player’s original text; no automatic translation"
+  ],
+  "ui.playerLyrics.relocateHint": [
+    "有效歌词显示到游戏后才隐藏独立歌词窗口，关闭本功能或停止显示会恢复",
+    "A separate lyrics window is hidden only after real lyrics appear in the game. Disabling this feature or stopping display restores it"
+  ],
+  "ui.playerLyrics.supportHint": [
+    "支持取决于播放器是否提供可读取的桌面歌词；无法读取的版本会保留原窗口",
+    "Support depends on readable desktop lyrics from the player. Unsupported versions keep their original window"
+  ],
+  "setting.floatingsubtitles.relocate": [
+    "移动播放器歌词到游戏",
+    "Relocate player lyrics into the game"
+  ],
+  "module.floatingsubtitles.desc": [
+    "将音乐播放器正在显示的原文歌词放入游戏，可调整位置、样式与动画，并在关闭时恢复独立歌词窗口",
+    "Place the music player’s displayed original lyrics in the game with adjustable position, style and animation; restore its separate lyrics window when disabled"
+  ]
+}

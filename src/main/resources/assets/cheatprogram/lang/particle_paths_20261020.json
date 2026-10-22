@@ -1,0 +1,126 @@
+{
+  "ui.particles.path.title": [
+    "运动路径",
+    "Motion path"
+  ],
+  "ui.particles.path.kind.none": [
+    "无路径",
+    "None"
+  ],
+  "ui.particles.path.kind.line": [
+    "直线",
+    "Line"
+  ],
+  "ui.particles.path.kind.circle": [
+    "圆形",
+    "Circle"
+  ],
+  "ui.particles.path.kind.helix": [
+    "螺旋",
+    "Helix"
+  ],
+  "ui.particles.path.kind.figure8": [
+    "8 字形",
+    "Figure eight"
+  ],
+  "ui.particles.path.kind.wave": [
+    "波浪",
+    "Wave"
+  ],
+  "ui.particles.path.kind.custom": [
+    "自定义",
+    "Custom"
+  ],
+  "ui.particles.path.duration": [
+    "单程时长（秒）",
+    "Traversal time (s)"
+  ],
+  "ui.particles.path.radius": [
+    "路径半径 / 长度",
+    "Path radius / length"
+  ],
+  "ui.particles.path.height": [
+    "路径高度",
+    "Path height"
+  ],
+  "ui.particles.path.phase": [
+    "起始相位（度）",
+    "Starting phase (degrees)"
+  ],
+  "ui.particles.path.plane": [
+    "路径平面",
+    "Path plane"
+  ],
+  "ui.particles.path.loop.loop": [
+    "循环",
+    "Repeat"
+  ],
+  "ui.particles.path.loop.pingpong": [
+    "往返",
+    "Ping-pong"
+  ],
+  "ui.particles.path.loop.once": [
+    "一次",
+    "Once"
+  ],
+  "ui.particles.path.nativeOn": [
+    "原粒子漂移：开启",
+    "Native particle drift: on"
+  ],
+  "ui.particles.path.nativeOff": [
+    "原粒子漂移：关闭",
+    "Native particle drift: off"
+  ],
+  "ui.particles.path.points": [
+    "路径点",
+    "Path points"
+  ],
+  "ui.particles.path.point": [
+    "路径点",
+    "Path point"
+  ],
+  "ui.particles.path.add": [
+    "添加点",
+    "Add point"
+  ],
+  "ui.particles.path.remove": [
+    "删除选中点",
+    "Delete selected"
+  ],
+  "ui.particles.path.before": [
+    "向前移动",
+    "Move earlier"
+  ],
+  "ui.particles.path.after": [
+    "向后移动",
+    "Move later"
+  ],
+  "ui.particles.path.midpoint": [
+    "插入中点",
+    "Insert midpoint"
+  ],
+  "ui.particles.path.interpolation.linear": [
+    "直线插值",
+    "Linear"
+  ],
+  "ui.particles.path.interpolation.smooth": [
+    "平滑插值",
+    "Smooth"
+  ],
+  "ui.particles.path.editOn": [
+    "编辑路径点：开启",
+    "Edit path points: on"
+  ],
+  "ui.particles.path.editOff": [
+    "编辑路径点：关闭",
+    "Edit path points: off"
+  ],
+  "ui.particles.path.editHint": [
+    "在布局预览中点击并拖动路径点；使用下方自由 / X / Y / Z 限定移动轴。坐标相对发射点，至少 2 点、最多 64 点。",
+    "Click and drag path points in the layout preview. Use Free / X / Y / Z below to constrain movement. Coordinates are relative to the emitter; use 2 to 64 points."
+  ],
+  "ui.music.backToLibrary": [
+    "返回音乐库",
+    "Back to library"
+  ]
+}

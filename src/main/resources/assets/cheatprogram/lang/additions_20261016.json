@@ -1,0 +1,526 @@
+{
+  "module.watermark": [
+    "水印",
+    "Watermark"
+  ],
+  "module.watermark.desc": [
+    "纯文字水印，支持平面或立体倾斜／厚度，全局字体同步，可调文字、大小、位置和颜色",
+    "Text-only watermark with flat or extruded tilted appearance, global fonts, adjustable text, size, position and color"
+  ],
+  "setting.watermark.text": [
+    "水印文字",
+    "Watermark text"
+  ],
+  "setting.watermark.style": [
+    "显示形式",
+    "Appearance"
+  ],
+  "mode.watermark_flat": [
+    "平面文字",
+    "Flat text"
+  ],
+  "mode.watermark_3d": [
+    "立体文字",
+    "3D text"
+  ],
+  "setting.watermark.size": [
+    "文字大小",
+    "Text size"
+  ],
+  "setting.watermark.x": [
+    "水平位置",
+    "Horizontal position"
+  ],
+  "setting.watermark.y": [
+    "垂直位置",
+    "Vertical position"
+  ],
+  "setting.watermark.bold": [
+    "粗体",
+    "Bold"
+  ],
+  "setting.watermark.red": [
+    "红色",
+    "Red"
+  ],
+  "setting.watermark.green": [
+    "绿色",
+    "Green"
+  ],
+  "setting.watermark.blue": [
+    "蓝色",
+    "Blue"
+  ],
+  "setting.watermark.opacity": [
+    "文字透明度",
+    "Text opacity"
+  ],
+  "setting.watermark.pitch": [
+    "上下倾斜",
+    "Pitch"
+  ],
+  "setting.watermark.yaw": [
+    "左右倾斜",
+    "Yaw"
+  ],
+  "setting.watermark.roll": [
+    "平面旋转",
+    "Roll"
+  ],
+  "setting.watermark.depth": [
+    "立体厚度",
+    "Extrusion depth"
+  ],
+  "module.selfname": [
+    "显示自己名字",
+    "Show own name"
+  ],
+  "module.selfname.desc": [
+    "在自己头顶显示随人物移动的名字，默认第三人称，可调大小、高度和范围；仅自己客户端显示",
+    "Display a local overhead name following your player, normally in third person, with size, height and range controls"
+  ],
+  "setting.selfname.customName": [
+    "自定义名字（留空使用实际名字）",
+    "Custom name (blank uses actual name)"
+  ],
+  "setting.selfname.size": [
+    "名字大小",
+    "Name size"
+  ],
+  "setting.selfname.height": [
+    "头顶额外高度",
+    "Extra overhead height"
+  ],
+  "setting.selfname.range": [
+    "显示范围",
+    "Display range"
+  ],
+  "setting.selfname.background": [
+    "原版式半透明底色",
+    "Vanilla-style translucent background"
+  ],
+  "setting.selfname.throughWalls": [
+    "穿墙显示",
+    "Show through walls"
+  ],
+  "setting.selfname.firstPerson": [
+    "第一人称也尝试显示",
+    "Also show in first person"
+  ],
+  "setting.hud.titleIntro": [
+    "进入世界手写片头",
+    "Handwritten world-entry title"
+  ],
+  "setting.hud.titleIntroPalette": [
+    "片头配色",
+    "Title colors"
+  ],
+  "mode.intro_white": [
+    "白色",
+    "White"
+  ],
+  "mode.intro_rainbow": [
+    "彩虹",
+    "Rainbow"
+  ],
+  "mode.intro_trans": [
+    "跨性别配色",
+    "Transgender colors"
+  ],
+  "setting.hud.titleIntroWriteTime": [
+    "手写过程时长",
+    "Writing duration"
+  ],
+  "setting.hud.titleIntroHoldTime": [
+    "写完停留时长",
+    "Hold after writing"
+  ],
+  "setting.hud.titleIntroFadeTime": [
+    "片尾淡出时长",
+    "Title fade duration"
+  ],
+  "setting.hud.titleIntroSize": [
+    "片头大小",
+    "Title size"
+  ],
+  "setting.hud.titleIntroY": [
+    "片头垂直位置",
+    "Title vertical position"
+  ],
+  "setting.hud.titleIntroThickness": [
+    "笔画粗细",
+    "Stroke thickness"
+  ],
+  "setting.hud.titleIntroGlow": [
+    "笔画柔光",
+    "Stroke glow"
+  ],
+  "ui.hud.previewTitle": [
+    "预览手写片头",
+    "Preview handwritten title"
+  ],
+  "ui.aip.language": [
+    "AI 玩家语言",
+    "AI player language"
+  ],
+  "ui.aip.languageHint": [
+    "建议选择与语音包训练语言一致的语言；自动模式保留语音页的语言设置",
+    "Choose a language matching the voice pack training language; Auto keeps the voice-page language"
+  ],
+  "mode.ai_language_auto": [
+    "自动跟随聊天",
+    "Follow conversation"
+  ],
+  "mode.ai_language_zh": [
+    "简体中文",
+    "简体中文"
+  ],
+  "mode.ai_language_en": [
+    "English",
+    "English"
+  ],
+  "mode.ai_language_ja": [
+    "日本語",
+    "日本語"
+  ],
+  "mode.ai_language_ko": [
+    "한국어",
+    "한국어"
+  ],
+  "mode.ai_language_zh_tw": [
+    "繁體中文",
+    "繁體中文"
+  ],
+  "mode.ai_language_es": [
+    "Español",
+    "Español"
+  ],
+  "mode.ai_language_fr": [
+    "Français",
+    "Français"
+  ],
+  "mode.ai_language_de": [
+    "Deutsch",
+    "Deutsch"
+  ],
+  "mode.swim_authorized": [
+    "单人同步／多人本地姿态",
+    "Singleplayer sync / multiplayer local pose"
+  ],
+  "module.swimstate.desc": [
+    "自动切换游泳姿态；单人真实同步，多人只改本地显示，不发送配套指令",
+    "Automatically use a swimming pose: synchronized in singleplayer and local appearance in multiplayer, without companion commands"
+  ],
+  "module.antikick.desc": [
+    "真实空闲跳动与下降脉冲，可调间隔和幅度；不阻止封禁、服务器断开或网络超时",
+    "Real idle jumps and downward pulses with adjustable interval and depth; does not block bans, disconnects or network timeouts"
+  ],
+  "setting.cheststealer.lootMode": [
+    "拿取策略",
+    "Loot policy"
+  ],
+  "setting.cheststealer.lootMode.hint": [
+    "只拿战备物资、指定武器、按配额补齐指定物品，或明确选择全部。",
+    "Take combat supplies, exact weapon IDs, listed item quotas, or explicitly choose everything."
+  ],
+  "setting.cheststealer.weaponIds": [
+    "指定武器 ID",
+    "Weapon item IDs"
+  ],
+  "setting.cheststealer.weaponIds.hint": [
+    "逗号分隔精确物品 ID，例如 diamond_sword, bow；清空后不拿任何武器。",
+    "Exact comma-separated IDs, e.g. diamond_sword, bow. An empty list takes no weapons."
+  ],
+  "setting.cheststealer.itemQuotas": [
+    "指定物品与目标数量",
+    "Item IDs and target quantities"
+  ],
+  "setting.cheststealer.itemQuotas.hint": [
+    "例如 arrow=64, golden_carrot=32；按自己已有总量补齐，包含装备与副手。",
+    "Example: arrow=64, golden_carrot=32. Tops up the amount already owned, including equipment and offhand."
+  ],
+  "setting.cheststealer.junkAction": [
+    "杂物处理方式",
+    "Junk action"
+  ],
+  "setting.cheststealer.junkAction.hint": [
+    "按整理规则处理背包杂物；放回当前真实打开的箱子、直接丢弃或保留。",
+    "Apply cleaning rules to backpack junk: return to the real open container, drop, or keep."
+  ],
+  "setting.invcleaner.junkAction": [
+    "杂物处理方式",
+    "Junk action"
+  ],
+  "setting.invcleaner.junkAction.hint": [
+    "独开可丢弃、保留，或等真实箱子打开后放回；自动拿取开启时遵从其杂物设置。",
+    "When used alone, drop, keep, or wait for a real open container to return junk. ChestStealer's junk action overrides this while enabled."
+  ],
+  "mode.loot_combat": [
+    "战备物资",
+    "Combat supplies"
+  ],
+  "mode.loot_weapons": [
+    "仅指定武器",
+    "Listed weapons only"
+  ],
+  "mode.loot_quota": [
+    "指定物品与数量配额",
+    "Listed item quotas"
+  ],
+  "mode.loot_all": [
+    "全部物品",
+    "Everything"
+  ],
+  "mode.junk_return": [
+    "放回当前箱子",
+    "Return to open container"
+  ],
+  "mode.junk_drop": [
+    "直接丢弃",
+    "Drop"
+  ],
+  "mode.junk_keep": [
+    "保留杂物",
+    "Keep junk"
+  ],
+  "inventory.combatCycleHint": [
+    "三项同开时先穿装，再连续操作真实箱子；拿取和杂物动作以自动拿取的配置为准，默认按现有战备规则筛选。放回不会改为丢弃，保留不会被后台整理删除；锁定物品和农场种子仍受保护。",
+    "With all three enabled, equip first and operate real containers in order. ChestStealer controls loot and junk actions, using existing combat rules by default. Return never falls back to drop; Keep prevents background cleaning. Protected slots/items and farm seeds remain safe."
+  ],
+  "module.cheststealer.desc": [
+    "从真实打开的箱子按战备规则、指定武器 ID、物品数量配额或全部模式拿取；杂物可放回当前箱子、丢弃或保留，完成当前箱子后再换箱。",
+    "Loot real opened containers using combat rules, exact weapon IDs, item quotas, or Everything. Return backpack junk to the open container, drop, or keep it, and finish each container before opening the next."
+  ],
+  "module.invcleaner.desc": [
+    "默认保留武器、建筑方块、食物与战斗补给，也可用原杂物名单；独开可丢弃、保留或等真实箱子打开后放回。自动拿取开启时统一遵从其杂物动作。",
+    "Keep combat supplies by default or use the original junk list. Drop, keep, or wait for a real open container to return junk. While ChestStealer is enabled, follow its junk action."
+  ],
+  "module.teleportaura": [
+    "玩家传送跟随",
+    "Teleport Aura"
+  ],
+  "module.teleportaura.desc": [
+    "输入已加载玩家的名字或 UUID，一次接近、跟随或环绕；仅尝试普通位置移动，不攻击。服务端可拒绝任何步长或速度，收到纠正后退避。Tab 名单不包含坐标。",
+    "Approach, follow or orbit a loaded player by name or UUID using ordinary position movement; never attacks. Servers may reject any step or speed and corrections trigger backoff. Tab entries contain no coordinates."
+  ],
+  "setting.teleportaura.target": [
+    "玩家名字 / UUID",
+    "Player name / UUID"
+  ],
+  "setting.teleportaura.behavior": [
+    "移动任务",
+    "Movement task"
+  ],
+  "setting.teleportaura.movementMode": [
+    "位置实验模式",
+    "Position experiment"
+  ],
+  "setting.teleportaura.range": [
+    "已加载目标距离上限",
+    "Loaded target range"
+  ],
+  "setting.teleportaura.distance": [
+    "接近 / 环绕距离",
+    "Approach / orbit distance"
+  ],
+  "setting.teleportaura.heightOffset": [
+    "相对目标高度",
+    "Target height offset"
+  ],
+  "setting.teleportaura.step": [
+    "每次最大步长",
+    "Maximum step"
+  ],
+  "setting.teleportaura.speed": [
+    "分段速度上限",
+    "Segment speed limit"
+  ],
+  "setting.teleportaura.interval": [
+    "位置提交间隔",
+    "Position submission interval"
+  ],
+  "setting.teleportaura.orbitSpeed": [
+    "环绕角速度",
+    "Orbit angular speed"
+  ],
+  "setting.teleportaura.clockwise": [
+    "顺时针环绕",
+    "Clockwise orbit"
+  ],
+  "setting.teleportaura.collision": [
+    "检查路线碰撞",
+    "Check route collisions"
+  ],
+  "setting.teleportaura.edgeGuard": [
+    "检查脚下支撑",
+    "Check foot support"
+  ],
+  "setting.teleportaura.preview": [
+    "路线 / 落脚预览",
+    "Route / landing preview"
+  ],
+  "setting.teleportaura.correctionPause": [
+    "纠正后初始退避",
+    "Initial correction backoff"
+  ],
+  "setting.teleportaura.correctionLimit": [
+    "纠正停止阈值",
+    "Correction stop threshold"
+  ],
+  "mode.tpa_once": [
+    "一次接近",
+    "Approach once"
+  ],
+  "mode.tpa_follow": [
+    "持续跟随",
+    "Follow continuously"
+  ],
+  "mode.tpa_orbit": [
+    "环绕玩家",
+    "Orbit player"
+  ],
+  "mode.tpa_segment": [
+    "分段位置移动",
+    "Segmented position movement"
+  ],
+  "mode.tpa_direct": [
+    "直接位置实验",
+    "Direct position experiment"
+  ],
+  "ui.teleportaura.help": [
+    "移动实验不保证服务器接受；高速度和大步长更容易被纠正。不会攻击或使用 /tp，原版位置纠正与确认保持生效。",
+    "Position experiments do not guarantee server acceptance. High speeds and large steps are more likely to be corrected. No attacks or /tp; vanilla corrections and acknowledgments remain active."
+  ],
+  "ui.teleportaura.helpCoordinates": [
+    "仅定位当前客户端已经加载的玩家实体；只有 Tab 名单条目的玩家坐标未知。",
+    "Targets must already exist as loaded player entities. Coordinates are unknown for players listed only in Tab."
+  ],
+  "ui.teleportaura.helpPreview": [
+    "青色：下一步检查通过；红色：下一步受阻；灰色：尚未检查的后续路线与落脚位置。最多预览 64 步，预览不等于服务端接受。",
+    "Cyan: next step checked. Red: next step blocked. Gray: later planned steps and landing. Up to 64 steps are shown; a preview does not prove server acceptance."
+  ],
+  "ui.teleportaura.idle": [
+    "待命",
+    "Idle"
+  ],
+  "ui.teleportaura.enterTarget": [
+    "请填写玩家名字 / UUID",
+    "Enter player name / UUID"
+  ],
+  "ui.teleportaura.notLoaded": [
+    "目标未加载",
+    "Target not loaded"
+  ],
+  "ui.teleportaura.unknownCoordinates": [
+    "仅 Tab 可见：坐标未知",
+    "Tab only: coordinates unknown"
+  ],
+  "ui.teleportaura.outOfRange": [
+    "目标超出设置距离",
+    "Target outside configured range"
+  ],
+  "ui.teleportaura.paused": [
+    "界面 / 移动控制冲突：暂停",
+    "Interface / movement conflict: paused"
+  ],
+  "ui.teleportaura.backoff": [
+    "收到服务端纠正：退避",
+    "Server correction: backing off"
+  ],
+  "ui.teleportaura.stopped": [
+    "纠正达到阈值：请重开以重试",
+    "Correction limit reached: re-enable to retry"
+  ],
+  "ui.teleportaura.noLanding": [
+    "没有已加载的安全落脚点",
+    "No loaded safe landing"
+  ],
+  "ui.teleportaura.blocked": [
+    "下一步被碰撞 / 护边阻止",
+    "Next step blocked by collision / edge guard"
+  ],
+  "ui.teleportaura.attempting": [
+    "尝试位置移动，服务端接受未知",
+    "Attempting position movement; acceptance unknown"
+  ],
+  "ui.teleportaura.alreadyNear": [
+    "已在目标附近，未提交移动",
+    "Already near target; no movement submitted"
+  ],
+  "ui.teleportaura.localArrival": [
+    "本地到达尝试位置，服务端接受未知",
+    "Local arrival at attempted position; acceptance unknown"
+  ],
+  "ui.teleportaura.counts": [
+    "提交 {0} / 纠正 {1}",
+    "Submitted {0} / corrected {1}"
+  ],
+  "setting.orexray.backfill": [
+    "自动回填身后空气",
+    "Backfill air behind you"
+  ],
+  "setting.orexray.backfillMaterial": [
+    "回填材料来源",
+    "Backfill material source"
+  ],
+  "setting.orexray.backfillBlock": [
+    "真实背包方块 ID",
+    "Real inventory block ID"
+  ],
+  "setting.orexray.backfillDistance": [
+    "身后最小安全距离",
+    "Minimum distance behind you"
+  ],
+  "setting.orexray.backfillRadius": [
+    "行走痕迹水平半径",
+    "Trail horizontal radius"
+  ],
+  "setting.orexray.backfillHeight": [
+    "回填高度",
+    "Backfill height"
+  ],
+  "setting.orexray.backfillInterval": [
+    "回填间隔",
+    "Backfill interval"
+  ],
+  "setting.orexray.backfillBudget": [
+    "每次最多尝试方块",
+    "Maximum blocks attempted per interval"
+  ],
+  "setting.orexray.backfillRotation": [
+    "回填朝向",
+    "Backfill rotation"
+  ],
+  "setting.orexray.backfillPreview": [
+    "候选 / 待确认可视化",
+    "Show candidates / pending confirmation"
+  ],
+  "mode.backfill_match": [
+    "匹配附近石料",
+    "Match nearby terrain"
+  ],
+  "mode.backfill_id": [
+    "指定背包方块 ID",
+    "Inventory block ID"
+  ],
+  "ui.orebackfill.counts": [
+    "已确认回填 {0} · 待确认 {1} · 候选 {2} · 拒绝/超时 {3}",
+    "Confirmed {0} · pending {1} · candidates {2} · refused/timed out {3}"
+  ],
+  "ui.orebackfill.invalidId": [
+    "回填 ID 无效或不是安全实体方块",
+    "Invalid backfill ID or unsuitable solid block"
+  ],
+  "ui.orebackfill.noMaterial": [
+    "缺少匹配的真实背包材料",
+    "Matching inventory material unavailable"
+  ],
+  "ui.orebackfill.help": [
+    "默认关闭。只回填实际走过的身后空气；避开玩家、实体与前方出口，并使用真实背包材料和可达支撑面。青色为候选，橙色为等待服务端更新；只有收到服务端方块更新才计入已回填。",
+    "Off by default. Fills air behind the actual walked trail, keeping the player, entities and forward exit clear. Uses real inventory materials and reachable supporting faces. Cyan means candidate; orange means awaiting a server block update. Only server updates count as confirmed."
+  ],
+  "ui.orebackfill.matchHelp": [
+    "优先使用相同石料；石头 / 深板岩缺货时可使用圆石 / 深板岩圆石。指定材料仅接受背包中的安全实心方块。",
+    "Prefers matching terrain. Stone / deepslate can fall back to cobblestone / cobbled deepslate. Explicit materials must be safe solid blocks present in your inventory."
+  ]
+}

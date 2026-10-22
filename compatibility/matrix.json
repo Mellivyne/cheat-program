@@ -1,0 +1,247 @@
+{
+  "schema": 1,
+  "loader": "fabric",
+  "baseMinecraft": "1.21.4",
+  "discoveredAt": "2026-10-20",
+  "source": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json",
+  "scope": "Fabric only: Minecraft 1.21.4, and released stable versions >=1.21.10. 1.21.5 through 1.21.9 are excluded. Snapshots and future versions require new profiles.",
+  "targets": [
+    {
+      "minecraft": "1.21.4",
+      "loader": "fabric",
+      "java": 21,
+      "mapping": "intermediary",
+      "state": "baseline",
+      "sourceLayers": [],
+      "releaseTime": "2024-12-03T02:12:57-08:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/ee8ab0f6ec89b3127436d35e36aa766c1e85c3a9/1.21.4.json",
+      "manifestSha1": "ee8ab0f6ec89b3127436d35e36aa766c1e85c3a9",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false
+      }
+    },
+    {
+      "minecraft": "1.21.10",
+      "loader": "fabric",
+      "java": 21,
+      "mapping": "intermediary",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "modern-1.21.10"
+      ],
+      "releaseTime": "2025-10-07T02:17:23-07:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/e8a7596fa677c2b9f0c8aadf600ef0aae2bbe9d3/1.21.10.json",
+      "manifestSha1": "e8a7596fa677c2b9f0c8aadf600ef0aae2bbe9d3",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "inputVector": true,
+          "directExit": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "work/compat-20261020/probe-1.21.10/startup-materials-smoke.log",
+        "limitations": "Critical runtime checks passed on the OpenGL backend; exhaustive gameplay, external apps and servers have not been retested."
+      }
+    },
+    {
+      "minecraft": "1.21.11",
+      "loader": "fabric",
+      "java": 21,
+      "mapping": "intermediary",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "modern-1.21.10",
+        "modern-1.21.11"
+      ],
+      "releaseTime": "2025-12-09T04:23:30-08:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/240f9560a4a6bc07faf42a7032a96b225f76e658/1.21.11.json",
+      "manifestSha1": "240f9560a4a6bc07faf42a7032a96b225f76e658",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "inputVector": true,
+          "directExit": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "work/compat-20261020/probe-1.21.11/startup-materials-smoke.log",
+        "limitations": "Critical runtime checks passed on the OpenGL backend; exhaustive gameplay, external apps and servers have not been retested."
+      }
+    },
+    {
+      "minecraft": "26.1",
+      "loader": "fabric",
+      "java": 25,
+      "mapping": "official-unobfuscated",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "modern-1.21.10",
+        "modern-1.21.11",
+        "unobfuscated-26.1"
+      ],
+      "releaseTime": "2026-03-24T05:11:04-07:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/b85db8efa37dc2e9d5cb12ee324a42d22fd98c08/26.1.json",
+      "manifestSha1": "b85db8efa37dc2e9d5cb12ee324a42d22fd98c08",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "inputVector": true,
+          "directExit": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "work/compat-20261020/probe-26.1-runtime/startup-materials-smoke-3.log",
+        "limitations": "Java25 OpenGL critical runtime checks passed; exhaustive gameplay, external apps and servers have not been retested."
+      }
+    },
+    {
+      "minecraft": "26.1.1",
+      "loader": "fabric",
+      "java": 25,
+      "mapping": "official-unobfuscated",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "modern-1.21.10",
+        "modern-1.21.11",
+        "unobfuscated-26.1"
+      ],
+      "releaseTime": "2026-04-01T02:06:36-07:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/97d0cc892dbd79962d06ba0851528433596e1e78/26.1.1.json",
+      "manifestSha1": "97d0cc892dbd79962d06ba0851528433596e1e78",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "inputVector": true,
+          "directExit": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "work/compat-20261020/probe-26.1.1-runtime/startup-materials-smoke.log",
+        "limitations": "Java25 OpenGL critical runtime checks passed; exhaustive gameplay, external apps and servers have not been retested."
+      }
+    },
+    {
+      "minecraft": "26.1.2",
+      "loader": "fabric",
+      "java": 25,
+      "mapping": "official-unobfuscated",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "modern-1.21.10",
+        "modern-1.21.11",
+        "unobfuscated-26.1"
+      ],
+      "releaseTime": "2026-04-09T03:12:23-07:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/58e6c8191fc15a21bf55b0695a8c50e1beb8ff55/26.1.2.json",
+      "manifestSha1": "58e6c8191fc15a21bf55b0695a8c50e1beb8ff55",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "inputVector": true,
+          "directExit": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "work/compat-20261020/probe-26.1.2-runtime/startup-materials-smoke.log",
+        "limitations": "Java25 OpenGL critical runtime checks passed; exhaustive gameplay, external apps and servers have not been retested."
+      }
+    },
+    {
+      "minecraft": "26.2",
+      "loader": "fabric",
+      "java": 25,
+      "mapping": "official-unobfuscated",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "modern-1.21.10",
+        "modern-1.21.11",
+        "unobfuscated-26.1",
+        "unobfuscated-26.2"
+      ],
+      "releaseTime": "2026-06-16T05:03:33-07:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/bdfd9856166b7171857c491f15479762f3abda99/26.2.json",
+      "manifestSha1": "bdfd9856166b7171857c491f15479762f3abda99",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "inputVector": true,
+          "directExit": true,
+          "reverseDepthMath": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "work/compat-20261020/probe-26.2-runtime/startup-smoke-2.log",
+        "limitations": "Java25 OpenGL critical runtime checks and reverse-depth math passed; Vulkan, exhaustive gameplay, external apps and servers have not been retested."
+      }
+    },
+    {
+      "minecraft": "26.3",
+      "loader": "fabric",
+      "java": 25,
+      "mapping": "official-unobfuscated",
+      "state": "pending",
+      "sourceLayers": [],
+      "releaseTime": "2026-09-15T04:23:02-07:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/61fff1316bd50312624a858bbb5eb18fa45208ed/26.3.json",
+      "manifestSha1": "61fff1316bd50312624a858bbb5eb18fa45208ed",
+      "verification": {
+        "compiled": false,
+        "mixinSurface": false,
+        "clientStarted": false,
+        "gameplayRetested": false
+      }
+    }
+  ]
+}

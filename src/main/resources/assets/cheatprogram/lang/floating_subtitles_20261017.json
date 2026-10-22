@@ -1,0 +1,362 @@
+{
+  "module.floatingsubtitles": [
+    "悬浮字幕",
+    "Floating subtitles"
+  ],
+  "module.floatingsubtitles.desc": [
+    "将同步歌词与本地字幕悬浮在三维世界中，支持逐字高亮、翻译与自定义位置",
+    "Place synchronized lyrics and local subtitles in the 3D world, with word highlighting, translations, and custom placement"
+  ],
+  "setting.floatingsubtitles.source": [
+    "字幕来源",
+    "Subtitle source"
+  ],
+  "setting.floatingsubtitles.online": [
+    "联网匹配歌词",
+    "Online lyrics lookup"
+  ],
+  "setting.floatingsubtitles.anchor": [
+    "空间定位方式",
+    "Spatial anchoring"
+  ],
+  "setting.floatingsubtitles.distance": [
+    "前方距离",
+    "Forward distance"
+  ],
+  "setting.floatingsubtitles.height": [
+    "高度偏移",
+    "Height offset"
+  ],
+  "setting.floatingsubtitles.side": [
+    "左右偏移",
+    "Lateral offset"
+  ],
+  "setting.floatingsubtitles.yaw": [
+    "水平旋转",
+    "Yaw"
+  ],
+  "setting.floatingsubtitles.pitch": [
+    "俯仰角度",
+    "Pitch"
+  ],
+  "setting.floatingsubtitles.roll": [
+    "侧倾角度",
+    "Roll"
+  ],
+  "setting.floatingsubtitles.spread": [
+    "换句左右展开角",
+    "Phrase spread angle"
+  ],
+  "setting.floatingsubtitles.facePlayer": [
+    "始终面向玩家",
+    "Face the player"
+  ],
+  "setting.floatingsubtitles.smoothing": [
+    "位置平滑时间",
+    "Position smoothing time"
+  ],
+  "setting.floatingsubtitles.letterHeight": [
+    "文字实际高度",
+    "World text height"
+  ],
+  "setting.floatingsubtitles.maxWidth": [
+    "单行最大宽度",
+    "Maximum line width"
+  ],
+  "setting.floatingsubtitles.lineGap": [
+    "行间距",
+    "Line spacing"
+  ],
+  "setting.floatingsubtitles.lineCount": [
+    "同时显示行数",
+    "Visible lines"
+  ],
+  "setting.floatingsubtitles.translation": [
+    "显示翻译",
+    "Show translation"
+  ],
+  "setting.floatingsubtitles.splitLines": [
+    "自动换行",
+    "Wrap long lines"
+  ],
+  "setting.floatingsubtitles.maxChars": [
+    "每行最大字数",
+    "Characters per line"
+  ],
+  "setting.floatingsubtitles.font": [
+    "字幕字体",
+    "Subtitle font"
+  ],
+  "setting.floatingsubtitles.palette": [
+    "字幕配色",
+    "Subtitle colors"
+  ],
+  "setting.floatingsubtitles.colorPeriod": [
+    "颜色循环周期",
+    "Color cycle duration"
+  ],
+  "setting.floatingsubtitles.opacity": [
+    "字幕不透明度",
+    "Subtitle opacity"
+  ],
+  "setting.floatingsubtitles.secondaryOpacity": [
+    "前后句不透明度",
+    "Surrounding-line opacity"
+  ],
+  "setting.floatingsubtitles.glow": [
+    "文字柔光",
+    "Text glow"
+  ],
+  "setting.floatingsubtitles.throughWalls": [
+    "穿墙显示",
+    "Show through walls"
+  ],
+  "setting.floatingsubtitles.visibleRange": [
+    "最大可见距离",
+    "Maximum visible distance"
+  ],
+  "setting.floatingsubtitles.animation": [
+    "换句动画",
+    "Phrase transition"
+  ],
+  "setting.floatingsubtitles.transition": [
+    "动画过渡时长",
+    "Transition duration"
+  ],
+  "setting.floatingsubtitles.floatAmount": [
+    "上下悬浮幅度",
+    "Vertical float amplitude"
+  ],
+  "setting.floatingsubtitles.floatPeriod": [
+    "悬浮循环周期",
+    "Float cycle duration"
+  ],
+  "setting.floatingsubtitles.highlight": [
+    "歌词高亮方式",
+    "Lyric highlighting"
+  ],
+  "setting.floatingsubtitles.offset": [
+    "字幕时间偏移",
+    "Subtitle time offset"
+  ],
+  "setting.floatingsubtitles.hidePaused": [
+    "暂停时隐藏字幕",
+    "Hide while paused"
+  ],
+  "setting.floatingsubtitles.showTitle": [
+    "显示歌曲信息",
+    "Show song information"
+  ],
+  "mode.lyrics_music": [
+    "后台音乐播放器",
+    "Background music player"
+  ],
+  "mode.lyrics_cast": [
+    "投屏应用",
+    "Projected application"
+  ],
+  "mode.lyrics_manual": [
+    "本地字幕／手动计时",
+    "Local subtitles / manual timing"
+  ],
+  "mode.lyrics_phrase": [
+    "每句固定在空间",
+    "Anchor each phrase in space"
+  ],
+  "mode.lyrics_follow": [
+    "跟随玩家位置",
+    "Follow player position"
+  ],
+  "mode.lyrics_fixed": [
+    "固定在世界",
+    "Fixed world position"
+  ],
+  "mode.lyrics_screen": [
+    "放在投屏上方",
+    "Above the projection"
+  ],
+  "mode.lyrics_global_font": [
+    "跟随通用字体",
+    "Use general font"
+  ],
+  "mode.lyrics_minecraft_font": [
+    "我的世界字体",
+    "Minecraft font"
+  ],
+  "mode.lyrics_float": [
+    "轻盈悬浮",
+    "Gentle float"
+  ],
+  "mode.lyrics_fade": [
+    "柔和淡入淡出",
+    "Soft crossfade"
+  ],
+  "mode.lyrics_slide": [
+    "平滑滑入",
+    "Smooth slide"
+  ],
+  "mode.lyrics_spring": [
+    "Q弹展开",
+    "Spring reveal"
+  ],
+  "mode.lyrics_word": [
+    "逐字显现",
+    "Character reveal"
+  ],
+  "mode.lyrics_none": [
+    "无切换动画",
+    "No transition"
+  ],
+  "mode.lyrics_word_timing": [
+    "原始逐字时间戳",
+    "Original word timestamps"
+  ],
+  "mode.lyrics_line_progress": [
+    "整句时间进度",
+    "Line timing progress"
+  ],
+  "mode.lyrics_no_highlight": [
+    "不使用高亮",
+    "No highlighting"
+  ],
+  "ui.lyrics.open": [
+    "打开悬浮字幕编辑器",
+    "Open floating subtitle editor"
+  ],
+  "ui.lyrics.subtitle": [
+    "歌词与字幕悬浮在世界中；导入文件、选择来源后可在游戏内预览",
+    "Lyrics and subtitles float in the world; import a file or select a source, then preview in-game"
+  ],
+  "ui.lyrics.disable": [
+    "关闭悬浮字幕",
+    "Disable floating subtitles"
+  ],
+  "ui.lyrics.enable": [
+    "开启悬浮字幕",
+    "Enable floating subtitles"
+  ],
+  "ui.lyrics.preview": [
+    "世界内预览",
+    "Preview in world"
+  ],
+  "ui.lyrics.recenter": [
+    "重新放置",
+    "Recenter placement"
+  ],
+  "ui.lyrics.reload": [
+    "重新读取字幕",
+    "Reload subtitles"
+  ],
+  "ui.lyrics.sources": [
+    "媒体来源与本地字幕",
+    "Media source and local subtitles"
+  ],
+  "ui.lyrics.songTitle": [
+    "歌曲名称",
+    "Song title"
+  ],
+  "ui.lyrics.artist": [
+    "歌手／艺术家",
+    "Artist"
+  ],
+  "ui.lyrics.local": [
+    "导入本地字幕",
+    "Import local subtitles"
+  ],
+  "ui.lyrics.clear": [
+    "清除",
+    "Clear"
+  ],
+  "ui.lyrics.translation": [
+    "导入翻译字幕",
+    "Import translation"
+  ],
+  "ui.lyrics.pause": [
+    "暂停",
+    "Pause"
+  ],
+  "ui.lyrics.play": [
+    "播放",
+    "Play"
+  ],
+  "ui.lyrics.restart": [
+    "从头开始计时",
+    "Restart manual timer"
+  ],
+  "ui.lyrics.noFile": [
+    "未选择本地文件",
+    "No local file selected"
+  ],
+  "ui.lyrics.fileError": [
+    "文件选择或读取失败，请重试",
+    "Could not select or read the file; retry"
+  ],
+  "ui.lyrics.autoSession": [
+    "自动选择媒体会话",
+    "Automatic media session"
+  ],
+  "ui.lyrics.sessionUnavailable": [
+    "已选媒体会话暂不可用",
+    "Selected media session unavailable"
+  ],
+  "ui.lyrics.selectedCast": [
+    "当前选中的投屏",
+    "Currently selected projection"
+  ],
+  "ui.lyrics.castNumber": [
+    "投屏窗口 {0}",
+    "Projection window {0}"
+  ],
+  "ui.lyrics.worldHint": [
+    "字幕始终位于三维世界内；关闭后立即移除，个人媒体与本地文件不会写入配置码",
+    "Subtitles always exist in the 3D world. Disabling removes them; personal media and local files stay out of configuration codes"
+  ],
+  "ui.lyrics.metadataHint": [
+    "自动识别使用 Windows 媒体信息；不支持此接口的播放器需手动填写歌曲或导入字幕",
+    "Automatic identification uses Windows media metadata; unsupported players need a manual song entry or imported subtitles"
+  ],
+  "ui.lyrics.networkHint": [
+    "联网仅向 LRCLIB 发送歌名、歌手、专辑和时长；不录音、不上传音频，可关闭联网",
+    "Online lookup sends only title, artist, album, and duration to LRCLIB; no recording or audio upload. Online access can be disabled"
+  ],
+  "ui.lyrics.wordHint": [
+    "逐字高亮使用文件内真实时间戳；普通 LRC 只有整句时间，不能自动生成准确逐字时间",
+    "Word highlighting uses actual file timestamps. Standard LRC has line timing only and cannot supply accurate word timing"
+  ],
+  "ui.lyrics.localHint": [
+    "支持 LRC、增强 LRC、SRT、WebVTT；翻译可使用相同时间戳的第二行或单独导入",
+    "Supports LRC, enhanced LRC, SRT, and WebVTT. Translations can share a timestamp or be imported separately"
+  ],
+  "ui.appcast.toggleKey": [
+    "单击操控键开始／结束",
+    "Tap interaction key to start / finish"
+  ],
+  "ui.appcast.keyboardOnlyHint": [
+    "键盘专用模式：单击操控键开始，再次单击或按 Esc 退出；松开按键仍保持操控，玩家身体不移动",
+    "Keyboard-only mode: tap the interaction key to start, then tap again or press Esc to exit. Releasing the key keeps control active; the player stays still"
+  ],
+  "ui.appcast.keyboardControls": [
+    "键盘操控：单击设定键进入／退出，Esc 退出；按键发送给投屏应用，支持 Ctrl+V 粘贴中文",
+    "Keyboard controls: tap the configured key to enter / exit, or Esc to exit. Keys go to the projected app; Ctrl+V pastes Chinese text"
+  ],
+  "ui.appcast.relatedViews": [
+    "所选应用的其他画面",
+    "Other views of selected app"
+  ],
+  "ui.appcast.allWindows": [
+    "全部应用窗口",
+    "All application windows"
+  ],
+  "ui.appcast.appView": [
+    "应用画面",
+    "Application view"
+  ],
+  "ui.appcast.viewHint": [
+    "同一软件的主窗口、播放器和弹出窗口可分别选择；切换画面会更换所选投屏的窗口来源",
+    "Select an app’s main window, player, or popup independently. Switching views changes the selected projection’s source window"
+  ],
+  "ui.appcast.inputHint": [
+    "操控时轻点 Ctrl 切换“移动玩家／输入应用”；输入模式将按键发给所选应用，支持 Ctrl+V 粘贴中文",
+    "While controlling, tap Ctrl to switch player movement / app typing. Typing mode sends keys to the selected app; Ctrl+V pastes Chinese text"
+  ]
+}

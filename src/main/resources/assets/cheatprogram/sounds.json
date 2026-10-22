@@ -1,0 +1,4 @@
+{
+  "toggle_on": { "sounds": [{ "name": "cheatprogram:ui/toggle_on", "stream": false }] },
+  "toggle_off": { "sounds": [{ "name": "cheatprogram:ui/toggle_off", "stream": false }] }
+}

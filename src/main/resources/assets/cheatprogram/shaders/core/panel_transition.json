@@ -1,0 +1,16 @@
+{
+  "vertex": "cheatprogram:core/panel_transition",
+  "fragment": "cheatprogram:core/panel_transition",
+  "samplers": [
+    { "name": "Underlay" },
+    { "name": "Current" },
+    { "name": "Previous" }
+  ],
+  "uniforms": [
+    { "name": "Screen", "type": "float", "count": 2, "values": [1.0, 1.0] },
+    { "name": "Panel", "type": "float", "count": 4, "values": [0.0, 0.0, 1.0, 1.0] },
+    { "name": "Shape", "type": "float", "count": 4, "values": [0.0, 16.0, 1.0, 1.0] },
+    { "name": "Progress", "type": "float", "count": 4, "values": [1.0, 1.0, 0.0, 0.0] },
+    { "name": "Modes", "type": "float", "count": 4, "values": [0.0, 0.0, 0.0, 0.0] }
+  ]
+}

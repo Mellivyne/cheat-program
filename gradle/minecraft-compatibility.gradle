@@ -1,0 +1,108 @@
+import groovy.json.JsonSlurper
+
+// Each artifact has one verified Minecraft ABI. Do not widen fabric.mod.json to
+// versions whose renderer/input/network adapters have not been built and checked.
+def matrixFile = file('compatibility/matrix.json')
+def matrix = new JsonSlurper().parse(matrixFile)
+def targetVersion = project.minecraft_version.toString()
+def target = matrix.targets.find { it.minecraft == targetVersion }
+if (target == null) {
+    throw new GradleException("Unknown Minecraft target '${targetVersion}'. Add an explicit compatibility profile first.")
+}
+def probing = providers.gradleProperty('compatibility_probe').map { it.toBoolean() }.getOrElse(false)
+if (target.state == 'pending' && !probing) {
+    throw new GradleException("Minecraft ${targetVersion} is still being ported. It is not a supported release yet. Use -Pcompatibility_probe=true only for API diagnostics.")
+}
+ext.minecraftTarget = target
+ext.minecraftTargetVersion = targetVersion
+base.archivesName = "cheat-program-open-v${project.mod_version}-fabric-mc${targetVersion}"
+tasks.withType(AbstractArchiveTask).configureEach { archiveVersion.set('') }
+def layers = target.sourceLayers.collect { file("versions/${it}") }
+layers.each { if (!it.isDirectory()) throw new GradleException("Missing compatibility source layer: ${it}") }
+
+if (target.state == 'pending') {
+    tasks.withType(AbstractArchiveTask).configureEach {
+        doFirst { throw new GradleException("Minecraft ${targetVersion} has no verified port yet. Diagnostic compilation cannot create a release archive.") }
+    }
+}
+
+if (!layers.isEmpty()) {
+    def generated = layout.buildDirectory.dir('generated/minecraftSources')
+    def prepareJava = tasks.register('prepareMinecraftJava', Sync) {
+        into generated.map { it.dir('java') }
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        layers.reverseEach { from new File(it, 'java') }
+        from 'src/main/java'
+    }
+    def prepareResources = tasks.register('prepareMinecraftResources', Sync) {
+        into generated.map { it.dir('resources') }
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        layers.reverseEach { from new File(it, 'resources') }
+        from 'src/main/resources'
+    }
+    sourceSets.main.java.setSrcDirs([generated.map { it.dir('java') }])
+    sourceSets.main.resources.setSrcDirs([generated.map { it.dir('resources') }])
+    tasks.named('compileJava') { dependsOn prepareJava }
+    tasks.named('processResources') { dependsOn prepareResources }
+    tasks.named('sourcesJar').configure { dependsOn prepareJava, prepareResources }
+}
+
+tasks.register('minecraftCompatibility') {
+    group = 'verification'
+    description = 'Lists explicit Fabric version profiles and their current verification state.'
+    inputs.file matrixFile
+    doLast {
+        println 'Minecraft | Java | Verification | Source layers'
+        matrix.targets.each { println "${it.minecraft} | ${it.java} | ${it.state} | ${it.sourceLayers.join(', ')}" }
+        println 'A successful compile is not an in-game feature test; pending profiles cannot be released.'
+    }
+}
+
+tasks.register('verifyMinecraftArtifact') {
+    group = 'verification'
+    description = 'Checks Minecraft/Java constraints, all mixins, and the selected Fabric artifact name.'
+    def artifactTask = target.mapping == 'official-unobfuscated' ? 'jar' : 'remapJar'
+    dependsOn tasks.named(artifactTask), tasks.named('verifyMinecraftOutputLayout')
+    doLast {
+        if (target.state == 'pending') throw new GradleException('A diagnostic probe cannot be released as a supported version.')
+        def artifact = tasks.named(artifactTask).get().archiveFile.get().asFile
+        def expectedName = "cheat-program-open-v${project.mod_version}-fabric-mc${targetVersion}.jar"
+        if (artifact.name != expectedName) throw new GradleException("Wrong versioned artifact name: ${artifact.name}; expected ${expectedName}")
+        def metadata = zipTree(artifact).matching { include 'fabric.mod.json' }.singleFile
+        def mod = new JsonSlurper().parse(metadata)
+        if (mod.version != project.mod_version) throw new GradleException("Wrong project version: ${mod.version}")
+        if (mod.depends.minecraft != targetVersion) throw new GradleException("Wrong Minecraft constraint: ${mod.depends.minecraft}")
+        if (mod.depends.java != ">=${target.java}") throw new GradleException("Wrong Java requirement: ${mod.depends.java}")
+        if (mod.environment != 'client') throw new GradleException('Expected a client-only Fabric artifact.')
+        def mixinFile = zipTree(artifact).matching { include 'cheatprogram.mixins.json' }.singleFile
+        def mixins = new JsonSlurper().parse(mixinFile)
+        def expectedClasses = (mixins.client + (mixins.mixins ?: [])).collect { "${mixins.package.replace('.', '/')}/${it}.class" }
+        def zip = new java.util.zip.ZipFile(artifact)
+        try {
+            expectedClasses.each { if (zip.getEntry(it) == null) throw new GradleException("Missing mixin class: ${it}") }
+        } finally { zip.close() }
+        println "Verified Fabric artifact: ${artifact.name}; Minecraft ${targetVersion}; ${expectedClasses.size()} mixins"
+    }
+}
+
+tasks.register('verifyMinecraftOutputLayout') {
+    group = 'verification'
+    description = 'Ensures classes, resources and archives stay in this Minecraft target output directory.'
+    doLast {
+        def expected = layout.buildDirectory.get().asFile.canonicalFile.toPath()
+        def destinations = [
+            classes: tasks.named('compileJava').get().destinationDirectory.get().asFile,
+            resources: tasks.named('processResources').get().destinationDir,
+            jar: tasks.named('jar').get().archiveFile.get().asFile
+        ]
+        if (target.mapping != 'official-unobfuscated') {
+            destinations.remappedJar = tasks.named('remapJar').get().archiveFile.get().asFile
+        }
+        destinations.each { name, path ->
+            if (!path.canonicalFile.toPath().startsWith(expected)) {
+                throw new GradleException("Minecraft ${targetVersion} ${name} output escaped its directory: ${path}")
+            }
+        }
+        println "Verified isolated build outputs for Minecraft ${targetVersion}: ${expected}"
+    }
+}

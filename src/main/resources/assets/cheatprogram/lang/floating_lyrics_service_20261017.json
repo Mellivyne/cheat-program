@@ -1,0 +1,19 @@
+{
+  "ui.floatingLyrics.noTrack": ["未发现正在播放的音乐；可选择媒体会话或导入本地字幕", "No playing music found; select a media session or import local subtitles"],
+  "ui.floatingLyrics.castNoSession": ["此投屏应用未发布媒体信息；可手动选择会话或导入字幕", "This projected app publishes no matching media metadata; select a session or import subtitles"],
+  "ui.floatingLyrics.loading": ["正在载入字幕…", "Loading lyrics…"],
+  "ui.floatingLyrics.failed": ["字幕读取失败，请检查文件后重试", "Could not read lyrics; check the file and retry"],
+  "ui.floatingLyrics.localReady": ["本地字幕已就绪", "Local subtitles ready"],
+  "ui.floatingLyrics.onlineReady": ["已匹配 LRCLIB 歌词", "Matched LRCLIB lyrics"],
+  "ui.floatingLyrics.offlineMissing": ["离线缓存没有这首歌，请导入字幕或允许联网查词", "No offline lyrics for this song; import subtitles or enable online lookup"],
+  "ui.floatingLyrics.metadataIncomplete": ["媒体没有提供完整歌名和歌手，可手动填写或导入字幕", "The media app did not provide a title and artist; enter them manually or import subtitles"],
+  "ui.floatingLyrics.notFound": ["未找到匹配歌词，可导入 LRC／SRT／VTT 文件", "No matching lyrics found; import an LRC, SRT, or VTT file"],
+  "ui.floatingLyrics.networkFailed": ["联网查词暂不可用，本地字幕仍可使用", "Online lookup is unavailable; local subtitles remain usable"],
+  "ui.floatingLyrics.metadataMismatch": ["返回的歌曲与当前版本不匹配，已停止使用错误歌词", "The returned song does not match this version; incorrect lyrics were rejected"],
+  "ui.floatingLyrics.instrumental": ["资料库将此歌曲标为纯音乐", "The database marks this track as instrumental"],
+  "ui.floatingLyrics.emptyFile": ["字幕文件为空或不包含可显示文字", "The subtitle file contains no displayable text"],
+  "ui.floatingLyrics.unsynced": ["只有无时间戳歌词；不会伪造逐句同步，请导入带时间戳的文件", "Only untimed lyrics are available; import a timestamped file for synchronized display"],
+  "ui.floatingLyrics.noTimeline": ["该播放器未提供播放进度，请切换手动计时或更换媒体会话", "This player publishes no timeline; use manual timing or choose another media session"],
+  "ui.floatingLyrics.lookupPrivacy": ["联网仅向 LRCLIB 发送歌名、歌手、专辑与时长；不录音、不上传声音，可关闭并使用本地文件", "Online lookup sends only title, artist, album, and duration to LRCLIB; no recording or audio upload. Disable it to use local files"],
+  "ui.floatingLyrics.metadataHint": ["自动识别依赖播放器提供的 Windows 媒体信息；未提供信息的软件需手动选择歌曲或导入字幕", "Automatic identification uses Windows media metadata; apps without it require a manual song selection or imported subtitles"]
+}

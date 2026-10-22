@@ -1,0 +1,38 @@
+{
+  "setting.floatingsubtitles.futurePreview": [
+    "预显示未唱歌词",
+    "Preview unsung lyrics"
+  ],
+  "setting.floatingsubtitles.previewLines": [
+    "预显示后续句数",
+    "Upcoming lines to preview"
+  ],
+  "setting.floatingsubtitles.previewOpacity": [
+    "预显示透明度",
+    "Preview opacity"
+  ],
+  "ui.lyrics.futurePreviewHint": [
+    "开启后浅色预显示当前句未唱部分及后续歌词，可调整句数和透明度。",
+    "Show the unsung part of the current line and upcoming lyrics in a lighter color. Adjust the line count and opacity."
+  ],
+  "mode.music_layout_wall": [
+    "专辑墙",
+    "Album wall"
+  ],
+  "ui.music.wallSwipe": [
+    "拖动浏览 · 滚轮缩放 · 点击封面播放",
+    "Drag to browse · Scroll to zoom · Click a cover to play"
+  ],
+  "setting.killaura.searchRange": [
+    "索敌范围（实际攻击距离仍取服务器允许范围）",
+    "Target search range (attack reach remains limited by the server)"
+  ],
+  "setting.killaura.airSwing": [
+    "允许空挥刀",
+    "Allow air swings"
+  ],
+  "ui.lyrics.translationTimingHint": [
+    "翻译使用平台整句时间，与已开始的原文同步显示；平台未提供译文时不生成替代翻译。",
+    "Translations use the platform’s full-line timing and appear with the original line once it starts. No substitute translation is generated when the platform provides none."
+  ]
+}

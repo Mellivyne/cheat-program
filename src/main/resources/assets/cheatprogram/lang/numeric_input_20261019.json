@@ -1,0 +1,46 @@
+{
+  "ui.number.title": [
+    "输入数值",
+    "Enter a value"
+  ],
+  "ui.number.hint": [
+    "点击数值或右键滑条输入",
+    "Click the value or right-click the slider to type"
+  ],
+  "ui.number.range": [
+    "范围",
+    "Range"
+  ],
+  "ui.number.step": [
+    "步长",
+    "Step"
+  ],
+  "ui.number.result": [
+    "应用后",
+    "After applying"
+  ],
+  "ui.number.apply": [
+    "应用",
+    "Apply"
+  ],
+  "ui.number.cancel": [
+    "取消",
+    "Cancel"
+  ],
+  "ui.number.invalid": [
+    "请输入有效的有限数字",
+    "Enter a valid finite decimal number"
+  ],
+  "ui.number.outOfRange": [
+    "数值超出允许范围",
+    "Value is outside the allowed range"
+  ],
+  "ui.number.lower": [
+    "下限",
+    "Lower bound"
+  ],
+  "ui.number.upper": [
+    "上限",
+    "Upper bound"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "ui.cancel": [
+    "取消",
+    "Cancel"
+  ],
+  "ui.confirm": [
+    "确定",
+    "Confirm"
+  ],
+  "ui.worldpanel.firstTitle": [
+    "进入 3D 控制面板",
+    "Enter 3D control panel"
+  ],
+  "ui.worldpanel.exitHint": [
+    "双击%s关闭此模式",
+    "Double-press %s to exit this mode"
+  ],
+  "ui.worldpanel.firstBody": [
+    "确定后先预览摆放，再设置大小和位置。按绑定键进入鼠标交互，再按一次退出交互。",
+    "Confirm to preview placement, size and position. Press the interaction key to control the panel; press it again to leave."
+  ],
+  "ui.worldpanel.previewTitle": [
+    "3D 控制面板 · 摆放预览",
+    "3D control panel · Placement preview"
+  ],
+  "ui.worldpanel.right": [
+    "左右位置",
+    "Horizontal position"
+  ],
+  "ui.worldpanel.up": [
+    "上下位置",
+    "Vertical position"
+  ],
+  "ui.worldpanel.forward": [
+    "前后位置",
+    "Forward position"
+  ],
+  "ui.worldpanel.sizeValue": [
+    "屏幕宽度 %s 格",
+    "Screen width: %s blocks"
+  ],
+  "ui.worldpanel.bind": [
+    "鼠标交互按键",
+    "Mouse interaction key"
+  ],
+  "ui.worldpanel.resetPlace": [
+    "放回身前 3 格／上方 1 格",
+    "Reset: 3 ahead / 1 above"
+  ],
+  "ui.worldpanel.placementHint": [
+    "滚轮缩放；位置限制在预览起点附近 8 格内",
+    "Scroll to resize; placement stays within 8 blocks of the starting position"
+  ],
+  "ui.worldpanel.confirmPlace": [
+    "固定在此位置",
+    "Fix at this position"
+  ],
+  "ui.worldpanel.place": [
+    "摆放／调整 3D 控制面板",
+    "Place / adjust 3D control panel"
+  ],
+  "ui.worldpanel.controls": [
+    "按绑定键交互／退出交互；双击%s关闭此模式；未输入文字时可移动人物",
+    "Press the interaction key to enter / leave; double-press %s to exit. Movement remains available when not typing."
+  ],
+  "setting.hud.worldScreenWidth": [
+    "屏幕宽度",
+    "Screen width"
+  ],
+  "setting.hud.worldScreenBrightness": [
+    "屏幕亮度",
+    "Screen brightness"
+  ],
+  "setting.hud.worldScreenFrameRate": [
+    "面板最高帧率",
+    "Maximum panel frame rate"
+  ],
+  "setting.hud.worldScreenDistance": [
+    "初始摆放距离",
+    "Initial placement distance"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "ui.reset.title": [
+    "初始化 Cheat Program",
+    "Initialize Cheat Program"
+  ],
+  "ui.reset.entry": [
+    "初始化",
+    "Initialize"
+  ],
+  "ui.reset.open": [
+    "初始化",
+    "Initialize"
+  ],
+  "ui.reset.scope": [
+    "将本客户端的用户数据文件夹整体移至 Windows 回收站。",
+    "Move this client's entire user-data folder to the Windows Recycle Bin."
+  ],
+  "ui.reset.contains": [
+    "包含配置、按键、好友、API Key、AI 玩家、粒子方案、建筑副本、聊天记录、已复制的素材及本地语音环境。",
+    "Includes profiles, bindings, friends, API keys, AI players, particle plans, saved buildings, chat history, copied assets and the local voice environment."
+  ],
+  "ui.reset.preserve": [
+    "只处理上方 Cheat Program 文件夹；游戏存档、其他模组、外部原始图片／视频／字体和你导出的外部文件保持不变。",
+    "Only the Cheat Program folder shown above is processed. Worlds, other mods, original external images/videos/fonts and files you exported elsewhere are preserved."
+  ],
+  "ui.reset.restartHint": [
+    "初始化后，本次会话停止运行本客户端功能及保存设置。重新启动 Minecraft 后，按首次使用的默认状态重新开始。",
+    "After initialization, this client's features and settings saves stop for the current session. Restart Minecraft to begin again with first-run defaults."
+  ],
+  "ui.reset.recycleHint": [
+    "文件仍可从回收站恢复。如果要彻底清除，请在确认不再需要后自行清空回收站。",
+    "Files remain recoverable from the Recycle Bin. To remove them permanently, empty the Recycle Bin yourself after confirming they are no longer needed."
+  ],
+  "ui.reset.acknowledge": [
+    "我已了解初始化范围和需要重启",
+    "I understand the scope and the required restart"
+  ],
+  "ui.reset.confirm": [
+    "移至回收站并初始化",
+    "Recycle and initialize"
+  ],
+  "ui.reset.backGame": [
+    "返回游戏",
+    "Return to game"
+  ],
+  "ui.reset.ready": [
+    "准备初始化",
+    "Ready to initialize"
+  ],
+  "ui.reset.validating": [
+    "正在检查客户端文件夹…",
+    "Checking the client folder…"
+  ],
+  "ui.reset.stopping": [
+    "正在停止功能和本地后台任务…",
+    "Stopping features and local background tasks…"
+  ],
+  "ui.reset.recycling": [
+    "正在移至 Windows 回收站…",
+    "Moving to the Windows Recycle Bin…"
+  ],
+  "ui.reset.complete": [
+    "客户端用户数据已移至回收站。",
+    "Client user data has been moved to the Recycle Bin."
+  ],
+  "ui.reset.restartReminder": [
+    "请保存世界并重新启动 Minecraft。旧设置不会在退出时重新写回；需要彻底清除时，请再清空回收站。",
+    "Save your world and restart Minecraft. Old settings will not be written back on exit. Empty the Recycle Bin separately if you want permanent removal."
+  ],
+  "ui.reset.windowsOnly": [
+    "此初始化方式需要 Windows 回收站，当前平台未执行任何文件操作。",
+    "This initialization method requires the Windows Recycle Bin. No file operation was performed on this platform."
+  ],
+  "ui.reset.invalidPath": [
+    "客户端文件夹路径或链接检查未通过，未移走该文件夹。",
+    "The client-folder path or link check failed; the folder was not moved."
+  ],
+  "ui.reset.recycleFailed": [
+    "未能完成回收站操作。请重新启动后检查客户端文件夹和回收站；本次会话不会重新保存旧设置。",
+    "The Recycle Bin operation could not be completed. Restart and check the client folder and Recycle Bin; this session will not save old settings again."
+  ]
+}

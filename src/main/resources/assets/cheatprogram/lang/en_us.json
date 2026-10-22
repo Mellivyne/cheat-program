@@ -1,0 +1,9 @@
+{
+  "cheatprogram.seedDatabaseDisabled": "The remote seed database is disabled; only local structure observations are used.",
+  "setting.particleeffects.previewOriginal": "Show original particles",
+  "setting.particleeffects.previewOriginal.hint": "Simulate original particles privately in the editor. Some particles depend on water or blocks.",
+  "ui.particles.originalPreviewOn": "Original particles: on",
+  "ui.particles.originalPreviewOff": "Original particles: off",
+  "ui.particles.originalPreviewState": "Private preview · {0}s · {1} particles",
+  "ui.particles.layoutHint": "Your feet mark the origin. Toggle original particles to preview their appearance."
+}

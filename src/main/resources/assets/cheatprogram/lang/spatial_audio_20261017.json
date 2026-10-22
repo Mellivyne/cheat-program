@@ -1,0 +1,810 @@
+{
+  "module.spatialaudio": [
+    "空间音频",
+    "Spatial audio"
+  ],
+  "module.spatialaudio.desc": [
+    "定位投屏、后台应用与游戏声音，估算房间声学、材质反射及遮挡，并显示声线",
+    "Position projection, background app, and game audio; estimate room acoustics, material reflections, and occlusion, and display sound rays"
+  ],
+  "setting.spatialaudio.source": [
+    "声音来源",
+    "Audio source"
+  ],
+  "setting.spatialaudio.screen": [
+    "投屏窗口",
+    "Projection window"
+  ],
+  "setting.spatialaudio.muteOriginal": [
+    "隔离后台原音",
+    "Isolate original app audio"
+  ],
+  "setting.spatialaudio.update": [
+    "声学更新方式",
+    "Acoustic update mode"
+  ],
+  "setting.spatialaudio.interval": [
+    "声学缓存间隔",
+    "Acoustic cache interval"
+  ],
+  "setting.spatialaudio.rays": [
+    "采样声线数量",
+    "Probe ray count"
+  ],
+  "setting.spatialaudio.bounces": [
+    "最大反射次数",
+    "Maximum reflections"
+  ],
+  "setting.spatialaudio.range": [
+    "声学探测范围",
+    "Acoustic probe range"
+  ],
+  "setting.spatialaudio.budget": [
+    "每刻采样预算",
+    "Probe paths per tick"
+  ],
+  "setting.spatialaudio.absorption": [
+    "材质吸收倍率",
+    "Material absorption scale"
+  ],
+  "setting.spatialaudio.scattering": [
+    "材质散射倍率",
+    "Material scattering scale"
+  ],
+  "setting.spatialaudio.airLoss": [
+    "空气高频损耗",
+    "Air high-frequency loss"
+  ],
+  "setting.spatialaudio.wet": [
+    "混响强度",
+    "Reverb level"
+  ],
+  "setting.spatialaudio.echo": [
+    "回声强度",
+    "Echo level"
+  ],
+  "setting.spatialaudio.volume": [
+    "外部应用音量",
+    "External app volume"
+  ],
+  "setting.spatialaudio.audibleRange": [
+    "可听距离",
+    "Audible distance"
+  ],
+  "setting.spatialaudio.visualization": [
+    "声线可视化",
+    "Sound-ray visualization"
+  ],
+  "setting.spatialaudio.animatedWaves": [
+    "声线流动动画",
+    "Animated sound rays"
+  ],
+  "setting.spatialaudio.throughWalls": [
+    "穿墙显示声线",
+    "Show rays through walls"
+  ],
+  "setting.spatialaudio.lineOpacity": [
+    "声线透明度",
+    "Ray opacity"
+  ],
+  "setting.spatialaudio.lineLimit": [
+    "最多显示声线",
+    "Maximum visible rays"
+  ],
+  "setting.spatialaudio.muteOriginal.hint": [
+    "默认开启。具备独立虚拟输出时自动配置所选应用路由，确认活动音频会话隔离后才采集。缺少设备时请使用环境配置安装；未核验前保留原音。关闭隔离会使用普通采集，可能叠音。",
+    "Enabled by default. With an independent virtual output, routes the selected app automatically and captures only after its active audio session is confirmed isolated. If the device is missing, use environment setup to install it. Until verified, the original audio stays unchanged. Disabling isolation uses ordinary capture and may duplicate audio."
+  ],
+  "setting.spatialaudio.update.hint": [
+    "缓存模式默认每 0.4 秒更新，首批声线逐步显示。遮挡与距离另行快速更新。实时模式提高采样频率；手动模式在重新采样或参数改变时更新。",
+    "Cached mode updates every 0.4 seconds by default and displays initial rays progressively. Occlusion and distance update separately at a faster rate. Real-time mode probes more frequently; manual mode updates on rebake or parameter changes."
+  ],
+  "mode.spatial_cast": [
+    "投屏应用内声音",
+    "Projection app audio"
+  ],
+  "mode.spatial_game": [
+    "游戏内声音",
+    "In-game sounds"
+  ],
+  "mode.spatial_both": [
+    "投屏与游戏声音",
+    "Projection and game audio"
+  ],
+  "mode.spatial_cached": [
+    "缓存分批更新",
+    "Cached batch updates"
+  ],
+  "mode.spatial_realtime": [
+    "实时声学更新",
+    "Real-time acoustic updates"
+  ],
+  "mode.spatial_manual": [
+    "手动重新采样",
+    "Manual acoustic rebake"
+  ],
+  "ui.spatial.subtitle": [
+    "房间声学 · 材质吸收与反射 · 投屏、后台及游戏声音定位",
+    "Room acoustics · Material absorption and reflections · Projection, background, and game audio"
+  ],
+  "ui.spatial.rebake": [
+    "重新采样",
+    "Rebake acoustics"
+  ],
+  "ui.spatial.visualize": [
+    "声线可视化",
+    "Visualize sound rays"
+  ],
+  "ui.spatial.enable": [
+    "开启空间音频",
+    "Enable spatial audio"
+  ],
+  "ui.spatial.disable": [
+    "关闭空间音频",
+    "Disable spatial audio"
+  ],
+  "ui.spatial.source": [
+    "外部应用声音来源",
+    "External app audio source"
+  ],
+  "ui.spatial.selectedCast": [
+    "跟随当前选择的投屏",
+    "Use the selected projection"
+  ],
+  "ui.spatial.castNumber": [
+    "投屏窗口 {0}",
+    "Projection window {0}"
+  ],
+  "ui.spatial.noCast": [
+    "尚未选择可用的声音来源应用",
+    "No available audio source app selected"
+  ],
+  "ui.spatial.waitingProbe": [
+    "等待首次房间声学采样",
+    "Waiting for the first room probe"
+  ],
+  "ui.spatial.metrics": [
+    "估算体积 {0} m³ · 围合度 {1}% · RT60 {2}s · 回声延迟 {3}ms",
+    "Est. volume {0} m³ · Enclosure {1}% · RT60 {2}s · Echo delay {3}ms"
+  ],
+  "ui.spatial.probeProgress": [
+    "本轮声学采样 {0}%",
+    "Current acoustic probe {0}%"
+  ],
+  "ui.spatial.captureHint": [
+    "仅采集所选投屏应用及其子进程。默认隔离模式会使用独立虚拟输出，并在核验活动会话路由后采集。缺少设备请打开环境配置；普通采集模式可能同时播放原音。",
+    "Captures only the selected app and its child processes. Default isolation uses an independent virtual output and captures after verifying the active session route. Open environment setup if the device is missing. Ordinary capture may also play the original audio."
+  ],
+  "ui.spatial.cacheHint": [
+    "默认每 0.4 秒更新缓存，仅读取已加载区块，首批声线不再等待整轮完成。实际完成速度受采样数量、反射次数和每刻预算影响；声音连续播放。开放空间及过大的房间会削弱回声。",
+    "The cache updates every 0.4 seconds using loaded chunks; initial rays appear before the full pass finishes. Completion speed depends on ray count, reflections, and per-tick budget. Playback stays continuous; open or very large spaces weaken echoes."
+  ],
+  "ui.spatial.approximation": [
+    "方块声学与房间参数为游戏近似，并非实测物理模拟。声线表示采样传播路径，不代表每一条路径都有可听声音。关闭后恢复本功能修改的音效。",
+    "Block acoustics and room parameters are game approximations, not measured physical simulation. Rays show sampled propagation paths, not guaranteed audible paths. Disabling restores the audio effects changed by this feature."
+  ],
+  "ui.spatial.showInWorld": [
+    "返回世界查看声线",
+    "View rays in the world"
+  ],
+  "ui.spatial.materials": [
+    "方块声学材质库",
+    "Block acoustic materials"
+  ],
+  "ui.spatial.materialHint": [
+    "按方块标签与类型归类；未匹配方块采用石材近似。吸收系数越高，反射能量越少；散射越高，反射越分散。可用左侧倍率整体调整。",
+    "Grouped by block tags and type; unmatched blocks use a stone approximation. Higher absorption reduces reflected energy; higher scattering spreads reflections. Adjust global scales on the left."
+  ],
+  "ui.spatial.absorptionBands": [
+    "低／中／高频吸收  {0}",
+    "Low / mid / high absorption  {0}"
+  ],
+  "ui.spatial.scatterValue": [
+    "散射系数  {0}",
+    "Scattering coefficient  {0}"
+  ],
+  "ui.spatial.material.wool": [
+    "羊毛",
+    "Wool"
+  ],
+  "ui.spatial.material.carpet": [
+    "地毯",
+    "Carpet"
+  ],
+  "ui.spatial.material.metal": [
+    "金属",
+    "Metal"
+  ],
+  "ui.spatial.material.crystal": [
+    "水晶与石英",
+    "Crystal and quartz"
+  ],
+  "ui.spatial.material.glass": [
+    "玻璃",
+    "Glass"
+  ],
+  "ui.spatial.material.wood": [
+    "木材",
+    "Wood"
+  ],
+  "ui.spatial.material.stone": [
+    "石材与默认材质",
+    "Stone and fallback"
+  ],
+  "ui.spatial.material.polished_stone": [
+    "光滑石材",
+    "Polished stone"
+  ],
+  "ui.spatial.material.soil": [
+    "泥土与泥巴",
+    "Soil and mud"
+  ],
+  "ui.spatial.material.sand": [
+    "沙与碎石",
+    "Sand and gravel"
+  ],
+  "ui.spatial.material.snow": [
+    "雪",
+    "Snow"
+  ],
+  "ui.spatial.material.ice": [
+    "冰",
+    "Ice"
+  ],
+  "ui.spatial.material.leaves": [
+    "树叶与植被",
+    "Leaves and vegetation"
+  ],
+  "ui.spatial.material.water": [
+    "水面",
+    "Water surface"
+  ],
+  "ui.spatial.material.lava": [
+    "熔岩表面",
+    "Lava surface"
+  ],
+  "ui.spatial.material.ceramic": [
+    "陶瓷与砖",
+    "Ceramic and brick"
+  ],
+  "ui.spatial.material.porous": [
+    "多孔吸音材质",
+    "Porous absorbers"
+  ],
+  "ui.spatial.material.soft": [
+    "柔软材质",
+    "Soft materials"
+  ],
+  "ui.spatial.material.organic": [
+    "有机材质",
+    "Organic materials"
+  ],
+  "ui.spatial.material.glow": [
+    "发光矿物",
+    "Luminous minerals"
+  ],
+  "ui.spatial.backend.waiting": [
+    "等待游戏音频设备",
+    "Waiting for the game audio device"
+  ],
+  "ui.spatial.backend.unavailable": [
+    "空间音频设备不可用",
+    "Spatial audio device unavailable"
+  ],
+  "ui.spatial.backend.idle": [
+    "尚未启用声音来源",
+    "No audio source enabled"
+  ],
+  "ui.spatial.backend.gameConflict": [
+    "游戏声道与现有音效冲突，保留原有效果",
+    "In-game channels use conflicting effects; their original effects are preserved"
+  ],
+  "ui.spatial.backend.ready": [
+    "空间音频处理就绪",
+    "Spatial audio processing ready"
+  ],
+  "ui.spatial.backend.efxUnavailable": [
+    "混响扩展不可用，保留声音定位",
+    "Reverb extension unavailable; spatial positioning remains available"
+  ],
+  "ui.spatialAudio.captureIdle": [
+    "应用音频采集未启动",
+    "Application audio capture is idle"
+  ],
+  "ui.spatialAudio.captureStarting": [
+    "正在连接应用音频",
+    "Connecting to application audio"
+  ],
+  "ui.spatialAudio.captureLive": [
+    "正在采集所选应用声音",
+    "Capturing the selected app audio"
+  ],
+  "ui.spatialAudio.captureReady": [
+    "音频采集已连接，等待声音",
+    "Audio capture connected; waiting for sound"
+  ],
+  "ui.spatialAudio.captureSilent": [
+    "所选应用当前没有声音",
+    "The selected app is currently silent"
+  ],
+  "ui.spatialAudio.captureStopped": [
+    "应用音频采集已结束",
+    "Application audio capture stopped"
+  ],
+  "ui.spatialAudio.captureUnsupported": [
+    "当前系统或环境不支持应用音频采集",
+    "This system or environment does not support app audio capture"
+  ],
+  "ui.spatialAudio.muteUnavailable": [
+    "尚未核验原音隔离，请在环境配置中检测设备并配置所选应用；暂不采集可能叠音的声音",
+    "Original-audio isolation is not verified. Check devices and configure the selected app in environment setup; capture that could duplicate audio is paused."
+  ],
+  "ui.spatialAudio.captureRejected": [
+    "未选择有效的独立应用音频来源",
+    "No valid independent application audio source selected"
+  ],
+  "ui.spatialAudio.captureFailed": [
+    "应用音频采集失败，请检查所选应用和系统支持",
+    "App audio capture failed; check the selected app and system support"
+  ],
+  "ui.spatial.reconnect": [
+    "重新连接音频",
+    "Reconnect audio"
+  ],
+  "ui.spatial.routing": [
+    "音频路由说明",
+    "Audio routing guide"
+  ],
+  "ui.spatial.routingHint": [
+    "默认隔离模式会把所选应用路由到独立虚拟输出，确认活动音频会话已隔离后才采集。缺少设备时可打开环境配置下载并安装 VB-CABLE，安装需管理员权限，可能需重启；不会自动重启。Minecraft 保持耳机／扬声器输出，关闭 Windows「侦听此设备」。普通采集模式可能叠音。",
+    "Default isolation routes the selected app to an independent virtual output and captures only after confirming its active session is isolated. If the device is missing, environment setup can download and install VB-CABLE. Installation needs administrator access and may need a manual restart; no automatic restart occurs. Keep Minecraft on headphones or speakers and Windows “Listen to this device” off. Ordinary capture may duplicate audio."
+  ],
+  "ui.spatial.windowsMixer": [
+    "打开 Windows 音量混合器",
+    "Open Windows Volume mixer"
+  ],
+  "ui.spatial.virtualDevice": [
+    "虚拟音频设备官网与说明",
+    "Virtual audio device website"
+  ],
+  "ui.spatial.open": [
+    "空间音频设置",
+    "Spatial audio settings"
+  ],
+  "ui.spatial.environment": [
+    "音频环境配置",
+    "Audio environment setup"
+  ],
+  "ui.spatial.env.title": [
+    "空间音频环境",
+    "Spatial audio environment"
+  ],
+  "ui.spatial.env.subtitle": [
+    "检测独立输出设备并配置所选声音应用；系统驱动操作需确认",
+    "Check independent output devices and configure the audio source app; driver actions require confirmation"
+  ],
+  "ui.spatial.env.detect": [
+    "检测音频环境",
+    "Check audio environment"
+  ],
+  "ui.spatial.env.source": [
+    "要配置的声音来源应用",
+    "Audio source app to configure"
+  ],
+  "ui.spatial.env.sourceHint": [
+    "投屏模式可切换已添加的投屏；后台声音模式可选择独立应用。一键配置只修改所选应用的输出路由，游戏输出保持耳机或扬声器。",
+    "Cycle added screens in projection mode, or choose an independent app in background mode. One-click setup changes only the selected app’s output route; keep game audio on headphones or speakers."
+  ],
+  "ui.spatial.env.driver": [
+    "VB-CABLE 驱动",
+    "VB-CABLE driver"
+  ],
+  "ui.spatial.env.detected": [
+    "已检测到",
+    "Detected"
+  ],
+  "ui.spatial.env.notDetected": [
+    "未检测到",
+    "Not detected"
+  ],
+  "ui.spatial.env.prerequisites": [
+    "环境条件",
+    "Environment prerequisites"
+  ],
+  "ui.spatial.env.prerequisitesReady": [
+    "条件已具备，待确认实际播放",
+    "Available; playback still needs verification"
+  ],
+  "ui.spatial.env.prerequisitesMissing": [
+    "条件未满足或尚未检测",
+    "Missing or not checked yet"
+  ],
+  "ui.spatial.env.appRoute": [
+    "所选应用路由",
+    "Selected app route"
+  ],
+  "ui.spatial.env.routeConfirmed": [
+    "已确认活动音频会话路由",
+    "Active audio session route confirmed"
+  ],
+  "ui.spatial.env.routeUnconfirmed": [
+    "尚未确认活动音频会话路由",
+    "Active audio session route not confirmed"
+  ],
+  "ui.spatial.env.gameOutput": [
+    "游戏播放输出",
+    "Game playback output"
+  ],
+  "ui.spatial.env.unknownDevice": [
+    "尚未检测到设备",
+    "Device not detected yet"
+  ],
+  "ui.spatial.env.actions": [
+    "配置与恢复",
+    "Setup and restoration"
+  ],
+  "ui.spatial.env.configure": [
+    "一键配置所选应用",
+    "Set up selected app"
+  ],
+  "ui.spatial.env.restore": [
+    "恢复原路由",
+    "Restore original routes"
+  ],
+  "ui.spatial.env.configureHint": [
+    "缺少驱动时，一键配置会先下载官方安装包，再请求管理员安装；已有驱动时仅配置所选应用。恢复会暂停自动路由，直至再次明确配置或重连。",
+    "If the driver is missing, setup downloads the official package and requests administrator installation. With the driver present, only the selected app is routed. Restoration pauses automatic routing until you explicitly configure or reconnect again."
+  ],
+  "ui.spatial.env.install": [
+    "安装 VB-CABLE",
+    "Install VB-CABLE"
+  ],
+  "ui.spatial.env.uninstall": [
+    "卸载 VB-CABLE",
+    "Uninstall VB-CABLE"
+  ],
+  "ui.spatial.env.driverHint": [
+    "安装和卸载只针对 VB-CABLE，并会打开 Windows 管理员确认。可能需要手动重启；不会自动重启电脑，也不自动操作其他音频设备。",
+    "Installation and removal target only VB-CABLE and open Windows administrator confirmation. A manual restart may be needed; the computer is not restarted automatically and other audio devices are not automatically modified."
+  ],
+  "ui.spatial.env.playbackHint": [
+    "让源应用输出到独立、未监听的虚拟设备；Minecraft 保持耳机或扬声器。Windows 的「侦听此设备」会再次播放原音，请保持关闭。",
+    "Route the source app to an independent virtual device without monitoring; keep Minecraft on headphones or speakers. Windows “Listen to this device” plays the original again and should remain off."
+  ],
+  "ui.spatial.env.files": [
+    "环境文件与下载",
+    "Environment files and downloads"
+  ],
+  "ui.spatial.env.openFolder": [
+    "打开环境文件夹",
+    "Open environment folder"
+  ],
+  "ui.spatial.env.openDownloads": [
+    "打开下载文件夹",
+    "Open download folder"
+  ],
+  "ui.spatial.env.folderPath": [
+    "环境位置：{0}",
+    "Environment location: {0}"
+  ],
+  "ui.spatial.env.downloadPath": [
+    "下载位置：{0}",
+    "Download location: {0}"
+  ],
+  "ui.spatial.env.resultHint": [
+    "检测通过表示设备与路由条件具备；请播放所选应用，确认空间处理及关闭功能后的声音恢复。",
+    "Passing checks confirms device and routing prerequisites; play the selected app to verify spatial processing and audio restoration after disabling."
+  ],
+  "ui.spatial.env.busy": [
+    "操作进行中，请等待系统确认或完成检测",
+    "Operation in progress; wait for system confirmation or checks"
+  ],
+  "ui.spatial.env.explicitOnly": [
+    "安装与删除仅在明确确认后执行",
+    "Installation and removal run only after explicit confirmation"
+  ],
+  "ui.spatial.env.confirm.title": [
+    "确认系统音频操作",
+    "Confirm system audio action"
+  ],
+  "ui.spatial.env.confirm.configure": [
+    "为「{0}」配置独立音频路由。缺少 VB-CABLE 时会下载官方包并请求管理员安装系统音频驱动，可能需要手动重启。已有驱动时只修改该应用路由。是否继续？",
+    "Set up an independent audio route for “{0}”. If VB-CABLE is missing, the official package is downloaded and administrator installation of the audio driver is requested. A manual restart may be needed. Otherwise only this app’s route changes. Continue?"
+  ],
+  "ui.spatial.env.confirm.install": [
+    "下载官方 VB-CABLE 安装包，并请求管理员安装系统音频驱动。Windows 会显示确认窗口，可能需要手动重启。此按钮不安装其他音频设备。是否继续？",
+    "Download the official VB-CABLE package and request administrator installation of its audio driver. Windows shows a confirmation prompt; a manual restart may be needed. This button installs no other audio devices. Continue?"
+  ],
+  "ui.spatial.env.confirm.uninstall": [
+    "先恢复保存的应用路由，再请求管理员卸载 VB-CABLE。使用此虚拟设备的应用会失去该输出，可能需要手动重启。只卸载 VB-CABLE，不删除其他音频驱动。是否继续？",
+    "Restore saved app routes, then request administrator removal of VB-CABLE. Apps using this virtual device lose that output, and a manual restart may be needed. Only VB-CABLE is removed; other audio drivers are kept. Continue?"
+  ],
+  "ui.spatial.env.cancel": [
+    "取消",
+    "Cancel"
+  ],
+  "ui.spatial.env.confirm.action": [
+    "确认继续",
+    "Confirm and continue"
+  ],
+  "ui.spatial.env.status.unchecked": [
+    "尚未检测音频环境",
+    "Audio environment not checked yet"
+  ],
+  "ui.spatial.env.status.unsupported": [
+    "当前系统不支持此环境配置",
+    "This environment setup is not supported on this system"
+  ],
+  "ui.spatial.env.status.checking": [
+    "正在检测音频设备与路由条件",
+    "Checking audio devices and routing prerequisites"
+  ],
+  "ui.spatial.env.status.missingDriver": [
+    "尚未检测到 VB-CABLE，请配置或安装",
+    "VB-CABLE not detected; set up or install it"
+  ],
+  "ui.spatial.env.status.ready": [
+    "设备与路由条件具备，实际播放待确认",
+    "Device and routing prerequisites available; playback unverified"
+  ],
+  "ui.spatial.env.status.downloading": [
+    "正在下载官方 VB-CABLE 安装包",
+    "Downloading the official VB-CABLE package"
+  ],
+  "ui.spatial.env.status.verifying": [
+    "正在检查安装包签名与文件",
+    "Checking installer signature and files"
+  ],
+  "ui.spatial.env.status.installing": [
+    "正在请求管理员安装，请查看 Windows 提示",
+    "Requesting administrator installation; check the Windows prompt"
+  ],
+  "ui.spatial.env.status.uninstalling": [
+    "正在恢复路由并请求管理员卸载",
+    "Restoring routes and requesting administrator removal"
+  ],
+  "ui.spatial.env.status.restartRequired": [
+    "系统提示需要重启，请保存后手动重启",
+    "A restart is required; save your work and restart manually"
+  ],
+  "ui.spatial.env.status.routing": [
+    "正在配置所选应用的独立输出",
+    "Configuring the selected app’s independent output"
+  ],
+  "ui.spatial.env.status.routed": [
+    "已确认所选应用活动会话的路由",
+    "Selected app’s active session route confirmed"
+  ],
+  "ui.spatial.env.status.waitingApp": [
+    "等待所选应用产生音频会话",
+    "Waiting for the selected app to create an audio session"
+  ],
+  "ui.spatial.env.status.restored": [
+    "已恢复保存的原音频路由",
+    "Saved original audio routes restored"
+  ],
+  "ui.spatial.env.status.suspended": [
+    "已暂停自动路由，可明确配置或重连后恢复",
+    "Automatic routing paused; configure or reconnect explicitly to resume"
+  ],
+  "ui.spatial.env.status.failed": [
+    "音频环境操作失败，请查看详情后重试",
+    "Audio environment action failed; check details before retrying"
+  ],
+  "ui.spatial.env.status.signatureFailed": [
+    "安装包签名检查未通过，未运行安装器",
+    "Installer signature verification failed; installer was not run"
+  ],
+  "ui.spatial.env.status.downloadFailed": [
+    "官方安装包下载失败，可稍后重试",
+    "Official package download failed; try again later"
+  ],
+  "ui.spatial.env.status.administratorCancelled": [
+    "管理员操作已取消，未确认安装或卸载成功",
+    "Administrator action cancelled; installation or removal not confirmed"
+  ],
+  "ui.spatial.env.status.defaultsRestoreFailed": [
+    "默认播放输出恢复失败，请检查 Windows 音频设置",
+    "Default playback output restoration failed; check Windows audio settings"
+  ],
+  "ui.spatial.env.status.driverRemoved": [
+    "未再检测到 VB-CABLE 驱动",
+    "VB-CABLE driver no longer detected"
+  ],
+  "ui.spatial.env.status.sourceUnavailable": [
+    "所选声音来源应用不可用，请重新选择",
+    "Selected audio source app unavailable; select it again"
+  ],
+  "ui.spatial.env.status.routeUnsupported": [
+    "当前 Windows 环境不支持此应用路由接口",
+    "This Windows environment does not support this app routing interface"
+  ],
+  "ui.spatial.env.status.defaultsCable": [
+    "Windows 默认播放设备是虚拟线，请改为耳机或扬声器",
+    "Windows default playback uses the virtual cable; select headphones or speakers"
+  ],
+  "ui.spatial.env.open": [
+    "环境配置／卸载",
+    "Setup / uninstall"
+  ],
+  "ui.spatial.env.selectActiveCast": [
+    "请先开启投屏并选择正在采集的应用，或在后台声音模式选择正在运行的应用，再一键配置声音。",
+    "Enable projection and select an active screen, or choose a running app in background audio mode, before configuring audio."
+  ],
+  "mode.spatial_background": [
+    "后台应用内声音",
+    "Background app audio"
+  ],
+  "mode.spatial_background_game": [
+    "后台与游戏声音",
+    "Background and game audio"
+  ],
+  "ui.spatial.chooseApp": [
+    "选择后台应用",
+    "Choose background app"
+  ],
+  "ui.spatial.refreshApps": [
+    "刷新应用列表",
+    "Refresh apps"
+  ],
+  "ui.spatial.noApps": [
+    "未找到可用应用，请启动需要播放声音的程序后刷新",
+    "No apps found; start the app that will play audio, then refresh"
+  ],
+  "ui.spatial.selectApp": [
+    "选择声音来源应用",
+    "Select audio source app"
+  ],
+  "ui.spatial.appSearch": [
+    "搜索应用名称",
+    "Search app name"
+  ],
+  "setting.spatialaudio.backgroundFollow": [
+    "后台声源跟随玩家",
+    "Follow player with background source"
+  ],
+  "setting.spatialaudio.backgroundDistance": [
+    "后台声源距离",
+    "Background source distance"
+  ],
+  "setting.spatialaudio.backgroundHeight": [
+    "后台声源高度",
+    "Background source height"
+  ],
+  "ui.spatial.audibility": [
+    "遮挡 {0}% · 预计可听距离 {1}m（工程阈值估算）",
+    "Obstruction {0}% · Estimated audible radius {1}m (engineering threshold)"
+  ],
+  "ui.spatial.env.status.restoring": [
+    "正在恢复所选应用原来的音频输出",
+    "Restoring the selected app’s original audio output"
+  ],
+  "ui.spatial.material.copper": [
+    "铜",
+    "Copper"
+  ],
+  "ui.spatial.material.iron": [
+    "铁与钢",
+    "Iron and steel"
+  ],
+  "ui.spatial.material.gold": [
+    "黄金",
+    "Gold"
+  ],
+  "ui.spatial.material.netherite": [
+    "下界合金",
+    "Netherite"
+  ],
+  "ui.spatial.material.concrete": [
+    "混凝土",
+    "Concrete"
+  ],
+  "ui.spatial.material.terracotta": [
+    "陶瓦",
+    "Terracotta"
+  ],
+  "ui.spatial.material.brick": [
+    "砖块",
+    "Brick"
+  ],
+  "ui.spatial.material.sandstone": [
+    "砂岩",
+    "Sandstone"
+  ],
+  "ui.spatial.material.deepslate": [
+    "深板岩",
+    "Deepslate"
+  ],
+  "ui.spatial.material.basalt": [
+    "玄武岩",
+    "Basalt"
+  ],
+  "ui.spatial.material.obsidian": [
+    "黑曜石",
+    "Obsidian"
+  ],
+  "ui.spatial.material.netherrack": [
+    "下界岩",
+    "Netherrack"
+  ],
+  "ui.spatial.material.end_stone": [
+    "末地石",
+    "End stone"
+  ],
+  "ui.spatial.material.bookshelf": [
+    "书架",
+    "Bookshelf"
+  ],
+  "ui.spatial.material.hay": [
+    "干草",
+    "Hay"
+  ],
+  "ui.spatial.material.sponge": [
+    "海绵",
+    "Sponge"
+  ],
+  "ui.spatial.material.sculk": [
+    "幽匿",
+    "Sculk"
+  ],
+  "ui.spatial.material.slime": [
+    "黏液",
+    "Slime"
+  ],
+  "ui.spatial.material.honey": [
+    "蜂蜜",
+    "Honey"
+  ],
+  "ui.spatial.material.powder_snow": [
+    "细雪",
+    "Powder snow"
+  ],
+  "ui.spatial.material.bone": [
+    "骨块",
+    "Bone"
+  ],
+  "ui.spatial.material.calcite": [
+    "方解石",
+    "Calcite"
+  ],
+  "setting.appcast.inputMode": [
+    "鼠标输入方式",
+    "Mouse input method"
+  ],
+  "mode.appcast_background_input": [
+    "后台交互（保留游戏前台）",
+    "Background interaction (keep game foreground)"
+  ],
+  "mode.appcast_native_foreground": [
+    "系统真实鼠标（切到源应用）",
+    "System mouse (switch to source app)"
+  ],
+  "ui.appcast.nativeInputHint": [
+    "系统真实输入需要原程序位于前台。选择此模式后，按交互键会切到所选程序，直接使用系统鼠标与键盘；Alt+Tab 返回游戏。默认后台交互不会主动切换前台。",
+    "True system input requires the source app in the foreground. In this mode, the interaction key switches to the selected app for direct system mouse and keyboard input; Alt+Tab returns to the game. Default background interaction does not deliberately switch foreground."
+  ],
+  "ui.appcast.nativeInputReady": [
+    "已切换系统鼠标交互",
+    "Switched to system mouse interaction"
+  ],
+  "ui.appcast.focusProtected": [
+    "已阻止会切换前台的后台操作",
+    "Blocked background operation that would change foreground"
+  ],
+  "ui.spatial.env.status.waitingPlayback": [
+    "等待游戏空间音频播放器就绪，原应用输出暂不改变",
+    "Waiting for the game’s spatial audio player; original app output is unchanged"
+  ],
+  "ui.spatial.qualityPreset": [
+    "恢复高品质声学预设",
+    "Restore high-quality acoustic preset"
+  ],
+  "ui.spatialAudio.captureRetry": [
+    "已停止隔离，稍后重试",
+    "Isolation stopped; retrying shortly"
+  ],
+  "ui.spatialAudio.capturePaused": [
+    "已暂停，请重新连接",
+    "Paused; reconnect to retry"
+  ]
+}

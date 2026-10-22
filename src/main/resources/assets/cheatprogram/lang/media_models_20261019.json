@@ -1,0 +1,330 @@
+{
+  "module.modelwear": [
+    "模型穿戴",
+    "Model wear"
+  ],
+  "module.modelwear.desc": [
+    "导入静态 OBJ/glTF/GLB 模型，在玩家身边 ≤4 格内穿戴或替换本地人物外观",
+    "Import static OBJ/glTF/GLB models; attach within ≤4 blocks of the player or replace the local player appearance"
+  ],
+  "mode.modelwear_attach": [
+    "附加模型",
+    "Attach model"
+  ],
+  "mode.modelwear_replace": [
+    "替换本地人物外观",
+    "Replace local player appearance"
+  ],
+  "setting.modelwear.mode": [
+    "模型显示方式",
+    "Model display mode"
+  ],
+  "setting.modelwear.offsetX": [
+    "左右偏移（总距离 ≤4 格）",
+    "Side offset (total distance ≤4 blocks)"
+  ],
+  "setting.modelwear.offsetY": [
+    "上下偏移（总距离 ≤4 格）",
+    "Vertical offset (total distance ≤4 blocks)"
+  ],
+  "setting.modelwear.offsetZ": [
+    "前后偏移（总距离 ≤4 格）",
+    "Forward offset (total distance ≤4 blocks)"
+  ],
+  "setting.modelwear.size": [
+    "模型缩放",
+    "Model scale"
+  ],
+  "setting.modelwear.yaw": [
+    "水平旋转",
+    "Yaw"
+  ],
+  "setting.modelwear.pitch": [
+    "俯仰旋转",
+    "Pitch"
+  ],
+  "setting.modelwear.roll": [
+    "侧倾旋转",
+    "Roll"
+  ],
+  "setting.modelwear.opacity": [
+    "模型不透明度",
+    "Model opacity"
+  ],
+  "setting.modelwear.followBody": [
+    "跟随身体朝向",
+    "Follow body direction"
+  ],
+  "setting.modelwear.firstPerson": [
+    "第一人称显示模型",
+    "Show model in first person"
+  ],
+  "setting.modelwear.asset": [
+    "本地模型资源",
+    "Local model asset"
+  ],
+  "ui.modelWear.fileHint": [
+    "静态 OBJ / glTF / GLB 文件路径，可拖入文件",
+    "Static OBJ / glTF / GLB path; drop a file here"
+  ],
+  "ui.modelWear.choose": [
+    "选择模型文件",
+    "Choose model file"
+  ],
+  "ui.modelWear.import": [
+    "导入模型",
+    "Import model"
+  ],
+  "ui.modelWear.previewHint": [
+    "左拖旋转预览，右拖移动模型，中键拖动旋转模型；滚轮缩放预览，Shift+滚轮缩放模型。偏移 ≤4 格。",
+    "Left drag: orbit preview; right drag: move model; middle drag: rotate model. Scroll: preview zoom; Shift+scroll: model scale. Offset ≤4 blocks."
+  ],
+  "ui.modelWear.enable": [
+    "启用模型穿戴",
+    "Enable model wear"
+  ],
+  "ui.modelWear.disable": [
+    "停用模型穿戴",
+    "Disable model wear"
+  ],
+  "ui.modelWear.resetView": [
+    "重置预览视角",
+    "Reset preview view"
+  ],
+  "ui.modelWear.clear": [
+    "清除当前模型",
+    "Clear current model"
+  ],
+  "ui.modelWear.empty": [
+    "请先导入静态模型",
+    "Import a static model first"
+  ],
+  "ui.modelWear.loading": [
+    "正在读取模型…",
+    "Loading model…"
+  ],
+  "ui.modelWear.ready": [
+    "模型已就绪",
+    "Model ready"
+  ],
+  "ui.modelWear.invalid": [
+    "模型文件无效、缺失或已损坏",
+    "Model file is invalid, missing or damaged"
+  ],
+  "ui.modelWear.unsupported": [
+    "仅支持静态 OBJ/glTF 2/GLB 和 cpmodel；不支持骨骼、变形与扩展",
+    "Supported: static OBJ/glTF 2/GLB and cpmodel; rigs, morphs and extensions are unsupported"
+  ],
+  "ui.modelWear.referenceBlocked": [
+    "模型引用须为同目录内的本地文件",
+    "Model references must be local files within its folder"
+  ],
+  "ui.modelWear.tooLarge": [
+    "模型或纹理超过导入限制（10 MiB、4 万三角形）",
+    "Model or textures exceed import limits (10 MiB, 40,000 triangles)"
+  ],
+  "ui.modelWear.saveFailed": [
+    "无法保存模型，请检查本地配置状态",
+    "Could not save model; check local configuration state"
+  ],
+  "ui.scopedShare.title": [
+    "独立配置码",
+    "Feature configuration code"
+  ],
+  "ui.scopedShare.open": [
+    "导入 / 导出独立配置码",
+    "Import / export feature code"
+  ],
+  "ui.scopedShare.scopeHint": [
+    "模型、武器动画、粒子和建筑各用独立配置码。分享码不含账号、私密坐标或库存 NBT。",
+    "Models, weapon animations, particles and buildings use separate codes. Codes exclude accounts, private coordinates and inventory NBT."
+  ],
+  "ui.scopedShare.modelHint": [
+    "模型码包含静态模型、纹理与穿戴参数，偏移总距离 ≤4 格。",
+    "Model codes include a static model, textures and wear settings; total offset ≤4 blocks."
+  ],
+  "ui.scopedShare.weaponHint": [
+    "武器动画码仅包含此模块的动画与持握参数。",
+    "Weapon codes contain only this module’s animation and held-item settings."
+  ],
+  "ui.scopedShare.particlesHint": [
+    "粒子码包含粒子轮次和参数；世界、维度和固定坐标会移除。",
+    "Particle codes include rounds and settings; world, dimension and fixed coordinates are removed."
+  ],
+  "ui.scopedShare.buildingHint": [
+    "建筑码包含当前蓝图的方块与参数，不含容器库存或方块实体 NBT。",
+    "Building codes include the current blueprint’s blocks and settings, without container inventories or block-entity NBT."
+  ],
+  "ui.scopedShare.export": [
+    "生成并复制",
+    "Generate and copy"
+  ],
+  "ui.scopedShare.paste": [
+    "粘贴配置码",
+    "Paste code"
+  ],
+  "ui.scopedShare.validate": [
+    "校验配置码",
+    "Validate code"
+  ],
+  "ui.scopedShare.import": [
+    "校验并导入",
+    "Validate and import"
+  ],
+  "ui.scopedShare.loaded": [
+    "已载入 {0} 字符",
+    "Loaded {0} characters"
+  ],
+  "ui.scopedShare.hint": [
+    "粘贴同类配置码，可先校验再导入。",
+    "Paste a code for this feature; validate it before importing."
+  ],
+  "ui.scopedShare.working": [
+    "正在处理配置码…",
+    "Processing code…"
+  ],
+  "ui.scopedShare.copied": [
+    "配置码已生成并复制到剪贴板",
+    "Code generated and copied to clipboard"
+  ],
+  "ui.scopedShare.valid": [
+    "配置码校验通过，可以导入",
+    "Code validated; ready to import"
+  ],
+  "ui.scopedShare.imported": [
+    "此功能的配置已导入",
+    "Feature configuration imported"
+  ],
+  "ui.scopedShare.invalid": [
+    "配置码格式或内容无效",
+    "Code format or content is invalid"
+  ],
+  "ui.scopedShare.checksum": [
+    "配置码校验失败，内容可能不完整",
+    "Code checksum failed; content may be incomplete"
+  ],
+  "ui.scopedShare.wrongScope": [
+    "配置码属于其他功能，或含不允许的字段",
+    "Code belongs to another feature or contains unsupported fields"
+  ],
+  "ui.scopedShare.tooLarge": [
+    "配置码或资源超过大小限制",
+    "Code or assets exceed size limits"
+  ],
+  "ui.scopedShare.assetMissing": [
+    "请先载入模型或建筑蓝图；配置码所需资源缺失",
+    "Load a model or building blueprint first; required assets are missing"
+  ],
+  "ui.scopedShare.privateContent": [
+    "配置码含私密坐标或外部引用，无法导入",
+    "Code contains private coordinates or external references and cannot be imported"
+  ],
+  "ui.scopedShare.saveFailed": [
+    "无法保存配置，请检查本地配置状态",
+    "Could not save; check local configuration state"
+  ],
+  "ui.music.search": [
+    "搜索",
+    "Search"
+  ],
+  "ui.music.searchHint": [
+    "搜索歌曲、歌手或专辑",
+    "Search tracks, artists or albums"
+  ],
+  "ui.music.radio": [
+    "私人漫游",
+    "Personal radio"
+  ],
+  "ui.music.moreResults": [
+    "更多结果",
+    "More results"
+  ],
+  "ui.musicPlayer.invalidSearch": [
+    "请输入 1–120 字符的搜索词",
+    "Enter a search query of 1–120 characters"
+  ],
+  "ui.musicPlayer.searchUnsupported": [
+    "当前平台暂不支持搜索",
+    "Search is unavailable on this platform"
+  ],
+  "ui.musicPlayer.radioUnsupported": [
+    "当前平台暂不支持私人漫游",
+    "Personal radio is unavailable on this platform"
+  ],
+  "ui.musicPlayer.translatedLyricsDisabled": [
+    "歌词翻译已关闭",
+    "Lyric translation is off"
+  ],
+  "ui.musicPlayer.translatedLyricsUnsupported": [
+    "当前平台暂不提供翻译歌词",
+    "This platform does not provide translated lyrics"
+  ],
+  "ui.musicPlayer.translatedLyricsUnavailable": [
+    "当前歌曲暂无平台翻译歌词",
+    "No translated lyrics are available for this track"
+  ],
+  "ui.musicPlayer.translatedLyricsReady": [
+    "平台翻译歌词已就绪",
+    "Translated lyrics ready"
+  ],
+  "setting.floatingsubtitles.translationSide": [
+    "翻译左右偏移",
+    "Translation side offset"
+  ],
+  "setting.floatingsubtitles.translationHeight": [
+    "翻译上下偏移",
+    "Translation height offset"
+  ],
+  "setting.floatingsubtitles.translationDepth": [
+    "翻译前后偏移",
+    "Translation depth offset"
+  ],
+  "setting.floatingsubtitles.translationScale": [
+    "翻译文字大小",
+    "Translation text scale"
+  ],
+  "ui.lyrics.lineTiming": [
+    "当前歌词使用逐行时间轴",
+    "Current lyrics use line timing"
+  ],
+  "ui.lyrics.wordTiming": [
+    "当前歌词使用逐字时间轴",
+    "Current lyrics use word timing"
+  ],
+  "mode.appcast_view": [
+    "跟随玩家屏幕",
+    "Follow player screen"
+  ],
+  "mode.lyrics_view": [
+    "跟随玩家屏幕",
+    "Follow player screen"
+  ],
+  "module.selfname": [
+    "名字显示与修改",
+    "Name display and editing"
+  ],
+  "module.selfname.desc": [
+    "显示并修改本地头顶名字；不修改远程账号名字，可调整大小、高度和范围",
+    "Display and edit the local overhead name without changing the remote account name; adjust size, height and range"
+  ],
+  "setting.selfname.customName": [
+    "本地显示名字（留空使用账号名字）",
+    "Local display name (blank uses account name)"
+  ],
+  "setting.selfname.customName.hint": [
+    "支持特殊文字、符号和 emoji；仅修改本地显示",
+    "Supports special characters, symbols and emoji; changes local display only"
+  ],
+  "setting.appcast.screens": [
+    "本地屏幕列表",
+    "Local screen list"
+  ],
+  "setting.appcast.interactionKey": [
+    "屏幕交互按键",
+    "Screen interaction key"
+  ],
+  "setting.floatingsubtitles.layoutDefaultsVersion": [
+    "布局默认值版本",
+    "Layout defaults version"
+  ]
+}

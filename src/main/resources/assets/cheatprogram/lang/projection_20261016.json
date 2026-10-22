@@ -1,0 +1,74 @@
+{
+  "setting.hud.worldScreen": [
+    "3D 屏幕",
+    "3D world screen"
+  ],
+  "setting.hud.worldScreenWidth": [
+    "屏幕宽度",
+    "Screen width"
+  ],
+  "setting.hud.worldScreenDistance": [
+    "放到面前的距离",
+    "Placement distance"
+  ],
+  "setting.hud.worldScreenYaw": [
+    "屏幕水平角度",
+    "Screen yaw"
+  ],
+  "setting.hud.worldScreenPitch": [
+    "屏幕俯仰角度",
+    "Screen pitch"
+  ],
+  "setting.hud.worldScreenRoll": [
+    "屏幕滚转角度",
+    "Screen roll"
+  ],
+  "setting.hud.worldScreenOpacity": [
+    "屏幕透明度",
+    "Screen opacity"
+  ],
+  "setting.hud.worldScreenFrameRate": [
+    "空闲刷新帧率",
+    "Idle refresh rate"
+  ],
+  "setting.hud.worldScreenAutoInteract": [
+    "准心移入后自动交互",
+    "Interact when aimed at"
+  ],
+  "setting.hud.worldScreenThroughWalls": [
+    "允许透过方块查看",
+    "Visible through blocks"
+  ],
+  "setting.hud.worldScreenDoublePress": [
+    "双击界面按键恢复普通面板",
+    "Double GUI key restores flat panel"
+  ],
+  "setting.hud.worldScreenDoubleMillis": [
+    "双击识别间隔",
+    "Double press interval"
+  ],
+  "setting.hud.toggleSound": [
+    "功能开关音效",
+    "Module toggle sounds"
+  ],
+  "setting.hud.toggleSoundVolume": [
+    "开关音效音量",
+    "Toggle sound volume"
+  ],
+  "ui.worldpanel.place": [
+    "将 3D 控制面板放到面前",
+    "Place 3D control panel ahead"
+  ],
+  "ui.worldpanel.restore": [
+    "关闭 3D 屏幕，恢复普通面板",
+    "Restore ordinary control panel"
+  ],
+  "ui.worldpanel.controls": [
+    "Alt 拖动移动 · Shift 拖动旋转 · Ctrl 滚轮缩放 · Esc 释放鼠标 · 双击界面按键恢复（默认%s）",
+    "Alt-drag moves · Shift-drag rotates · Ctrl-wheel scales · Esc releases mouse · Double GUI key restores flat panel (default %s)"
+  ],
+  "ui.particles.open": [
+    "粒子特效编辑器",
+    "Particle effects editor"
+  ]
+}

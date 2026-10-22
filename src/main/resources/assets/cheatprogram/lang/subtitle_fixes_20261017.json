@@ -1,0 +1,186 @@
+{
+  "setting.floatingsubtitles.content": [
+    "字幕内容",
+    "Caption content"
+  ],
+  "setting.floatingsubtitles.speechEngine": [
+    "对白识别引擎",
+    "Dialogue recognition engine"
+  ],
+  "setting.floatingsubtitles.speechLanguage": [
+    "对白识别语言",
+    "Dialogue language"
+  ],
+  "setting.floatingsubtitles.speechChunk": [
+    "对白采集分段时长",
+    "Dialogue capture segment"
+  ],
+  "setting.floatingsubtitles.speechHold": [
+    "对白字幕停留时间",
+    "Dialogue caption hold time"
+  ],
+  "setting.floatingsubtitles.statusText": [
+    "无字幕时显示状态",
+    "Show status when captions are unavailable"
+  ],
+  "setting.floatingsubtitles.typeSpeed": [
+    "打字速度（字／秒）",
+    "Typing speed (characters / second)"
+  ],
+  "setting.floatingsubtitles.typeCursor": [
+    "显示打字光标",
+    "Show typing cursor"
+  ],
+  "mode.captions_auto": [
+    "自动：歌词优先，查无则识别投屏对白",
+    "Automatic: lyrics first, projected dialogue as fallback"
+  ],
+  "mode.captions_lyrics": [
+    "仅歌曲歌词",
+    "Song lyrics only"
+  ],
+  "mode.captions_speech": [
+    "仅投屏对白",
+    "Projected dialogue only"
+  ],
+  "mode.captions_shared": [
+    "沿用 AI 语音的本地设置",
+    "Use AI voice local settings"
+  ],
+  "mode.captions_windows": [
+    "Windows 本地识别",
+    "Windows local recognition"
+  ],
+  "mode.captions_whisper": [
+    "Whisper 本地模型",
+    "Local Whisper model"
+  ],
+  "mode.captions_lang_auto": [
+    "自动／沿用设置",
+    "Automatic / use existing setting"
+  ],
+  "mode.captions_lang_zh": [
+    "简体中文",
+    "Simplified Chinese"
+  ],
+  "mode.captions_lang_en": [
+    "英语",
+    "English"
+  ],
+  "mode.captions_lang_ja": [
+    "日语",
+    "Japanese"
+  ],
+  "mode.captions_lang_ko": [
+    "韩语",
+    "Korean"
+  ],
+  "mode.captions_lang_zh_tw": [
+    "繁体中文",
+    "Traditional Chinese"
+  ],
+  "mode.captions_lang_es": [
+    "西班牙语",
+    "Spanish"
+  ],
+  "mode.captions_lang_fr": [
+    "法语",
+    "French"
+  ],
+  "mode.captions_lang_de": [
+    "德语",
+    "German"
+  ],
+  "mode.lyrics_typewriter": [
+    "打字机逐字出现",
+    "Typewriter reveal"
+  ],
+  "module.floatingsubtitles.desc": [
+    "将歌词、本地字幕与投屏语音字幕悬浮在三维世界中，支持打字机效果、逐字高亮和自定义位置",
+    "Float lyrics, local subtitles, and projected speech captions in the 3D world, with typewriter effects, word highlighting, and custom placement"
+  ],
+  "ui.lyrics.disabledStatus": [
+    "悬浮字幕已关闭",
+    "Floating subtitles are disabled"
+  ],
+  "ui.lyrics.synced": [
+    "歌词已同步，正在世界内显示",
+    "Lyrics synchronized and displaying in the world"
+  ],
+  "ui.lyrics.speechNeedsCast": [
+    "对白字幕需要先选择并开启一个投屏窗口",
+    "Dialogue captions require a selected, enabled projection window"
+  ],
+  "ui.lyrics.speechSettings": [
+    "配置本地语音识别",
+    "Configure local speech recognition"
+  ],
+  "ui.lyrics.captionModeHint": [
+    "自动模式优先显示同步歌词；无法匹配或没有时间轴时，使用所选投屏的声音生成对白字幕。也可只显示歌词或只识别对白",
+    "Automatic mode prefers synchronized lyrics. If no match or timeline is available, it transcribes the selected projection’s audio. Lyrics-only and dialogue-only modes are also available"
+  ],
+  "ui.lyrics.overrideHint": [
+    "视频标题和频道作者可能不是标准歌名、歌手；上面的名称可覆盖音乐／投屏元数据，填写实际歌曲信息或导入 LRC，可提高歌词匹配准确度",
+    "Video titles and channel authors may differ from the actual song and artist. The fields above override music / projection metadata; enter the song details or import LRC for accurate lyrics"
+  ],
+  "ui.lyrics.speechHint": [
+    "对白仅采集所选投屏应用的声音，不使用麦克风、不上传音频；分段识别会有延迟。复用 AI 语音本机引擎／模型配置，无需开启麦克风或填写 AI API Key",
+    "Dialogue capture uses only the selected projected app’s audio, not the microphone, and uploads no audio. Segmented recognition introduces delay. It reuses AI voice local engine / model settings; no microphone activation or AI API key is needed"
+  ],
+  "ui.lyrics.metadataHint": [
+    "歌曲自动匹配使用 Windows 媒体信息；播放器未提供标准歌曲信息时，可手动填写歌名／歌手、导入字幕，或改用投屏对白识别",
+    "Automatic song matching uses Windows media metadata. If standard song information is missing, enter the title / artist, import subtitles, or use projected dialogue recognition"
+  ],
+  "ui.lyrics.networkHint": [
+    "歌词查询通过 LRCLIB 现行接口与搜索回退，仅发送歌名、歌手、专辑和时长；可关闭联网。对白识别在本机处理，不上传声音",
+    "Lyrics lookup uses LRCLIB’s current API and search fallback, sending only title, artist, album, and duration; online lookup can be disabled. Dialogue recognition runs locally without uploading audio"
+  ],
+  "ui.floatingSubtitles.speech.idle": [
+    "对白识别待机",
+    "Dialogue recognition idle"
+  ],
+  "ui.floatingSubtitles.speech.loading": [
+    "正在准备本地识别引擎…",
+    "Preparing local recognition engine…"
+  ],
+  "ui.floatingSubtitles.speech.listening": [
+    "正在采集投屏对白…",
+    "Capturing projected dialogue…"
+  ],
+  "ui.floatingSubtitles.speech.recognizing": [
+    "正在本地识别对白…",
+    "Recognizing dialogue locally…"
+  ],
+  "ui.floatingSubtitles.speech.silent": [
+    "当前投屏没有可识别的声音",
+    "No recognizable audio in the current projection"
+  ],
+  "ui.floatingSubtitles.speech.empty": [
+    "这段声音未识别出文字，继续采集",
+    "No words recognized in this segment; continuing capture"
+  ],
+  "ui.floatingSubtitles.speech.unsupported": [
+    "当前系统不支持投屏声音采集",
+    "This system does not support projected-app audio capture"
+  ],
+  "ui.floatingSubtitles.speech.language": [
+    "当前本地引擎不支持所选语言，请更换语言或模型",
+    "The local engine does not support this language; choose another language or model"
+  ],
+  "ui.floatingSubtitles.speech.dependency": [
+    "本地识别依赖未就绪，请检查语音环境配置",
+    "Local recognition dependencies are missing; check the voice environment"
+  ],
+  "ui.floatingSubtitles.speech.model": [
+    "未找到可用的本地识别模型，请在语音设置中选择",
+    "No usable local recognition model found; choose one in voice settings"
+  ],
+  "ui.floatingSubtitles.speech.failed": [
+    "对白识别失败，请检查引擎与模型后重试",
+    "Dialogue recognition failed; check the engine and model, then retry"
+  ],
+  "ui.floatingSubtitles.speech.timeout": [
+    "本地识别超时，请缩短分段或使用更快的模型",
+    "Local recognition timed out; shorten the segment or use a faster model"
+  ]
+}
