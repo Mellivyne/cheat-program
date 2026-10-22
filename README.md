@@ -1,38 +1,69 @@
-# Cheat Program Open v1.0
+> [!NOTE]
+> **Supported interface languages:** English · Simplified Chinese · Traditional Chinese · Japanese · Korean · Spanish · French · German.
+> The interface follows your system language on first launch, with English as the fallback. You can change it in settings.
 
-独立 Fabric 开源版。只提供模组 JAR，没有注入器，也没有额外启动器。
+# Cheat Program Open
 
-## 功能范围
+A customizable Fabric client that brings application screens, spatial sound, particle scenes, and creative tools into your Minecraft world. Build a space that feels like your own, then share your creations through configuration codes.
 
-左侧只有收藏夹和功能；顶部保留功能与配置，移除好友、AI 控制及 AI 玩家入口。
+## Highlights
 
-- 原视觉分类的全部 31 项功能。
-- 建筑导入、机器人、训练机器人、重复发言、发言追踪。
-- 自动穿装备、背包整理、自动拿取。
-- 按键显示、信息面板、后视镜、网络与性能趋势、时间修改、缩放、声音方向提示。
-- 死亡点与回收路线。
+### In-world screen projection
 
-共 47 项注册功能。共享引擎、类型和兼容代码仍保留在源码中；其余模块没有注册，不会出现在功能、搜索或配置导入中。
+Place application windows or your desktop on adjustable screens inside Minecraft. Use multiple screens, change their position, size, rotation, and brightness, and choose between world placement and screen-following layouts. Native-resolution and native-frame-rate capture options are available, alongside configurable mouse and keyboard interaction.
 
-## 界面调整
+Screen capture and application input use Windows native helpers. Compatibility can vary between applications and capture methods.
 
-右上设置抽屉中的界面按键可以重新绑定，默认右 Shift。普通面板开关和 3D 面板双击退出使用相同按键，提示文字同步显示实际按键。
+### Spatial audio
 
-模型穿戴预览始终显示当前玩家的皮肤，模型和玩家在同一个三维空间旋转、缩放与遮挡；进入世界后使用。未导入模型也可预览玩家。
+Give a projected application or a selected background application a sound source in the world. Material-aware acoustic sampling models absorption, reflection, scattering, obstruction, and room response, so changing the surroundings can change how sound is heard.
 
-灵动岛使用清晰背景采样、低白色遮罩和边缘折射，保留原有内容与动画。
+Adjust the listening range, reflections, reverberation, volume, and sampling budget. Cached updates let you balance acoustic detail and performance, while optional sound-ray visualization helps you explore the scene. Application-audio isolation uses a configured virtual audio device, with setup and status controls available in the interface.
 
-## 安装
+### Particle effects and motion paths
 
-从 `outputs/fabric/<Minecraft版本>/` 选择对应 JAR，放入该 Fabric 实例的 mods 目录。不要跨版本使用。
+Create particle arrangements with native particle previews. Position emitters around the player, adjust their transforms, and animate them with lines, circles, helices, figure-eight paths, waves, spirals, or custom paths. Preview the result before using it in the world.
 
-本版和完整版使用相同 Fabric mod id，不能同时安装。安装本版前移出完整版 JAR；请保留备份。项目不会自动替换现有游戏安装。
+### Building import and preview
 
-开源版使用独立的 `config/cheatprogram-open/`。不会自动复制完整版音乐登录、API 密钥、配置或存档。首次使用需自己登录平台；凭据保持本地存储，不包含在源码发布包。
+Select and save buildings, preview their placement, and import them into another location or world. Placement tools include position adjustments and air-replacement controls. Server-side placement requires the appropriate permissions.
 
-## 构建
+### Configuration codes
 
-Windows：准备 Python 3 与兼容的 Gradle 运行 JDK，执行：
+Share a creation without asking someone else to recreate every setting. Dedicated configuration codes support **particle effects, buildings, wearable models, and weapon animations**, including the settings and supported assets needed for that creation.
+
+Codes can preserve details such as placement, scale, rotation, and animation settings. Scoped imports validate the payload and checksum before applying it. Profiles also let you keep different setups for different worlds or activities.
+
+### Music and floating lyrics
+
+Browse music libraries with animated album layouts, search for songs, and display floating lyrics in the world. Customize lyric placement, appearance, transitions, translation display, and player-following behavior. Platform features and playback quality depend on the connected service and your account access.
+
+### Models, visuals, and everyday tools
+
+- Import static OBJ, glTF, or GLB models, position them around your player, and preview them alongside your current skin in a shared 3D space.
+- Customize the liquid-glass control panel, rebind its opening key, and arrange HUD elements, visual effects, capes, and other cosmetic features.
+- Use robots and training robots, chat tools, automatic equipment selection, inventory organization, and container item transfer.
+- Keep useful information nearby with keystrokes, information panels, a rear-view mirror, network and performance trends, zoom, time controls, directional sound indicators, and death-point recovery routes.
+
+## Getting started
+
+1. Install Fabric Loader for your exact Minecraft version.
+2. Download the matching JAR from [Releases](https://github.com/Mellivyne/cheat-program-open/releases) and place it in that game instance's `mods` folder.
+3. Launch Minecraft and press **Right Shift** to open the control panel. You can assign another key in settings.
+4. Enable the features you want, adjust their settings, and save a profile.
+
+Each Minecraft version has a separate JAR. Install one matching build at a time.
+
+| Minecraft | Java |
+| --- | --- |
+| 1.21.4, 1.21.10, 1.21.11 | 21 or newer |
+| 26.1, 26.1.1, 26.1.2, 26.2 | 25 or newer |
+
+Settings are stored locally in `config/cheatprogram-open/`. Sign in to music services through their supported login flow when needed.
+
+## Build from source
+
+The repository includes the Gradle wrapper and version-specific source layers. With Python 3 and a compatible Gradle runtime JDK available, run on Windows:
 
 ```powershell
 python tools/build_fabric.py 1.21.4
@@ -40,22 +71,16 @@ python tools/package_fabric.py
 python tools/package_source.py
 ```
 
-不传版本时构建矩阵中的全部非 pending 版本。当前包含 1.21.4、1.21.10、1.21.11、26.1、26.1.1、26.1.2、26.2。26.3 尚未完成，不能发布为支持版本。
+Run `python tools/build_fabric.py` without a version to build all supported profiles. Packaged JARs are written to `outputs/fabric/<version>/`. See [the compatibility matrix](compatibility/matrix.json) for exact version profiles and Java toolchains.
 
-每个版本单独一个 `cheat-program-open-v1.0-fabric-mc<版本>.jar`。Java 工具链要求见 `compatibility/matrix.json`。
+Native capture and audio helpers include their adjacent C# sources and PowerShell rebuild scripts under `src/main/resources/assets/cheatprogram/`. Optional development preview checks are described in [the verification guide](verification/README.md).
 
-Windows 原生采集及音频助手的 C#、PowerShell 源码在 `src/main/resources/assets/cheatprogram/`。对应 `*-*.ps1 -CompileOnly` 脚本可重建助手；这些可执行文件用于投屏及音频路由，不是注入器。
+## Ongoing development
 
-可选的 1.21.4 本地预览验证：
+This project is actively being developed, with continued updates focused on compatibility, performance, interaction, and creative features. Bug reports, ideas, and feedback from real use help guide the work. The current Open builds compile for the versions listed above; the 1.21.4 interface and player/model preview have also been checked in game. Other version-specific behavior still benefits from testing and feedback.
 
-```powershell
-./gradlew.bat runClient -Popen_checks "-Dcheatprogram.dev=open-check"
-```
+## License
 
-该检查只在本项目 run 目录创建测试世界并保存截图，不读取现有游戏存档。验证源不进入发布包。编译通过不代表所有版本的游戏效果均已实测。
+Original project code is available under the [MIT License](LICENSE). Third-party components retain their own licenses; see [Third-party notices](THIRD_PARTY_NOTICES.md).
 
-## 许可证
-
-本项目原创代码采用 MIT，见 LICENSE。第三方组件保持原许可证，见 THIRD_PARTY_NOTICES.md。Minecraft、Fabric 及各音乐平台商标归各自权利人所有。
-
-源码发布包为 `outputs/cheat-program-open-v1.0-source.zip`，按白名单生成，不包含构建缓存、运行日志、测试存档和本地配置。`verification/open-edition-checks.json` 记录验证范围。
+If this project interests you, consider leaving a **Star**. It is a simple way to let me know the work is useful and to follow its progress. Thank you for taking a look, trying it out, or sharing an idea.

@@ -16,3 +16,4 @@ verification/*.png
 *.key
 .env
 .env.*
+!/verification/README.md
