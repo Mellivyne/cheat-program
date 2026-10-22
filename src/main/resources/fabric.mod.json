@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "cheatprogram",
   "version": "${version}",
-  "name": "Cheat Program Open",
+  "name": "Cheat Program",
   "description": "Single-player utility client with a monochrome liquid-glass interface.",
   "authors": ["Cheat Program"],
   "license": "MIT",

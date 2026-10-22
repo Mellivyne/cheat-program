@@ -17,11 +17,11 @@ def main():
         if target['state']=='pending':continue
         mc=target['minecraft']
         libs=ROOT/('build/libs' if mc==matrix['baseMinecraft'] else f'build/versions/{mc}/libs')
-        name=f'cheat-program-open-v{version}-fabric-mc{mc}.jar'
+        name=f'cheat-program-v{version}-fabric-mc{mc}.jar'
         artifact=libs/name
         with zipfile.ZipFile(artifact) as jar:
             mod=json.loads(jar.read('fabric.mod.json'))
-            assert mod['name']=='Cheat Program Open' and mod['license']=='MIT'
+            assert mod['name']=='Cheat Program' and mod['license']=='MIT'
             assert 'com/cheatprogram/dev/OpenPreviewCheck.class' not in jar.namelist()
             assert mod['id']=='cheatprogram' and mod['version']==version and mod['depends']['minecraft']==mc,mc
             assert mod['depends']['java']==f">={target['java']}",mc

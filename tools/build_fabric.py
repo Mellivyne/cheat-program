@@ -49,7 +49,7 @@ def main():
         result={'minecraft':version,'loader':'fabric','exitCode':completed.returncode,'probe':args.probe,'log':str(log)}
         if completed.returncode==0 and not args.probe:
             libs=ROOT/('build/libs' if version==matrix['baseMinecraft'] else f'build/versions/{version}/libs')
-            name=f"cheat-program-open-v{mod_version()}-fabric-mc{version}.jar"
+            name=f"cheat-program-v{mod_version()}-fabric-mc{version}.jar"
             artifact=libs/name
             if not artifact.is_file():
                 result['exitCode']=1

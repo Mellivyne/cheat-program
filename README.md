@@ -1,8 +1,6 @@
-> [!NOTE]
-> **Supported interface languages:** English · Simplified Chinese · Traditional Chinese · Japanese · Korean · Spanish · French · German.
-> The interface follows your system language on first launch, with English as the fallback. You can change it in settings.
+# Cheat Program
 
-# Cheat Program Open
+<p align="center"><strong>English</strong> | <a href="docs/README.zh-CN.md">中文简体</a> | <a href="docs/README.zh-TW.md">中文繁體</a> | <a href="docs/README.ja.md">日本語</a> | <a href="docs/README.ko.md">한국어</a> | <a href="docs/README.es.md">Español</a> | <a href="docs/README.fr.md">Français</a> | <a href="docs/README.de.md">Deutsch</a></p>
 
 A customizable Fabric client that brings application screens, spatial sound, particle scenes, and creative tools into your Minecraft world. Build a space that feels like your own, then share your creations through configuration codes.
 
@@ -48,7 +46,7 @@ Browse music libraries with animated album layouts, search for songs, and displa
 ## Getting started
 
 1. Install Fabric Loader for your exact Minecraft version.
-2. Download the matching JAR from [Releases](https://github.com/Mellivyne/cheat-program-open/releases) and place it in that game instance's `mods` folder.
+2. Download the matching JAR from [Releases](https://github.com/Mellivyne/cheat-program/releases) and place it in that game instance's `mods` folder.
 3. Launch Minecraft and press **Right Shift** to open the control panel. You can assign another key in settings.
 4. Enable the features you want, adjust their settings, and save a profile.
 
@@ -77,7 +75,7 @@ Native capture and audio helpers include their adjacent C# sources and PowerShel
 
 ## Ongoing development
 
-This project is actively being developed, with continued updates focused on compatibility, performance, interaction, and creative features. Bug reports, ideas, and feedback from real use help guide the work. The current Open builds compile for the versions listed above; the 1.21.4 interface and player/model preview have also been checked in game. Other version-specific behavior still benefits from testing and feedback.
+This project is actively being developed, with continued updates focused on compatibility, performance, interaction, and creative features. Bug reports, ideas, and feedback from real use help guide the work. The current builds compile for the versions listed above; the 1.21.4 interface and player/model preview have also been checked in game. Other version-specific behavior still benefits from testing and feedback.
 
 ## License
 

@@ -17,3 +17,4 @@ verification/*.png
 .env
 .env.*
 !/verification/README.md
+backups/
