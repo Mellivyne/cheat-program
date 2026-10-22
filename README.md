@@ -36,6 +36,10 @@ Codes can preserve details such as placement, scale, rotation, and animation set
 
 Browse music libraries with animated album layouts, search for songs, and display floating lyrics in the world. Customize lyric placement, appearance, transitions, translation display, and player-following behavior. Platform features and playback quality depend on the connected service and your account access.
 
+### AI control and AI players
+
+Connect a compatible model endpoint to direct bounded actions in your single-player world from the **AI Control** tab. The **AI Players** tab lets you manage separate characters, personalities, model connections, and supported voice settings. Each connection uses your own provider credentials; available model features depend on that provider and your account access.
+
 ### Models, visuals, and everyday tools
 
 - Import static OBJ, glTF, or GLB models, position them around your player, and preview them alongside your current skin in a shared 3D space.

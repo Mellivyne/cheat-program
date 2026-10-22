@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <a href="README.zh-CN.md">中文简体</a> | <a href="README.zh-TW.md">中文繁體</a> | <a href="README.ja.md">日本語</a> | <strong>한국어</strong> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.de.md">Deutsch</a></p>
 
+## AI 제어와 AI 플레이어
+
+호환 모델 연결을 설정하고 AI Control에서 싱글플레이 월드의 제한된 작업을 지시할 수 있습니다. AI Players에서는 캐릭터, 성격, 모델 연결 및 지원 음성 설정을 개별 관리합니다. 본인의 제공업체 인증 정보를 사용하며 기능은 서비스와 계정 권한에 따라 다릅니다.
+
 ## 주요 기능
 
 **화면 투사**: 앱 창이나 데스크톱을 Minecraft에 배치하고 여러 화면의 위치, 크기, 회전, 밝기를 조절하세요. 월드 고정과 시점 따라가기, 원본 해상도 및 프레임률 옵션, 마우스·키보드 설정을 제공합니다. Windows 도우미를 사용하며 호환성은 앱과 캡처 방식에 따라 달라집니다.

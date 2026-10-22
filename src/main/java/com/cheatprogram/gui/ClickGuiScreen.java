@@ -287,7 +287,7 @@ public class ClickGuiScreen extends GuiBase {
 		float pillX = anim("tab.x", tabTargetX, 15f);
 		float pillW = anim("tab.w", tabTargetW, 15f);
 		c.lens(pillX, cy - 12, pillW, 24, 12, Theme.lift(0.13f), Theme.lensGlass(c.scale));
-		for (Tab t : new Tab[]{Tab.MODULES, Tab.PROFILES}) {
+		for (Tab t : new Tab[]{Tab.MODULES, Tab.PROFILES, Tab.AI, Tab.AI_PLAYERS}) {
 			String label = Lang.t(switch (t) {
 				case MODULES -> "ui.tab.modules";
 				case FRIENDS -> "ui.tab.friends";
@@ -310,7 +310,7 @@ public class ClickGuiScreen extends GuiBase {
 	}
 
 	private void switchTab(Tab t) {
-        if(t != Tab.MODULES && t != Tab.PROFILES)return;
+        if(t == Tab.FRIENDS)return;
 		if (tab == t) return;
 		beginPageTransition();
 		tab = t;

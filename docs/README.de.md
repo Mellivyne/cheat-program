@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <a href="README.zh-CN.md">中文简体</a> | <a href="README.zh-TW.md">中文繁體</a> | <a href="README.ja.md">日本語</a> | <a href="README.ko.md">한국어</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <strong>Deutsch</strong></p>
 
+## KI-Steuerung und KI-Spieler
+
+Verbinde einen kompatiblen Modell-Endpunkt und steuere begrenzte Aktionen in deiner Einzelspielerwelt über AI Control. In AI Players verwaltest du Charaktere, Persönlichkeiten, Modellverbindungen und unterstützte Spracheinstellungen getrennt. Verwende deine eigenen Anbieter-Zugangsdaten; Funktionen hängen von Dienst und Konto ab.
+
 ## Funktionen
 
 **Bildschirme in der Welt:** platziere Fenster oder deinen Desktop in Minecraft. Passe mehrere Bildschirme in Position, Größe, Drehung, Helligkeit und Nachführung an. Native Auflösung und Bildrate sowie konfigurierbare Eingaben sind verfügbar. Aufnahme und Interaktion verwenden Windows-Helfer; die Kompatibilität hängt von Anwendung und Verfahren ab.

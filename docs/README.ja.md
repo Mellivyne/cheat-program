@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <a href="README.zh-CN.md">中文简体</a> | <a href="README.zh-TW.md">中文繁體</a> | <strong>日本語</strong> | <a href="README.ko.md">한국어</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.de.md">Deutsch</a></p>
 
+## AI 操作と AI プレイヤー
+
+互換モデルの接続先を設定し、AI Control からシングルプレイの範囲を限定した操作を指示できます。AI Players ではキャラクター、性格、モデル接続、対応する音声設定を個別に管理します。自分のプロバイダー認証情報を使用し、機能はサービスとアカウントに依存します。
+
 ## 主な機能
 
 **画面投影**：アプリのウィンドウやデスクトップを Minecraft 内に配置できます。複数画面の位置、サイズ、回転、明るさを調整し、ワールドへの固定や視点への追従を選べます。ネイティブ解像度・フレームレートの取得とマウス・キーボード設定を備えます。Windows 用ヘルパーを使用し、互換性はアプリと取得方法によって異なります。

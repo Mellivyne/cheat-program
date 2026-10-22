@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <strong>中文简体</strong> | <a href="README.zh-TW.md">中文繁體</a> | <a href="README.ja.md">日本語</a> | <a href="README.ko.md">한국어</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.de.md">Deutsch</a></p>
 
+## AI 控制与 AI 玩家
+
+AI 控制页可连接兼容的模型接口，在单人世界内执行有界操作；AI 玩家页可分别管理角色、性格、模型连接和受支持的语音设置。连接使用自己的服务商凭据，模型能力取决于服务及账号权限。
+
 ## 主要功能
 
 **世界内投屏**：将应用窗口或桌面放进 Minecraft，支持多个屏幕以及位置、大小、旋转、亮度和跟随方式设置。提供原生分辨率与帧率选项，以及可配置的鼠标、键盘交互。采集和应用交互使用 Windows 原生助手，兼容性取决于应用和采集方式。

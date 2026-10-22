@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <a href="README.zh-CN.md">中文简体</a> | <a href="README.zh-TW.md">中文繁體</a> | <a href="README.ja.md">日本語</a> | <a href="README.ko.md">한국어</a> | <a href="README.es.md">Español</a> | <strong>Français</strong> | <a href="README.de.md">Deutsch</a></p>
 
+## Contrôle IA et joueurs IA
+
+Connectez un modèle compatible pour diriger des actions limitées dans votre monde solo depuis AI Control. AI Players permet de gérer personnages, personnalités, connexions de modèles et options vocales prises en charge. Utilisez vos propres identifiants du fournisseur ; les fonctions dépendent du service et de votre compte.
+
 ## Fonctionnalités
 
 **Projection dans le monde :** placez des fenêtres ou votre bureau dans Minecraft. Gérez plusieurs écrans et réglez position, taille, rotation, luminosité et suivi. La capture offre des options de résolution et de fréquence natives, avec commandes configurables. Elle utilise des assistants Windows ; la compatibilité dépend de l’application et de la méthode.
