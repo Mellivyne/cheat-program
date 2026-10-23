@@ -1,7 +1,6 @@
 package com.cheatprogram.module.visual;
 
 import com.cheatprogram.core.Category;
-import com.cheatprogram.core.Friends;
 import com.cheatprogram.core.Module;
 import com.cheatprogram.core.ModuleManager;
 import com.cheatprogram.core.setting.BoolSetting;
@@ -55,8 +54,8 @@ public class Esp extends Module {
 			if (!matches(e)) continue;
 			Vec3 lerped = e.getPosition(r.partialTick);
 			AABB box = e.getBoundingBox().move(lerped.subtract(e.position())).inflate(0.05);
-			boolean friend = Friends.isFriend(e);
-			r.box(box, Anim.white(friend ? 0.03f : 0.07f), Anim.white(friend ? 0.45f : 0.9f), 2f);
+			
+			r.box(box, Anim.white(0.07f), Anim.white(0.9f), 2f);
 		}
 		r.end();
 	}

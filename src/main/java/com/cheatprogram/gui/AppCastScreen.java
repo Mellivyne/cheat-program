@@ -95,7 +95,7 @@ public final class AppCastScreen extends GuiBase {
                     button("cast.inputMode",inputMode.name()+" · "+inputMode.display(),Icon.KEYBOARD,right,y,w,29,false,()->inputMode.set(inputMode.modes.get((inputMode.modes.indexOf(inputMode.get())+1)%inputMode.modes.size())));y+=38;
                     if(inputMode.is("appcast_native_foreground")){for(String line:c.wrap(REG,Lang.t("ui.appcast.nativeInputHint"),8.5f,w-12)){c.textC(REG,line,right+4,y+11,8.5f,Theme.TEXT_3);y+=14;}y+=8;}
                 }
-                button("cast.inputKey",Lang.t(binding?"ui.keybind.waiting":module.keyboardOnly()?"ui.appcast.toggleKey":"ui.appcast.holdKey")+(binding?"":" · "+KeyNames.name(module.interactionKey())),Icon.KEYBOARD,right,y,w,29,binding,()->binding=true);y+=38;
+                button("cast.inputKey",Lang.t(binding?"ui.keybind.waiting":module.keyboardOnly()?"ui.appcast.toggleKey":"ui.appcast.holdKey")+(binding?"":" · "+KeyNames.name(module.interactionKey())),Icon.KEYBOARD,right,y,w,29,binding,()->{binding=!binding;focused=null;drag=null;status="";});y+=38;
                 button("cast.keyboardOnly",Lang.t("setting.appcast.keyboardOnly"),Icon.KEYBOARD,right,y,w,29,module.keyboardOnly(),()->module.keyboardOnly(!module.keyboardOnly()));y+=38;
                 if(module.keyboardOnly()){
                     for(String line:c.wrap(REG,Lang.t("ui.appcast.keyboardOnlyHint"),8.5f,w-12)){c.textC(REG,line,right+4,y+11,8.5f,Theme.TEXT_3);y+=14;}y+=8;

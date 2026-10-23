@@ -157,10 +157,12 @@ public final class MusicPlayerScreen extends GuiBase {
         try{int first=Math.max(0,(int)(songs.get()/39)),last=Math.min(data.tracks().size(),first+(int)(viewport/39)+2);
             for(int i=first;i<last;i++){
                 Track track=data.tracks().get(i);int index=i;float y=y0+i*39-songs.get();boolean active=data.playback()!=null&&data.playback().track()!=null&&track.key().equals(data.playback().track().key());
-                artwork.artwork(track.provider(),track.cover());
+                var rowCover=artwork.artwork(track.provider(),track.cover());
                 if(active||over(217,y,871,36))c.rrect(217,y,871,36,6,active?0x22ef5268:0x0fffffff);
                 c.textC(REG,active?"♫":String.valueOf(i+1),228,y+18,9,active?0xfffb7185:Theme.TEXT_4);
-                c.textC(active?MED:REG,c.ellipsize(REG,track.title(),10,340),254,y+18,10,active?0xfffb7185:Theme.TEXT);
+                if(rowCover!=null)R2D.texture(rowCover,c.px(251),c.py(y+4),28*c.scale,28*c.scale,0,0,1,1,0xffffffff);
+                else {c.rrect(251,y+4,28,28,4,0x18ffffff);c.icon(Icon.MUSIC,265,y+18,13,Theme.TEXT_3);}
+                c.textC(active?MED:REG,c.ellipsize(REG,track.title(),10,306),286,y+18,10,active?0xfffb7185:Theme.TEXT);
                 c.textC(REG,c.ellipsize(REG,track.artist(),9,190),611,y+18,9,Theme.TEXT_3);
                 c.textC(REG,c.ellipsize(REG,track.album(),9,176),819,y+18,9,Theme.TEXT_3);c.textRight(REG,time(track.durationMs()),1077,y+18,9,Theme.TEXT_4);
                 hit(217,y,871,36).left(()->playTrack(index));

@@ -22,7 +22,6 @@ import com.cheatprogram.util.InventoryPoses;
 import com.cheatprogram.util.InteractionLook;
 import com.cheatprogram.util.ContainerIndex;
 import com.cheatprogram.util.ContainerTransfer;
-import com.cheatprogram.util.InventoryProtection;
 import com.cheatprogram.util.LootPolicy;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.GuiGraphics;
@@ -164,8 +163,8 @@ public final class ChestStealer extends Module {
 		return (cleaner != null && cleaner.isEnabled() ? cleaner.keepForLoot(stack) : CombatInventory.keep(stack)) ? stack.getCount() : 0;
 	}
 	private boolean junkItem(ItemStack stack) {
-		if (stack.isEmpty() || InventoryProtection.protectedItem(stack) || explicitlyListed(stack)
-				|| com.cheatprogram.module.world.FarmAssist.keepsSeed(stack)) return false;
+		if (stack.isEmpty() || explicitlyListed(stack)
+				) return false;
 		if (session != null) for (ItemStack taken : session.takenItems)
 			if (ItemStack.isSameItemSameComponents(taken, stack)) return false;
 		InvCleaner cleaner = ModuleManager.get(InvCleaner.class);
@@ -173,7 +172,7 @@ public final class ChestStealer extends Module {
 	}
 	private boolean hasContainerJunkWork() {
 		if (junkAction.is("junk_keep") || mc.player == null) return false;
-		for (int index = 0; index < 36; index++) if (!InventoryProtection.protectedSlot(index) && junkItem(mc.player.getInventory().getItem(index))) return true;
+		for (int index = 0; index < 36; index++) if (!false && junkItem(mc.player.getInventory().getItem(index))) return true;
 		return false;
 	}
 	private long discoverWait() { return (long) (instant.on() ? Math.min(100, discoverDelay.val()) : discoverDelay.val()); }
@@ -494,7 +493,7 @@ public final class ChestStealer extends Module {
 			for (int index = 0; index < 36; index++) {
 				int slot = ContainerTransfer.playerSlot(session.menu, index);
 				ItemStack stack = mc.player.getInventory().getItem(index);
-				if (slot < 0 || InventoryProtection.protectedSlot(index) || !junkItem(stack)
+				if (slot < 0 || !junkItem(stack)
 						|| !session.menu.getSlot(slot).mayPickup(mc.player)) continue;
 				if (junkAction.is("junk_return") && !ContainerTransfer.canStore(session.menu, session.slots, stack)) continue;
 				if (!claimed && !InventoryAutomation.claim(session.menu, slot)) return;
@@ -542,7 +541,7 @@ public final class ChestStealer extends Module {
 		if (!junkAction.is("junk_keep")) for (int index = 0; index < 36; index++) {
 			int slot = ContainerTransfer.playerSlot(session.menu, index);
 			ItemStack stack = mc.player.getInventory().getItem(index);
-			if (slot >= 0 && !InventoryProtection.protectedSlot(index) && junkItem(stack) && session.menu.getSlot(slot).mayPickup(mc.player)
+			if (slot >= 0 && junkItem(stack) && session.menu.getSlot(slot).mayPickup(mc.player)
 					&& (junkAction.is("junk_drop") || ContainerTransfer.canStore(session.menu, session.slots, stack))) return false;
 		}
 		return true;
@@ -618,7 +617,7 @@ public final class ChestStealer extends Module {
 	}
 	private boolean inventoryHasSpace() {
 		for (int index = 0; index < 36; index++) {
-			if (InventoryProtection.protectedSlot(index)) continue;
+
 			ItemStack item = mc.player.getInventory().getItem(index);
 			if (item.isEmpty() || item.isStackable() && item.getCount() < item.getMaxStackSize()) return true;
 		}

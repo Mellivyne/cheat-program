@@ -4,7 +4,6 @@ import com.cheatprogram.core.Config;
 import com.cheatprogram.core.ModuleManager;
 import com.cheatprogram.dev.DevTools;
 import com.cheatprogram.module.visual.Esp;
-import com.cheatprogram.module.world.RangeBreak;
 import com.cheatprogram.util.ChatHistoryStore;
 import com.cheatprogram.util.ContainerIndex;
 import com.cheatprogram.ai.voice.SpeechVoices;
@@ -23,10 +22,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
     @org.spongepowered.asm.mixin.Unique private boolean cheatprogram$stopped;
-	@WrapOperation(method = "continueAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/MultiPlayerGameMode;stopDestroyBlock()V"))
-	private void cheatprogram$keepRangeMining(MultiPlayerGameMode gameMode, Operation<Void> original) {
-		if (!RangeBreak.preserveMiningProgress()) original.call(gameMode);
-	}
 
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void cheatprogram$preTick(CallbackInfo ci) {

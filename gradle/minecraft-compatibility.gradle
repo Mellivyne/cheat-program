@@ -80,6 +80,13 @@ tasks.register('verifyMinecraftArtifact') {
         def zip = new java.util.zip.ZipFile(artifact)
         try {
             expectedClasses.each { if (zip.getEntry(it) == null) throw new GradleException("Missing mixin class: ${it}") }
+            def scope = new JsonSlurper().parse(file('compatibility/features.json'))
+            def allowedModules = scope.modules.collect { it.replace('.', '/') + '.class' }.toSet()
+            def actualModules = zip.entries().findAll {
+                it.name.startsWith('com/cheatprogram/module/') && it.name.endsWith('.class') && !it.name.contains('$')
+            }.collect { it.name }.toSet()
+            if (actualModules != allowedModules) throw new GradleException('The JAR contains modules outside its declared feature scope, or is missing required modules.')
+            println "Verified feature scope: ${actualModules.size()} module implementations"
         } finally { zip.close() }
         println "Verified Fabric artifact: ${artifact.name}; Minecraft ${targetVersion}; ${expectedClasses.size()} mixins"
     }

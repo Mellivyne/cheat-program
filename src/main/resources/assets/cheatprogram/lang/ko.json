@@ -419,7 +419,7 @@
   "ui.ai.keyMemory": "키는 이번 실행 중에만 유지됩니다",
   "ui.ai.clearKey": "키 지우기",
   "ui.ai.save": "설정 저장",
-  "ui.ai.singleplayer": "싱글플레이 월드에서 작업 전송",
+  "ui.ai.singleplayer": "월드 또는 서버에서 작업 전송",
   "ui.ai.stop": "정지",
   "ui.ai.steps": "{0}단계",
   "ui.ai.you": "나",
@@ -2054,7 +2054,7 @@
   "mode.lyrics_music": "백그라운드 음악 플레이어",
   "mode.lyrics_cast": "투사 앱",
   "mode.lyrics_manual": "로컬 자막 / 수동 타이밍",
-  "mode.lyrics_phrase": "같은 위치에서 줄 전환",
+  "mode.lyrics_phrase": "줄 전환 시 따라가기",
   "mode.lyrics_follow": "플레이어 위치 따라가기",
   "mode.lyrics_fixed": "세계 위치에 고정",
   "mode.lyrics_screen": "투사 화면 위",
@@ -2468,5 +2468,6 @@
   "ui.particles.path.kind.bounce": "포물선",
   "ui.lyrics.lineModeTitle": "가사를 줄 전체 표시로 전환했습니다",
   "ui.lyrics.lineModeDetail": "줄 단위 시간만 있어 현재 줄 전체를 표시합니다. 단어별 시간이 있는 가사는 자동으로 누적 표시로 돌아갑니다.",
-  "ui.flight.local": "클라이언트 비행 제어"
+  "ui.flight.local": "클라이언트 비행 제어",
+  "setting.floatingsubtitles.anchor.hint": "새 줄을 현재 플레이어 위치에 배치하고 해당 줄이 재생되는 동안 고정합니다."
 }

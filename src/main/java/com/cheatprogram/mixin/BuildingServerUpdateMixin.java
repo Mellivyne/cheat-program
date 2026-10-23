@@ -18,7 +18,7 @@ public abstract class BuildingServerUpdateMixin {
 	private void cheatprogram$buildingBlockUpdate(ClientboundBlockUpdatePacket packet, CallbackInfo ci) {
 		BuildingBlueprints building = ModuleManager.get(BuildingBlueprints.class);
 		if (building != null) building.serverBlockUpdated(packet.getPos(), packet.getBlockState());
-		com.cheatprogram.module.world.FarmAssist.serverBlockUpdate(packet.getPos(),packet.getBlockState());
+
 		com.cheatprogram.util.OreBackfill.onServerBlockUpdate(packet.getPos(),packet.getBlockState());
 	}
 	@Inject(method = "handleChunkBlocksUpdate", at = @At("TAIL"))
@@ -26,7 +26,7 @@ public abstract class BuildingServerUpdateMixin {
 		BuildingBlueprints building = ModuleManager.get(BuildingBlueprints.class);
 		packet.runUpdates((position,state)->{
 			if(building!=null)building.serverBlockUpdated(position,state);
-			com.cheatprogram.module.world.FarmAssist.serverBlockUpdate(position,state);
+
 			com.cheatprogram.util.OreBackfill.onServerBlockUpdate(position,state);
 		});
 	}

@@ -177,7 +177,7 @@ public final class FloatingSubtitles extends Module {
         if(!retainPrevious){leaving=List.of();lastLines=List.of();}
         if(!key.equals(phrase)){
             if(retainPrevious&&displayPosition!=null&&!phrase.isEmpty()){leaving=lastLines;leavingPosition=displayPosition;leavingYaw=displayYaw;}
-            phrase=key;changed=now;if(placement==null)anchorAtPlayer(seed);
+            phrase=key;changed=now;if(placement==null||anchor.is("lyrics_phrase")){displayPosition=null;anchorAtPlayer(seed);}
         }
         if(placement==null)anchorAtPlayer(seed);return Math.max(0,(now-changed)/1e9);
     }
@@ -254,7 +254,7 @@ public final class FloatingSubtitles extends Module {
     private void anchorAtPlayer(int line){
         followBase=mc.player.position();float angle=mc.player.getYRot();
         Vec3 eye=mc.player.getEyePosition();placement=new SubtitleMotion.Anchor(eye.x,eye.y,eye.z,angle);baseYaw=angle+180;
-        // Capture once; lyric line changes and parameter edits retain this placement.
+        // Capture the player pose at a phrase boundary; keep it fixed while this line sings.
         if(displayPosition==null){var p=placement.target(distance.val(),side.val(),height.val());displayPosition=new Vec3(p.x(),p.y(),p.z());displayYaw=baseYaw+(float)yaw.val();lastFrame=0;}
     }
     private Path localFile(){return Config.directory().resolve("floating-subtitles/local.json");}

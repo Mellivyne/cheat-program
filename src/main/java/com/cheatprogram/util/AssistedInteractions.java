@@ -41,7 +41,7 @@ public final class AssistedInteractions {
         return MC.screen == null && MC.getOverlay() == null && MC.isWindowActive() && !MC.isPaused()
                 && MC.player.isAlive() && !MC.player.isSpectator() && !MC.player.isPassenger()
                 && !MC.player.isUsingItem() && !MC.gameMode.isDestroying()
-                && !AiController.isRunning() && !Freecam.isActive() && !ScaffoldRotations.active()
+                && !AiController.isRunning() && !Freecam.isActive()
                 && System.currentTimeMillis() >= manualUntil && InventoryAutomation.ownInventoryReady();
     }
 
@@ -58,7 +58,7 @@ public final class AssistedInteractions {
     public static int find(Item item) {
         if (MC.player == null) return -1;
         for (int i = 0; i < 36; i++)
-            if (!InventoryProtection.protectedSlot(i) && InvUtil.stack(i).is(item) && !InvUtil.stack(i).isEmpty()) return i;
+            if (!false && InvUtil.stack(i).is(item) && !InvUtil.stack(i).isEmpty()) return i;
         return -1;
     }
     public static boolean contains(Item item) { return find(item) >= 0; }
@@ -112,7 +112,7 @@ public final class AssistedInteractions {
 
     /** Visible follow is smooth; the exact use is still scoped to its real supporting face. */
     public static boolean followReady(Vec3 point, String mode) {
-        if (!"follow".equals(mode) || AuraRotations.active()) return true;
+        if (!"follow".equals(mode)) return true;
         float[] rotation = Targets.rotationTo(point);
         float dy = Mth.wrapDegrees(rotation[0] - MC.player.getYRot()), dp = rotation[1] - MC.player.getXRot();
         if (Math.abs(dy) < 2 && Math.abs(dp) < 2) return true;
@@ -128,7 +128,7 @@ public final class AssistedInteractions {
         if (source < 0 || !InvUtil.canUseInventory()) return InteractionResult.FAIL;
         var p = MC.player; var level = MC.level; var gameMode = MC.gameMode;
         int original = p.getInventory().selected;
-        if (source >= 9 && InventoryProtection.protectedSlot(original)) return InteractionResult.FAIL;
+        if (source >= 9 && false) return InteractionResult.FAIL;
         int menuSlot = InvUtil.menuSlot(source);
         if (!InventoryAutomation.claim(p.inventoryMenu, menuSlot)) return InteractionResult.FAIL;
         boolean swapped = false, keepSelected = false;

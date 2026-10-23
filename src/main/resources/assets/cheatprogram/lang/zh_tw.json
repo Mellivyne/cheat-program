@@ -685,7 +685,7 @@
   "ui.ai.keyMemory": "Key 僅保存在本次運行中",
   "ui.ai.clearKey": "清空 Key",
   "ui.ai.save": "保存設置",
-  "ui.ai.singleplayer": "進入單人世界后發送任務",
+  "ui.ai.singleplayer": "進入世界或伺服器後傳送任務",
   "ui.ai.stop": "停止",
   "ui.ai.steps": "{0} 步",
   "ui.ai.you": "你",
@@ -2361,7 +2361,7 @@
   "mode.lyrics_music": "背景音樂播放器",
   "mode.lyrics_cast": "投影應用程式",
   "mode.lyrics_manual": "本機字幕／手動計時",
-  "mode.lyrics_phrase": "原位換行",
+  "mode.lyrics_phrase": "跟隨切換",
   "mode.lyrics_follow": "跟隨玩家位置",
   "mode.lyrics_fixed": "固定在世界",
   "mode.lyrics_screen": "放在投影上方",
@@ -2621,7 +2621,7 @@
   "setting.floatingsubtitles.shakeSpeed": "文字運動頻率",
   "setting.floatingsubtitles.edgeGlow": "字體邊緣柔光",
   "setting.floatingsubtitles.glowRadius": "柔光範圍",
-  "ui.lyrics.historyOnly": "有逐字時間時，目前這行已唱字詞累積保留，未唱文字完全隱藏；僅有整句時間時，提示後自動顯示目前整行。換行保持原位置。",
+  "ui.lyrics.historyOnly": "有逐字時間時，目前這行已唱字詞累積保留，未唱文字完全隱藏；僅有整句時間時，提示後自動顯示目前整行。",
   "ui.lyrics.positionHint": "調整左右、距離和高度會平滑移動現有位置；可用數值旁的 − / + 微調。預設距離為正前方 3.5 格。",
   "setting.killaura.throughWalls": "穿牆攻擊（僅單人）",
   "ui.music.quality": "音質",
@@ -2717,7 +2717,7 @@
   "setting.floatingsubtitles.futurePreview": "預顯示未唱歌詞",
   "setting.floatingsubtitles.previewLines": "預顯示後續句數",
   "setting.floatingsubtitles.previewOpacity": "預顯示透明度",
-  "ui.lyrics.futurePreviewHint": "有逐字時間時，目前這行已唱字詞累積保留，未唱文字完全隱藏；僅有整句時間時，提示後自動顯示目前整行。換行保持原位置。",
+  "ui.lyrics.futurePreviewHint": "有逐字時間時，目前這行已唱字詞累積保留，未唱文字完全隱藏；僅有整句時間時，提示後自動顯示目前整行。",
   "mode.music_layout_wall": "專輯牆",
   "ui.music.wallSwipe": "拖曳瀏覽 · 滾輪縮放 · 點擊封面播放",
   "setting.killaura.searchRange": "索敵範圍（實際攻擊距離仍以伺服器允許範圍為限）",
@@ -2774,5 +2774,6 @@
   "ui.particles.path.kind.bounce": "拋物線",
   "ui.lyrics.lineModeTitle": "歌詞已切換為整行顯示",
   "ui.lyrics.lineModeDetail": "平台僅提供整句時間，已顯示目前整行；遇到逐字歌詞會自動恢復逐字累積。",
-  "ui.flight.local": "本機控制飛行"
+  "ui.flight.local": "本機控制飛行",
+  "setting.floatingsubtitles.anchor.hint": "每行開始時放在玩家目前位置，演唱這行時保持固定。"
 }

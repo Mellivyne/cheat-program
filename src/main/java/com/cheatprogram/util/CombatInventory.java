@@ -34,8 +34,7 @@ public final class CombatInventory {
 	}
 	public static boolean keep(ItemStack stack, boolean tools) {
 		if (stack.isEmpty()) return false;
-		if (InventoryProtection.protectedItem(stack)) return true;
-		if(com.cheatprogram.module.world.FarmAssist.keepsSeed(stack))return true;
+
 		// Planting items subclass BlockItem too, but are not building blocks or immediate combat supplies.
 		if (stack.is(Items.WHEAT_SEEDS) || stack.is(Items.BEETROOT_SEEDS) || stack.is(Items.MELON_SEEDS)
 				|| stack.is(Items.PUMPKIN_SEEDS) || stack.is(Items.TORCHFLOWER_SEEDS) || stack.is(Items.PITCHER_POD)

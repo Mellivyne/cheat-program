@@ -1,11 +1,11 @@
 {
   "ui.lyrics.historyOnly": [
-    "有逐字时间时，当前行已唱字词累积保留，未唱文字完全隐藏；只有整句时间时，提示后自动显示当前整行。换行保持原位置。",
-    "With word timing, retain the sung prefix and completely hide unsung text. With line timing only, notify and show the current full line. Line changes keep the same position."
+    "有逐字时间时，当前行已唱字词累积保留，未唱文字完全隐藏；只有整句时间时，提示后自动显示当前整行。",
+    "With word timing, retain the sung prefix and completely hide unsung text. With line timing only, notify and show the current full line."
   ],
   "ui.lyrics.futurePreviewHint": [
-    "有逐字时间时，当前行已唱字词累积保留，未唱文字完全隐藏；只有整句时间时，提示后自动显示当前整行。换行保持原位置。",
-    "With word timing, retain the sung prefix and completely hide unsung text. With line timing only, notify and show the current full line. Line changes keep the same position."
+    "有逐字时间时，当前行已唱字词累积保留，未唱文字完全隐藏；只有整句时间时，提示后自动显示当前整行。",
+    "With word timing, retain the sung prefix and completely hide unsung text. With line timing only, notify and show the current full line."
   ],
   "ui.lyrics.lineTiming": [
     "平台仅提供整句时间，已自动切换为整行显示，不推测逐字进度。",
@@ -24,8 +24,8 @@
     "Translations use platform timing: accumulate the sung prefix with word timing, or show the full line with line timing only. Never generate missing translations."
   ],
   "mode.lyrics_phrase": [
-    "原位换行",
-    "Replace lines in place"
+    "跟随切换",
+    "Follow on line change"
   ],
   "ui.lyrics.lineModeTitle": [
     "歌词已切换为整行显示",

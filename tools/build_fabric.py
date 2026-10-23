@@ -35,12 +35,12 @@ def main():
         profile=profiles[version]
         if profile['state']=='pending' and not args.probe:
             parser.error(f'{version} is still being ported. --probe compiles only; it cannot produce a supported jar.')
-    report_dir=ROOT/'build/compatibility-reports'
+    report_dir=ROOT/'verification/build-reports'
     report_dir.mkdir(parents=True,exist_ok=True)
     results=[]
     for version in selected:
         log=report_dir/f'{version}.log'
-        tasks=['compileJava','verifyMinecraftOutputLayout'] if args.probe else ['build','verifyMinecraftArtifact']
+        tasks=['compileJava','verifyMinecraftOutputLayout'] if args.probe else ['clean','build','verifyMinecraftArtifact']
         command=[str(ROOT/'gradlew.bat'),f'-Pminecraft_version={version}',*tasks,'--no-daemon','--console=plain']
         if args.probe:command.append('-Pcompatibility_probe=true')
         print(f'Fabric {version}: '+('API probe' if args.probe else 'build and verify'),flush=True)

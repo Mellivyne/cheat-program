@@ -46,12 +46,12 @@ public final class ContainerTransfer {
     private static boolean destination(Slot slot, ItemStack stack) {
         int index = slot.getContainerSlot();
         return slot.container == MC.player.getInventory() && index >= 0 && index < 36
-                && !InventoryProtection.protectedSlot(index) && slot.mayPlace(stack)
+                && slot.mayPlace(stack)
                 && (slot.getItem().isEmpty() || ItemStack.isSameItemSameComponents(slot.getItem(), stack));
     }
     public static void click(AbstractContainerMenu menu, int slot, int button, ClickType type) {
         if (MC.player == null || MC.gameMode == null || MC.player.containerMenu != menu) return;
-        if (!InventoryProtection.allowClick(menu, slot, button, type)) return;
+
         MC.gameMode.handleInventoryMouseClick(menu.containerId, slot, button, type, MC.player);
     }
     /** A partial quota never quick-moves a full stack. User cursor contents are never adopted. */
@@ -61,9 +61,9 @@ public final class ContainerTransfer {
         ItemStack original = source.getItem().copy();
         int amount = Math.min(Math.min(original.getCount(), requested), capacity(menu, original));
         if (amount <= 0 || !source.mayPickup(MC.player)) return;
-        boolean protectedDestinations = false;
-        for (int i = 0; i < 36; i++) if (InventoryProtection.protectedSlot(i)) { protectedDestinations = true; break; }
-        if (amount == original.getCount() && !protectedDestinations) {
+        
+        
+        if (amount == original.getCount()) {
             click(menu, sourceIndex, 0, ClickType.QUICK_MOVE);
             return;
         }

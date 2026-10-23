@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Stream;
 
-/** Persists client settings, friends and HUD layout in client.json, and module state in profiles/*.json. */
+/** Persists client settings and HUD layout in client.json, and module state in profiles/*.json. */
 public final class Config {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path DIR = FabricLoader.getInstance().getConfigDir().resolve("cheatprogram-open");
@@ -63,7 +63,7 @@ public final class Config {
 			for (Setting<?> setting : ClientSettings.INSTANCE.all) setting.reset();
 			ClientSettings.INSTANCE.guiKey = org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT;
 			ClientSettings.INSTANCE.activeProfile = "default";
-			Friends.set(List.of()); HudLayout.reset(); activeIdentity = UUID.randomUUID().toString();
+			HudLayout.reset(); activeIdentity = UUID.randomUUID().toString();
 			for (Module module : ModuleManager.all()) {
 				module.setEnabled(false);
 				for (Setting<?> setting : module.settings()) setting.reset();
@@ -378,9 +378,7 @@ public final class Config {
 		root.add("settings", settings);
 		root.addProperty("guiKey", ClientSettings.INSTANCE.guiKey);
 		root.addProperty("activeProfile", ClientSettings.INSTANCE.activeProfile);
-		JsonArray friends = new JsonArray();
-		for (String f : Friends.all()) friends.add(f);
-		root.add("friends", friends);
+
 		root.add("hud", HudLayout.save());
 		return root;
 	}
@@ -393,11 +391,7 @@ public final class Config {
 		if (root.has("guiKey")) ClientSettings.INSTANCE.guiKey = root.get("guiKey").getAsInt();
 		if (root.has("activeProfile")) ClientSettings.INSTANCE.activeProfile = sanitize(root.get("activeProfile").getAsString());
 		if (ClientSettings.INSTANCE.activeProfile.isEmpty()) ClientSettings.INSTANCE.activeProfile = "default";
-		if (root.has("friends")) {
-			List<String> names = new ArrayList<>();
-			for (JsonElement e : root.getAsJsonArray("friends")) names.add(e.getAsString());
-			Friends.set(names);
-		}
+		
 		if (root.has("hud")) HudLayout.load(root.getAsJsonObject("hud"));
 	}
 

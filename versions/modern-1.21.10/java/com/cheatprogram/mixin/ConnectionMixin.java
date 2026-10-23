@@ -14,12 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Connection.class)
 public abstract class ConnectionMixin {
-	@ModifyVariable(method="send(Lnet/minecraft/network/protocol/Packet;Lio/netty/channel/ChannelFutureListener;Z)V",at=@At("HEAD"),argsOnly=true,ordinal=0)
-	private Packet<?> cheatprogram$protectDescendingMovement(Packet<?> packet){
-		ClientPacketListener connection=Minecraft.getInstance().getConnection();
-		return connection!=null&&connection.getConnection()==(Object)this
-				?com.cheatprogram.util.FallProtection.movementPacket(packet):packet;
-	}
 	@Inject(method = "send(Lnet/minecraft/network/protocol/Packet;Lio/netty/channel/ChannelFutureListener;Z)V", at = @At("HEAD"), cancellable = true)
 	private void cheatprogram$send(Packet<?> packet, ChannelFutureListener listener, boolean flush, CallbackInfo ci) {
 		ClientPacketListener connection = Minecraft.getInstance().getConnection();

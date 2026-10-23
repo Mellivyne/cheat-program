@@ -6,7 +6,6 @@ import com.cheatprogram.ai.AiModels;
 import com.cheatprogram.core.Category;
 import com.cheatprogram.core.ClientSettings;
 import com.cheatprogram.core.Config;
-import com.cheatprogram.core.Friends;
 import com.cheatprogram.core.Lang;
 import com.cheatprogram.core.Module;
 import com.cheatprogram.core.ModuleManager;
@@ -67,13 +66,13 @@ public class ClickGuiScreen extends GuiBase {
 	private static final float ROW_GAP = 6;
 	private static final Object BIND_GUI = new Object();
 
-	private enum Tab {MODULES, FRIENDS, PROFILES, AI, AI_PLAYERS}
+	private enum Tab {MODULES, PROFILES, AI, AI_PLAYERS}
 
 	private static Tab tab = Tab.MODULES;
 	private static Category category = Category.VISUAL;
 
 	private final TextField search = new TextField(40);
-	private final TextField friendField = new TextField(16);
+
 	private final TextField profileField = new TextField(32);
 	private final TextField aiEndpoint = new TextField(512);
 	private final TextField aiModelSearch = new TextField(128);
@@ -94,7 +93,7 @@ public class ClickGuiScreen extends GuiBase {
 	private final Scroller listScroll = new Scroller();
 	private final Scroller panelScroll = new Scroller();
 	private final Scroller drawerScroll = new Scroller();
-	private final Scroller friendScroll = new Scroller();
+
 	private final Scroller profileScroll = new Scroller();
 	private final Scroller dropdownScroll = new Scroller();
 	private final Anim open = new Anim(0);
@@ -134,7 +133,7 @@ public class ClickGuiScreen extends GuiBase {
 			listScroll.target = 0;
 			listSwitch = System.currentTimeMillis() - 120;
 		};
-		friendField.onEnter = this::addFriendFromField;
+
 		profileField.onEnter = this::createProfileFromField;
 		AiConfig ai = AiController.config();
 		aiEndpoint.setText(ai.endpoint());
@@ -238,7 +237,7 @@ public class ClickGuiScreen extends GuiBase {
 		header();
 		switch (tab) {
 			case MODULES -> modulesTab(graphics);
-			case FRIENDS -> {}
+
 			case PROFILES -> profilesTab();
 			case AI -> aiTab();
 			case AI_PLAYERS -> aiPlayersPanel.render();
@@ -276,7 +275,7 @@ public class ClickGuiScreen extends GuiBase {
 		if (over(W - 84, 15, 28, 28)) requestTooltip("tip.layout", Lang.t("ui.tip.layout"));
 		iconButton("hdr.gear", Icon.GEAR, W - 37, 29, 16, Theme.TEXT_2, () -> {
 			aiModelPicker = false;
-			aiPlayersPanel.deactivate();
+	
 			drawer = !drawer;
 			drawerPage = "root";
 			drawerScroll.target = 0;
@@ -290,7 +289,7 @@ public class ClickGuiScreen extends GuiBase {
 		for (Tab t : new Tab[]{Tab.MODULES, Tab.PROFILES, Tab.AI, Tab.AI_PLAYERS}) {
 			String label = Lang.t(switch (t) {
 				case MODULES -> "ui.tab.modules";
-				case FRIENDS -> "ui.tab.friends";
+
 				case PROFILES -> "ui.tab.profiles";
 				case AI -> "ui.tab.ai";
 				case AI_PLAYERS -> "ui.tab.aiPlayers";
@@ -310,12 +309,13 @@ public class ClickGuiScreen extends GuiBase {
 	}
 
 	private void switchTab(Tab t) {
-        if(t == Tab.FRIENDS)return;
+
 		if (tab == t) return;
 		beginPageTransition();
+		if(tab==Tab.AI_PLAYERS)aiPlayersPanel.deactivate();
 		tab = t;
 		aiModelPicker = false;
-		aiPlayersPanel.deactivate();
+
 		focused = null;
 		dropdown = null;
 		listSwitch = System.currentTimeMillis()-(customTransition?10000:0);
@@ -584,7 +584,8 @@ public class ClickGuiScreen extends GuiBase {
 		for (int i = 0; i < modules.size(); i++) {
 			Module m = modules.get(i);
 			if (y + ROW_H >= top - 6 && y <= bottom + 6) {
-				float appear = Anim.easeOutCubic((elapsed - i * 0.03f) / 0.26f);
+				float visibleRow=Math.max(0,(y-top)/(ROW_H+ROW_GAP));
+				float appear = Anim.easeOutCubic((elapsed - Math.min(.06f,visibleRow*.012f)) / .16f);
 				float edge = Anim.clamp01(Math.min((y + ROW_H - top) / 20f + 0.15f, (bottom - y) / 20f + 0.15f));
 				float dim = selected != null && selected != m ? Anim.lerp(1f, 0.36f, panelT) : 1f;
 				R2D.pushAlpha(appear * edge * dim);
@@ -810,9 +811,7 @@ public class ClickGuiScreen extends GuiBase {
 		if(m instanceof com.cheatprogram.module.utility.DeathRecovery recovery){
 			button("panel.recovery.open",Lang.t("ui.recovery.open"),Icon.NAVIGATION,x0,y,w,28,true,()->recovery.open(this));y+=38;
 		}
-		if(m instanceof com.cheatprogram.module.utility.TaskQueue queue){
-			button("panel.queue.open",Lang.t("ui.queue.open"),Icon.LAYOUT,x0,y,w,28,true,()->queue.open(this));y+=38;
-		}
+		
 		if (m.id.equals("customcape")) {
 			button("panel.cape.editor", Lang.t("ui.cape.open"), Icon.FOLDER, x0, y, w, 28, true,
 					() -> mc.setScreen(new CapeEditorScreen(this)));
@@ -846,10 +845,7 @@ public class ClickGuiScreen extends GuiBase {
 			button("panel.chat.history", Lang.t("ui.chattracker.open"), Icon.TERMINAL, x0, y, w, 28, true, () -> tracker.open(this));
 			y += 38;
 		}
-		if (m instanceof com.cheatprogram.module.world.PrivateChat privateChat) {
-			button("panel.chat.private", Lang.t("ui.privatechat.open"), Icon.TERMINAL, x0, y, w, 28, true, () -> privateChat.open(this));
-			y += 38;
-		}
+		
 		if (m.id.equals("rearviewmirror")) {
 			button("panel.mirror.editor", Lang.t("ui.mirror.edit"), Icon.GEAR, x0, y, w, 28, true,
 					() -> mc.setScreen(new MirrorEditorScreen(this)));
@@ -859,10 +855,7 @@ public class ClickGuiScreen extends GuiBase {
 			button("panel.inventory.preview",Lang.t("ui.invpreview.open"),Icon.FOLDER,x0,y,w,28,true,() -> cleaner.preview(this));
 			y+=38;
 		}
-		if (m instanceof com.cheatprogram.module.world.ContainerSearch search) {
-			button("panel.containers.search",Lang.t("ui.containersearch.open"),Icon.FOLDER,x0,y,w,28,true,() -> search.open(this));
-			y+=38;
-		}
+		
 		if (m instanceof com.cheatprogram.module.visual.Minimap) {
 			button("panel.minimap.editor",Lang.t("ui.minimap.edit"),Icon.GEAR,x0,y,w,28,true,() -> mc.setScreen(new MinimapEditorScreen(this)));
 			y+=38;
@@ -877,11 +870,7 @@ public class ClickGuiScreen extends GuiBase {
 			}
 			y += 6;
 		}
-		if(m instanceof com.cheatprogram.module.movement.TeleportAura teleport){
-			for(String key:teleport.helpKeys()){
-				for(String line:c.wrap(REG,Lang.t(key),8,w)){c.textC(REG,line,x0,y+8,8,Theme.TEXT_3);y+=11;}y+=4;
-			}y+=6;
-		}
+		
 		for (Setting<?> s : m.settings()) {
 			if (s.isVisible()) y = settingRow(s, x0, y, w);
 		}
@@ -1115,7 +1104,7 @@ public class ClickGuiScreen extends GuiBase {
 				y = settingRow(s.targetHostiles, x0, y, w);
 				y = settingRow(s.targetPassives, x0, y, w);
 				y = settingRow(s.targetInvisible, x0, y, w);
-				y = settingRow(s.ignoreFriends, x0, y, w);
+
 			}
 			case "interface" -> {
 				y = settingRow(s.uiScale, x0, y, w);
@@ -1273,74 +1262,6 @@ public class ClickGuiScreen extends GuiBase {
 			ty += 13;
 		}
 		R2D.popAlpha();
-	}
-
-	// ================================================================ friends tab
-
-	private void friendsTab() {
-		float x0 = 26;
-		float x1 = W - 26;
-		float appear = Anim.easeOutCubic((System.currentTimeMillis() - listSwitch) / 260f);
-		R2D.pushAlpha(appear);
-		c.text(BOLD, Lang.t("ui.friends.title"), x0, 116, 16, Theme.TEXT);
-		c.text(REG, Lang.t("ui.friends.desc"), x0, 134, 9.5f, Theme.TEXT_3);
-		String count = Lang.t("ui.friends.count", Friends.all().size());
-		c.textRight(MED, count, x1, 110, 10, Theme.TEXT_3);
-
-		float fy = 148;
-		float addW = 74;
-		float lookW = 178;
-		float fieldW = x1 - x0 - addW - lookW - 16;
-		textField(friendField, Lang.t("ui.friends.input"), Icon.USER, x0, fy, fieldW, 30);
-		button("friend.add", Lang.t("ui.friends.add"), Icon.PLUS, x0 + fieldW + 8, fy, addW, 30, true, this::addFriendFromField);
-		button("friend.look", Lang.t("ui.friends.addLooking"), Icon.TARGET, x1 - lookW, fy, lookW, 30, false, this::addLookedAtFriend);
-
-		float top = fy + 42;
-		float bottom = H - 14;
-		List<String> names = new ArrayList<>(Friends.all());
-		float rowH = 40;
-		float contentH = names.size() * (rowH + 6);
-		friendScroll.max = Math.max(0, contentH - (bottom - top));
-		friendScroll.update(dt);
-		hit(x0, top, x1 - x0, bottom - top).scroll(friendScroll::scroll);
-		c.clip(x0 - 3, top - 3, x1 - x0 + 6, bottom - top + 6);
-		pushHitClip(x0 - 3, top - 3, x1 - x0 + 6, bottom - top + 6);
-		float y = top - friendScroll.get();
-		for (String name : names) {
-			boolean hovered = over(x0, y, x1 - x0, rowH);
-			float ha = hoverAnim("friend." + name, hovered);
-			c.lens(x0, y, x1 - x0, rowH, rowH / 2f, Theme.lift(0.06f + 0.035f * ha), Theme.lensGlass(c.scale));
-			c.circle(x0 + 22, y + rowH / 2f, 11, Anim.white(0.14f));
-			c.textMid(BOLD, name.substring(0, 1).toUpperCase(Locale.ROOT), x0 + 22, y + rowH / 2f, 10, Theme.TEXT);
-			c.textC(MED, name, x0 + 42, y + rowH / 2f, 11.5f, Theme.TEXT);
-			final String n = name;
-			iconButton("friend.rm." + name, Icon.TRASH, x1 - 20, y + rowH / 2f, 13, Theme.TEXT_3, () -> Friends.remove(n));
-			y += rowH + 6;
-		}
-		popHitClip();
-		c.unclip();
-		if (names.isEmpty()) {
-			float cx = (x0 + x1) / 2f;
-			float cy = (top + bottom) / 2f - 8;
-			c.icon(Icon.USER, cx, cy - 14, 26, Theme.TEXT_4);
-			c.textMid(MED, Lang.t("ui.friends.empty"), cx, cy + 14, 12, Theme.TEXT_2);
-		}
-		R2D.popAlpha();
-	}
-
-	private void addFriendFromField() {
-		String name = friendField.text.trim();
-		if (!name.isEmpty() && Friends.add(name)) {
-			Notifications.push(Lang.t("ui.notify.friendAdded"), name, true);
-			friendField.setText("");
-		}
-	}
-
-	private void addLookedAtFriend() {
-		if (mc.hitResult instanceof EntityHitResult ehr && ehr.getEntity() instanceof Player p && p != mc.player) {
-			String name = p.getGameProfile().getName();
-			if (Friends.add(name)) Notifications.push(Lang.t("ui.notify.friendAdded"), name, true);
-		}
 	}
 
 	// ================================================================ profiles tab
@@ -1539,7 +1460,7 @@ public class ClickGuiScreen extends GuiBase {
 		closing = true;
 		drag=null;
 		aiModelPicker = false;
-		aiPlayersPanel.deactivate();
+
 		aiKey.masked = true;
 		focused = null;
 		dropdown = null;

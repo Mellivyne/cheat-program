@@ -50,7 +50,7 @@ public final class ClientSettings {
 	public final BoolSetting targetHostiles = add(new BoolSetting("targetHostiles", true));
 	public final BoolSetting targetPassives = add(new BoolSetting("targetPassives", false));
 	public final BoolSetting targetInvisible = add(new BoolSetting("targetInvisible", true));
-	public final BoolSetting ignoreFriends = add(new BoolSetting("ignoreFriends", true));
+
 
 	public int guiKey = GLFW.GLFW_KEY_RIGHT_SHIFT;
 	public String activeProfile = "default";

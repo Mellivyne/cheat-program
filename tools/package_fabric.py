@@ -26,6 +26,10 @@ def main():
             assert mod['id']=='cheatprogram' and mod['version']==version and mod['depends']['minecraft']==mc,mc
             assert mod['depends']['java']==f">={target['java']}",mc
             assert not any('smoke' in path.lower() for path in jar.namelist()),'Private test code must not ship'
+            scope=json.loads((ROOT/'compatibility/features.json').read_text(encoding='utf-8'))
+            expected={name.replace('.','/')+'.class' for name in scope['modules']}
+            actual={name for name in jar.namelist() if name.startswith('com/cheatprogram/module/') and name.endswith('.class') and '$' not in name}
+            assert actual==expected, f'Module contents do not match the declared feature scope: {mc}'
             config=json.loads(jar.read('cheatprogram.mixins.json'))
             for mixin in config['client']+config.get('mixins',[]):
                 assert config['package'].replace('.','/')+'/'+mixin+'.class' in jar.namelist(),mixin

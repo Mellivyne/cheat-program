@@ -11,27 +11,20 @@ import com.cheatprogram.hud.LoginWelcome;
 import com.cheatprogram.hud.IslandEvents;
 import com.cheatprogram.util.PersonalInfo;
 import com.cheatprogram.render.PersonalAvatar;
-import com.cheatprogram.module.combat.*;
+
 import com.cheatprogram.module.inventory.*;
 import com.cheatprogram.module.legit.*;
-import com.cheatprogram.module.macro.MacroModule;
-import com.cheatprogram.module.movement.*;
+
 import com.cheatprogram.module.utility.*;
 import com.cheatprogram.module.visual.*;
 import com.cheatprogram.module.world.*;
 import com.cheatprogram.render.Render3D;
-import com.cheatprogram.render.BlinkTransition;
 import com.cheatprogram.render.ControlPanelTextures;
 import com.cheatprogram.util.KeyNames;
 import com.cheatprogram.util.InventoryAutomation;
 import com.cheatprogram.util.InventoryPoses;
 import com.cheatprogram.util.CapeTextures;
 import com.cheatprogram.util.ChatHistoryStore;
-import com.cheatprogram.util.AuraRotations;
-import com.cheatprogram.util.AntiBot;
-import com.cheatprogram.util.AuraKnockbackFilter;
-import com.cheatprogram.util.ScaffoldRotations;
-import com.cheatprogram.util.InventoryProtection;
 import com.cheatprogram.util.ContainerIndex;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.protocol.Packet;
@@ -64,7 +57,7 @@ public final class ModuleManager {
 		for (Module m : modules) {
 			MODULES.add(m);
 			BY_ID.put(m.id, m);
-			if (!(m instanceof MacroModule)) BY_CLASS.put(m.getClass(), m);
+			BY_CLASS.put(m.getClass(), m);
 		}
 	}
 
@@ -109,7 +102,7 @@ public final class ModuleManager {
 
 	private static void safely(Module m, String what, Runnable r) {
 		try {
-			InventoryProtection.automatic(r);
+			r.run();
 		} catch (Throwable t) {
 			CheatProgram.LOGGER.error("Module {} failed during {}", m.id, what, t);
 		}
@@ -134,8 +127,8 @@ public final class ModuleManager {
 		catch (Throwable t) { CheatProgram.LOGGER.error("Personal profile lifecycle failed", t); }
 		try { IslandEvents.tickLifecycle(); }
 		catch (Throwable t) { CheatProgram.LOGGER.error("Island event lifecycle failed", t); }
-		try{com.cheatprogram.hud.TitleIntro.tickLifecycle();TeleportAura.checkLifecycleAll();}
-		catch(Throwable t){CheatProgram.LOGGER.error("Title intro / teleport lifecycle failed",t);}
+		try{com.cheatprogram.hud.TitleIntro.tickLifecycle();}
+		catch(Throwable t){CheatProgram.LOGGER.error("Title intro lifecycle failed",t);}
 		OreXray oreXray=get(OreXray.class);
 		if(oreXray!=null)safely(oreXray,"lifecycle",oreXray::checkLifecycle);
 		try { ControlPanelTextures.onTick(); }
@@ -145,21 +138,14 @@ public final class ModuleManager {
 		try { ContainerIndex.tick(); }
 		catch (Throwable t) { CheatProgram.LOGGER.error("Container index failed during tick", t); }
 		Freecam.tickLifecycle();
-		try { AntiBot.tickLifecycle(); AuraKnockbackFilter.tickLifecycle(); }
-		catch (Throwable t) { CheatProgram.LOGGER.error("Player identity filter failed during lifecycle", t); }
-		try { AuraRotations.tickLifecycle(); }
-		catch (Throwable t) { CheatProgram.LOGGER.error("Aura aiming failed during lifecycle", t); }
-		try { Flight.tickLifecycle(); FlatFlight.tickLifecycle(); com.cheatprogram.util.FallProtection.tickLifecycle(); ScaffoldRotations.tickLifecycle(); AirWalk.tickLifecycle(); }
-		catch (Throwable t) { CheatProgram.LOGGER.error("Scaffold pose / air walk lifecycle failed", t); }
+
 		try { InventoryPoses.tickLifecycle(); }
 		catch (Throwable t) { CheatProgram.LOGGER.error("Inventory pose lifecycle failed", t); }
-		try { SwimState.tickLifecycle(); }
-		catch(Throwable t){CheatProgram.LOGGER.error("Swimming pose lifecycle failed",t);}
-		TaskQueue taskQueue=get(TaskQueue.class);if(taskQueue!=null)safely(taskQueue,"lifecycle",taskQueue::checkLifecycle);
+
 		DeathRecovery recovery=get(DeathRecovery.class);if(recovery!=null)safely(recovery,"lifecycle",recovery::checkLifecycle);
 		MotionTrails trails=get(MotionTrails.class);if(trails!=null)safely(trails,"lifecycle",trails::checkLifecycle);
 		if (mc.player != null && mc.level != null) {
-			for (Module m : MODULES) if (m.isEnabled()&&TaskQueue.mayTick(m)&&teleportAllows(m)) safely(m, "tick", m::onTick);
+			for (Module m : MODULES) if (m.isEnabled()) safely(m, "tick", m::onTick);
 		}
 		try { AiController.onTick(); }
 		catch (Throwable t) { CheatProgram.LOGGER.error("AI failed during tick", t); }
@@ -171,18 +157,13 @@ public final class ModuleManager {
 		catch (Throwable t) { CheatProgram.LOGGER.error("Robot players failed during tick", t); }
 		try { CapeTextures.onTick(); }
 		catch (Throwable t) { CheatProgram.LOGGER.error("Cape media failed during tick", t); }
-		try { BlinkTransition.tickLifecycle(); }
-		catch (Throwable t) { CheatProgram.LOGGER.error("Blink transition failed during tick", t); }
+
 		BuildingBlueprints buildings = get(BuildingBlueprints.class);
 		if (buildings != null) safely(buildings, "lifecycle", buildings::checkLifecycle);
-		RangeBreak rangeBreak = get(RangeBreak.class);
-		if (rangeBreak != null) safely(rangeBreak, "lifecycle", rangeBreak::checkLifecycle);
+
 		ChatRepeat chatRepeat = get(ChatRepeat.class);
 		if (chatRepeat != null) safely(chatRepeat, "lifecycle", chatRepeat::checkLifecycle);
-		EntityOrbit entityOrbit = get(EntityOrbit.class);
-		if (entityOrbit != null) safely(entityOrbit, "lifecycle", entityOrbit::checkLifecycle);
-		BackLock backLock = get(BackLock.class);
-		if (backLock != null) safely(backLock, "lifecycle", backLock::checkLifecycle);
+
 		ChestStealer chestStealer = get(ChestStealer.class);
 		if (chestStealer != null) safely(chestStealer, "lifecycle", ChestStealer::checkLifecycle);
 		DamageEffects damageEffects=get(DamageEffects.class);
@@ -191,15 +172,14 @@ public final class ModuleManager {
 		if(droppedItems!=null)safely(droppedItems,"lifecycle",droppedItems::checkLifecycle);
 		Minimap minimap=get(Minimap.class);
 		if(minimap!=null)safely(minimap,"lifecycle",minimap::checkLifecycle);
-		AutoWeapon autoWeapon=get(AutoWeapon.class);
-		if(autoWeapon!=null)safely(autoWeapon,"lifecycle",autoWeapon::checkLifecycle);
+
 	}
 
 	public static void onPostTick() {
 		if(Config.restartRequired())return;
 		Minecraft mc = Minecraft.getInstance();
 		if (mc.player == null || mc.level == null) return;
-		for (Module m : MODULES) if (m.isEnabled()&&TaskQueue.mayTick(m)&&teleportAllows(m)) safely(m, "post tick", m::onPostTick);
+		for (Module m : MODULES) if (m.isEnabled()) safely(m, "post tick", m::onPostTick);
 		InventoryAutomation.finishTick();
 	}
 
@@ -211,8 +191,7 @@ public final class ModuleManager {
 	public static void onRender3D(Render3D r3d) {
 		if(Config.restartRequired())return;
 		for (Module m : MODULES) if (m.isEnabled()) safely(m, "render3d", () -> m.onRender3D(r3d));
-		try { BlinkTransition.render(r3d); }
-		catch (Throwable t) { CheatProgram.LOGGER.error("Blink transition failed during render", t); }
+
 		try{com.cheatprogram.render.WorldControlPanel.render(r3d);}
 		catch(Throwable error){CheatProgram.LOGGER.error("World control panel rendering failed",error);}
 	}
@@ -228,11 +207,6 @@ public final class ModuleManager {
 			}
 		}
 		return cancel;
-	}
-	private static boolean teleportAllows(Module module){
-		return !TeleportAura.ownsMotion()||!(module instanceof Flight||module instanceof AirWalk||module instanceof Speed
-				||module instanceof Scaffold||module instanceof Step||module instanceof SafeWalk||module instanceof AutoWalk
-				||module instanceof Spider||module instanceof NoFall||module instanceof LandingRescue);
 	}
 
 	public static boolean onAttack(Entity target) {

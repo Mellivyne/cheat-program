@@ -11,7 +11,6 @@ import com.cheatprogram.util.Clock;
 import com.cheatprogram.util.CombatInventory;
 import com.cheatprogram.util.InvUtil;
 import com.cheatprogram.util.InventoryAutomation;
-import com.cheatprogram.util.InventoryProtection;
 import com.cheatprogram.util.InventoryPoses;
 import com.cheatprogram.util.ContainerTransfer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -87,7 +86,7 @@ public class InvCleaner extends Module {
 		boolean claimed = false;
 		for (int i = 0; i < 36; i++) {
 			ItemStack stack = InvUtil.stack(i);
-			if (stack.isEmpty() || wasRejected(i, stack) || InventoryProtection.protectedSlot(i)) continue;
+			if (stack.isEmpty() || wasRejected(i, stack)) continue;
 			if (discard(stack) && mc.player.inventoryMenu.getSlot(InvUtil.menuSlot(i)).mayPickup(mc.player)) {
 				if (!InventoryAutomation.prepareOwnInventory(operationMode.is("follow"))) return;
 				if (!claimed && !InventoryAutomation.claim(mc.player.inventoryMenu, InvUtil.menuSlot(i))) return;
@@ -150,7 +149,7 @@ public class InvCleaner extends Module {
 		return false;
 	}
 	private boolean junkSlot(int index) {
-		return !InvUtil.stack(index).isEmpty() && !InventoryProtection.protectedSlot(index) && discard(InvUtil.stack(index));
+		return !InvUtil.stack(index).isEmpty() && discard(InvUtil.stack(index));
 	}
 	private String effectiveJunkAction() {
 		ChestStealer stealer = ModuleManager.get(ChestStealer.class);
@@ -158,8 +157,8 @@ public class InvCleaner extends Module {
 	}
 	/** Used by ChestStealer before it takes new loot; no background clicks occur in its owned menu. */
 	public boolean junkForContainer(ItemStack stack) {
-		return !stack.isEmpty() && !InventoryProtection.protectedItem(stack)
-				&& !com.cheatprogram.module.world.FarmAssist.keepsSeed(stack)
+		return !stack.isEmpty()
+				
 				&& (cleanMode.is("combat_keep") ? !keepCombat(stack)
 				: ids().contains(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()));
 	}
@@ -199,7 +198,7 @@ public class InvCleaner extends Module {
 		List<PreviewEntry> entries = new ArrayList<>();
 		for (int i = 0; i < 36; i++) {
 			ItemStack stack = InvUtil.stack(i);
-			if (stack.isEmpty() || InventoryProtection.protectedSlot(i)) continue;
+			if (stack.isEmpty()) continue;
 			String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
 			if (discard(stack) && mc.player.inventoryMenu.getSlot(InvUtil.menuSlot(i)).mayPickup(mc.player))
 				entries.add(new PreviewEntry(i + 1, stack.getHoverName().getString(), id, stack.getCount()));
@@ -214,7 +213,7 @@ public class InvCleaner extends Module {
 	}
 	/** Used by nearby looting as well, so it does not immediately take items the cleaner will discard. */
 	public boolean keepForLoot(ItemStack stack) {
-		return InventoryProtection.protectedItem(stack) || (cleanMode.is("combat_keep") ? keepCombat(stack) : !discard(stack));
+		return (cleanMode.is("combat_keep") ? keepCombat(stack) : !discard(stack));
 	}
 	private boolean keepCombat(ItemStack stack) {
 		if (CombatInventory.keep(stack, keepTools.on())) return true;

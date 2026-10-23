@@ -1420,7 +1420,7 @@
   "ui.aip.skinReady": "Apparence importée",
   "ui.ai.endpointHint": "Point d’accès API compatible",
   "ui.ai.modelsTitle": "Modèles · capacités prioritaires",
-  "ui.ai.singleplayer": "Envoyez des tâches dans un monde solo",
+  "ui.ai.singleplayer": "Envoyez des tâches dans un monde ou sur un serveur",
   "ui.ai.assistant": "IA",
   "ui.version": "pour 1.21.4",
   "ui.robottraining.withAll": "Propriétaire et robots, par défaut",
@@ -1998,7 +1998,7 @@
   "mode.lyrics_music": "Lecteur de musique en arrière-plan",
   "mode.lyrics_cast": "Application projetée",
   "mode.lyrics_manual": "Sous-titres locaux / minutage manuel",
-  "mode.lyrics_phrase": "Changer de ligne au même endroit",
+  "mode.lyrics_phrase": "Suivre au changement de ligne",
   "mode.lyrics_follow": "Suivre la position du joueur",
   "mode.lyrics_fixed": "Position fixe dans le monde",
   "mode.lyrics_screen": "Au-dessus de la projection",
@@ -2412,5 +2412,6 @@
   "ui.particles.path.kind.bounce": "Arc parabolique",
   "ui.lyrics.lineModeTitle": "Affichage des paroles par ligne entière",
   "ui.lyrics.lineModeDetail": "Seuls les temps par ligne sont disponibles : toute la ligne actuelle est affichée. Les paroles minutées par mot repassent automatiquement en affichage cumulatif.",
-  "ui.flight.local": "Vol contrôlé par le client"
+  "ui.flight.local": "Vol contrôlé par le client",
+  "setting.floatingsubtitles.anchor.hint": "Place chaque nouvelle ligne à votre position actuelle et la garde fixe pendant le chant."
 }

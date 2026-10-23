@@ -1420,7 +1420,7 @@
   "ui.aip.skinReady": "Skin importiert",
   "ui.ai.endpointHint": "Kompatible API-Adresse",
   "ui.ai.modelsTitle": "Modelle · nach Fähigkeiten",
-  "ui.ai.singleplayer": "Aufgaben in einer Einzelspielerwelt senden",
+  "ui.ai.singleplayer": "Aufgaben in einer Welt oder auf einem Server senden",
   "ui.ai.assistant": "KI",
   "ui.version": "für 1.21.4",
   "ui.robottraining.withAll": "Besitzer und Roboter, Standard",
@@ -1998,7 +1998,7 @@
   "mode.lyrics_music": "Musikplayer im Hintergrund",
   "mode.lyrics_cast": "Projizierte Anwendung",
   "mode.lyrics_manual": "Lokale Untertitel / manuelle Zeitsteuerung",
-  "mode.lyrics_phrase": "Zeilen an derselben Stelle wechseln",
+  "mode.lyrics_phrase": "Bei Zeilenwechsel folgen",
   "mode.lyrics_follow": "Spielerposition folgen",
   "mode.lyrics_fixed": "Feste Position in der Welt",
   "mode.lyrics_screen": "Über der Projektion",
@@ -2412,5 +2412,6 @@
   "ui.particles.path.kind.bounce": "Parabelbogen",
   "ui.lyrics.lineModeTitle": "Auf ganze Liedtextzeilen umgestellt",
   "ui.lyrics.lineModeDetail": "Es gibt nur Zeilenzeiten, daher wird die aktuelle ganze Zeile gezeigt. Bei Liedtexten mit Wortzeiten wird automatisch wieder wortweise ergänzt.",
-  "ui.flight.local": "Clientseitig gesteuerter Flug"
+  "ui.flight.local": "Clientseitig gesteuerter Flug",
+  "setting.floatingsubtitles.anchor.hint": "Jede neue Zeile erscheint an deiner aktuellen Position und bleibt während der Wiedergabe dort."
 }

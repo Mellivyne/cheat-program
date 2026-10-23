@@ -63,7 +63,7 @@ public final class AiVoiceControl {
         if(!com.cheatprogram.core.Config.persistenceAllowed())return;
         if(busy())return;
         if(!CONFIG.enabled){publish(Stage.ERROR,"ui.voiceInput.disabled","",0);return;}
-        if(MC.player==null||MC.level==null||MC.getSingleplayerServer()==null){publish(Stage.ERROR,"ui.ai.singleplayer","",0);return;}
+        if(MC.player==null||MC.level==null||MC.getConnection()==null){publish(Stage.ERROR,"ui.ai.singleplayer","",0);return;}
         if(!AiController.config().hasApiKey()){publish(Stage.ERROR,"ui.voiceInput.needKey","",0);return;}
         VoiceInputConfig settings=CONFIG.snapshot();
         try{if(settings.engine.equals("whisper")&&(settings.model.isBlank()||!Files.isDirectory(Path.of(settings.model)))){publish(Stage.ERROR,"ui.voiceInput.needModel","",0);return;}}catch(InvalidPathException invalid){publish(Stage.ERROR,"ui.voiceInput.needModel","",0);return;}

@@ -4,7 +4,6 @@ import com.cheatprogram.core.ClientSettings;
 import com.cheatprogram.core.Lang;
 import com.cheatprogram.core.ModuleManager;
 import com.cheatprogram.core.setting.TextSetting;
-import com.cheatprogram.module.world.PrivateChat;
 import com.cheatprogram.render.Backdrop;
 import com.cheatprogram.render.ChatStatusMarks;
 import com.cheatprogram.render.Icon;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/** Local history with a separate, explicitly operated vanilla whisper composer. */
+/** Local player-filtered chat history. */
 public final class ChatHistoryScreen extends GuiBase {
 	private static final float W = 740, H = 580, LIST_X = 20, LIST_Y = 142, LIST_W = 700, LIST_H = 298;
 	private static final int PAGE_SIZE = 200;
@@ -32,8 +31,8 @@ public final class ChatHistoryScreen extends GuiBase {
 	private static final DateTimeFormatter TIME = DateTimeFormatter.ofPattern("HH:mm").withZone(ZoneId.systemDefault());
 	private final Screen parent;
 	private final TextSetting selectedPlayer;
-	private final boolean privateMode;
-	private final TextField player = new TextField(64), message = new TextField(32767);
+	
+	private final TextField player = new TextField(64);
 	private final Scroller scroll = new Scroller();
 	private final Anim open = new Anim(0);
 	private final List<Row> rows = new ArrayList<>();
@@ -45,13 +44,13 @@ public final class ChatHistoryScreen extends GuiBase {
 	private boolean scrollToBottom = true;
 	private record Row(Entry entry, List<String> lines, String date, String time, float y, float h, float width) { }
 
-	public ChatHistoryScreen(Screen parent, TextSetting selectedPlayer, boolean privateMode) {
-		super(Lang.t(privateMode ? "ui.privatechat.title" : "ui.chattracker.title"));
-		this.parent = parent; this.selectedPlayer = selectedPlayer; this.privateMode = privateMode;
+	public ChatHistoryScreen(Screen parent, TextSetting selectedPlayer) {
+		super(Lang.t("ui.chattracker.title"));
+		this.parent = parent; this.selectedPlayer = selectedPlayer;
 		player.setText(selectedPlayer.get());
 		player.onChange = value -> { selectedPlayer.set(value); pageStart = -1; scrollToBottom = true; statusKey = ""; };
-		player.onEnter = () -> { if (privateMode) focused = message; else refresh(true); };
-		message.onEnter = this::send;
+		player.onEnter = () -> refresh(true);
+		
 	}
 
 	@Override public void render(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
@@ -74,23 +73,20 @@ public final class ChatHistoryScreen extends GuiBase {
 				c.shadow(0, 6, W, H, 24, 30, Anim.black(.25f));
 				c.lens(0, 0, W, H, 24, Theme.lift(.08f), Theme.sheetGlass(c.scale));
 			}
-			c.textC(BOLD, Lang.t(privateMode ? "ui.privatechat.title" : "ui.chattracker.title"), 24, 29, 16, Theme.TEXT);
+			c.textC(BOLD, Lang.t("ui.chattracker.title"), 24, 29, 16, Theme.TEXT);
 			c.textC(REG, c.ellipsize(REG, ChatHistoryStore.contextLabel(), 9, 600), 24, 48, 9, Theme.TEXT_3);
 			iconButton("chat.close", Icon.CLOSE, W - 29, 28, 16, Theme.TEXT_2, this::onClose);
 			textField(player, Lang.t("ui.chattracker.playerHint"), Icon.USER, 24, 65, 512, 29);
-			button("chat.refresh", Lang.t(privateMode ? "ui.chattracker.refresh" : "ui.privatechat.open"),
-					privateMode ? Icon.REFRESH : Icon.TERMINAL, 544, 65, 172, 29, true,
-					privateMode ? () -> refresh(true) : this::openPrivate);
+			button("chat.refresh",Lang.t("ui.chattracker.refresh"),Icon.REFRESH,544,65,172,29,true,()->refresh(true));
 			c.textC(REG, Lang.t("ui.chattracker.scope"), 24, 111, 9, Theme.TEXT_3);
 			c.textC(REG, Lang.t("ui.chattracker.ticksHint"), 24, 125, 8.5f, Theme.TEXT_3);
 			refresh(false); history(graphics); pager();
-			if (privateMode) composer();
-			else {
+			{
 				c.textC(REG, Lang.t("ui.chattracker.historyHint"), 24, 503, 9.5f, Theme.TEXT_2);
 				c.textC(REG, Lang.t("ui.chattracker.storageHint"), 24, 523, 8.5f, Theme.TEXT_3);
 			}
 			button("chat.back", Lang.t("ui.back"), Icon.BACK, 24, 544, 104, 25, false, this::onClose);
-			if (privateMode) c.textRight(REG, c.ellipsize(REG, Lang.t("ui.privatechat.transportHint"), 8.5f, 570), W - 24, 556, 8.5f, Theme.TEXT_3);
+
 			R2D.popAlpha(); c.pop();
 		} finally { R2D.end(); endFrame(); }
 	}
@@ -105,7 +101,7 @@ public final class ChatHistoryScreen extends GuiBase {
 		if (queryChanged) { pageStart = -1; scrollToBottom = true; }
 		filter = query; revision = currentRevision; cacheFontPixels = fontPixels;
 		entries = query.isBlank() ? List.of() : ChatHistoryStore.entries(query);
-		if (privateMode) entries = entries.stream().filter(Entry::direct).toList();
+
 		visibleStart = pageStart < 0 ? Math.max(0, entries.size() - PAGE_SIZE) : Math.min(pageStart, Math.max(0, entries.size() - 1));
 		visibleEnd = Math.min(entries.size(), visibleStart + PAGE_SIZE);
 		rows.clear(); float y = 7; String day = "";
@@ -191,20 +187,6 @@ public final class ChatHistoryScreen extends GuiBase {
 		if (start == pageStart) { if (start < 0) { scroll.target = scroll.max; } return; }
 		pageStart = start; revision = Long.MIN_VALUE; scroll.target = 0; scroll.value.snap(0); scrollToBottom = start < 0;
 	}
-	private void composer() {
-		textField(message, Lang.t("ui.privatechat.messageHint"), null, 24, 488, 560, 29);
-		button("chat.send", Lang.t("ui.privatechat.send"), Icon.NAVIGATION, 592, 488, 124, 29, true, this::send);
-		if (!statusKey.isEmpty()) c.textC(REG, Lang.t(statusKey), 24, 530, 8.5f, Theme.TEXT_2);
-	}
-	private void send() {
-		PrivateChat.Result result = PrivateChat.send(player.text, message.text);
-		statusKey = result.statusKey();
-		if (result.submitted()) { message.setText(""); pageStart = -1; scrollToBottom = true; refresh(true); }
-	}
-	private void openPrivate() {
-		PrivateChat module = ModuleManager.get(PrivateChat.class);
-		if (module != null) { module.playerId.set(player.text); module.open(this); }
-	}
 	@Override public boolean mouseClicked(double x, double y, int button) {
 		if (!dispatchClick(x, y, button)) focused = null;
 		return true;
@@ -212,13 +194,8 @@ public final class ChatHistoryScreen extends GuiBase {
 	@Override public boolean mouseScrolled(double x, double y, double horizontal, double vertical) { return dispatchScroll(x, y, vertical); }
 	@Override public boolean keyPressed(int key, int scanCode, int modifiers) {
 		if (key == GLFW.GLFW_KEY_ESCAPE) { onClose(); return true; }
-		if (key == GLFW.GLFW_KEY_TAB) { focused = focused == player && privateMode ? message : player; return true; }
-		if (focused == message && key == GLFW.GLFW_KEY_V && (modifiers & GLFW.GLFW_MOD_CONTROL) != 0) {
-			String pasted = mc.keyboardHandler.getClipboard();
-			for (int i = 0; i < pasted.length(); i++) if (!StringUtil.isAllowedChatCharacter(pasted.charAt(i))) {
-				statusKey = "ui.privatechat.invalidText"; return true;
-			}
-		}
+		if (key == GLFW.GLFW_KEY_TAB) { focused = player; return true; }
+		
 		if (focused != null) { focused.keyPressed(key, modifiers); return true; }
 		return false;
 	}

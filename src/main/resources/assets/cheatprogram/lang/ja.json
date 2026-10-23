@@ -419,7 +419,7 @@
   "ui.ai.keyMemory": "キーは今回の起動中のみ保持されます",
   "ui.ai.clearKey": "キーを消去",
   "ui.ai.save": "設定を保存",
-  "ui.ai.singleplayer": "シングルプレイのワールドでタスクを送信",
+  "ui.ai.singleplayer": "ワールドやサーバーでタスクを送信",
   "ui.ai.stop": "停止",
   "ui.ai.steps": "{0} ステップ",
   "ui.ai.you": "あなた",
@@ -2054,7 +2054,7 @@
   "mode.lyrics_music": "バックグラウンドの音楽プレイヤー",
   "mode.lyrics_cast": "投影中のアプリ",
   "mode.lyrics_manual": "ローカル字幕／手動タイマー",
-  "mode.lyrics_phrase": "同じ位置で行を切り替え",
+  "mode.lyrics_phrase": "行切替時に追従",
   "mode.lyrics_follow": "プレイヤーの位置に追従",
   "mode.lyrics_fixed": "ワールドの位置に固定",
   "mode.lyrics_screen": "投影画面の上",
@@ -2468,5 +2468,6 @@
   "ui.particles.path.kind.bounce": "放物線",
   "ui.lyrics.lineModeTitle": "行全体の歌詞表示に切り替えました",
   "ui.lyrics.lineModeDetail": "行単位の時刻しかないため、現在の行全体を表示します。単語ごとの時刻がある歌詞では自動で累積表示に戻ります。",
-  "ui.flight.local": "クライアント側で飛行を制御"
+  "ui.flight.local": "クライアント側で飛行を制御",
+  "setting.floatingsubtitles.anchor.hint": "新しい行をプレイヤーの現在位置に配置し、その行の間は固定します。"
 }

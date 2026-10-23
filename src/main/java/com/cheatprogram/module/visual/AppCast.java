@@ -81,6 +81,7 @@ public final class AppCast extends Module {
     /** Hold the chosen key; GUI key double press exits and opens the ordinary panel. */
     public static boolean key(int key,int action){AppCast module=instance();if(module==null||!module.isEnabled()||!inGame())return false;
         if(inputActive()&&key==ClientSettings.INSTANCE.guiKey){if(action==GLFW.GLFW_PRESS){long now=System.currentTimeMillis();if(module.lastExitPress>0&&now-module.lastExitPress<=400){module.leaveInteraction();mc.setScreen(new com.cheatprogram.gui.ClickGuiScreen());module.lastExitPress=0;}else module.lastExitPress=now;}return true;}
+        if(mc.screen!=null&&!inputActive())return false; // Settings own their key events, including the current binding.
         if(key!=module.interactionKey()||!module.interactionEnabled())return false;
         if(action==GLFW.GLFW_RELEASE){if(inputActive()&&!module.keyboardOnly())module.leaveInteraction();return true;}
         if(action==GLFW.GLFW_PRESS){if(inputActive()&&module.keyboardOnly())module.leaveInteraction();else if(mc.screen==null)module.enterInteraction();}return true;

@@ -4,7 +4,6 @@ import com.cheatprogram.core.Lang;
 import com.cheatprogram.core.ModuleManager;
 import com.cheatprogram.core.Notifications;
 import com.cheatprogram.gui.Theme;
-import com.cheatprogram.module.world.Scaffold;
 import com.cheatprogram.module.visual.Personal;
 import com.cheatprogram.render.Canvas;
 import com.cheatprogram.render.Fonts;
@@ -37,8 +36,8 @@ public final class DynamicIsland {
 	private final Spring height = new Spring(IDLE_H);
 	private final Anim idleVis = new Anim(1);
 	private final Anim listVis = new Anim(0);
-	private final Anim scaffoldVis = new Anim(0);
-	private final Anim scaffoldFill = new Anim(1);
+
+
 	private final MusicCapsule music = new MusicCapsule();
 
 	private record Item(Icon icon, String strong, String rest, boolean logo) {
@@ -62,25 +61,22 @@ public final class DynamicIsland {
 		List<Notifications.Entry> entries = showNotifications ? Notifications.entries().stream()
 				.filter(entry -> includeModuleToggles || entry.kind != Notifications.Kind.MODULE)
 				.toList() : List.of();
-		Scaffold scaffold = ModuleManager.get(Scaffold.class);
-		boolean scaffoldOn = scaffold != null && scaffold.isEnabled() && mc.player != null;
+
+
 
 		List<Item> items = idleItems(mc);
 		float baseW = PAD * 2 + 8 + measureIdle(c, items);
 		music.update(c, dt, Math.max(24, ctx.width - baseW - 45));
 		float idleW = baseW + music.idleWidth();
-		float sv = scaffoldVis.to(scaffoldOn ? 1f : 0f, dt, 12f);
+
 		float listW = 0;
 		float listH = 0;
-		if (sv > 0.002f) {
-			listW = Math.max(listW, scaffoldWidth(c, scaffold));
-			listH += SCAFFOLD_H * Anim.easeOutCubic(sv);
-		}
+		
 		for (Notifications.Entry e : entries) {
 			listW = Math.max(listW, entryWidth(c, e));
 			listH += ENTRY_H * e.visibility(now);
 		}
-		boolean list = scaffoldOn || !entries.isEmpty();
+		boolean list = !entries.isEmpty();
 		float targetW = Math.min(ctx.width - 12, list ? Math.max(Math.max(listW, music.rowWidth()), 168) : idleW);
 		float targetH = list ? Math.max(listH + music.rowHeight() + PAD * 2, IDLE_H) : IDLE_H;
 		if (event) {
@@ -127,13 +123,7 @@ public final class DynamicIsland {
 				music.drawSlot(c, x + 9, ty + 11, false);
 				ty += music.rowHeight();
 			}
-			if (sv > 0.002f) {
-				float a = Anim.easeOutCubic(sv);
-				R2D.pushAlpha(a);
-				drawScaffold(c, scaffold, x, ty, w, dt);
-				R2D.popAlpha();
-				ty += SCAFFOLD_H * a;
-			}
+			
 			for (Notifications.Entry e : entries) {
 				float v = e.visibility(now);
 				if (v > 0.01f) {
@@ -279,35 +269,5 @@ public final class DynamicIsland {
 		float knob = h - 3;
 		float kx = x + 1.5f + (w - 3 - knob) * on;
 		c.circle(kx + knob / 2f, y + h / 2f, knob / 2f, Anim.lerpColor(0xFFEDEDED, 0xFF0B0B0D, on));
-	}
-
-	// ---------------------------------------------------------------- scaffold
-
-	private static String scaffoldDetail(Scaffold s) {
-		return Lang.t("ui.island.blocks", s.blocksLeft()) + "  ·  " + Lang.t("ui.island.speed", String.format(Locale.ROOT, "%.2f", s.speed()));
-	}
-
-	private static float scaffoldWidth(Canvas c, Scaffold s) {
-		float tw = c.textWidth(Fonts.Face.BOLD, s.name(), 9.5f);
-		float dw = c.textWidth(Fonts.Face.MEDIUM, scaffoldDetail(s), 8.5f);
-		return Math.max(180, 10 + ICON_BOX + 9 + Math.max(tw, dw) + 14);
-	}
-
-	private void drawScaffold(Canvas c, Scaffold s, float x, float ty, float w, float dt) {
-		float ix = x + 10;
-		float cy = ty + 15.5f;
-		c.rrect(ix, cy - ICON_BOX / 2f, ICON_BOX, ICON_BOX, 7, Anim.white(0.16f));
-		c.icon(Icon.CUBE, ix + ICON_BOX / 2f, cy, 11.5f, Theme.TEXT);
-		float tx = ix + ICON_BOX + 9;
-		c.textC(Fonts.Face.BOLD, s.name(), tx, ty + 11, 9.5f, Theme.TEXT);
-		c.textC(Fonts.Face.MEDIUM, scaffoldDetail(s), tx, ty + 22.5f, 8.5f, Theme.TEXT_2);
-		float fill = scaffoldFill.to(s.progress(), dt, 10f);
-		float bx = x + 10;
-		float bw = w - 20;
-		c.rrect(bx, ty + 32.5f, bw, 3.5f, 1.75f, Anim.white(0.16f));
-		if (fill > 0.001f) {
-			c.shadow(bx, ty + 32.5f, Math.max(3.5f, bw * fill), 3.5f, 1.75f, 4, Anim.white(0.25f));
-			c.rrect(bx, ty + 32.5f, Math.max(3.5f, bw * fill), 3.5f, 1.75f, Anim.white(0.92f));
-		}
 	}
 }

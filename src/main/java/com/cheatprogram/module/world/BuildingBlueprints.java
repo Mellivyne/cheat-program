@@ -189,10 +189,10 @@ public final class BuildingBlueprints extends Module {
 			aHeld = a; bHeld = b; originHeld = origin;
 		} else { aHeld = bHeld = originHeld = false; }
 		Job running = job;
-		if (running != null && !mc.isPaused() && !com.cheatprogram.module.utility.TaskQueue.buildingPaused() && queued.compareAndSet(false, true)) {
+		if (running != null && !mc.isPaused() && queued.compareAndSet(false, true)) {
 			Runnable step = () -> {
 				try {
-					if (running.token == generation.get()&&!com.cheatprogram.module.utility.TaskQueue.buildingPaused()) running.step();
+					if (running.token == generation.get()) running.step();
 				} catch (Exception failure) {
 					CheatProgram.LOGGER.warn("Building operation failed", failure);
 					complete(running.token, "ui.building.operationFailed", null);

@@ -17,12 +17,17 @@ public final class OpenPreviewCheck {
  case 0->{if(mc.getOverlay()!=null)return;if(!(mc.screen instanceof TitleScreen)){if(mc.screen!=null&&mc.screen.getClass().getSimpleName().contains("Accessibility"))mc.setScreen(new TitleScreen());return;}
    if(ModuleManager.byId("killaura")!=null||ModuleManager.byId("scaffold")!=null)throw new AssertionError("Excluded feature registered");
    if(ModuleManager.all().size()!=47)throw new AssertionError("Unexpected feature count: "+ModuleManager.all().size());
+   for(String name:java.util.List.of("com.cheatprogram.module.combat.KillAura","com.cheatprogram.module.world.Scaffold","com.cheatprogram.module.movement.Flight","com.cheatprogram.core.Friends")){
+    try{Class.forName(name);throw new AssertionError("Unexpected implementation: "+name);}catch(ClassNotFoundException expected){}
+   }
    ClientSettings.INSTANCE.language.set("zh");mc.options.pauseOnLostFocus=false;
    String world="open-preview-validation";
    if(mc.getLevelSource().levelExists(world))mc.createWorldOpenFlows().openWorld(world,()->mc.setScreen(new TitleScreen()));
    else mc.createWorldOpenFlows().createFreshLevel(world,new LevelSettings(world,GameType.CREATIVE,false,Difficulty.PEACEFUL,true,new GameRules(FeatureFlags.DEFAULT_FLAGS),WorldDataConfiguration.DEFAULT),new WorldOptions(20261022L,true,false),WorldPresets::createNormalWorldDimensions,new TitleScreen());stage++;}
- case 1->{if(mc.player==null||mc.screen!=null)return;mc.setScreen(new ClickGuiScreen());stage++;wait=60;}
- case 2->{shot(mc,"open-features");mc.setScreen(new ModelWearScreen(null,ModuleManager.get(ModelWear.class)));stage++;wait=60;}
+ case 1->{if(mc.player==null||mc.screen!=null)return;try{InteractionRegressionCheck.run();}catch(Exception e){throw new RuntimeException(e);}mc.setScreen(new ClickGuiScreen());stage++;wait=60;}
+ case 2->{shot(mc,"open-features");((ClickGuiScreen)mc.screen).devTab(2);stage=7;wait=60;}
+ case 7->{shot(mc,"open-ai-control");((ClickGuiScreen)mc.screen).devTab(3);stage=8;wait=60;}
+ case 8->{shot(mc,"open-ai-players");mc.setScreen(new ModelWearScreen(null,ModuleManager.get(ModelWear.class)));stage=3;wait=60;}
  case 3->{shot(mc,"open-player-preview");try {
  var data=new com.cheatprogram.util.WearModelData.Model(java.util.List.of(new com.cheatprogram.util.WearModelData.Part(-1,new float[]{-.5f,1,0,0,0,1,0,0,1, .5f,1,0,0,0,1,0,0,1, 0,2,0,0,0,1,0,0,1})),java.util.List.of(),1);
  var model=ModuleManager.get(ModelWear.class);model.asset(com.cheatprogram.util.WearModelStore.install(com.cheatprogram.util.WearModelData.encode(data)));model.move(1,0,0);

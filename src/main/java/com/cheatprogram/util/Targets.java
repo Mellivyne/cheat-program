@@ -1,7 +1,6 @@
 package com.cheatprogram.util;
 
 import com.cheatprogram.core.ClientSettings;
-import com.cheatprogram.core.Friends;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
@@ -43,7 +42,7 @@ public final class Targets {
 		if (e.isInvisible() && !s.targetInvisible.on()) return false;
 		if (e instanceof Player p) {
 			if (p.isSpectator() || !s.targetPlayers.on()) return false;
-			return !(s.ignoreFriends.on() && Friends.isFriend(p));
+			return true;
 		}
 		if (e instanceof Enemy) return s.targetHostiles.on();
 		return s.targetPassives.on();

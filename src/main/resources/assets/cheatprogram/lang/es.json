@@ -1420,7 +1420,7 @@
   "ui.aip.skinReady": "Aspecto importado",
   "ui.ai.endpointHint": "Dirección de API compatible",
   "ui.ai.modelsTitle": "Modelos · primero por capacidad",
-  "ui.ai.singleplayer": "Envía tareas en un mundo de un jugador",
+  "ui.ai.singleplayer": "Envía tareas en un mundo o servidor",
   "ui.ai.assistant": "IA",
   "ui.version": "para 1.21.4",
   "ui.robottraining.withAll": "Propietario y robots, predeterminado",
@@ -1998,7 +1998,7 @@
   "mode.lyrics_music": "Reproductor de música en segundo plano",
   "mode.lyrics_cast": "Aplicación proyectada",
   "mode.lyrics_manual": "Subtítulos locales / tiempo manual",
-  "mode.lyrics_phrase": "Cambiar líneas en el mismo lugar",
+  "mode.lyrics_phrase": "Seguir al cambiar de línea",
   "mode.lyrics_follow": "Seguir la posición del jugador",
   "mode.lyrics_fixed": "Posición fija en el mundo",
   "mode.lyrics_screen": "Sobre la proyección",
@@ -2412,5 +2412,6 @@
   "ui.particles.path.kind.bounce": "Arco parabólico",
   "ui.lyrics.lineModeTitle": "Cambio a letras por línea completa",
   "ui.lyrics.lineModeDetail": "Solo hay tiempos por línea, por lo que se muestra la línea actual completa. Las letras con tiempos por palabra vuelven automáticamente al modo acumulativo.",
-  "ui.flight.local": "Vuelo controlado por el cliente"
+  "ui.flight.local": "Vuelo controlado por el cliente",
+  "setting.floatingsubtitles.anchor.hint": "Coloca cada línea nueva en tu posición actual y mantenla fija mientras se canta."
 }

@@ -9,7 +9,6 @@ import com.cheatprogram.util.Clock;
 import com.cheatprogram.util.CombatInventory;
 import com.cheatprogram.util.InvUtil;
 import com.cheatprogram.util.InventoryAutomation;
-import com.cheatprogram.util.InventoryProtection;
 import com.cheatprogram.util.InventoryPoses;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -114,11 +113,11 @@ public class AutoArmor extends Module {
 		for (EquipmentSlot slot : SLOTS) {
 			ItemStack current = mc.player.getItemBySlot(slot);
 			int armorSlot = 8 - slot.getIndex();
-			if (current.is(Items.ELYTRA) || InventoryProtection.protectedSlot(36 + slot.getIndex())
+			if (current.is(Items.ELYTRA)
 					|| !mc.player.inventoryMenu.getSlot(armorSlot).mayPickup(mc.player)) continue;
 			for (int index = 0; index < 36; index++) {
 				Rejected refusal = rejected.get(armorSlot * 36 + index);
-				if (refusal != null && !InventoryProtection.protectedSlot(index)
+				if (refusal != null
 						&& ItemStack.matches(refusal.source, InvUtil.stack(index))
 						&& ItemStack.matches(refusal.equipped, current) && score(refusal.source, slot) > score(current, slot)) return true;
 			}
@@ -128,11 +127,11 @@ public class AutoArmor extends Module {
 	private int candidate(EquipmentSlot slot) {
 		ItemStack current = mc.player.getItemBySlot(slot);
 		int armorSlot = 8 - slot.getIndex();
-		if (current.is(Items.ELYTRA) || InventoryProtection.protectedSlot(36 + slot.getIndex()) || !mc.player.inventoryMenu.getSlot(armorSlot).mayPickup(mc.player)) return -1;
+		if (current.is(Items.ELYTRA) || !mc.player.inventoryMenu.getSlot(armorSlot).mayPickup(mc.player)) return -1;
 		int best = -1;
 		double bestScore = score(current, slot);
 		for (int index = 0; index < 36; index++) {
-			if (InventoryProtection.protectedSlot(index)) continue;
+
 			ItemStack stack = InvUtil.stack(index);
 			Rejected refusal = rejected.get(armorSlot * 36 + index);
 			if (refusal != null && ItemStack.matches(refusal.source, stack) && ItemStack.matches(refusal.equipped, current)) continue;

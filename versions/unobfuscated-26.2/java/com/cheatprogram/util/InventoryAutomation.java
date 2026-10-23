@@ -107,7 +107,7 @@ public final class InventoryAutomation {
 	public static void clickOwnInventory(int slot, int button, ContainerInput type) {
 		// PICKUP exchanges deliberately hold a stack on the cursor between their three synchronous clicks.
 		if (!ownInventoryContext() || MC.gameMode == null) return;
-		if (!InventoryProtection.allowClick(MC.player.inventoryMenu, slot, button, type)) return;
+
 		lastOwnActionTick = tickSerial;
 		if (MC.gui.screen() instanceof CreativeModeInventoryScreen && MC.player.hasInfiniteMaterials()) {
 			if (type == ContainerInput.THROW) {

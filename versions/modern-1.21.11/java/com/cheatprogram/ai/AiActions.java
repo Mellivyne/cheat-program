@@ -69,7 +69,7 @@ final class AiActions {
 				""").getAsJsonObject();
 		JsonObject function = new JsonObject();
 		function.addProperty("name", "minecraft_action");
-		function.addProperty("description", "Execute one bounded Minecraft single-player action and receive real result plus updated observation. Coordinates absolute; no OS, files or arbitrary network. Observe first when uncertain. mine/place require x,y,z; look uses entityId or x,y,z; walk_to uses x,y,z; select_slot uses slot; attack uses entityId; module uses moduleId/enabled; command uses command.");
+		function.addProperty("description", "Execute one bounded Minecraft action in the current world or server and receive real result plus updated observation. Coordinates absolute; no OS, files or arbitrary network. Observe first when uncertain. mine/place require x,y,z; look uses entityId or x,y,z; walk_to uses x,y,z; select_slot uses slot; attack uses entityId; module uses moduleId/enabled; command uses command.");
 		function.add("parameters", schema);
 		JsonObject tool = new JsonObject();
 		tool.addProperty("type", "function");

@@ -2,7 +2,6 @@ package com.cheatprogram.util;
 
 import com.cheatprogram.core.Lang;
 import com.cheatprogram.core.Module;
-import com.cheatprogram.module.movement.TeleportAura;
 import com.cheatprogram.render.Render3D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -95,7 +94,7 @@ public final class OreBackfill {
         if (previous == null) { previous = now; trail.addLast(now); return; }
         Vec3 movement = now.subtract(previous);
         // A correction, dimension transfer or another movement experiment is not a tunnel trail.
-        if (movement.lengthSqr() > 16 || TeleportAura.ownsMotion()) {
+        if (movement.lengthSqr() > 16) {
             trail.clear(); trail.addLast(now); previous = now; heading = Vec3.ZERO; return;
         }
         Vec3 horizontal = new Vec3(movement.x, 0, movement.z);

@@ -12,5 +12,5 @@ public final class ChatTracker extends Module {
 	public ChatTracker() { super("chattracker", Category.WORLD); }
 	@Override public boolean isOneShot() { return true; }
 	@Override public void onEnable() { open(mc.gui.screen()); setEnabled(false); }
-	public void open(Screen parent) { mc.gui.setScreen(new ChatHistoryScreen(parent, playerId, false)); }
+	public void open(Screen parent) { mc.gui.setScreen(new ChatHistoryScreen(parent, playerId)); }
 }

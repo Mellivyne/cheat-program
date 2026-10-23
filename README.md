@@ -38,7 +38,7 @@ Browse music libraries with animated album layouts, search for songs, and displa
 
 ### AI control and AI players
 
-Connect a compatible model endpoint to direct bounded actions in your single-player world from the **AI Control** tab. The **AI Players** tab lets you manage separate characters, personalities, model connections, and supported voice settings. Each connection uses your own provider credentials; available model features depend on that provider and your account access.
+Connect a compatible model endpoint to direct bounded actions in your single-player world or on a multiplayer server from the **AI Control** tab. The **AI Players** tab lets you manage separate characters, personalities, model connections, and supported voice settings. Each connection uses your own provider credentials; available model features depend on that provider and your account access.
 
 ### Models, visuals, and everyday tools
 

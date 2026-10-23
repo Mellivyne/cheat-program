@@ -921,7 +921,7 @@ public final class Lang {
 		put("ui.ai.keyMemory", "Key 仅保存在本次运行中", "Key is kept for this session only");
 		put("ui.ai.clearKey", "清空 Key", "Clear key");
 		put("ui.ai.save", "保存设置", "Save settings");
-		put("ui.ai.singleplayer", "进入单人世界后发送任务", "Send tasks in a singleplayer world");
+		put("ui.ai.singleplayer", "进入世界或服务器后发送任务", "Send tasks in a world or on a server");
 		put("ui.ai.stop", "停止", "Stop");
 		put("ui.ai.steps", "{0} 步", "{0} steps");
 		put("ui.ai.you", "你", "You");
