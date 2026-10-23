@@ -2469,5 +2469,12 @@
   "ui.lyrics.lineModeTitle": "行全体の歌詞表示に切り替えました",
   "ui.lyrics.lineModeDetail": "行単位の時刻しかないため、現在の行全体を表示します。単語ごとの時刻がある歌詞では自動で累積表示に戻ります。",
   "ui.flight.local": "クライアント側で飛行を制御",
-  "setting.floatingsubtitles.anchor.hint": "新しい行をプレイヤーの現在位置に配置し、その行の間は固定します。"
+  "setting.floatingsubtitles.anchor.hint": "新しい行をプレイヤーの現在位置に配置し、その行の間は固定します。",
+  "setting.appcast.curved": "曲面スクリーン",
+  "setting.appcast.curveAxis": "曲げ方向",
+  "setting.appcast.curvature": "曲面角度",
+  "setting.appcast.curveSegments": "曲面の滑らかさ",
+  "mode.appcast_curve_horizontal": "横",
+  "mode.appcast_curve_vertical": "縦",
+  "ui.appcast.curveHint": "正は内向き、負は外向き、0° は平面です。寸法は展開時の大きさです。数値をクリックして入力でき、画面ごとに保存します。"
 }

@@ -2469,5 +2469,12 @@
   "ui.lyrics.lineModeTitle": "가사를 줄 전체 표시로 전환했습니다",
   "ui.lyrics.lineModeDetail": "줄 단위 시간만 있어 현재 줄 전체를 표시합니다. 단어별 시간이 있는 가사는 자동으로 누적 표시로 돌아갑니다.",
   "ui.flight.local": "클라이언트 비행 제어",
-  "setting.floatingsubtitles.anchor.hint": "새 줄을 현재 플레이어 위치에 배치하고 해당 줄이 재생되는 동안 고정합니다."
+  "setting.floatingsubtitles.anchor.hint": "새 줄을 현재 플레이어 위치에 배치하고 해당 줄이 재생되는 동안 고정합니다.",
+  "setting.appcast.curved": "곡면 화면",
+  "setting.appcast.curveAxis": "굽힘 방향",
+  "setting.appcast.curvature": "곡면 각도",
+  "setting.appcast.curveSegments": "곡면 부드러움",
+  "mode.appcast_curve_horizontal": "가로",
+  "mode.appcast_curve_vertical": "세로",
+  "ui.appcast.curveHint": "양수는 안쪽, 음수는 바깥쪽으로 굽힙니다. 0°는 평면입니다. 크기는 펼친 면 기준이며 값을 클릭해 입력할 수 있습니다. 화면별로 저장됩니다."
 }

@@ -22,7 +22,7 @@ def main():
         with zipfile.ZipFile(artifact) as jar:
             mod=json.loads(jar.read('fabric.mod.json'))
             assert mod['name']=='Cheat Program' and mod['license']=='MIT'
-            assert 'com/cheatprogram/dev/OpenPreviewCheck.class' not in jar.namelist()
+            assert not any(name in jar.namelist() for name in ['com/cheatprogram/dev/OpenPreviewCheck.class','com/cheatprogram/dev/InteractionRegressionCheck.class','com/cheatprogram/dev/CurvedSurfaceCheck.class'])
             assert mod['id']=='cheatprogram' and mod['version']==version and mod['depends']['minecraft']==mc,mc
             assert mod['depends']['java']==f">={target['java']}",mc
             assert not any('smoke' in path.lower() for path in jar.namelist()),'Private test code must not ship'

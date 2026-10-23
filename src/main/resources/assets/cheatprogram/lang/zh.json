@@ -1,5 +1,12 @@
 {
   "mode.lyrics_phrase": "跟随切换",
   "ui.ai.singleplayer": "进入世界或服务器后发送任务",
-  "setting.floatingsubtitles.anchor.hint": "每行开始时在玩家当前位置放置，唱这行时固定不动。"
+  "setting.floatingsubtitles.anchor.hint": "每行开始时在玩家当前位置放置，唱这行时固定不动。",
+  "setting.appcast.curved": "曲面投屏",
+  "setting.appcast.curveAxis": "弯曲方向",
+  "setting.appcast.curvature": "曲面角度",
+  "setting.appcast.curveSegments": "曲面平滑度",
+  "mode.appcast_curve_horizontal": "横向",
+  "mode.appcast_curve_vertical": "纵向",
+  "ui.appcast.curveHint": "正角度向内弯曲，负角度向外弯曲，0° 为平面。宽高按展开尺寸计算；支持点击数值手动输入，每块屏幕独立保存。"
 }

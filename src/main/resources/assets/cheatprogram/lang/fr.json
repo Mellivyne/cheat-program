@@ -2413,5 +2413,12 @@
   "ui.lyrics.lineModeTitle": "Affichage des paroles par ligne entière",
   "ui.lyrics.lineModeDetail": "Seuls les temps par ligne sont disponibles : toute la ligne actuelle est affichée. Les paroles minutées par mot repassent automatiquement en affichage cumulatif.",
   "ui.flight.local": "Vol contrôlé par le client",
-  "setting.floatingsubtitles.anchor.hint": "Place chaque nouvelle ligne à votre position actuelle et la garde fixe pendant le chant."
+  "setting.floatingsubtitles.anchor.hint": "Place chaque nouvelle ligne à votre position actuelle et la garde fixe pendant le chant.",
+  "setting.appcast.curved": "Écran incurvé",
+  "setting.appcast.curveAxis": "Direction de courbure",
+  "setting.appcast.curvature": "Angle de courbure",
+  "setting.appcast.curveSegments": "Lissage de la courbe",
+  "mode.appcast_curve_horizontal": "Horizontale",
+  "mode.appcast_curve_vertical": "Verticale",
+  "ui.appcast.curveHint": "Angle positif vers l’intérieur, négatif vers l’extérieur ; 0° est plat. Dimensions de la surface déroulée. Cliquez sur les valeurs pour les saisir ; chaque écran est enregistré séparément."
 }

@@ -2413,5 +2413,12 @@
   "ui.lyrics.lineModeTitle": "Auf ganze Liedtextzeilen umgestellt",
   "ui.lyrics.lineModeDetail": "Es gibt nur Zeilenzeiten, daher wird die aktuelle ganze Zeile gezeigt. Bei Liedtexten mit Wortzeiten wird automatisch wieder wortweise ergänzt.",
   "ui.flight.local": "Clientseitig gesteuerter Flug",
-  "setting.floatingsubtitles.anchor.hint": "Jede neue Zeile erscheint an deiner aktuellen Position und bleibt während der Wiedergabe dort."
+  "setting.floatingsubtitles.anchor.hint": "Jede neue Zeile erscheint an deiner aktuellen Position und bleibt während der Wiedergabe dort.",
+  "setting.appcast.curved": "Gebogener Bildschirm",
+  "setting.appcast.curveAxis": "Biegerichtung",
+  "setting.appcast.curvature": "Biegewinkel",
+  "setting.appcast.curveSegments": "Kurvenglätte",
+  "mode.appcast_curve_horizontal": "Horizontal",
+  "mode.appcast_curve_vertical": "Vertikal",
+  "ui.appcast.curveHint": "Positive Winkel biegen nach innen, negative nach außen; 0° ist flach. Maße beziehen sich auf die abgewickelte Fläche. Werte anklicken und eingeben; jeder Bildschirm wird separat gespeichert."
 }

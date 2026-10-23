@@ -2413,5 +2413,12 @@
   "ui.lyrics.lineModeTitle": "Cambio a letras por línea completa",
   "ui.lyrics.lineModeDetail": "Solo hay tiempos por línea, por lo que se muestra la línea actual completa. Las letras con tiempos por palabra vuelven automáticamente al modo acumulativo.",
   "ui.flight.local": "Vuelo controlado por el cliente",
-  "setting.floatingsubtitles.anchor.hint": "Coloca cada línea nueva en tu posición actual y mantenla fija mientras se canta."
+  "setting.floatingsubtitles.anchor.hint": "Coloca cada línea nueva en tu posición actual y mantenla fija mientras se canta.",
+  "setting.appcast.curved": "Pantalla curva",
+  "setting.appcast.curveAxis": "Dirección de curva",
+  "setting.appcast.curvature": "Ángulo de curva",
+  "setting.appcast.curveSegments": "Suavidad de curva",
+  "mode.appcast_curve_horizontal": "Horizontal",
+  "mode.appcast_curve_vertical": "Vertical",
+  "ui.appcast.curveHint": "Ángulos positivos hacia dentro, negativos hacia fuera; 0° es plano. Tamaño de la superficie desplegada. Pulsa los valores para escribirlos; cada pantalla se guarda por separado."
 }

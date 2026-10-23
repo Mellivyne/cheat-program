@@ -10,8 +10,10 @@ import org.lwjgl.glfw.GLFW;
 /** Runs only in the isolated development world, never in release artifacts. */
 final class InteractionRegressionCheck {
     static void run() throws Exception {
+        CurvedSurfaceCheck.run();
         var mc=Minecraft.getInstance();
         var cast=ModuleManager.get(AppCast.class);
+        checkCurveSettings(cast);
         int originalKey=cast.interactionKey(); boolean enabled=cast.isEnabled(),interaction=cast.interactionEnabled();
         var previous=mc.screen;
         try {
@@ -46,5 +48,31 @@ final class InteractionRegressionCheck {
             if(placement.get(lyrics)!=fixed)throw new AssertionError("Fixed placement moved");
         } finally {mc.player.setPos(originalPosition);lyrics.anchor.set(originalMode);lyrics.recenter();}
         System.out.println("INTERACTION_CHECK_PASS repeated-rebind phrase-relocation fixed-placement");
+    }
+
+    private static void checkCurveSettings(AppCast cast){
+        var saved=new java.util.HashMap<String,com.google.gson.JsonElement>();
+        for(var setting:cast.settings())saved.put(setting.id,setting.save().deepCopy());
+        var curved=(com.cheatprogram.core.setting.BoolSetting)cast.settings().stream().filter(s->s.id.equals("curved")).findFirst().orElseThrow();
+        var angle=(com.cheatprogram.core.setting.NumberSetting)cast.settings().stream().filter(s->s.id.equals("curvature")).findFirst().orElseThrow();
+        var axis=(com.cheatprogram.core.setting.ModeSetting)cast.settings().stream().filter(s->s.id.equals("curveAxis")).findFirst().orElseThrow();
+        var screens=(com.cheatprogram.core.setting.TextSetting)cast.settings().stream().filter(s->s.id.equals("screens")).findFirst().orElseThrow();
+        try{
+            screens.set("[{\"settings\":{}},{\"settings\":{}}]");cast.screenEntries();cast.selectScreen(0);
+            curved.set(true);angle.set(110.0);axis.set("appcast_curve_vertical");cast.plane(1);
+            cast.selectScreen(1);
+            if(curved.on()||angle.val()!=60||!axis.is("appcast_curve_horizontal"))throw new AssertionError("Legacy screen inherited curve settings");
+            curved.set(true);angle.set(-45.0);cast.plane(1);cast.selectScreen(0);
+            if(!curved.on()||angle.val()!=110||!axis.is("appcast_curve_vertical"))throw new AssertionError("Per-screen curve not preserved");
+            cast.selectScreen(1);if(angle.val()!=-45)throw new AssertionError("Second curve not preserved");
+            for(boolean vertical:new boolean[]{false,true})for(float a:new float[]{-120,0,120}){
+                var plane=new com.cheatprogram.render.AppCastPlane(new net.minecraft.world.phys.Vec3(4,70,-6),3,2,37,24,-13,a,vertical,48);
+                for(double u:new double[]{.001,.25,.5,.999})for(double v:new double[]{.001,.5,.999}){
+                    var target=plane.point(u,v);var normal=plane.normal(u,v);var hit=plane.pick(target.add(normal.scale(.4)),normal.scale(-1),true);
+                    if(hit==null||Math.abs(hit.u()-u)>.00001||Math.abs(hit.v()-v)>.00001)throw new AssertionError("Rotated curve picking mismatch");
+                }
+            }
+            System.out.println("CURVED_WORLD_CHECK_PASS rotated-picking per-screen-settings legacy-defaults");
+        }finally{for(var setting:cast.settings())setting.load(saved.get(setting.id));cast.screenEntries();}
     }
 }

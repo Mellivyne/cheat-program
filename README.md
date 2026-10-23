@@ -8,7 +8,7 @@ A customizable Fabric client that brings application screens, spatial sound, par
 
 ### In-world screen projection
 
-Place application windows or your desktop on adjustable screens inside Minecraft. Use multiple screens, change their position, size, rotation, and brightness, and choose between world placement and screen-following layouts. Native-resolution and native-frame-rate capture options are available, alongside configurable mouse and keyboard interaction.
+Place application windows or your desktop on adjustable screens inside Minecraft. Use multiple screens, change their position, size, rotation, and brightness, and choose between world placement and screen-following layouts. Native-resolution and native-frame-rate capture options are available, alongside configurable mouse and keyboard interaction. Each screen can also curve horizontally or vertically, with an adjustable inward or outward angle and smoothness. Mouse picking follows the curved surface.
 
 Screen capture and application input use Windows native helpers. Compatibility can vary between applications and capture methods.
 

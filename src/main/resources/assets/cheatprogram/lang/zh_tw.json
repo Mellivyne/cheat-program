@@ -2775,5 +2775,12 @@
   "ui.lyrics.lineModeTitle": "歌詞已切換為整行顯示",
   "ui.lyrics.lineModeDetail": "平台僅提供整句時間，已顯示目前整行；遇到逐字歌詞會自動恢復逐字累積。",
   "ui.flight.local": "本機控制飛行",
-  "setting.floatingsubtitles.anchor.hint": "每行開始時放在玩家目前位置，演唱這行時保持固定。"
+  "setting.floatingsubtitles.anchor.hint": "每行開始時放在玩家目前位置，演唱這行時保持固定。",
+  "setting.appcast.curved": "曲面投屏",
+  "setting.appcast.curveAxis": "彎曲方向",
+  "setting.appcast.curvature": "曲面角度",
+  "setting.appcast.curveSegments": "曲面平滑度",
+  "mode.appcast_curve_horizontal": "橫向",
+  "mode.appcast_curve_vertical": "縱向",
+  "ui.appcast.curveHint": "正角度向內彎曲，負角度向外彎曲，0° 為平面。寬高依展開尺寸計算；可點擊數值輸入，每塊螢幕獨立儲存。"
 }

@@ -1,5 +1,12 @@
 {
   "mode.lyrics_phrase": "Follow on line change",
   "ui.ai.singleplayer": "Send tasks in a world or on a server",
-  "setting.floatingsubtitles.anchor.hint": "Place each new line at your current position; keep it fixed while that line plays."
+  "setting.floatingsubtitles.anchor.hint": "Place each new line at your current position; keep it fixed while that line plays.",
+  "setting.appcast.curved": "Curved screen",
+  "setting.appcast.curveAxis": "Curve direction",
+  "setting.appcast.curvature": "Curve angle",
+  "setting.appcast.curveSegments": "Curve smoothness",
+  "mode.appcast_curve_horizontal": "Horizontal",
+  "mode.appcast_curve_vertical": "Vertical",
+  "ui.appcast.curveHint": "Positive angles curve inward; negative angles curve outward; 0° is flat. Dimensions use the unrolled surface. Click values to type; each screen saves independently."
 }
