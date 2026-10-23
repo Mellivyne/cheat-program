@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <a href="README.zh-CN.md">中文简体</a> | <a href="README.zh-TW.md">中文繁體</a> | <a href="README.ja.md">日本語</a> | <a href="README.ko.md">한국어</a> | <strong>Español</strong> | <a href="README.fr.md">Français</a> | <a href="README.de.md">Deutsch</a></p>
 
+https://github.com/user-attachments/assets/0aa8ea54-37b5-4109-b15d-543e4fc63c19
+
+https://github.com/user-attachments/assets/b7831d49-4c18-4f0f-940b-68d78249b736
+
 ## Control de IA y jugadores de IA
 
 Conecta un modelo compatible para dirigir acciones acotadas en tu mundo individual desde AI Control. AI Players permite gestionar personajes, personalidades, conexiones de modelos y opciones de voz compatibles. Utiliza tus propias credenciales del proveedor; las funciones dependen del servicio y de tu cuenta.

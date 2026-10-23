@@ -2,6 +2,10 @@
 
 <p align="center"><strong>English</strong> | <a href="docs/README.zh-CN.md">中文简体</a> | <a href="docs/README.zh-TW.md">中文繁體</a> | <a href="docs/README.ja.md">日本語</a> | <a href="docs/README.ko.md">한국어</a> | <a href="docs/README.es.md">Español</a> | <a href="docs/README.fr.md">Français</a> | <a href="docs/README.de.md">Deutsch</a></p>
 
+https://github.com/user-attachments/assets/0aa8ea54-37b5-4109-b15d-543e4fc63c19
+
+https://github.com/user-attachments/assets/b7831d49-4c18-4f0f-940b-68d78249b736
+
 A customizable Fabric client that brings application screens, spatial sound, particle scenes, and creative tools into your Minecraft world. Build a space that feels like your own, then share your creations through configuration codes.
 
 ## Highlights

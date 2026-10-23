@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <a href="README.zh-CN.md">中文简体</a> | <a href="README.zh-TW.md">中文繁體</a> | <a href="README.ja.md">日本語</a> | <strong>한국어</strong> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.de.md">Deutsch</a></p>
 
+https://github.com/user-attachments/assets/0aa8ea54-37b5-4109-b15d-543e4fc63c19
+
+https://github.com/user-attachments/assets/b7831d49-4c18-4f0f-940b-68d78249b736
+
 ## AI 제어와 AI 플레이어
 
 호환 모델 연결을 설정하고 AI Control에서 싱글플레이 월드의 제한된 작업을 지시할 수 있습니다. AI Players에서는 캐릭터, 성격, 모델 연결 및 지원 음성 설정을 개별 관리합니다. 본인의 제공업체 인증 정보를 사용하며 기능은 서비스와 계정 권한에 따라 다릅니다.

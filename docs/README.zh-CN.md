@@ -2,6 +2,10 @@
 
 <p align="center"><a href="../README.md">English</a> | <strong>中文简体</strong> | <a href="README.zh-TW.md">中文繁體</a> | <a href="README.ja.md">日本語</a> | <a href="README.ko.md">한국어</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.de.md">Deutsch</a></p>
 
+https://github.com/user-attachments/assets/0aa8ea54-37b5-4109-b15d-543e4fc63c19
+
+https://github.com/user-attachments/assets/b7831d49-4c18-4f0f-940b-68d78249b736
+
 ## AI 控制与 AI 玩家
 
 AI 控制页可连接兼容的模型接口，在单人世界内执行有界操作；AI 玩家页可分别管理角色、性格、模型连接和受支持的语音设置。连接使用自己的服务商凭据，模型能力取决于服务及账号权限。
