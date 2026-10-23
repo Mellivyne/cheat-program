@@ -72,6 +72,9 @@ public final class AppCaptureEngine {
     public int cachedClientWidth(){Texture current=image;return current==null?1:current.clientWidth;}
     public int cachedClientHeight(){Texture current=image;return current==null?1:current.clientHeight;}
     public Window currentWindow(){Session owner=session;return owner==null?null:owner.activeWindow;}
+    /** Metadata only: input selection must not upload frames or stall the mouse callback. */
+    public boolean hasVisibleImage(){return visibleImage()!=null;}
+    public boolean inputReady(){Session owner=session;return owner!=null&&!owner.cancelled&&owner.allowInput&&owner.viewReady&&hasVisibleImage();}
     public boolean rootProcessAlive(){Session owner=session;return owner!=null&&!owner.window.desktop()&&owner.rootStart.isPresent()
             &&ProcessHandle.of(owner.window.pid()).filter(ProcessHandle::isAlive).flatMap(process->process.info().startInstant()).equals(owner.rootStart);}
     public void sharp(boolean enabled){sharp=enabled;}

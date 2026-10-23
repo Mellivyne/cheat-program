@@ -192,9 +192,24 @@ public final class AppCast extends Module {
     public Vec3 screenRay(double guiX,double guiY){return screenRayFraction(guiX/Math.max(1,mc.getWindow().getGuiScaledWidth()),guiY/Math.max(1,mc.getWindow().getGuiScaledHeight()));}
     private Vec3 screenRayFraction(double sx,double sy){if(inverseView==null||renderCamera==null||System.nanoTime()-renderTime>500_000_000L)return null;Vector4f near=new Vector4f((float)sx*2-1,1-(float)sy*2,com.cheatprogram.compat.NativeProjection262.nearClipZ(),1).mul(inverseView),far=new Vector4f((float)sx*2-1,1-(float)sy*2,com.cheatprogram.compat.NativeProjection262.farClipZ(),1).mul(inverseView);if(Math.abs(near.w)<.000001||Math.abs(far.w)<.000001)return null;return new Vec3(far.x/far.w-near.x/near.w,far.y/far.w-near.y/near.w,far.z/far.w-near.z/near.w).normalize();}
     public AppCastPlane.Hit aimHit(){return hit(current(),screenRayFraction(.5,.5));}
-    private AppCastPlane.Hit hit(Slot slot,Vec3 ray){if(ray==null||renderCamera==null||mc.level==null||mc.player==null)return null;AppCastPlane plane=plane(slot,1);AppCastPlane.Hit hit=plane.pick(renderCamera,ray,true);if(hit==null||plane.normal(hit.u(),hit.v()).dot(ray)>-.00001)return null;Vec3 target=plane.point(hit.u(),hit.v());var block=mc.level.clip(new ClipContext(renderCamera,target,ClipContext.Block.COLLIDER,ClipContext.Fluid.NONE,mc.player));if(block.getType()!=HitResult.Type.MISS&&block.getLocation().distanceToSqr(renderCamera)+.02<target.distanceToSqr(renderCamera))return null;return hit;}
-    public void enterInteraction(){if(!interaction.on()||!isEnabled()||!inGame()||mc.gui.screen()!=null)return;ensureLoaded();saveCurrent();Slot chosen=null;AppCastPlane.Hit best=null;Vec3 ray=screenRayFraction(.5,.5);for(Slot slot:slots){AppCastPlane.Hit hit=hit(slot,ray);if(hit!=null&&(best==null||hit.distance()<best.distance())){best=hit;chosen=slot;}}
-        if(chosen==null)return;selectScreen(slots.indexOf(chosen));if(chosen.capture.image()==null||chosen.selected==null||chosen.selected.desktop())return;KeyMapping.releaseAll();
+    private AppCastPlane.Hit hit(Slot slot,Vec3 ray){if(ray==null||renderCamera==null||mc.level==null||mc.player==null)return null;AppCastPlane plane=plane(slot,1);AppCastPlane.Hit hit=plane.pick(renderCamera,ray,true);if(hit==null)return null;if(bool(slot,"throughWalls",false))return hit;Vec3 target=plane.point(hit.u(),hit.v());var block=mc.level.clip(new ClipContext(renderCamera,target,ClipContext.Block.COLLIDER,ClipContext.Fluid.NONE,mc.player));if(block.getType()!=HitResult.Type.MISS&&block.getLocation().distanceToSqr(renderCamera)+.02<target.distanceToSqr(renderCamera))return null;return hit;}
+    private record InteractionTarget(Slot slot,AppCastPlane.Hit hit) { }
+    private InteractionTarget interactionTarget(Vec3 ray){
+        // Projection textures blend without depth writes. The last drawn surface
+        // under the crosshair is the visible one, including coincident screens.
+        // Picking the nearest/first slot instead sent input to a covered window.
+        for(int i=slots.size()-1;i>=0;i--){Slot slot=slots.get(i);
+            if(!slot.capture.hasVisibleImage()||decimal(slot,"opacity",100)<=0)continue;
+            AppCastPlane.Hit hit=hit(slot,ray);
+            if(hit!=null)return new InteractionTarget(slot,hit);
+        }
+        return null;
+    }
+    public void enterInteraction(){if(!interaction.on()||!isEnabled()||!inGame()||mc.gui.screen()!=null)return;ensureLoaded();saveCurrent();InteractionTarget target=interactionTarget(screenRayFraction(.5,.5));
+        if(target==null)return;Slot chosen=target.slot();AppCastPlane.Hit best=target.hit();
+        // Do not click through a visible desktop or a reconnecting surface.
+        if(chosen.selected==null||chosen.selected.desktop()||!chosen.capture.inputReady())return;
+        selectScreen(slots.indexOf(chosen));renderedPointerPlane=plane(chosen,1);KeyMapping.releaseAll();
         if(inputMode.is("appcast_native_foreground")){releaseInput();AppCaptureEngine.Window active=chosen.capture.currentWindow();if(!com.cheatprogram.capture.AppInputFocus.activateSelected(active==null?chosen.selected:active))Notifications.push(Lang.t("ui.appcast.title"),Lang.t("ui.appcast.nativeActivationFailed"),false);return;}
         mc.gui.setScreen(new AppCastInputScreen(this,best.u(),best.v()));}
     public void leaveInteraction(){releaseInput();if(inputActive())mc.gui.setScreen(null);KeyMapping.releaseAll();}

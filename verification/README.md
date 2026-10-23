@@ -11,3 +11,5 @@ This check targets Minecraft 1.21.4. Its additional Java sources are enabled onl
 The isolated check also verifies repeated projection key binding, per-line lyric placement, and curved-screen picking after rotation. Curved-screen settings are checked independently across screens, including migration from older settings.
 
 For the standalone geometry regression (no game needed), compile `src/main/java/com/cheatprogram/render/CastSurface.java` and `verification/java/com/cheatprogram/dev/CurvedSurfaceCheck.java`, then run `com.cheatprogram.dev.CurvedSurfaceCheck`. It covers both curve axes, positive/negative angles, flat compatibility, borders and dragging.
+
+The multi-screen regression uses three synthetic capture sessions to check visible-surface selection, back-face and curved picking, click/drag/wheel routing, returning to a previously selected screen, and rejection of stale frames. It checks local command queues; it does not assert that a real external application handled Windows input messages.
