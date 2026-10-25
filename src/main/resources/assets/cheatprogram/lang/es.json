@@ -2420,5 +2420,9 @@
   "setting.appcast.curveSegments": "Suavidad de curva",
   "mode.appcast_curve_horizontal": "Horizontal",
   "mode.appcast_curve_vertical": "Vertical",
-  "ui.appcast.curveHint": "Ángulos positivos hacia dentro, negativos hacia fuera; 0° es plano. Tamaño de la superficie desplegada. Pulsa los valores para escribirlos; cada pantalla se guarda por separado."
+  "ui.appcast.curveHint": "Ángulos positivos hacia dentro, negativos hacia fuera; 0° es plano. Tamaño de la superficie desplegada. Pulsa los valores para escribirlos; cada pantalla se guarda por separado.",
+  "mode.music_layout_sphere": "Planeta musical",
+  "ui.music.spaceSwipe.sphere": "Arrastra para girar el planeta · Rueda para ampliar · Haz clic para elevar y reproducir",
+  "mode.music_layout_gallery": "Galería musical inmersiva",
+  "ui.music.spaceSwipe.gallery": "Arrastra para recorrer la galería · Rueda para ajustar la distancia · Haz clic para enfocar y reproducir"
 }

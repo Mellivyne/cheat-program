@@ -21,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 public final class Shaders {
 	public static final Program RRECT = new Program("rrect", DefaultVertexFormat.POSITION_TEX_COLOR);
 	public static final Program GLASS = new Program("glass", DefaultVertexFormat.POSITION_TEX_COLOR);
+    public static final Program ALBUM_GLASS = new Program("album_glass", DefaultVertexFormat.POSITION_TEX_COLOR);
 	public static final Program LIQUID_TOGGLE = new Program("liquid_toggle", DefaultVertexFormat.POSITION_TEX_COLOR);
 	public static final Program BLUR_DOWN = new Program("blur_down", DefaultVertexFormat.POSITION);
 	public static final Program BLUR_UP = new Program("blur_up", DefaultVertexFormat.POSITION);

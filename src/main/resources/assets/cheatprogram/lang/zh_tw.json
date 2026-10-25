@@ -2782,5 +2782,9 @@
   "setting.appcast.curveSegments": "曲面平滑度",
   "mode.appcast_curve_horizontal": "橫向",
   "mode.appcast_curve_vertical": "縱向",
-  "ui.appcast.curveHint": "正角度向內彎曲，負角度向外彎曲，0° 為平面。寬高依展開尺寸計算；可點擊數值輸入，每塊螢幕獨立儲存。"
+  "ui.appcast.curveHint": "正角度向內彎曲，負角度向外彎曲，0° 為平面。寬高依展開尺寸計算；可點擊數值輸入，每塊螢幕獨立儲存。",
+  "mode.music_layout_sphere": "音樂星球",
+  "ui.music.spaceSwipe.sphere": "拖動旋轉星球 · 滾輪縮放 · 點擊浮出專輯並播放",
+  "mode.music_layout_gallery": "沉浸音樂畫廊",
+  "ui.music.spaceSwipe.gallery": "拖動沿畫廊瀏覽 · 滾輪調整距離 · 點擊聚焦並播放"
 }

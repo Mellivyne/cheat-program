@@ -6,6 +6,10 @@ https://github.com/user-attachments/assets/0aa8ea54-37b5-4109-b15d-543e4fc63c19
 
 https://github.com/user-attachments/assets/b7831d49-4c18-4f0f-940b-68d78249b736
 
+## Kreativfunktionen in v1.1
+
+Die Gebäudevorschau zeigt echte 3D-Blöcke mit Namen und Mengen, maximale Abmessungen, einzelne horizontale Ebenen und einen Rundgang mit freiem Flug in der Ich-Perspektive. Der KI-Architekt erstellt und überarbeitet Gebäude mit deinem eigenen API-Schlüssel anhand von Text und Referenzbildern. Der Partikeldesigner erzeugt native Partikel und Bewegungspfade mit Vorschau und eigenem CPS1-Konfigurationscode. Alle KI-Arbeitsbereiche unterstützen Bilder. Sie werden nur an den ausgewählten Endpunkt gesendet; Zugangsdaten und Bilder gehören nicht zu geteilten Konfigurationen. AI Control ist auch auf Servern im Rahmen der Rechte des aktuellen Spielers nutzbar.
+
 ## KI-Steuerung und KI-Spieler
 
 Verbinde einen kompatiblen Modell-Endpunkt und steuere begrenzte Aktionen in deiner Einzelspielerwelt über AI Control. In AI Players verwaltest du Charaktere, Persönlichkeiten, Modellverbindungen und unterstützte Spracheinstellungen getrennt. Verwende deine eigenen Anbieter-Zugangsdaten; Funktionen hängen von Dienst und Konto ab.

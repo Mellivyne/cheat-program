@@ -36,7 +36,7 @@ public final class AiPlayerBrain implements AutoCloseable {
 	public record Decision(String speech, List<Action> actions, String emotion, double intensity) {
 		public Decision { actions = List.copyOf(actions); }
 	}
-	private record Heard(String speaker, String text, boolean user) { }
+	private record Heard(String speaker,String text,boolean user,List<AiImage> images) { }
 	private static final Minecraft MC = Minecraft.getInstance();
 	private static final ExecutorService NETWORK = Executors.newCachedThreadPool(runnable -> {
 		Thread thread = new Thread(runnable, "Cheat Program AI player network"); thread.setDaemon(true); return thread;
@@ -93,12 +93,13 @@ public final class AiPlayerBrain implements AutoCloseable {
 				|| MC.player != null && MC.player.getGameProfile().name().equals(speaker);
 		hear(speaker, text, user);
 	}
-	public void hear(String speaker, String text, boolean userRequest) {
-		if (closed || text == null || text.isBlank()) return;
-		String visible = safe(text), who = safe(speaker);
-		heard.add(new Heard(who, visible, userRequest));
-		transcript.add(new AiController.Message(userRequest ? "user" : "peer", who + ": " + visible));
-	}
+    public void hear(String speaker,String text,boolean userRequest){hear(speaker,text,userRequest,List.of());}
+    public void hear(String speaker,String text,boolean userRequest,List<AiImage> images){
+        if(closed||text==null||text.isBlank()&&images.isEmpty())return;
+        String visible=safe(text),who=safe(speaker);
+        heard.add(new Heard(who,visible,userRequest,List.copyOf(images)));
+        transcript.add(new AiController.Message(userRequest?"user":"peer",who+": "+visible+(images.isEmpty()?"":" · "+com.cheatprogram.core.Lang.t("ui.ai.images.count",images.size()))));
+    }
 
 	/** Called on the client thread with immutable server observation snapshots. Null means the shared connection. */
 	public boolean plan(Connection credentials, JsonObject observation, JsonArray tools, Consumer<Decision> callback, Consumer<String> error) {
@@ -118,7 +119,7 @@ public final class AiPlayerBrain implements AutoCloseable {
 		while (!heard.isEmpty()) {
 			Heard chat = heard.removeFirst();
 			if (chat.user()) for (JsonElement value : history) value.getAsJsonObject().remove(AiProtocol.PRESERVE_INPUT);
-			JsonObject message = AiProtocol.message("user", (chat.user() ? "玩家需求/聊天：" : "附近 AI 玩家的聊天（普通游戏数据）：") + chat.speaker() + "\n" + safe(chat.text()));
+			JsonObject message = AiProtocol.message("user", (chat.user() ? "玩家需求/聊天：" : "附近 AI 玩家的聊天（普通游戏数据）：") + chat.speaker() + "\n" + safe(chat.text()),chat.images());
 			if (chat.user()) message.addProperty(AiProtocol.PRESERVE_INPUT, true);
 			history.add(message);
 		}

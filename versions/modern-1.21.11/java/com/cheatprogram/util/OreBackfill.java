@@ -45,6 +45,7 @@ public final class OreBackfill {
     private ClientLevel world;
     private LocalPlayer body;
     private Vec3 previous, heading = Vec3.ZERO;
+    private final BackfillTrail movementTrail=new BackfillTrail();
     private int tick, nextUse, confirmed, rejected, timedOut;
     private boolean active, invalidId, missingMaterial;
     private record Candidate(BlockPos pos, Block block, BlockHitResult hit) { }
@@ -68,7 +69,7 @@ public final class OreBackfill {
 
     public void clear() {
         interactions.reset(); trail.clear(); candidates.clear(); pending.clear(); retryAfter.clear();
-        world = null; body = null; previous = null; heading = Vec3.ZERO; active = false;
+        world = null; body = null; previous = null; heading = Vec3.ZERO; movementTrail.reset(); active = false;
         tick = nextUse = confirmed = rejected = timedOut = 0; invalidId = missingMaterial = false;
     }
     public void checkLifecycle() {
@@ -91,14 +92,15 @@ public final class OreBackfill {
         });
         retryAfter.entrySet().removeIf(entry -> tick >= entry.getValue());
         Vec3 now = body.position();
-        if (previous == null) { previous = now; trail.addLast(now); return; }
+        if (previous == null) { previous = now; trail.addLast(now); movementTrail.update(now.x,now.z); return; }
         Vec3 movement = now.subtract(previous);
         // A correction, dimension transfer or another movement experiment is not a tunnel trail.
         if (movement.lengthSqr() > 16) {
-            trail.clear(); trail.addLast(now); previous = now; heading = Vec3.ZERO; return;
+            trail.clear(); trail.addLast(now); previous = now; heading = Vec3.ZERO; movementTrail.reset();movementTrail.update(now.x,now.z); return;
         }
-        Vec3 horizontal = new Vec3(movement.x, 0, movement.z);
-        if (horizontal.lengthSqr() > .0064) heading = horizontal.normalize();
+        // Mining/crouching can move less than 0.08 blocks each tick. Accumulate travel.
+        movementTrail.update(now.x,now.z);
+        heading=new Vec3(movementTrail.x(),0,movementTrail.z());
         previous = now;
         if (trail.isEmpty() || trail.peekLast().distanceToSqr(now) >= .09) trail.addLast(now);
         while (trail.size() > 128) trail.removeFirst();

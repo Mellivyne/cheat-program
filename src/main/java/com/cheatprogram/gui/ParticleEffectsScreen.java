@@ -76,6 +76,7 @@ public final class ParticleEffectsScreen extends GuiBase {
             if(worldMode){renderWorld();return;}
             float h=layoutPanel(W,740);drawPanelSurface(graphics,W,h,20);
             c.textC(BOLD,Lang.t("ui.particles.title"),24,29,15,Theme.TEXT);
+            button("particles.ai",Lang.t("ui.aiParticles.title"),Icon.PLUS,622,16,188,28,false,()->mc.setScreen(new AiParticleScreen(this,module)));
             button("particles.share",Lang.t("ui.scopedShare.open"),Icon.LINK,820,16,184,28,false,()->mc.setScreen(new ScopedShareScreen(this,com.cheatprogram.core.ScopedPresetCodec.Scope.PARTICLES)));
             iconButton("particles.close",Icon.CLOSE,W-29,29,14,Theme.TEXT_2,this::onClose);
             c.textC(REG,Lang.t("ui.particles.local"),24,53,8.5f,Theme.TEXT_3);

@@ -59,7 +59,19 @@ def main():
                 result['sha256']=hashlib.sha256(artifact.read_bytes()).hexdigest()
         results.append(result)
         print(f"  {'PASS' if result['exitCode']==0 else 'FAIL'} — {log}",flush=True)
-    report={'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'results':results}
+    # Keep still-valid reports for independent targets when only a subset is rebuilt.
+    previous={}
+    latest=report_dir/'latest.json'
+    if latest.is_file():
+        try:
+            for old in json.loads(latest.read_text(encoding='utf-8')).get('results',[]):
+                artifact=Path(old.get('artifact',''))
+                if old.get('minecraft') not in selected and old.get('exitCode')==0 and artifact.is_file() and hashlib.sha256(artifact.read_bytes()).hexdigest()==old.get('sha256'):
+                    previous[old['minecraft']]=old
+        except (OSError,ValueError):
+            pass
+    previous.update({entry['minecraft']:entry for entry in results})
+    report={'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'results':[previous[v] for v in profiles if v in previous]}
     (report_dir/'latest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     return 1 if any(r['exitCode']!=0 for r in results) else 0
 

@@ -49,7 +49,12 @@ public abstract class GameRendererMixin {
 									   Camera camera, Matrix4f view, Matrix4f projection, Matrix4f cullingProjection, com.mojang.blaze3d.buffers.GpuBufferSlice fog, org.joml.Vector4f fogColor, boolean sky, Operation<Void> original) {
 		original.call(renderer, allocator, delta, outline, camera, view, projection, cullingProjection, fog, fogColor, sky);
 		try {
-			ModuleManager.onRender3D(new Render3D(camera, view, projection, delta.getGameTimeDeltaPartialTick(true)));
+            var saved = new com.cheatprogram.render.RenderStateSnapshot();
+            try {
+                com.cheatprogram.compat.gl.Framebuffers.bindWrite(net.minecraft.client.Minecraft.getInstance().getMainRenderTarget(), true);
+                com.cheatprogram.compat.gl.RenderSystem.setProjectionMatrix(projection, com.mojang.blaze3d.ProjectionType.PERSPECTIVE);
+                ModuleManager.onRender3D(new Render3D(camera, view, projection, delta.getGameTimeDeltaPartialTick(true)));
+            } finally { saved.restore(); }
 		} catch (Throwable t) {
 			CheatProgram.LOGGER.error("World overlay rendering failed", t);
 		}

@@ -24,7 +24,21 @@ import java.util.List;
 public final class MusicCoverCarouselRenderer implements AutoCloseable {
     private TextureTarget target;
     private boolean failed;
+    private AlbumSpaceModel space;
     private final CoverHover hover=new CoverHover();
+    public void drawSpace(GuiGraphics graphics,float x,float y,float width,float height,List<Track> tracks,MusicArtworkCache artwork,AlbumSpaceModel scene,float mouseX,float mouseY,float seconds){
+        space=scene;try{draw(graphics,x,y,width,height,tracks,scene.selected(),artwork,false,mouseX,mouseY,seconds);}finally{space=null;}
+    }
+    public int hitSpace(AlbumSpaceModel scene,float width,float height,float x,float y){
+        if(width<2||height<2||!Float.isFinite(x)||!Float.isFinite(y)||x<0||y<0||x>=width||y>=height)return -1;
+        float nearest=Float.POSITIVE_INFINITY;int found=-1;Matrix4f projection=projection(width,height);
+        for(var card:scene.cards()){
+            Matrix4f model = new Matrix4f(card.matrix()).scale(1+.035f*hover.amount(card.index()));
+            float depth=sheetDepth(projection,model,width,height,x,y);
+            if(depth<nearest){nearest=depth;found=card.index();}
+        }
+        return found;
+    }
     public void clearHover(){hover.clear();}
     public boolean failed(){return failed;}
     /** The wall shares cached real artwork, but does not allocate a perspective render target. */
@@ -47,8 +61,9 @@ public final class MusicCoverCarouselRenderer implements AutoCloseable {
         draw(graphics,x,y,width,height,tracks,position,artwork,ring,Float.NaN,Float.NaN,0);
     }
     public void draw(GuiGraphics graphics,float x,float y,float width,float height,List<Track> tracks,float position,MusicArtworkCache artwork,boolean ring,float mouseX,float mouseY,float seconds){
-        hover.update(hitProjected(tracks.size(),position,ring,width,height,mouseX-x,mouseY-y,hover),seconds);
-        artwork.preload(tracks,ring?RingMotion.index(position,tracks.size()):Math.round(position),4);
+        hover.update(space==null?hitProjected(tracks.size(),position,ring,width,height,mouseX-x,mouseY-y,hover):hitSpace(space,width,height,mouseX-x,mouseY-y),seconds);
+        if(space!=null)artwork.preloadVisible(tracks,space.preloadIndices());
+        else artwork.preload(tracks,ring?RingMotion.index(position,tracks.size()):Math.round(position),8);
         if(tracks.isEmpty()||width<2||height<2||failed)return;
         RenderStateSnapshot saved=new RenderStateSnapshot();
         try{
@@ -61,7 +76,10 @@ public final class MusicCoverCarouselRenderer implements AutoCloseable {
                 RenderSystem.setShaderColor(1,1,1,1);RenderSystem.setShaderFog(FogParameters.NO_FOG);
                 RenderSystem.getModelViewStack().identity();RenderSystem.setTextureMatrix(new Matrix4f());
                 RenderSystem.setProjectionMatrix(projection(width,height),ProjectionType.PERSPECTIVE);
-                if(ring){for(RingCase item:ringCases(tracks.size(),position)){
+                if(space!=null){for(var card:space.cards()){
+                    Track track=tracks.get(card.index());var texture=artwork.artwork(track.provider(),track.cover());
+                    album(new Matrix4f(card.matrix()).scale(1+.035f*hover.amount(card.index())),texture,1);
+                }}else if(ring){for(RingCase item:ringCases(tracks.size(),position)){
                     float amount=hover.amount(item.index());Matrix4f model=ringModel(item,amount);
                     Track track=tracks.get(item.index());ResourceLocation texture=artwork.artwork(track.provider(),track.cover());
                     album(model,texture,Math.min(1,.62f+.38f*(float)((Math.cos(item.angle())+1)*.5)));
@@ -71,6 +89,7 @@ public final class MusicCoverCarouselRenderer implements AutoCloseable {
                     ResourceLocation texture=artwork.artwork(tracks.get(i).provider(),tracks.get(i).cover());
                     album(model,texture,Math.min(1,Math.max(.45f,1-Math.abs(d)*.12f)));
                 }}
+                if(space!=null)galleryGlass(space,x,y,width,height);
             }finally{saved.restore();}
             R2D.applyState();R2D.pushClip(x,y,width,height);
             try{
@@ -88,6 +107,35 @@ public final class MusicCoverCarouselRenderer implements AutoCloseable {
         }catch(RuntimeException unavailable){failed=true;}
         finally{saved.restore();}
     }
+
+    /** Refraction samples the surrounding interface, never a painted room texture. */
+    private static void galleryGlass(AlbumSpaceModel scene,float x,float y,float width,float height){
+        var surfaces=scene.glass();if(surfaces.isEmpty()||Backdrop.texture()<=0)return;
+        var shader=Shaders.get(Shaders.ALBUM_GLASS);if(shader==null)return;
+        var mc=Minecraft.getInstance();float scale=(float)mc.getWindow().getGuiScale();
+        var style=com.cheatprogram.gui.Theme.sheetGlass(scale);
+        float lift=com.cheatprogram.gui.Theme.lift(.025f);
+        int tint=Math.min(255,Math.round(255*lift))<<24|0xffffff;
+        shader.safeGetUniform("CanvasSize").set((float)mc.getWindow().getWidth(),(float)mc.getWindow().getHeight());
+        shader.safeGetUniform("SceneSize").set((float)targetWidth(width),(float)targetHeight(height));
+        shader.safeGetUniform("ViewRect").set(x,y,width,height);
+        shader.safeGetUniform("Glass").set(style.refraction(),style.bevel(),style.dispersion(),0f);
+        shader.safeGetUniform("Rim").set(style.feather(),0f,style.haze(),style.clarity());
+        RenderSystem.setShader(shader);RenderSystem.setShaderTexture(0,Backdrop.texture());RenderSystem.setShaderTexture(1,Backdrop.sharpTexture());
+        RenderSystem.enableBlend();RenderSystem.blendFuncSeparate(GL11.GL_ONE,GL11.GL_ONE_MINUS_SRC_ALPHA,GL11.GL_ONE,GL11.GL_ONE_MINUS_SRC_ALPHA);
+        RenderSystem.depthMask(false);
+        var ordered=new java.util.ArrayList<>(surfaces);ordered.sort(java.util.Comparator.comparingDouble(s->s.matrix().m32()));
+        var mesh=Tesselator.getInstance().begin(VertexFormat.Mode.QUADS,DefaultVertexFormat.POSITION_TEX_COLOR);
+        for(var surface:ordered){Matrix4f m=surface.matrix();
+            mesh.addVertex(m,-1,1,0).setUv(0,0).setColor(tint);mesh.addVertex(m,-1,-1,0).setUv(0,1).setColor(tint);
+            mesh.addVertex(m,1,-1,0).setUv(1,1).setColor(tint);mesh.addVertex(m,1,1,0).setUv(1,0).setColor(tint);
+        }
+        try{BufferUploader.drawWithShader(mesh.buildOrThrow());}
+        finally{RenderSystem.depthMask(true);RenderSystem.disableBlend();}
+    }
+    private static int targetWidth(float width){return Math.min(1600,Math.max(1,Math.round(width)));}
+    private static int targetHeight(float height){return Math.min(800,Math.max(1,Math.round(height)));}
+
     /** Artwork is a single sheet: a case's dark thickness becomes a visible stripe when tilted. */
     private static void album(Matrix4f model,ResourceLocation texture,float light){
         if(texture==null){BufferBuilder placeholder=Tesselator.getInstance().begin(VertexFormat.Mode.QUADS,DefaultVertexFormat.POSITION_COLOR);
@@ -113,7 +161,7 @@ public final class MusicCoverCarouselRenderer implements AutoCloseable {
     }
     private static float sheetDepth(Matrix4f projection,Matrix4f model,float width,float height,float x,float y){
         Matrix4f matrix=new Matrix4f(projection).mul(model);Vector3f[] corners={new Vector3f(-1,1,0),new Vector3f(-1,-1,0),new Vector3f(1,-1,0),new Vector3f(1,1,0)};
-        for(Vector3f corner:corners){matrix.transformProject(corner);corner.x=(corner.x+1)*width*.5f;corner.y=(1-corner.y)*height*.5f;}
+        for(Vector3f corner:corners){matrix.transformProject(corner);if(!Float.isFinite(corner.z)||corner.z< -1||corner.z>1)return Float.POSITIVE_INFINITY;corner.x=(corner.x+1)*width*.5f;corner.y=(1-corner.y)*height*.5f;}
         return Math.min(triangleDepth(corners[0],corners[1],corners[2],x,y),triangleDepth(corners[0],corners[2],corners[3],x,y));
     }
     private static float triangleDepth(Vector3f a,Vector3f b,Vector3f c,float x,float y){

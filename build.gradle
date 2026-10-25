@@ -9,8 +9,14 @@ def compatibilityMatrix = new groovy.json.JsonSlurper().parse(file('compatibilit
 def selectedVersion = project.minecraft_version.toString()
 def selectedTarget = compatibilityMatrix.targets.find { it.minecraft == selectedVersion }
 if (selectedTarget == null) throw new GradleException("Unknown Minecraft target '${selectedVersion}'.")
-if (selectedVersion != compatibilityMatrix.baseMinecraft) {
-	layout.buildDirectory.set(layout.projectDirectory.dir("build/versions/${selectedVersion}"))
+if (providers.gradleProperty('gameplay_checks').isPresent()) {
+    layout.buildDirectory.set(layout.projectDirectory.dir("build/gameplay-checks/${selectedVersion}"))
+} else if (providers.gradleProperty('legacy_checks').isPresent()) {
+    layout.buildDirectory.set(layout.projectDirectory.dir("build/legacy-checks/${selectedVersion}"))
+} else if (providers.gradleProperty('open_checks').isPresent()) {
+    layout.buildDirectory.set(layout.projectDirectory.dir('build/open-checks'))
+} else if (selectedVersion != compatibilityMatrix.baseMinecraft) {
+    layout.buildDirectory.set(layout.projectDirectory.dir("build/versions/${selectedVersion}"))
 }
 def officialUnobfuscated = selectedTarget.mapping == 'official-unobfuscated'
 apply plugin: officialUnobfuscated ? 'net.fabricmc.fabric-loom' : 'net.fabricmc.fabric-loom-remap'
@@ -24,6 +30,25 @@ base {
 
 java { withSourcesJar() }
 apply from: 'gradle/minecraft-compatibility.gradle'
+
+// The baseline keeps its historical build/ output. Preserve independent target
+// directories when cleaning it, so a full matrix build retains earlier JARs.
+if (selectedVersion == compatibilityMatrix.baseMinecraft
+        && !providers.gradleProperty('open_checks').isPresent()
+        && !providers.gradleProperty('gameplay_checks').isPresent()
+        && !providers.gradleProperty('legacy_checks').isPresent()) {
+    tasks.named('clean', Delete).configure {
+        setDelete(providers.provider {
+            def outputRoot = layout.buildDirectory.get().asFile.canonicalFile
+            def workspaceBuild = layout.projectDirectory.dir('build').asFile.canonicalFile
+            if (outputRoot != workspaceBuild) throw new GradleException('Unexpected baseline clean destination.')
+            (outputRoot.listFiles() ?: []).findAll {
+                !(it.name in ['versions', 'open-checks', 'legacy-checks', 'gameplay-checks'])
+            }
+        })
+    }
+}
+
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -41,6 +66,7 @@ dependencies {
 loom {
 	runs {
 		client {
+			if (providers.gradleProperty('gameplay_checks').isPresent()) runDir "run-gameplay/${selectedVersion}"
 			// Dev-only switch used to auto-capture GUI screenshots; never set in a normal install.
 			property "cheatprogram.dev", System.getProperty("cheatprogram.dev", "")
 			programArgs "--width", "1600", "--height", "900"
@@ -72,8 +98,25 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 if (providers.gradleProperty('open_checks').isPresent()) {
-    layout.buildDirectory.set(layout.projectDirectory.dir('build/open-checks'))
     sourceSets.main.java.srcDir('verification/java')
+}
+if (providers.gradleProperty('gameplay_checks').isPresent()) {
+    sourceSets.main.java.srcDir('verification/gameplay/java')
 }
 
 tasks.named("jar") { from("LICENSE") }
+
+// Optional isolated runtime fixtures. These never enter normal release artifacts.
+if (providers.gradleProperty('legacy_checks').isPresent()) {
+    def checkSources = tasks.register('prepareLegacyChecks', Sync) {
+        into layout.buildDirectory.dir('generated/checkSources')
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from 'verification/legacy/java'
+        from('verification/java') {
+            include '**/BuildingDesignerCheck.java', '**/ParticleDesignerCheck.java',
+                    '**/ParticleDesignerWireCheck.java', '**/AiImageProtocolCheck.java'
+        }
+    }
+    sourceSets.main.java.srcDir(layout.buildDirectory.dir('generated/checkSources'))
+    tasks.named('compileJava') { dependsOn checkSources }
+}

@@ -6,6 +6,10 @@ https://github.com/user-attachments/assets/0aa8ea54-37b5-4109-b15d-543e4fc63c19
 
 https://github.com/user-attachments/assets/b7831d49-4c18-4f0f-940b-68d78249b736
 
+## Creación en v1.1
+
+La vista de edificios añade bloques 3D reales con nombres y cantidades, dimensiones máximas, análisis por plantas y una visita en primera persona con vuelo. El arquitecto de IA utiliza tu propia clave API para generar y revisar edificios con texto e imágenes. El diseñador de partículas crea composiciones nativas y trayectorias, con vista previa y un código CPS1 independiente. Todos los espacios de IA admiten imágenes, que se envían únicamente al endpoint elegido. Las credenciales y las imágenes quedan fuera de las configuraciones compartidas. AI Control también funciona en servidores con los permisos del jugador actual.
+
 ## Control de IA y jugadores de IA
 
 Conecta un modelo compatible para dirigir acciones acotadas en tu mundo individual desde AI Control. AI Players permite gestionar personajes, personalidades, conexiones de modelos y opciones de voz compatibles. Utiliza tus propias credenciales del proveedor; las funciones dependen del servicio y de tu cuenta.

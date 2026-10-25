@@ -2420,5 +2420,9 @@
   "setting.appcast.curveSegments": "Lissage de la courbe",
   "mode.appcast_curve_horizontal": "Horizontale",
   "mode.appcast_curve_vertical": "Verticale",
-  "ui.appcast.curveHint": "Angle positif vers l’intérieur, négatif vers l’extérieur ; 0° est plat. Dimensions de la surface déroulée. Cliquez sur les valeurs pour les saisir ; chaque écran est enregistré séparément."
+  "ui.appcast.curveHint": "Angle positif vers l’intérieur, négatif vers l’extérieur ; 0° est plat. Dimensions de la surface déroulée. Cliquez sur les valeurs pour les saisir ; chaque écran est enregistré séparément.",
+  "mode.music_layout_sphere": "Planète musicale",
+  "ui.music.spaceSwipe.sphere": "Glisser pour tourner la planète · Molette pour zoomer · Cliquer pour soulever et lire",
+  "mode.music_layout_gallery": "Galerie musicale immersive",
+  "ui.music.spaceSwipe.gallery": "Glisser pour parcourir la galerie · Molette pour régler la distance · Cliquer pour cadrer et lire"
 }

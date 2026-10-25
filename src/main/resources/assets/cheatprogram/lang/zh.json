@@ -8,5 +8,9 @@
   "setting.appcast.curveSegments": "曲面平滑度",
   "mode.appcast_curve_horizontal": "横向",
   "mode.appcast_curve_vertical": "纵向",
-  "ui.appcast.curveHint": "正角度向内弯曲，负角度向外弯曲，0° 为平面。宽高按展开尺寸计算；支持点击数值手动输入，每块屏幕独立保存。"
+  "ui.appcast.curveHint": "正角度向内弯曲，负角度向外弯曲，0° 为平面。宽高按展开尺寸计算；支持点击数值手动输入，每块屏幕独立保存。",
+  "mode.music_layout_sphere": "音乐星球",
+  "ui.music.spaceSwipe.sphere": "拖动旋转星球 · 滚轮缩放 · 点击浮出专辑并播放",
+  "mode.music_layout_gallery": "沉浸音乐画廊",
+  "ui.music.spaceSwipe.gallery": "拖动沿画廊浏览 · 滚轮调整距离 · 点击聚焦并播放"
 }

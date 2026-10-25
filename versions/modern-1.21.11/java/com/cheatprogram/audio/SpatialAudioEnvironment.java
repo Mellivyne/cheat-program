@@ -54,7 +54,7 @@ public final class SpatialAudioEnvironment {
     public static boolean ready() { return state.ready; }
     public static boolean routedFor(int pid) {
         Lease current = lease;
-        return !automaticRoutingSuspended && current != null && current.pid == pid && current.routed
+        return state.ready && !automaticRoutingSuspended && current != null && current.pid == pid && current.routed
                 && !current.cancelled && current.process != null && current.process.isAlive()
                 && System.nanoTime() - current.lastReport < TimeUnit.SECONDS.toNanos(4);
     }
@@ -95,7 +95,14 @@ public final class SpatialAudioEnvironment {
         boolean changed = desiredPid != pid;
         if (changed) { desiredPid = pid; GENERATION.incrementAndGet(); releaseLease(); }
         Lease current = lease;
-        if (current != null && current.pid == pid && !current.cancelled && current.process != null && current.process.isAlive()) return;
+        if (current != null && current.pid == pid && !current.cancelled && current.process != null && current.process.isAlive()) {
+            long report = current.lastReport;
+            long age = System.nanoTime() - (report == 0 ? current.createdAt : report);
+            if (age < TimeUnit.SECONDS.toNanos(report == 0 ? 15 : 8)) return;
+            // A live process can be stuck in native routing. Stop its lease and restore
+            // the selected app before retrying; do not permanently suppress replay.
+            releaseLease();
+        }
         long now = System.nanoTime();
         if (busy() || (!changed && now - lastRouteAttempt < TimeUnit.SECONDS.toNanos(10))) return;
         lastRouteAttempt = now;
@@ -148,10 +155,16 @@ public final class SpatialAudioEnvironment {
         return result;
     }
     private static void publishDetection(Detection detection) {
-        Lease current = lease;
-        if (current != null && !current.cancelled) { set(current.routed ? "routed" : "waitingApp", ""); return; }
-        set(detection.defaultCable ? "defaultsCable" : !detection.installed ? "missingDriver" : !detection.routeSupported ? "routeUnsupported"
-                : !detection.ready ? "restartRequired" : automaticRoutingSuspended ? "suspended" : "ready", detection.details);
+        synchronized (LEASE_LOCK) {
+            Lease current = lease;
+            if (detection.ready && current != null && !current.cancelled) {
+                set(routedFor(current.pid) ? "routed" : current.reportStatus.equals("routed") ? "routing" : current.reportStatus, current.reportDetails);
+                return;
+            }
+            if (!detection.ready) releaseLease();
+            set(detection.defaultCable ? "defaultsCable" : !detection.installed ? "missingDriver" : !detection.routeSupported ? "routeUnsupported"
+                    : !detection.ready ? "restartRequired" : automaticRoutingSuspended ? "suspended" : "ready", detection.details);
+        }
     }
 
     private static void startRoute(int pid, long generation) throws Exception {
@@ -184,20 +197,28 @@ public final class SpatialAudioEnvironment {
                 if (line.length() > 65_536) throw new IOException("Oversize route response");
                 JsonObject json;
                 try { json = JsonParser.parseString(line).getAsJsonObject(); } catch (RuntimeException ignored) { continue; }
-                if (lease != current || current.cancelled) continue;
-                String status = text(json, "status", "failed");
-                current.lastReport = System.nanoTime();
-                current.activeSessions = count(json, "activeSessions");
-                current.isolatedSessions = count(json, "verifiedSessions");
-                current.routed = status.equals("routed") && bool(json, "ready", false);
-                set(status.equals("routed") && current.routed ? "routed" : status.equals("waitingApp") ? "waitingApp"
-                        : status.equals("restored") ? "restored" : "failed", text(json, "hresult", ""));
+                synchronized (LEASE_LOCK) {
+                    if (lease != current || current.cancelled) continue;
+                    String status = text(json, "status", "failed");
+                    current.activeSessions = count(json, "activeSessions");
+                    current.isolatedSessions = count(json, "verifiedSessions");
+                    current.routed = status.equals("routed") && bool(json, "ready", false);
+                    current.reportStatus = status.equals("routed") && current.routed ? "routed" : status.equals("waitingApp") ? "waitingApp"
+                            : status.equals("waitingRestart") ? "waitingRestart" : status.equals("restored") ? "restored" : "failed";
+                    current.reportDetails = text(json, "hresult", "");
+                    current.lastReport = System.nanoTime();
+                    set(current.reportStatus, current.reportDetails);
+                }
             }
-        } catch (Exception error) { if (lease == current && !current.cancelled) failure(error); }
+        } catch (Exception error) {
+            synchronized (LEASE_LOCK) { if (lease == current && !current.cancelled) failure(error); }
+        }
         finally {
-            current.routed = false;
-            if (lease == current && !current.cancelled) set("failed", "Route helper stopped");
-            current.close();
+            synchronized (LEASE_LOCK) {
+                current.routed = false;
+                if (lease == current && !current.cancelled) set("failed", "Route helper stopped");
+                current.close();
+            }
         }
     }
 
@@ -405,6 +426,8 @@ public final class SpatialAudioEnvironment {
         final int pid; final long generation; final Path stateFile;
         final AtomicBoolean closing = new AtomicBoolean();
         volatile Process process; volatile boolean cancelled, routed; volatile BufferedWriter writer; volatile ScheduledFuture<?> heartbeat;
+        final long createdAt = System.nanoTime();
+        volatile String reportStatus = "routing", reportDetails = "";
         volatile long lastReport; volatile int activeSessions, isolatedSessions;
         Lease(int pid, long generation, Path stateFile) { this.pid = pid; this.generation = generation; this.stateFile = stateFile; }
         synchronized void send(String command) throws IOException { if (writer != null) { writer.write(command); writer.newLine(); writer.flush(); } }

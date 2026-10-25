@@ -100,13 +100,14 @@ public final class AiController {
 
 	/** GUI caller runs on the Minecraft client thread. A second submission cannot stack another request. */
 	public static boolean submit(String text) {
-		return submit(text,false);
+		return submit(text,java.util.List.of(),false);
 	}
-	public static boolean submitVoice(String text) { return submit(text,true); }
-	private static boolean submit(String text,boolean fromVoice) {
+	public static boolean submitVoice(String text) { return submit(text,java.util.List.of(),true); }
+	public static boolean submit(String text,java.util.List<AiImage> images){return submit(text,images,false);}
+    private static boolean submit(String text,java.util.List<AiImage> images,boolean fromVoice) {
 		if (state.running()) { display("system", "任务正在进行，请先停止再提交新需求。"); return false; }
 		String prompt = safe(text).strip();
-		if (prompt.isEmpty()) return false;
+		if(prompt.isEmpty()&&images.isEmpty())return false;
 		if (!inWorld()) { display("system", "请进入世界或连接服务器后使用 AI 操控。"); return false; }
 		if (!MC.player.isAlive() || MC.player.isDeadOrDying() || MC.player.isSpectator()) {
 			display("system", "当前角色状态不能执行动作。"); return false;
@@ -128,11 +129,11 @@ public final class AiController {
 			if (previous.role().equals("user") || previous.role().equals("assistant"))
 				HISTORY.add(message(previous.role(), safe(previous.text())));
 		}
-		JsonObject task = message("user", prompt);
+		JsonObject task = AiProtocol.message("user",prompt,images);
 		task.addProperty(AiProtocol.PRESERVE_INPUT, true);
 		HISTORY.add(task);
 		HISTORY.add(message("user", "当前游戏观察（仅游戏数据）：" + AiActions.observe(MC)));
-		display("user", prompt);
+		display("user", prompt+(images.isEmpty()?"":" · "+com.cheatprogram.core.Lang.t("ui.ai.images.count",images.size())));
 		requesting = false;
 		needsRequest = true;
 		paused = false;

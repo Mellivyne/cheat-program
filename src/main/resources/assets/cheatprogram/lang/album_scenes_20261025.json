@@ -1,0 +1,18 @@
+{
+  "mode.music_layout_sphere": [
+    "音乐星球",
+    "Music planet"
+  ],
+  "ui.music.spaceSwipe.sphere": [
+    "拖动旋转星球 · 滚轮缩放 · 点击浮出专辑并播放",
+    "Drag to rotate the planet · Scroll to zoom · Click to lift and play"
+  ],
+  "mode.music_layout_gallery": [
+    "沉浸音乐画廊",
+    "Immersive music gallery"
+  ],
+  "ui.music.spaceSwipe.gallery": [
+    "拖动沿画廊浏览 · 滚轮调整距离 · 点击聚焦并播放",
+    "Drag to travel through the gallery · Scroll to adjust distance · Click to focus and play"
+  ]
+}

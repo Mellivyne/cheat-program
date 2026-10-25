@@ -26,7 +26,8 @@ import java.util.concurrent.Executors;
 
 /** Local, versioned buildings. Callers capture server data or synchronized client data on its owning thread. */
 public final class BuildingFiles {
-	public static final int MAX_BLOCKS = 4_000_000;
+	public static final int MAX_BLOCKS = Integer.MAX_VALUE - 8;
+    public static boolean fitsMemory(long blocks){long available=Runtime.getRuntime().maxMemory()-(Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory());return blocks>0&&blocks<=MAX_BLOCKS&&blocks<=available/16;}
 	public static final ExecutorService IO = Executors.newSingleThreadExecutor(r -> {
 		Thread thread = new Thread(r, "Cheat Program buildings"); thread.setDaemon(true); return thread;
 	});
@@ -143,11 +144,13 @@ public final class BuildingFiles {
 		if(!com.cheatprogram.core.Config.persistenceAllowed())throw new IOException("Restart required after initialization");
 		ensureDirectory(DIRECTORY);
 		Path file = namedFile(name);
-		if (Files.isSymbolicLink(file) || !Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS) || Files.size(file) > 128L * 1024 * 1024) throw new IOException("Invalid building file");
-		CompoundTag root = NbtIo.readCompressed(file, NbtAccounter.create(192L * 1024 * 1024));
+		if (Files.isSymbolicLink(file) || !Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Invalid building file");
+		long available=Runtime.getRuntime().maxMemory()-(Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory());
+		if(available<2L*1024*1024)throw new IOException("Insufficient memory for building");
+		CompoundTag root = NbtIo.readCompressed(file, NbtAccounter.create(available/2));
 		int[] size = root.getIntArray("size").orElseGet(() -> new int[0]);
 		if (root.getIntOr("version", 0) != 1 || size.length != 3 || size[0] <= 0 || size[1] <= 0 || size[2] <= 0
-				|| (long) size[0] * size[1] * size[2] > MAX_BLOCKS) throw new IOException("Invalid building dimensions");
+				|| (long) size[0] * size[1] * size[2] > MAX_BLOCKS || !fitsMemory((long)size[0]*size[1]*size[2])) throw new IOException("Invalid building dimensions or insufficient memory");
 		int[] blocks = root.getIntArray("blocks").orElseGet(() -> new int[0]);
 		if (blocks.length != (long) size[0] * size[1] * size[2]) throw new IOException("Invalid block count");
 		ListTag stored = com.cheatprogram.compat.NbtBridge.getList(root, "palette", Tag.TAG_COMPOUND); List<CompoundTag> palette = new ArrayList<>();

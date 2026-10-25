@@ -62,17 +62,23 @@ public final class GuiBridge {
         RenderStateSnapshot saved=new RenderStateSnapshot();
         submitting=true;
         try {
-            // GuiRenderer prepares text, item models and PIP; render() consumes and resets
-            // the queue, so the later vanilla frame submission cannot draw it twice.
+            // Native item/PIP geometry expects an identity model-view. Canvas
+            // text instead uses Z=-11000 and must not leak into native models.
+            RenderSystem.getModelViewStack().identity();
             renderer.render();
         } finally {
             submitting=false;
             saved.restore();
-            setupGuiCoordinates(minecraft);
         }
     }
 
-    private static void setupGuiCoordinates(Minecraft minecraft) {
+    /** Establish canvas coordinates only inside the R2D-owned state scope. */
+    public static void beginCanvas() {
+        Minecraft minecraft=Minecraft.getInstance();
+        // Native render-pass completion unbinds its framebuffer. Continue on
+        // the game's actual GUI target (including a redirected world panel),
+        // rather than drawing onto the window and losing it at the final blit.
+        com.cheatprogram.compat.gl.Framebuffers.bindWrite(minecraft.gameRenderer.mainRenderTarget(),true);
         float scale=(float)minecraft.getWindow().getGuiScale();
         RenderSystem.setProjectionMatrix(com.cheatprogram.compat.NativeProjection262.ortho(0,minecraft.getWindow().getWidth()/scale,
                 minecraft.getWindow().getHeight()/scale,0,1000,21000),ProjectionType.ORTHOGRAPHIC);
@@ -114,7 +120,6 @@ public final class GuiBridge {
             else com.mojang.blaze3d.systems.RenderSystem.disableScissorForRenderTypeDraws();
             com.mojang.blaze3d.systems.RenderSystem.setShaderFog(previousFog);
             saved.restore();
-            setupGuiCoordinates(Minecraft.getInstance());
         }
     }
 

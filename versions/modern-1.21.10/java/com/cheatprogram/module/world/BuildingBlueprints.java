@@ -13,6 +13,7 @@ import com.cheatprogram.render.Fonts;
 import com.cheatprogram.render.Render3D;
 import com.cheatprogram.render.BuildingModelPreview;
 import com.cheatprogram.util.BuildingFiles;
+import com.cheatprogram.util.BuildingJobQueue;
 import com.cheatprogram.util.BuildingFiles.Blueprint;
 import com.cheatprogram.util.BuildingUndoSnapshot;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -48,7 +49,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -65,7 +65,6 @@ public final class BuildingBlueprints extends Module {
 	public final NumberSetting remoteDelay = add(new NumberSetting("remoteDelay", 250, 50, 5000, 50, "ms")).visibleWhen(this::remoteWorld);
 	public final NumberSetting remoteTimeout = add(new NumberSetting("remoteTimeout", 8000, 2000, 30000, 500, "ms")).visibleWhen(this::remoteWorld);
 	private final AtomicLong generation = new AtomicLong();
-	private final AtomicBoolean queued = new AtomicBoolean();
 	private final Object jobLock = new Object();
 	private ClientLevel world;
 	private BlockPos first, second, pasteOrigin, candidate;
@@ -88,6 +87,9 @@ public final class BuildingBlueprints extends Module {
 	public BuildingBlueprints() { super("buildingblueprints", Category.WORLD); }
 	public boolean busy() { return busy; }
 	public Blueprint loaded() { return loaded; }
+    /** Preview data only; world placement remains explicit. */
+    public void previewBuilding(Blueprint building){if(busy())return;loaded=java.util.Objects.requireNonNull(building);}
+
 	public long libraryRevision() { return libraryRevision; }
 	public String status() { return busy ? message + " " + progress + " / " + total : message; }
 	public String firstLabel() { return coordinate(first); }
@@ -161,7 +163,8 @@ public final class BuildingBlueprints extends Module {
 		boolean differentWorld = world != null && world != mc.level;
 		boolean differentSession = connection != null && connection != mc.getConnection() || undoServer != null && undoServer != active;
 		if (!unavailable && !differentWorld && !differentSession) return;
-		if (world == null && !busy && job == null && undoServer == null && connection == null && undoSnapshots.isEmpty() && remoteUndoSnapshots.isEmpty()) return;
+		// Library file work can run on the title screen without a world session.
+		if (world == null && job == null && undoServer == null && connection == null && undoSnapshots.isEmpty() && remoteUndoSnapshots.isEmpty()) return;
 		cancel(); worldPreviewRenderer.close(); world = null; first = second = pasteOrigin = candidate = null;
 		aHeld = bHeld = originHeld = false; message = "";
 		if (unavailable || differentSession) {
@@ -189,16 +192,10 @@ public final class BuildingBlueprints extends Module {
 			aHeld = a; bHeld = b; originHeld = origin;
 		} else { aHeld = bHeld = originHeld = false; }
 		Job running = job;
-		if (running != null && !mc.isPaused() && queued.compareAndSet(false, true)) {
-			Runnable step = () -> {
-				try {
-					if (running.token == generation.get()) running.step();
-				} catch (Exception failure) {
-					CheatProgram.LOGGER.warn("Building operation failed", failure);
-					complete(running.token, "ui.building.operationFailed", null);
-				} finally { queued.set(false); }
-			};
-			if (running.server == null) step.run(); else running.server.execute(step);
+		if (running != null && !mc.isPaused()) {
+			runOperation(running.token, () -> running.queue.submit(
+					running.server == null ? Runnable::run : running.server::executeIfPossible,
+					() -> runOperation(running.token, running::step)));
 		}
 	}
 	private BlockPos aim() {
@@ -214,10 +211,28 @@ public final class BuildingBlueprints extends Module {
 		BlockPos block = BlockPos.containing(end);
 		return mc.level.isInWorldBounds(block) ? block : null;
 	}
-	public void markFirst() { if (!busy && inGame()) { ensureWorld(); first = aim(); message = Lang.t("ui.building.firstMarked"); } }
-	public void markSecond() { if (!busy && inGame()) { ensureWorld(); second = aim(); message = Lang.t("ui.building.secondMarked"); } }
-	public void markOrigin() { if (!busy && inGame()) { ensureWorld(); pasteOrigin = aim(); message = Lang.t("ui.building.originMarked"); } }
-	public void usePlayerOrigin() { if (!busy && inGame()) { ensureWorld(); pasteOrigin = mc.player.blockPosition(); message = Lang.t("ui.building.originMarked"); } }
+    public boolean selectionKey(int key, int action) {
+        if (!isEnabled() || !inGame()) return false;
+        if (key != GLFW.GLFW_KEY_F6 && key != GLFW.GLFW_KEY_F7 && key != GLFW.GLFW_KEY_F8) return false;
+        if (action == GLFW.GLFW_PRESS) {
+            if (key == GLFW.GLFW_KEY_F6) { if (!aHeld) markFirst(); aHeld = true; }
+            if (key == GLFW.GLFW_KEY_F7) { if (!bHeld) markSecond(); bHeld = true; }
+            if (key == GLFW.GLFW_KEY_F8) { if (!originHeld) markOrigin(); originHeld = true; }
+        } else if (action == GLFW.GLFW_RELEASE) {
+            if (key == GLFW.GLFW_KEY_F6) aHeld = false;
+            if (key == GLFW.GLFW_KEY_F7) bHeld = false;
+            if (key == GLFW.GLFW_KEY_F8) originHeld = false;
+        }
+        return true;
+    }
+    private void selectionNotice(String key, BlockPos point) {
+        message = point == null ? Lang.t("ui.building.aimHint") : Lang.t(key) + " · " + coordinate(point);
+        Notifications.push(name(), message, point != null);
+    }
+	public void markFirst() { if (!busy && inGame()) { ensureWorld(); first = aim(); selectionNotice("ui.building.firstMarked", first); } }
+	public void markSecond() { if (!busy && inGame()) { ensureWorld(); second = aim(); selectionNotice("ui.building.secondMarked", second); } }
+	public void markOrigin() { if (!busy && inGame()) { ensureWorld(); pasteOrigin = aim(); selectionNotice("ui.building.originMarked", pasteOrigin); } }
+	public void usePlayerOrigin() { if (!busy && inGame()) { ensureWorld(); pasteOrigin = mc.player.blockPosition(); selectionNotice("ui.building.originMarked", pasteOrigin); } }
 	public void clearSelection() { if (!busy) { first = second = null; message = ""; } }
 	public void cancel() {
 		Job running;
@@ -225,6 +240,17 @@ public final class BuildingBlueprints extends Module {
 		busy = false; progress = total = 0;
 		if (running instanceof UndoJob || running instanceof RemoteUndoJob) message = Lang.t("ui.building.undoPaused");
 		else if ((running instanceof PasteJob || running instanceof RemotePasteJob) && canUndo()) message = Lang.t("ui.building.exportCancelled");
+	}
+	/** A rejected or failed server operation must release the UI as well as its queue. */
+	private void runOperation(long token, Runnable action) {
+		try { if (token == generation.get()) action.run(); }
+		catch (Exception failure) {
+			CheatProgram.LOGGER.warn("Building operation failed", failure);
+			complete(token, "ui.building.operationFailed", null);
+		}
+	}
+	private void executeServer(IntegratedServer server, long token, Runnable action) {
+		runOperation(token, () -> server.executeIfPossible(() -> runOperation(token, action)));
 	}
 	private void publishJob(Job ready) {
 		synchronized (jobLock) { if (ready.token == generation.get()) job = ready; }
@@ -236,7 +262,7 @@ public final class BuildingBlueprints extends Module {
 		if (first == null || second == null) { message = Lang.t("ui.building.needCorners"); return; }
 		BlockPos minimum = minimum(first, second), maximum = maximum(first, second);
 		long count = ((long) maximum.getX() - minimum.getX() + 1) * ((long) maximum.getY() - minimum.getY() + 1) * ((long) maximum.getZ() - minimum.getZ() + 1);
-		if (count <= 0 || count > BuildingFiles.MAX_BLOCKS) { message = Lang.t("ui.building.tooLarge"); return; }
+		if (!BuildingFiles.fitsMemory(count)) { message = Lang.t("ui.building.tooLarge"); return; }
 		IntegratedServer server = mc.getSingleplayerServer();
 		long token = generation.incrementAndGet(); busy = true; progress = 0; total = (int) count; message = Lang.t("ui.building.saving");
 		var dimension = mc.level.dimension(); String filename = BuildingFiles.cleanName(name);
@@ -244,7 +270,7 @@ public final class BuildingBlueprints extends Module {
 			if (!validClientBounds(mc.level, minimum, maximum) || !loadedArea(mc.level, minimum, maximum)) { complete(token, "ui.building.clientAreaUnavailable", null); return; }
 			publishJob(new RemoteSaveJob(token, minimum, maximum, filename)); return;
 		}
-		server.execute(() -> {
+		executeServer(server, token, () -> {
 			ServerLevel level = server.getLevel(dimension);
 			if (token != generation.get()) return;
 			if (level == null || !validBounds(level, minimum, maximum)) { complete(token, "ui.building.areaUnavailable", null); return; }
@@ -292,7 +318,7 @@ public final class BuildingBlueprints extends Module {
 			if (!validClientBounds(mc.level, origin, maximum) || !loadedArea(mc.level, origin, maximum)) { complete(token, "ui.building.clientAreaUnavailable", null); return; }
 			total = blueprint.count(); publishJob(new RemotePasteJob(token, origin, blueprint, air)); return;
 		}
-		server.execute(() -> {
+		executeServer(server, token, () -> {
 			ServerLevel level = server.getLevel(dimension);
 			if (token != generation.get()) return;
 			if (level == null || !validBounds(level, origin, maximum)) { complete(token, "ui.building.areaUnavailable", null); return; }
@@ -313,7 +339,7 @@ public final class BuildingBlueprints extends Module {
 		if (snapshot == null || snapshot.changed() == 0 || snapshot.finished()) { message = Lang.t("ui.building.noUndo"); return; }
 		IntegratedServer server = mc.getSingleplayerServer(); var dimension = mc.level.dimension();
 		long token = generation.incrementAndGet(); busy = true; progress = snapshot.cursor(); total = snapshot.count * 2; message = Lang.t("ui.building.undoing");
-		server.execute(() -> {
+		executeServer(server, token, () -> {
 			if (token != generation.get()) return;
 			ServerLevel level = server.getLevel(dimension);
 			if (!snapshot.belongsTo(server, level)) { complete(token, "ui.building.undoWrongWorld", null); return; }
@@ -373,6 +399,8 @@ public final class BuildingBlueprints extends Module {
 		hud.c.textMid(Fonts.Face.REGULAR, status().isEmpty() ? Lang.t("ui.building.aimHint") : status(), hud.width / 2, y + 25, 8.5f, 0xBAFFFFFF);
 	}
 	private abstract class Job {
+		// A stopped server may abandon this job; it must never hold the next job's queue.
+		final BuildingJobQueue queue = new BuildingJobQueue();
 		final IntegratedServer server; final ServerLevel level; final long token; final BlockPos origin; final int width, height, depth;
 		Job(IntegratedServer server, ServerLevel level, long token, BlockPos origin, int width, int height, int depth) {
 			this.server = server; this.level = level; this.token = token; this.origin = origin; this.width = width; this.height = height; this.depth = depth;

@@ -16,6 +16,8 @@ import java.nio.file.*;
 public final class MusicPlayer {
     private static final LrcLyrics EMPTY_LYRICS = LrcLyrics.parse("");
     private static final ThreadPoolExecutor PREFERENCES=new ThreadPoolExecutor(1,1,10,TimeUnit.SECONDS,new ArrayBlockingQueue<>(2),MusicAudioPlayer.daemon("music-preferences"),new ThreadPoolExecutor.DiscardOldestPolicy());
+    /** Stable stored ids shared by the layout picker and preference validation. */
+    public static final List<String> LAYOUTS = List.of("coverflow","ring","wall","floor","stars","spiral","sphere","gallery");
     public static final MusicPlayer INSTANCE = new MusicPlayer();
     private static String status(String name) { return "ui.musicPlayer." + name; }
     private final Object lock = new Object();
@@ -141,7 +143,7 @@ public final class MusicPlayer {
         if(remote!=null)submit(token,remote::pauseRemote);
     }
     public String layout(){synchronized(lock){return layout;}}
-    public void layout(String selected){synchronized(lock){if(closed||selected==null||!Set.of("coverflow","ring","wall").contains(selected)||layout.equals(selected))return;layout=selected;writeQualityPreferences();}}
+    public void layout(String selected){synchronized(lock){if(closed||selected==null||!LAYOUTS.contains(selected)||layout.equals(selected))return;layout=selected;writeQualityPreferences();}}
     public QualitySettings qualitySettings(){synchronized(lock){return new QualitySettings(offeredQualities,requestedQualities.getOrDefault(provider,""),media==null||media.quality()==null?"":media.quality());}}
     /** Only provider-offered IDs can be selected; the actual stream label comes from Media. */
     public boolean quality(String id){
@@ -564,7 +566,7 @@ public final class MusicPlayer {
     }
     private String accountKey(){return provider.id+":"+(account==null?"":account.id());}
     private static List<Quality> qualityOffers(MusicProvider active,Track track){List<Quality> offers=active.qualities(track);if(offers==null)return List.of();LinkedHashMap<String,Quality> safe=new LinkedHashMap<>();for(Quality quality:offers){if(quality!=null&&quality.id()!=null&&quality.id().matches("[A-Za-z0-9_-]{1,64}")&&quality.label()!=null&&!quality.label().isBlank()&&quality.label().length()<=100&&quality.label().chars().noneMatch(Character::isISOControl))safe.putIfAbsent(quality.id(),quality);if(safe.size()>=16)break;}return List.copyOf(safe.values());}
-    private void readQualityPreferences(){try{synchronized(Config.persistenceLock()){if(!Config.persistenceAllowed())return;Path path=Config.directory().resolve("music-preferences.json");if(!Files.isRegularFile(path)||Files.size(path)>8192)return;JsonObject root=JsonParser.parseString(Files.readString(path,StandardCharsets.UTF_8)).getAsJsonObject();if(root.has("layout")&&Set.of("coverflow","ring","wall").contains(root.get("layout").getAsString()))layout=root.get("layout").getAsString();if(!root.has("quality"))return;JsonObject choices=root.getAsJsonObject("quality");for(Provider selected:Provider.values())if(choices.has(selected.id)){String id=choices.get(selected.id).getAsString();if(id.matches("[A-Za-z0-9_-]{1,64}"))requestedQualities.put(selected,id);}}}catch(Exception|LinkageError invalid){ }}
+    private void readQualityPreferences(){try{synchronized(Config.persistenceLock()){if(!Config.persistenceAllowed())return;Path path=Config.directory().resolve("music-preferences.json");if(!Files.isRegularFile(path)||Files.size(path)>8192)return;JsonObject root=JsonParser.parseString(Files.readString(path,StandardCharsets.UTF_8)).getAsJsonObject();if(root.has("layout")&&LAYOUTS.contains(root.get("layout").getAsString()))layout=root.get("layout").getAsString();if(!root.has("quality"))return;JsonObject choices=root.getAsJsonObject("quality");for(Provider selected:Provider.values())if(choices.has(selected.id)){String id=choices.get(selected.id).getAsString();if(id.matches("[A-Za-z0-9_-]{1,64}"))requestedQualities.put(selected,id);}}}catch(Exception|LinkageError invalid){ }}
     private void writeQualityPreferences(){Map<Provider,String> choices=Map.copyOf(requestedQualities);String selectedLayout=layout;PREFERENCES.execute(()->{try{synchronized(Config.persistenceLock()){if(!Config.persistenceAllowed())return;JsonObject root=new JsonObject(),quality=new JsonObject();root.addProperty("version",1);root.addProperty("layout",selectedLayout);choices.forEach((selected,id)->quality.addProperty(selected.id,id));root.add("quality",quality);Path path=Config.directory().resolve("music-preferences.json"),temporary=path.resolveSibling("music-preferences.json.tmp");Files.createDirectories(path.getParent());try{Files.writeString(temporary,root.toString(),StandardCharsets.UTF_8);try{Files.move(temporary,path,StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);}catch(AtomicMoveNotSupportedException unsupported){Files.move(temporary,path,StandardCopyOption.REPLACE_EXISTING);}}finally{Files.deleteIfExists(temporary);}}}catch(Exception|LinkageError ignored){ }});}
     private boolean verificationRejected(){return !accountVerified&&accountVerification.isDone();}
     private void clearAccountCache(){String prefix=provider.id+":";sessionCache.remove(provider);libraryCache.keySet().removeIf(k->k.startsWith(prefix));playlistCache.keySet().removeIf(k->k.startsWith(prefix));}

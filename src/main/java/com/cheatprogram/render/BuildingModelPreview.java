@@ -57,6 +57,8 @@ import java.util.Map;
 public final class BuildingModelPreview implements AutoCloseable {
 	private static final Minecraft MC = Minecraft.getInstance();
 	private Blueprint blueprint;
+    private boolean materialIcon;
+    public void materialIcon(){materialIcon=true;}
 	private PreviewLevel level;
 	private TextureTarget target;
 	private final List<Layer> layers = new ArrayList<>();
@@ -65,6 +67,26 @@ public final class BuildingModelPreview implements AutoCloseable {
 	private int cursor, groupBlocks;
 	private boolean failed;
 	public float yaw = -32, pitch = 22, zoom = 1, panX, panY;
+    public boolean touring;
+    public float eyeX,eyeY,eyeZ;
+    public void tour(boolean enabled){touring=enabled;if(enabled&&blueprint!=null){
+        eyeX=blueprint.width()/2f;eyeY=Math.min(blueprint.height()-.2f,2.6f);eyeZ=blueprint.depth()+2;pitch=0;yaw=0;
+        // Prefer a clear interior spawn; enclosed solid models remain accessible by creative flight.
+        int inspected=0;
+        if(level!=null)search:for(int y=0;y+1<blueprint.height();y++)for(int z=1;z<blueprint.depth()-1;z++)for(int x=1;x<blueprint.width()-1;x++){
+            // A solid or enormous blueprint must not freeze entry while searching for air.
+            if(++inspected>65536)break search;
+            if(level.getBlockState(new BlockPos(x,y,z)).isAir()&&level.getBlockState(new BlockPos(x,y+1,z)).isAir()){
+                eyeX=x+.5f;eyeY=y+1.62f;eyeZ=z+.5f;break search;
+            }
+        }
+    }}
+    public void travel(float forward,float sideways,float vertical,float seconds){
+        float speed=6*Math.min(.1f,seconds);double angle=Math.toRadians(yaw);
+        eyeX+=(sideways*Math.cos(angle)+forward*Math.sin(angle))*speed;
+        eyeZ+=(sideways*Math.sin(angle)-forward*Math.cos(angle))*speed;eyeY+=vertical*speed;
+    }
+
 	private record Layer(RenderType type, VertexBuffer vertices) { }
 	private static final class Builder implements AutoCloseable {
 		final ByteBufferBuilder storage = new ByteBufferBuilder(256 * 1024);
@@ -80,12 +102,14 @@ public final class BuildingModelPreview implements AutoCloseable {
 			List<BlockState> palette = new ArrayList<>();
 			var registry = MC.level.registryAccess().lookupOrThrow(Registries.BLOCK);
 			for (var state : value.palette()) palette.add(NbtUtils.readBlockState(registry, state));
-			level = new PreviewLevel(value, palette);
+			level = new PreviewLevel(value, palette,materialIcon);
 		} catch (Exception failure) { failed = true; level = null; CheatProgram.LOGGER.warn("Building preview palette could not be opened", failure); }
 	}
-	public void reset() { yaw = -32; pitch = 22; zoom = 1; panX = panY = 0; }
+	public void reset() { touring=false; yaw = -32; pitch = 22; zoom = 1; panX = panY = 0; }
 	public int renderedBlocks() { return cursor; }
 	public boolean failed() { return failed; }
+    public net.minecraft.world.item.ItemStack firstBlockItem(){return level==null||level.states.isEmpty()?net.minecraft.world.item.ItemStack.EMPTY:new net.minecraft.world.item.ItemStack(level.states.get(0).getBlock().asItem());}
+
 	private VertexConsumer buffer(RenderType type) { return builders.computeIfAbsent(type, Builder::new).buffer; }
 	private void bake() {
 		if (level == null || failed || cursor >= blueprint.count()) return;
@@ -191,12 +215,13 @@ public final class BuildingModelPreview implements AutoCloseable {
 				RenderSystem.enableDepthTest(); RenderSystem.enableCull(); RenderSystem.enableBlend(); RenderSystem.defaultBlendFunc();
 				RenderSystem.setShaderFog(FogParameters.NO_FOG); RenderSystem.setShaderColor(1, 1, 1, 1); MC.gameRenderer.lightTexture().turnOnLightLayer();
 				float aspect = pixelsX / (float) pixelsY;
-				Matrix4f projection = new Matrix4f().setOrtho(-aspect, aspect, -1, 1, -10000, 10000);
+                Matrix4f projection = touring?new Matrix4f().perspective((float)Math.toRadians(75),aspect,.025f,Math.max(2048,blueprint.width()+blueprint.height()+blueprint.depth())):new Matrix4f().setOrtho(-aspect, aspect, -1, 1, -10000, 10000);
 				RenderSystem.setProjectionMatrix(projection, com.mojang.blaze3d.ProjectionType.ORTHOGRAPHIC);
 				float diagonal = (float) Math.sqrt((double) blueprint.width() * blueprint.width() + (double) blueprint.height() * blueprint.height() + (double) blueprint.depth() * blueprint.depth());
 				float scale = 1.6f * Math.max(0.05f, Math.min(25, zoom)) / Math.max(1, diagonal);
 				Matrix4f model = new Matrix4f().translate(panX, -panY, 0).rotateX((float) Math.toRadians(pitch)).rotateY((float) Math.toRadians(yaw))
 						.scale(scale).translate(-blueprint.width() / 2f, -blueprint.height() / 2f, -blueprint.depth() / 2f);
+                if(touring)model=new Matrix4f().rotateX((float)Math.toRadians(pitch)).rotateY((float)Math.toRadians(yaw)).translate(-eyeX,-eyeY,-eyeZ);
 				RenderSystem.getModelViewStack().identity();
 				// Opaque geometry establishes depth before glass, water and other translucent layers.
 				for (int pass = 0; pass < 2; pass++) for (Layer layer : layers) {
@@ -214,13 +239,14 @@ public final class BuildingModelPreview implements AutoCloseable {
 			R2D.applyState(); R2D.pushClip(x, y, width, height);
 			try {
 				previous.intersectClip();
-				float guiScale = (float) MC.getWindow().getGuiScale(); Matrix4f pose = graphics.pose().last().pose();
+				float guiScale = (float) MC.getWindow().getGuiScale(); Matrix4f pose = R2D.canvasPose();
 				BufferBuilder quad = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-				int color = R2D.fade(0xFFFFFFFF);
+				int fade = R2D.fade(0xffffffff) >>> 24, color = fade << 24 | fade << 16 | fade << 8 | fade;
 				quad.addVertex(pose, x / guiScale, y / guiScale, 0).setUv(0, 1).setColor(color);
 				quad.addVertex(pose, x / guiScale, (y + height) / guiScale, 0).setUv(0, 0).setColor(color);
 				quad.addVertex(pose, (x + width) / guiScale, (y + height) / guiScale, 0).setUv(1, 0).setColor(color);
 				quad.addVertex(pose, (x + width) / guiScale, y / guiScale, 0).setUv(1, 1).setColor(color);
+				RenderSystem.blendFuncSeparate(GL11.GL_ONE,GL11.GL_ONE_MINUS_SRC_ALPHA,GL11.GL_ONE,GL11.GL_ONE_MINUS_SRC_ALPHA);
 				RenderSystem.setShaderColor(1, 1, 1, 1); RenderSystem.setShader(CoreShaders.POSITION_TEX_COLOR);
 				RenderSystem.setShaderTexture(0, target.getColorTextureId()); BufferUploader.drawWithShader(quad.buildOrThrow());
 			} finally { R2D.popClip(); }
@@ -289,7 +315,8 @@ public final class BuildingModelPreview implements AutoCloseable {
 	private static final class PreviewLevel implements BlockAndTintGetter {
 		final Blueprint blueprint; final List<BlockState> states;
 		final Map<BlockPos, BlockEntity> entities = new LinkedHashMap<>();
-		PreviewLevel(Blueprint blueprint, List<BlockState> states) { this.blueprint = blueprint; this.states = states; }
+		final boolean flatLighting;
+		PreviewLevel(Blueprint blueprint, List<BlockState> states,boolean flatLighting) { this.blueprint = blueprint; this.states = states;this.flatLighting=flatLighting; }
 		@Override public BlockState getBlockState(BlockPos pos) {
 			if (pos.getX() < 0 || pos.getY() < 0 || pos.getZ() < 0 || pos.getX() >= blueprint.width() || pos.getY() >= blueprint.height() || pos.getZ() >= blueprint.depth()) return Blocks.AIR.defaultBlockState();
 			return states.get(blueprint.blocks()[(pos.getY() * blueprint.depth() + pos.getZ()) * blueprint.width() + pos.getX()]);
@@ -313,7 +340,7 @@ public final class BuildingModelPreview implements AutoCloseable {
 		@Override public LevelLightEngine getLightEngine() { return MC.level.getLightEngine(); }
 		@Override public int getBrightness(LightLayer layer, BlockPos pos) { return 15; }
 		@Override public int getRawBrightness(BlockPos pos, int darkening) { return 15; }
-		@Override public float getShade(Direction direction, boolean shaded) { return !shaded ? 1 : switch (direction) { case DOWN -> 0.55f; case UP -> 1; case NORTH, SOUTH -> 0.8f; case EAST, WEST -> 0.65f; }; }
+		@Override public float getShade(Direction direction, boolean shaded) { return flatLighting||!shaded ? 1 : switch (direction) { case DOWN -> 0.55f; case UP -> 1; case NORTH, SOUTH -> 0.8f; case EAST, WEST -> 0.65f; }; }
 		@Override public int getBlockTint(BlockPos pos, ColorResolver resolver) {
 			return MC.level == null || MC.player == null ? 0xFFFFFF : resolver.getColor(MC.level.getBiome(MC.player.blockPosition()).value(), pos.getX(), pos.getZ());
 		}

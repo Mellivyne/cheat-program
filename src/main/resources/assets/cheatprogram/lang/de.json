@@ -2420,5 +2420,9 @@
   "setting.appcast.curveSegments": "Kurvenglätte",
   "mode.appcast_curve_horizontal": "Horizontal",
   "mode.appcast_curve_vertical": "Vertikal",
-  "ui.appcast.curveHint": "Positive Winkel biegen nach innen, negative nach außen; 0° ist flach. Maße beziehen sich auf die abgewickelte Fläche. Werte anklicken und eingeben; jeder Bildschirm wird separat gespeichert."
+  "ui.appcast.curveHint": "Positive Winkel biegen nach innen, negative nach außen; 0° ist flach. Maße beziehen sich auf die abgewickelte Fläche. Werte anklicken und eingeben; jeder Bildschirm wird separat gespeichert.",
+  "mode.music_layout_sphere": "Musikplanet",
+  "ui.music.spaceSwipe.sphere": "Ziehen zum Drehen des Planeten · Mausrad zum Zoomen · Klicken zum Anheben und Abspielen",
+  "mode.music_layout_gallery": "Immersive Musikgalerie",
+  "ui.music.spaceSwipe.gallery": "Ziehen zum Erkunden der Galerie · Mausrad für den Abstand · Klicken zum Fokussieren und Abspielen"
 }

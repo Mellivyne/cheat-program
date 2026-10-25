@@ -147,6 +147,7 @@ public static partial class AudioRoute {
     static Dictionary<int,int> ProcessParents(){IntPtr snapshot=CreateToolhelp32Snapshot(2,0);if(snapshot==new IntPtr(-1))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
         try{Dictionary<int,int> parents=new Dictionary<int,int>();ProcessEntry entry=new ProcessEntry();entry.size=(uint)Marshal.SizeOf(typeof(ProcessEntry));if(!Process32FirstW(snapshot,ref entry))throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());do{parents[(int)entry.pid]=(int)entry.parent;}while(Process32NextW(snapshot,ref entry));return parents;}finally{CloseHandle(snapshot);}}
     static HashSet<int> SafeTree(int source,int owner){if(source<=4||owner<=4||source==owner||source==Process.GetCurrentProcess().Id)throw new InvalidOperationException("Unsafe source");Started(source);Started(owner);
+        source=ApplicationAudioTree.Root(source,owner);
         Dictionary<int,int> parents=ProcessParents();
         HashSet<int> found=new HashSet<int>();found.Add(source);bool again=true;while(again){again=false;foreach(KeyValuePair<int,int> pair in parents)if(found.Contains(pair.Value)&&found.Add(pair.Key))again=true;}if(found.Contains(owner)||found.Contains(Process.GetCurrentProcess().Id))throw new InvalidOperationException("Source contains Minecraft");string ownerPath=ProcessPath(owner);foreach(int pid in found)try{if(String.Equals(ProcessPath(pid),ownerPath,StringComparison.OrdinalIgnoreCase))throw new InvalidDataException("Source shares the Minecraft executable identity");}catch(ArgumentException){}return found;
     }
@@ -170,7 +171,7 @@ public static partial class AudioRoute {
                 if(watcher.HasExited)throw new IOException("Route watchdog stopped");watcher.StandardInput.WriteLine("P");watcher.StandardInput.Flush();
                 HashSet<int> pids=SafeTree(source,owner);bool changed=AddProcesses(pids,journal,handles,policy);
                 if(changed){Save(file,journal);watcher.StandardInput.WriteLine("SYNC");watcher.StandardInput.Flush();if(watcher.StandardOutput.ReadLine()!="SYNCED")throw new IOException("Route watchdog could not retain process identities");}
-                HashSet<int> active;RouteStatus state=Inspect(source,owner,journal.cableId,pids,policy,out active);
+                HashSet<int> active;RouteStatus state=Inspect(source,owner,journal.cableId,pids,policy,out active,true);
                 // Only a newly retained identity may be routed. Never fight a later user's Volume mixer choice.
                 // Utility/root processes with no audio session may accept Get but reject Set with
                 // E_INVALIDARG. Route the actual active audio children, and discover new ones next tick.
@@ -181,6 +182,7 @@ public static partial class AudioRoute {
                     for(int role=0;role<3;role++)if(!String.Equals(Unpacked(policy.Get(saved.pid,role)),journal.cableId,StringComparison.OrdinalIgnoreCase))policy.Set(saved.pid,role,Packed(journal.cableId));
                     saved.applied=true;changed=true;
                 }
+                state=Inspect(source,owner,journal.cableId,pids,policy);
                 if(changed||journal.status!="active"){journal.status="active";Save(file,journal);}string encoded=Encoding.UTF8.GetString(Json(state,typeof(RouteStatus)));long now=Stopwatch.GetTimestamp();if(encoded!=previous||now>=nextCheck){Print(state);previous=encoded;nextCheck=now+Stopwatch.Frequency*2;}
                 Thread.Sleep(350);
             }}finally{RestoreRoutes(journal,file,policy,handles);Print(new RouteStatus{status="restored",ready=false,sourcePid=source});}
@@ -228,16 +230,16 @@ public static partial class AudioRoute {
         }return 0;
     }
     static RouteStatus Inspect(int source,int owner,string cable,HashSet<int> pids,PerAppPolicy policy){HashSet<int> active;return Inspect(source,owner,cable,pids,policy,out active);}
-    static RouteStatus Inspect(int source,int owner,string cable,HashSet<int> pids,PerAppPolicy policy,out HashSet<int> activePids){RouteStatus status=new RouteStatus{sourcePid=source,status="waitingApp"};activePids=new HashSet<int>();foreach(int pid in pids){try{bool all=true;for(int role=0;role<3;role++)all&=String.Equals(Unpacked(policy.Get(pid,role)),cable,StringComparison.OrdinalIgnoreCase);if(all)status.routedProcesses++;}catch{}}
+    static RouteStatus Inspect(int source,int owner,string cable,HashSet<int> pids,PerAppPolicy policy,out HashSet<int> activePids,bool includeInactive=false){HashSet<int> playing=new HashSet<int>();RouteStatus status=new RouteStatus{sourcePid=source,status="waitingApp"};activePids=new HashSet<int>();foreach(int pid in pids){try{bool all=true;for(int role=0;role<3;role++)all&=String.Equals(Unpacked(policy.Get(pid,role)),cable,StringComparison.OrdinalIgnoreCase);if(all)status.routedProcesses++;}catch{}}
         IMMDeviceEnumerator enumerator=null;IMMDeviceCollection endpoints=null;try{enumerator=(IMMDeviceEnumerator)new MMDeviceEnumerator();Check(enumerator.EnumAudioEndpoints(0,1,out endpoints));uint count;Check(endpoints.GetCount(out count));for(uint i=0;i<count;i++){
             IMMDevice device=null;object managerObject=null;IAudioSessionEnumerator sessions=null;try{Check(endpoints.Item(i,out device));string id;Check(device.GetId(out id));Guid managerId=typeof(IAudioSessionManager2).GUID;Check(device.Activate(ref managerId,23,IntPtr.Zero,out managerObject));Check(((IAudioSessionManager2)managerObject).GetSessionEnumerator(out sessions));int number;Check(sessions.GetCount(out number));for(int j=0;j<number;j++){
-                IAudioSessionControl2 control=null;try{Check(sessions.GetSession(j,out control));uint pid;int active;Check(control.GetProcessId(out pid));Check(control.GetState(out active));if(active!=1||!pids.Contains((int)pid))continue;activePids.Add((int)pid);status.activeSessions++;if(String.Equals(id,cable,StringComparison.OrdinalIgnoreCase))status.verifiedSessions++;}finally{Release(control);}
+                IAudioSessionControl2 control=null;try{Check(sessions.GetSession(j,out control));uint pid;int active;Check(control.GetProcessId(out pid));Check(control.GetState(out active));if(!pids.Contains((int)pid))continue;if(active==0&&includeInactive)activePids.Add((int)pid);if(active!=1)continue;activePids.Add((int)pid);playing.Add((int)pid);status.activeSessions++;if(String.Equals(id,cable,StringComparison.OrdinalIgnoreCase))status.verifiedSessions++;}finally{Release(control);}
             }}finally{Release(sessions);Release(managerObject);Release(device);}
         }}finally{Release(endpoints);Release(enumerator);}
         // Inactive utility/console children can have no application policy identity at all.
         // Every ACTIVE audio identity must still have all roles persisted AND every live session on CABLE.
-        bool persisted=true;foreach(int pid in activePids)try{for(int role=0;role<3;role++)persisted&=String.Equals(Unpacked(policy.Get(pid,role)),cable,StringComparison.OrdinalIgnoreCase);}catch{persisted=false;}
-        status.ready=persisted&&status.activeSessions>0&&status.activeSessions==status.verifiedSessions;status.status=status.ready?"routed":"waitingApp";return status;
+        bool persisted=true;foreach(int pid in playing)try{for(int role=0;role<3;role++)persisted&=String.Equals(Unpacked(policy.Get(pid,role)),cable,StringComparison.OrdinalIgnoreCase);}catch{persisted=false;}
+        status.ready=persisted&&status.activeSessions>0&&status.activeSessions==status.verifiedSessions;status.status=status.ready?"routed":persisted&&status.activeSessions>0?"waitingRestart":"waitingApp";return status;
     }
     [ComImport,Guid("77AA99A0-1BD6-484F-8BC7-2C654C9A9B6F"),InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]interface IAudioSessionManager2 {
         [PreserveSig]int GetAudioSessionControl(IntPtr session,uint flags,out IntPtr control);[PreserveSig]int GetSimpleAudioVolume(IntPtr session,uint flags,out IntPtr volume);[PreserveSig]int GetSessionEnumerator(out IAudioSessionEnumerator sessions);[PreserveSig]int RegisterSessionNotification(IntPtr callback);[PreserveSig]int UnregisterSessionNotification(IntPtr callback);[PreserveSig]int RegisterDuckNotification(IntPtr id,IntPtr callback);[PreserveSig]int UnregisterDuckNotification(IntPtr callback);

@@ -1,0 +1,50 @@
+{
+  "ui.ai.images.add": [
+    "添加图片",
+    "Attach images"
+  ],
+  "ui.ai.images.clear": [
+    "清空",
+    "Clear"
+  ],
+  "ui.ai.images.count": [
+    "{0} 张图片",
+    "{0} image(s)"
+  ],
+  "ui.ai.images.hint": [
+    "可选 PNG/JPG/BMP；图片只发给所选 API 平台",
+    "PNG/JPG/BMP; sent only to the selected API provider"
+  ],
+  "ui.ai.images.ready": [
+    "点击缩略图移除；发送前确认图片内容",
+    "Click a thumbnail to remove it; review before sending"
+  ],
+  "ui.ai.images.loading": [
+    "读取图片…",
+    "Reading images…"
+  ],
+  "ui.ai.images.invalid": [
+    "图片无法读取，或超过 20 MiB／2400 万像素",
+    "Cannot read image, or it exceeds 20 MiB / 24 million pixels"
+  ],
+  "ui.ai.images.limit": [
+    "一次最多选择 8 张图片",
+    "Attach up to 8 images per message"
+  ],
+  "ui.ai.images.previewFailed": [
+    "图片缩略图不可用，请重新选择",
+    "Image thumbnail unavailable; select it again"
+  ],
+  "ui.ai.images.unsupported": [
+    "当前模型／接口不支持这些图片，或图片过大；请换支持视觉的模型或移除图片后重试",
+    "The selected model/API rejected these images or their size. Choose a vision model or remove the images and retry."
+  ],
+  "ui.ai.images.message": [
+    "给此 AI 玩家发消息／图片",
+    "Message / images for this AI player"
+  ],
+  "ui.ai.images.spawnFirst": [
+    "请进入单人世界并先召唤此 AI 玩家",
+    "Enter a single-player world and summon this AI player first"
+  ]
+}

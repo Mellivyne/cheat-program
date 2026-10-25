@@ -62,6 +62,7 @@ public final class MinimapEditorScreen extends GuiBase {
 	}
 	@Override public void onClose() { mc.setScreen(parent); }
 	@Override public void removed() {
+        super.removed();
 		drag = null;
 		if (module != null && !originallyEnabled && module.isEnabled()) module.setEnabled(false);
 	}

@@ -1,0 +1,90 @@
+{
+  "ui.aiParticles.title": [
+    "AI 粒子设计",
+    "AI particle designer"
+  ],
+  "ui.aiParticles.request": [
+    "特效要求／修改意见",
+    "Effect requirements / revisions"
+  ],
+  "ui.aiParticles.generate": [
+    "生成特效与配置码",
+    "Generate effect and code"
+  ],
+  "ui.aiParticles.revise": [
+    "按要求继续修改",
+    "Revise the effect"
+  ],
+  "ui.aiParticles.copy": [
+    "复制独立配置码",
+    "Copy standalone code"
+  ],
+  "ui.aiParticles.add": [
+    "加入项目并打开编辑器",
+    "Add to project and open editor"
+  ],
+  "ui.aiParticles.forgetKey": [
+    "删除此接口的 API Key",
+    "Delete this connection’s API key"
+  ],
+  "ui.aiParticles.keyDeleted": [
+    "API Key 已从本机删除",
+    "API key deleted from local storage"
+  ],
+  "ui.aiParticles.hint": [
+    "生成的特效先在独立预览中显示，不会替换现有项目。可以继续修改、复制配置码，或点击下方按钮将其加入项目。API Key 和参考图片不进入配置码。",
+    "Generated effects appear in a private preview and do not replace the current project. Request revisions, copy the code, or explicitly add the result below. API keys and reference images never enter the code."
+  ],
+  "ui.aiParticles.preview": [
+    "真实粒子预览",
+    "Native particle preview"
+  ],
+  "ui.aiParticles.previewEmpty": [
+    "输入要求后生成可编辑的粒子特效",
+    "Describe an effect to generate an editable composition"
+  ],
+  "ui.aiParticles.previewHint": [
+    "鼠标拖动旋转 · 滚轮缩放 · 箭头切换轮次",
+    "Drag to rotate · Scroll to zoom · Arrows change rounds"
+  ],
+  "ui.aiParticles.codeReady": [
+    "已生成可分享的 CPS1 配置码（{0} 个字符）",
+    "A shareable CPS1 code is ready ({0} characters)"
+  ],
+  "ui.aiParticles.needKey": [
+    "请输入所选接口的 API Key",
+    "Enter an API key for the selected endpoint"
+  ],
+  "ui.aiParticles.working": [
+    "正在设计粒子特效…",
+    "Designing particle effect…"
+  ],
+  "ui.aiParticles.ready": [
+    "特效和配置码已生成，可以预览、继续修改或加入项目",
+    "Effect and code ready: preview, revise or add to the project"
+  ],
+  "ui.aiParticles.copied": [
+    "独立配置码已复制到剪贴板",
+    "Standalone code copied to the clipboard"
+  ],
+  "ui.aiParticles.failed": [
+    "生成失败，原特效已保留。请检查接口、模型与网络后重试。",
+    "Generation failed; the previous effect is retained. Check the endpoint, model and connection, then retry."
+  ],
+  "ui.aiParticles.invalid": [
+    "AI 返回了无效配置，原特效已保留",
+    "The AI returned an invalid configuration; the previous effect is retained"
+  ],
+  "ui.aiParticles.nativeInvalid": [
+    "生成的粒子类型或参数不受当前游戏支持，请要求 AI 换用兼容粒子",
+    "The generated particle type or options are unsupported in this game. Ask the AI to use compatible particles."
+  ],
+  "ui.aiParticles.projectFull": [
+    "当前项目的轮次或发射器已满，可先复制配置码，在其他项目导入",
+    "The current project has reached its round or emitter limit. Copy the code and import it in another project."
+  ],
+  "ui.aiParticles.imageRejected": [
+    "接口拒绝了带图片的请求。请确认模型支持图片；参考图片未被自动丢弃或重发。",
+    "The provider rejected the image request. Check that the model supports images; references were not silently dropped or resent."
+  ]
+}

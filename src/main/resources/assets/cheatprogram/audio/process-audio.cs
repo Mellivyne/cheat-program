@@ -53,18 +53,21 @@ public static class ProcessAudio {
             using(Process sourceIdentity=Process.GetProcessById(target))using(Process ownerIdentity=Process.GetProcessById(owner)){
             IntPtr sourceHandle=sourceIdentity.Handle,ownerHandle=ownerIdentity.Handle;
             if(sourceIdentity.HasExited||ownerIdentity.HasExited){Packet(104,null,0,0);return 4;}
-            HashSet<int> targetTree=Descendants(target);if(targetTree.Contains(owner)||targetTree.Contains(Process.GetCurrentProcess().Id)){Packet(104,null,0,0);return 4;}
+            int captureRoot=ApplicationAudioTree.Root(target,owner);
+            using(Process rootIdentity=Process.GetProcessById(captureRoot)){IntPtr rootHandle=rootIdentity.Handle;
+            HashSet<int> targetTree=Descendants(captureRoot);if(targetTree.Contains(owner)||targetTree.Contains(Process.GetCurrentProcess().Id)){Packet(104,null,0,0);return 4;}
             // A session mute silences process-loopback too (verified with our own synthetic source).
             // Do not silently duplicate sound or alter the application when isolated routing is absent.
             if(suppress){Packet(103,null,0,0);return 5;}
             new Thread(Input){IsBackground=true,Name="Audio control"}.Start();
-            using(Capture capture=new Capture(target)){
+            using(Capture capture=new Capture(captureRoot)){
                 capture.Start();Packet(2,null,0,0);long lastPacket=Stopwatch.GetTimestamp();
-                while(LeaseAlive(ownerIdentity)&&!sourceIdentity.HasExited){
+                while(LeaseAlive(ownerIdentity)&&!sourceIdentity.HasExited&&!rootIdentity.HasExited){
                     long now=Stopwatch.GetTimestamp();byte[] data;int frames;
                     if(capture.Next(out data,out frames)){Packet(1,data,frames,0);lastPacket=now;}
                     else if((now-lastPacket)/(double)Stopwatch.Frequency>1){Packet(3,null,0,0);lastPacket=now;}
                 }
+            }
             }
             }
             Packet(4,null,0,0);return 0;

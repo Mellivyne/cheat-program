@@ -8,5 +8,9 @@
   "setting.appcast.curveSegments": "Curve smoothness",
   "mode.appcast_curve_horizontal": "Horizontal",
   "mode.appcast_curve_vertical": "Vertical",
-  "ui.appcast.curveHint": "Positive angles curve inward; negative angles curve outward; 0° is flat. Dimensions use the unrolled surface. Click values to type; each screen saves independently."
+  "ui.appcast.curveHint": "Positive angles curve inward; negative angles curve outward; 0° is flat. Dimensions use the unrolled surface. Click values to type; each screen saves independently.",
+  "mode.music_layout_sphere": "Music planet",
+  "ui.music.spaceSwipe.sphere": "Drag to rotate the planet · Scroll to zoom · Click to lift and play",
+  "mode.music_layout_gallery": "Immersive music gallery",
+  "ui.music.spaceSwipe.gallery": "Drag to travel through the gallery · Scroll to adjust distance · Click to focus and play"
 }

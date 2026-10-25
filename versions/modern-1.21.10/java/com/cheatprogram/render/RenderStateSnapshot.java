@@ -55,7 +55,15 @@ public final class RenderStateSnapshot {
         final float lineWidth = RenderSystem.getShaderLineWidth(), glintAlpha = RenderSystem.getShaderGlintAlpha();
         final Matrix4f projection = new Matrix4f(RenderSystem.getProjectionMatrix()), modelView = new Matrix4f(RenderSystem.getModelViewStack()), textureMatrix = new Matrix4f(RenderSystem.getTextureMatrix());
         final ProjectionType projectionType = RenderSystem.getProjectionType();
+        final com.mojang.blaze3d.buffers.GpuBufferSlice nativeProjection = com.mojang.blaze3d.systems.RenderSystem.getProjectionMatrixBuffer();
         final FogParameters fog = RenderSystem.getShaderFog();
+        final com.mojang.blaze3d.textures.GpuTextureView nativeColorOutput = com.mojang.blaze3d.systems.RenderSystem.outputColorTextureOverride;
+        final com.mojang.blaze3d.textures.GpuTextureView nativeDepthOutput = com.mojang.blaze3d.systems.RenderSystem.outputDepthTextureOverride;
+        final boolean nativeClipped = com.mojang.blaze3d.systems.RenderSystem.getScissorStateForRenderTypeDraws().enabled();
+        final int nativeClipX = com.mojang.blaze3d.systems.RenderSystem.getScissorStateForRenderTypeDraws().x();
+        final int nativeClipY = com.mojang.blaze3d.systems.RenderSystem.getScissorStateForRenderTypeDraws().y();
+        final int nativeClipW = com.mojang.blaze3d.systems.RenderSystem.getScissorStateForRenderTypeDraws().width();
+        final int nativeClipH = com.mojang.blaze3d.systems.RenderSystem.getScissorStateForRenderTypeDraws().height();
         final float[] color = RenderSystem.getShaderColor().clone();
         final CompiledShaderProgram shader = RenderSystem.getShader();
         final com.mojang.blaze3d.buffers.GpuBufferSlice lights = RenderSystem.getShaderLights();
@@ -77,8 +85,17 @@ public final class RenderStateSnapshot {
             RenderSystem.enableScissor(x, y, Math.max(0, right - x), Math.max(0, top - y));
         }
         public void restore() {
+            com.mojang.blaze3d.systems.RenderSystem.outputColorTextureOverride = nativeColorOutput;
+            com.mojang.blaze3d.systems.RenderSystem.outputDepthTextureOverride = nativeDepthOutput;
+            if (nativeClipped) com.mojang.blaze3d.systems.RenderSystem.enableScissorForRenderTypeDraws(nativeClipX,nativeClipY,nativeClipW,nativeClipH);
+            else com.mojang.blaze3d.systems.RenderSystem.disableScissorForRenderTypeDraws();
             GlStateManager._glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, readFramebuffer); GlStateManager._glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, drawFramebuffer); RenderSystem.viewport(viewport[0], viewport[1], viewport[2], viewport[3]);
-            RenderSystem.setProjectionMatrix(projection, projectionType); RenderSystem.getModelViewStack().set(modelView); RenderSystem.setTextureMatrix(textureMatrix);
+            RenderSystem.setProjectionMatrix(projection, projectionType);
+            // Restore the caller's GPU uniform identity as well as its values.
+            // Leaving the shared custom GUI buffer selected contaminates native
+            // entity/hand draws and subsequent deferred GUI submissions.
+            if (nativeProjection != null) com.mojang.blaze3d.systems.RenderSystem.setProjectionMatrix(nativeProjection, projectionType);
+            RenderSystem.getModelViewStack().set(modelView); RenderSystem.setTextureMatrix(textureMatrix);
             RenderSystem.setShaderFog(fog); RenderSystem.setShaderColor(color[0], color[1], color[2], color[3]);
             for (int i = 0; i < shaderTextures.length; i++) {
                 RenderSystem.setShaderTexture(i, shaderTextures[i]); RenderSystem.activeTexture(GL13.GL_TEXTURE0 + i); GlStateManager._bindTexture(textureBindings[i]);

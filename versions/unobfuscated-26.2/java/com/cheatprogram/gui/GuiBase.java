@@ -50,6 +50,57 @@ public abstract class GuiBase extends com.cheatprogram.compat.CompatScreen {
 	protected boolean hoverBlocked;
 	protected Drag drag;
 	protected TextField focused;
+    private TextField nativeTextOwner;
+    private net.minecraft.client.gui.components.IMEPreeditOverlay preeditOverlay;
+    private int inputCaretX, inputCaretY, inputHeight = 10;
+
+    @Override protected void inputStateChanged() {
+        boolean current = mc.gui.screen() == this;
+        TextField next = current ? focused : null;
+        if (next == nativeTextOwner) return;
+        if (nativeTextOwner != null) {
+            nativeTextOwner = null;
+            mc.onTextInputFocusChange(this, false);
+        }
+        preeditOverlay = null;
+        nativeTextOwner = next;
+        if (next != null) mc.onTextInputFocusChange(this, true);
+    }
+
+    @Override public boolean preeditUpdated(net.minecraft.client.input.PreeditEvent event) {
+        if (event == null) { preeditOverlay = null; return true; }
+        if (nativeTextOwner == null) return false;
+        preeditOverlay = new net.minecraft.client.gui.components.IMEPreeditOverlay(event, mc.font, inputHeight);
+        return true;
+    }
+
+    @Override protected void extractTextInput(net.minecraft.client.gui.GuiGraphicsExtractor graphics) {
+        if (nativeTextOwner == null) return;
+        mc.textInputManager().setTextInputArea(inputCaretX, inputCaretY,
+                inputCaretX + 1, inputCaretY + inputHeight);
+        if (preeditOverlay != null) {
+            preeditOverlay.updateInputPosition(inputCaretX, inputCaretY);
+            graphics.setPreeditOverlay(preeditOverlay);
+        }
+    }
+
+    private void textInputAnchor(TextField field, float caretX, float top, float height) {
+        if (focused != field) return;
+        float guiScale = Math.max(1, mc.getWindow().getGuiScale());
+        inputCaretX = Math.max(0, Math.min(width - 1, Math.round(c.px(caretX) / guiScale)));
+        inputCaretY = Math.max(0, Math.min(this.height - 1, Math.round(c.py(top) / guiScale)));
+        inputHeight = Math.max(1, Math.round(height * c.scale / guiScale));
+    }
+
+    @Override public void removed() {
+        // Match native EditBox focus lifecycle without altering native chat.
+        if (nativeTextOwner != null) {
+            nativeTextOwner = null;
+            mc.onTextInputFocusChange(this, false);
+        }
+        preeditOverlay = null;
+        super.removed();
+    }
 
 	/** Opt-in for full control pages; world-overlay editors keep their transparent canvas. */
 	protected boolean preparePanelBackground(net.minecraft.client.gui.GuiGraphicsExtractor graphics,float partialTick) {
@@ -218,6 +269,7 @@ public abstract class GuiBase extends com.cheatprogram.compat.CompatScreen {
 	protected void onTypographyChanged(){ }
 
 	protected void endFrame() {
+        inputStateChanged();
 		hits.clear();
 		hits.addAll(pendingHits);
 	}
@@ -468,6 +520,7 @@ public abstract class GuiBase extends com.cheatprogram.compat.CompatScreen {
 		}
 		float size = 10.5f;
 		float maxW = w - (tx - x) - 10;
+        float nativeCaret = tx;
 		c.clip(tx - 1, y, maxW + 2, h);
 		if (field.text.isEmpty()) {
 			c.textC(REG, placeholder, tx, y + h / 2f, size, Theme.TEXT_4);
@@ -477,6 +530,7 @@ public abstract class GuiBase extends com.cheatprogram.compat.CompatScreen {
 			String before = display.substring(0, Math.min(visible.cursor(), display.length()));
 			float caretX = c.textWidth(REG, before, size);
 			float shift = Math.max(0, caretX - maxW + 4);
+            nativeCaret = tx - shift + caretX;
 			if (field.allSelected) {
 				float tw = c.textWidth(REG, display, size);
 				c.rrect(tx - shift - 1, y + h / 2f - 7, tw + 2, 14, 3, Anim.white(0.25f));
@@ -485,6 +539,7 @@ public abstract class GuiBase extends com.cheatprogram.compat.CompatScreen {
 			if (focus && field.caretVisible()) c.rect(tx - shift + caretX, y + h / 2f - 6.5f, 1f, 13, Theme.TEXT);
 		}
 		if (focus && field.text.isEmpty() && field.caretVisible()) c.rect(tx, y + h / 2f - 6.5f, 1f, 13, Theme.TEXT_2);
+        textInputAnchor(field, nativeCaret, y + h / 2f - 6.5f, 13);
 		c.unclip();
 		hit(x, y, w, h).left(() -> {
 			focused = field;

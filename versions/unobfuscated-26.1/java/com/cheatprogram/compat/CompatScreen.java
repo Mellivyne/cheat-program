@@ -8,10 +8,10 @@ import org.lwjgl.glfw.GLFW;
 /** Converts modern input records into the existing custom widget event contract. */
 public abstract class CompatScreen extends Screen {
     protected CompatScreen(Component title){super(title);}
-    @Override public boolean mouseClicked(MouseButtonEvent e,boolean doubleClick){return mouseClicked(e.x(),e.y(),e.button());}
+    @Override public boolean mouseClicked(MouseButtonEvent e,boolean doubleClick){try{return mouseClicked(e.x(),e.y(),e.button());}finally{inputStateChanged();}}
     @Override public boolean mouseReleased(MouseButtonEvent e){return mouseReleased(e.x(),e.y(),e.button());}
     @Override public boolean mouseDragged(MouseButtonEvent e,double dx,double dy){return mouseDragged(e.x(),e.y(),e.button(),dx,dy);}
-    @Override public boolean keyPressed(KeyEvent e){return keyPressed(e.key(),e.scancode(),e.modifiers());}
+    @Override public boolean keyPressed(KeyEvent e){try{return keyPressed(e.key(),e.scancode(),e.modifiers());}finally{inputStateChanged();}}
     @Override public boolean keyReleased(KeyEvent e){return keyReleased(e.key(),e.scancode(),e.modifiers());}
     @Override public boolean charTyped(CharacterEvent e){boolean accepted=false;for(char c:Character.toChars(e.codepoint()))accepted|=charTyped(c,modifiers());return accepted;}
     public boolean mouseClicked(double x,double y,int button){return super.mouseClicked(mouse(x,y,button),false);}
@@ -31,8 +31,12 @@ public abstract class CompatScreen extends Screen {
     public static boolean isCut(int key,int mods){return new KeyEvent(key,0,mods).isCut();}
     public static boolean isPaste(int key,int mods){return new KeyEvent(key,0,mods).isPaste();}
 
-    @Override public void extractRenderState(net.minecraft.client.gui.GuiGraphicsExtractor graphics,int x,int y,float partial){render(graphics,x,y,partial);}
+    @Override public void extractRenderState(net.minecraft.client.gui.GuiGraphicsExtractor graphics,int x,int y,float partial){try{render(graphics,x,y,partial);}finally{inputStateChanged();extractTextInput(graphics);}}
     public void render(net.minecraft.client.gui.GuiGraphicsExtractor graphics,int x,int y,float partial){super.extractRenderState(graphics,x,y,partial);}
     @Override public void extractBackground(net.minecraft.client.gui.GuiGraphicsExtractor graphics,int x,int y,float partial){renderBackground(graphics,x,y,partial);}
     public void renderBackground(net.minecraft.client.gui.GuiGraphicsExtractor graphics,int x,int y,float partial){super.extractBackground(graphics,x,y,partial);}
+    /** Custom widgets report text focus separately from the native child-widget tree. */
+    protected void inputStateChanged() { }
+    protected void extractTextInput(net.minecraft.client.gui.GuiGraphicsExtractor graphics) { }
+
 }

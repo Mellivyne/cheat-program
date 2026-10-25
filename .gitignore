@@ -1,6 +1,7 @@
 .gradle/
 build/
 run/
+run-gameplay/
 logs/
 outputs/
 config/
@@ -18,3 +19,9 @@ verification/*.png
 .env.*
 !/verification/README.md
 backups/
+
+!/verification/legacy/
+!/verification/legacy/**
+!/verification/gameplay/
+!/verification/gameplay/**
+!/verification/RESULTS-v1.1.md

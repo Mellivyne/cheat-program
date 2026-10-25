@@ -54,12 +54,12 @@ public final class AiPlayerModels {
 		if (id == null) return;
 		synchronized (LOCK) {
 			Slot slot = SLOTS.computeIfAbsent(id, ignored -> new Slot()); cancel(slot);
-			if (key == null || key.isBlank()) { slot.state = new AiModels.State("", "请输入此 AI 玩家的 API Key", false, false, List.of()); return; }
+			if (key == null || key.isBlank()) { slot.state = new AiModels.State("", "请输入 API Key", false, false, List.of()); return; }
 			URI uri;
 			try { uri = AiModels.modelsUri(endpoint); }
 			catch (RuntimeException invalid) { slot.state = new AiModels.State("", "API 地址无效", false, false, List.of()); return; }
 			String provider = AiModels.providerAt(uri);
-			slot.state = new AiModels.State(provider, "读取此玩家的模型列表…", true, false, List.of());
+			slot.state = new AiModels.State(provider, "读取模型列表…", true, false, List.of());
 			Query query = new Query(id, slot, slot.generation, uri, provider, key);
 			slot.request = NETWORK.submit(() -> discover(query));
 		}
@@ -116,7 +116,7 @@ public final class AiPlayerModels {
 		} catch (InterruptedException ignored) { Thread.currentThread().interrupt(); }
 		catch (TimeoutException ignored) { publish(query, "读取模型超时（" + AiProtocol.serviceHost(query.uri()) + "），请稍后刷新", List.of()); }
 		catch (AiModels.CatalogueError error) { publish(query, error.getMessage(), List.of()); }
-		catch (Exception ignored) { publish(query, "无法读取模型（" + AiProtocol.serviceHost(query.uri()) + "），请检查此玩家的平台、地址和网络", List.of()); }
+		catch (Exception ignored) { publish(query, "无法读取模型（" + AiProtocol.serviceHost(query.uri()) + "），请检查平台、地址和网络", List.of()); }
 	}
 	private static void publish(Query query, String message, List<AiModels.Model> models) {
 		Minecraft.getInstance().execute(() -> { synchronized (LOCK) {

@@ -95,7 +95,8 @@ final class AiProtocol {
 				if (!content.isEmpty() || !"assistant".equals(role)) {
 					JsonObject message = new JsonObject();
 					message.addProperty("role", role);
-					message.addProperty("content", content);
+                    JsonElement source=turn.get("content");
+                    message.add("content",source!=null&&source.isJsonArray()?responseContent(source.getAsJsonArray()):new com.google.gson.JsonPrimitive(content));
 					input.add(message);
 				}
 				// Defensive conversion for a chat-shaped caller. Normal Responses turns always have their raw envelope.
@@ -181,7 +182,9 @@ final class AiProtocol {
 			HttpResponse<byte[]> response = post(http, uri, key, request(model, responses(uri), history, tools), current);
 			if (response.statusCode() < 200 || response.statusCode() >= 300) {
 				if (contextExceeded(response)) { history = compact(http, uri, model, key, history, current); compacted = true; continue; }
-				throw new ProtocolException(httpError(response.statusCode(), uri));
+                if(hasImages(history)&&(response.statusCode()==400||response.statusCode()==413||response.statusCode()==415||response.statusCode()==422))
+                    throw new ProtocolException(com.cheatprogram.core.Lang.t("ui.ai.images.unsupported"));
+                throw new ProtocolException(httpError(response.statusCode(), uri));
 			}
 			JsonObject result = reply(JsonParser.parseString(new String(response.body(), StandardCharsets.UTF_8)).getAsJsonObject(), responses(uri));
 			if (result.has(CONTINUE)) {
@@ -201,7 +204,7 @@ final class AiProtocol {
 				.header("Content-Type", "application/json").header("Authorization", "Bearer " + key)
 				.POST(HttpRequest.BodyPublishers.ofString(body.toString(), StandardCharsets.UTF_8)).build();
 		CompletableFuture<HttpResponse<byte[]>> future = http.sendAsync(request, HttpResponse.BodyHandlers.ofByteArray());
-		try { HttpResponse<byte[]> response = future.get(185, TimeUnit.SECONDS); check(current); return response; }
+        try {long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(185);while(true){check(current);long left=deadline-System.nanoTime();if(left<=0)throw new java.util.concurrent.TimeoutException();try{HttpResponse<byte[]> response=future.get(Math.min(left,TimeUnit.MILLISECONDS.toNanos(100)),TimeUnit.NANOSECONDS);check(current);return response;}catch(java.util.concurrent.TimeoutException waiting){if(System.nanoTime()>=deadline)throw waiting;}}}
 		finally { if (!future.isDone()) future.cancel(true); }
 	}
 
@@ -228,7 +231,8 @@ final class AiProtocol {
 				JsonObject turn = history.get(i).getAsJsonObject();
 				if (turn.has(PRESERVE_INPUT) && turn.get(PRESERVE_INPUT).getAsBoolean()) continue;
 				JsonObject readable = turn.deepCopy(); readable.remove(RESPONSES_OUTPUT); readable.remove("reasoning_content"); readable.remove(PRESERVE_INPUT);
-				fragment.add(readable);
+                if(readable.has("content")&&readable.get("content").isJsonArray())readable.addProperty("content",string(readable,"content")+" [Earlier image attachments omitted from textual memory; rely on previously observed facts only.]");
+                fragment.add(readable);
 			}
 			if (!fragment.isEmpty()) {
 				JsonArray summaryHistory = new JsonArray();
@@ -269,6 +273,27 @@ final class AiProtocol {
 		throw new ProtocolException("该模型的上下文无法容纳当前完整需求和最近动作，请选择更大上下文的模型；需求与完整聊天未被截断。");
 	}
 
+    static JsonObject message(String role,String text,java.util.List<AiImage> images){
+        if(images==null||images.isEmpty())return message(role,text);
+        if(images.size()>AiImage.MAX_ATTACHMENTS)throw new IllegalArgumentException("ui.ai.images.limit");
+        JsonObject message=new JsonObject();message.addProperty("role",role);JsonArray content=new JsonArray();
+        JsonObject words=new JsonObject();words.addProperty("type","text");words.addProperty("text",text==null?"":text);content.add(words);
+        for(AiImage image:images){JsonObject part=new JsonObject(),url=new JsonObject();part.addProperty("type","image_url");url.addProperty("url",image.dataUrl());part.add("image_url",url);content.add(part);}
+        message.add("content",content);return message;
+    }
+    private static JsonArray responseContent(JsonArray content){
+        JsonArray converted=new JsonArray();
+        for(JsonElement value:content){JsonObject part=value.getAsJsonObject();String type=string(part,"type");JsonObject copy=new JsonObject();
+            if("text".equals(type)){copy.addProperty("type","input_text");copy.addProperty("text",string(part,"text"));}
+            else if("image_url".equals(type)){copy.addProperty("type","input_image");copy.addProperty("image_url",string(part.getAsJsonObject("image_url"),"url"));}
+            else throw new IllegalArgumentException("Unsupported local image content");
+            converted.add(copy);
+        }return converted;
+    }
+    private static boolean hasImages(JsonArray history){
+        for(JsonElement value:history){JsonElement content=value.getAsJsonObject().get("content");if(content!=null&&content.isJsonArray())for(JsonElement part:content.getAsJsonArray())if("image_url".equals(string(part.getAsJsonObject(),"type")))return true;}
+        return false;
+    }
 	static JsonObject message(String role, String content) {
 		JsonObject message = new JsonObject(); message.addProperty("role", role); message.addProperty("content", content); return message;
 	}
@@ -298,6 +323,8 @@ final class AiProtocol {
 
 	private static String string(JsonObject object, String key) {
 		JsonElement value = object.get(key);
-		return value == null || value.isJsonNull() ? "" : value.getAsString();
+        if(value==null||value.isJsonNull())return "";
+        if(value.isJsonArray()){StringBuilder text=new StringBuilder();for(JsonElement part:value.getAsJsonArray())if(part.isJsonObject()&&part.getAsJsonObject().has("text")){if(!text.isEmpty())text.append('\n');text.append(part.getAsJsonObject().get("text").getAsString());}return text.toString();}
+        return value.isJsonPrimitive()?value.getAsString():"";
 	}
 }

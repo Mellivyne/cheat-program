@@ -42,3 +42,12 @@ Every record has a 40-byte little-endian header: eight signed 32-bit values (`0x
 - [Stream options, including POST_VOLUME_LOOPBACK](https://learn.microsoft.com/en-us/windows/win32/api/audioclient/ne-audioclient-audclnt_streamoptions)
 
 No Microsoft sample source is copied into this implementation; only published API names, UUIDs, signatures and data layouts are used.
+
+
+## Desktop application compatibility update
+
+Both native helpers now resolve a selected UI process through same-executable, same-session ancestors before following its process tree. This includes sibling audio workers without expanding to Explorer, a launcher, an unrelated executable, or the game. Ancestor creation times are checked to reject reused parent PIDs. The source and capture root are retained for the capture lifetime.
+
+Routing now also configures existing inactive audio sessions, allowing a paused desktop app to select the isolated output before it resumes. Readiness still requires actual active streams on CABLE. A persisted policy with streams still on the previous device reports `waitingRestart`; the UI asks the user to restart playback or choose CABLE Input in that application. This does not force-restart applications, mute their captured stream, change Windows default devices, or claim universal live stream migration.
+
+Owned native checks passed for sibling audio capture through a UI child, inactive-session routing before resume, nonzero PCM, normal shutdown, source exit/recovery, helper crash/watchdog, heartbeat expiry, and preserving later user choices. A non-migrating WinMM test still requires its own stream to reopen; desktop music-player compatibility needs real application testing.

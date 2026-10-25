@@ -39,6 +39,8 @@ final class AiPlayersPanel {
 	});
 	private final ClickGuiScreen gui;
 	private final TextField name = new TextField();
+    private final TextField chat=new TextField();
+    private final AiImagePicker chatImages=new AiImagePicker();
 	private final TextField persona = new TextField();
 	private final TextField personality = new TextField();
 	private final TextField customGender = new TextField();
@@ -87,7 +89,7 @@ final class AiPlayersPanel {
 	private void select(AiPlayers.Profile profile) {
 		AiPlayers.save();
 		gui.focused = null; modelsOpen = false; genderOpen = false; languageOpen=false; key.masked = true;
-		selected = profile == null ? null : profile.id();
+		selected = profile == null ? null : profile.id();chat.setText("");chatImages.clear();
 		formScroll.target = 0; formScroll.value.snap(0);
 		skinRequest++; loadingSkin = false; skinStatus = ""; skinPath.setText("");
 		if (profile == null) return;
@@ -222,11 +224,19 @@ final class AiPlayersPanel {
 
 	private void renderForm(AiPlayers.Profile current, float x, float top, float w, float h) {
 		float characterExtraHeight = "custom".equals(gender) ? 210 : 150;
-		float contentHeight = (useShared ? 713 : 693) + characterExtraHeight + 80;
+		float contentHeight = (useShared ? 713 : 693) + characterExtraHeight + 220;
 		formScroll.max = Math.max(0, contentHeight - h); formScroll.update(gui.dt);
 		gui.hit(x + 8, top, w - 16, h).scroll(formScroll::scroll);
 		gui.c.clip(x + 8, top, w - 16, h); gui.pushHitClip(x + 8, top, w - 16, h);
 		float y = top - formScroll.get(), fx = x + 14, fw = w - 28;
+        label("ui.ai.images.message",fx,y+11);
+        gui.textField(chat,Lang.t("ui.ai.requestHint"),null,fx,y+23,fw-80,29);
+        gui.button("aip.direct.send",Lang.t("ui.ai.send"),Icon.CHEVRON_RIGHT,fx+fw-74,y+23,74,29,true,()->{
+            if(AiPlayers.directMessage(selected,chat.text,chatImages.images())){chat.setText("");chatImages.clear();}
+            else Notifications.push(Lang.t("ui.tab.aiPlayers"),Lang.t("ui.ai.images.spawnFirst"),false);
+        });
+        chatImages.draw(gui,fx,y+58,fw);y+=128;
+
 		label("ui.aip.language",fx,y+11);
 		languageAnchorX=fx;languageAnchorY=y+23;languageAnchorWidth=fw;
 		gui.selectBox("aip.language","",Lang.t("mode.ai_language_"+current.language()),fx,y+23,fw,29,languageOpen,()->{
@@ -410,7 +420,7 @@ final class AiPlayersPanel {
 			gui.hit(x+6,ry,w-12,row-2).left(()->{AiPlayers.setLanguage(profile.id(),choice);languageOpen=false;gui.focused=null;});
 		}
 	}
-	void close() { deactivate(); closed = true; skinRequest++; }
+	void close() { deactivate(); closed = true; skinRequest++;chatImages.close(); }
 
 	private void chooseSkin() {
 		if (loadingSkin || selected == null || closed) return;

@@ -297,6 +297,15 @@ public final class AiPlayers {
 		Profile value = profile(player.getUUID()); if (value == null || value.skinTexture == null) return original;
 		return new PlayerSkin(value.skinTexture, null, original.capeTexture(), original.elytraTexture(), PlayerSkin.Model.WIDE, false);
 	}
+    /** Direct, explicit image message for one selected character; never broadcast attachments to peers. */
+    public static boolean directMessage(UUID id,String text,List<AiImage> images){
+        initialize();Profile profile=profile(id);
+        if(!singleplayer()||MC.player==null||profile==null||!profile.spawned)return false;
+        if((text==null||text.isBlank())&&images.isEmpty())return false;
+        Runtime run=runtime(profile);cancelRuntime(run,"收到新的用户消息。");
+        run.brain.hear(MC.player.getName().getString(),text==null?"":text,true,List.copyOf(images));
+        run.active=true;run.nextPlan=0;profile.status="收到消息，正在思考";return true;
+    }
 	public static boolean acceptsChat() { return singleplayer() && profiles.stream().anyMatch(Profile::spawned); }
 	public static void userChat(String text) {
 		if (!acceptsChat() || text == null || text.isBlank() || text.stripLeading().startsWith("/")) return;

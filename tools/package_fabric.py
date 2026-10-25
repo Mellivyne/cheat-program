@@ -22,7 +22,8 @@ def main():
         with zipfile.ZipFile(artifact) as jar:
             mod=json.loads(jar.read('fabric.mod.json'))
             assert mod['name']=='Cheat Program' and mod['license']=='MIT'
-            assert not any(name in jar.namelist() for name in ['com/cheatprogram/dev/OpenPreviewCheck.class','com/cheatprogram/dev/InteractionRegressionCheck.class','com/cheatprogram/dev/CurvedSurfaceCheck.class'])
+            assert not any(path.startswith('com/cheatprogram/dev/') and path.endswith('.class') and not path.endswith('/DevTools.class') for path in jar.namelist()), 'Development fixtures must not ship'
+            assert not any('AiImageProtocolCheck' in path for path in jar.namelist())
             assert mod['id']=='cheatprogram' and mod['version']==version and mod['depends']['minecraft']==mc,mc
             assert mod['depends']['java']==f">={target['java']}",mc
             assert not any('smoke' in path.lower() for path in jar.namelist()),'Private test code must not ship'
@@ -38,7 +39,7 @@ def main():
         shutil.copyfile(artifact,destination)
         digest=hashlib.sha256(destination.read_bytes()).hexdigest()
         records.append({'minecraft':mc,'projectVersion':version,'loader':'fabric','java':target['java'],
-                        'file':destination.relative_to(output).as_posix(),'sha256':digest,'verification':('Open 1.21.4 GUI/player-preview runtime checked; build verified' if mc=='1.21.4' else 'Open build verified; game runtime not retested')})
+                        'file':destination.relative_to(output).as_posix(),'sha256':digest,'verification':target.get('verification',{})})
     (output/'manifest.json').write_text(json.dumps({'projectVersion':version,'artifacts':records,'pending':[t['minecraft'] for t in matrix['targets'] if t['state']=='pending']},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     (output/'SHA256SUMS.txt').write_text(''.join(f"{r['sha256']}  {r['file']}\n" for r in records),encoding='utf-8')
     print('\n'.join(f"Packaged {r['file']}" for r in records))

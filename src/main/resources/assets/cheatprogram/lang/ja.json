@@ -2476,5 +2476,9 @@
   "setting.appcast.curveSegments": "曲面の滑らかさ",
   "mode.appcast_curve_horizontal": "横",
   "mode.appcast_curve_vertical": "縦",
-  "ui.appcast.curveHint": "正は内向き、負は外向き、0° は平面です。寸法は展開時の大きさです。数値をクリックして入力でき、画面ごとに保存します。"
+  "ui.appcast.curveHint": "正は内向き、負は外向き、0° は平面です。寸法は展開時の大きさです。数値をクリックして入力でき、画面ごとに保存します。",
+  "mode.music_layout_sphere": "音楽の惑星",
+  "ui.music.spaceSwipe.sphere": "ドラッグで惑星を回転 · ホイールでズーム · クリックで浮かせて再生",
+  "mode.music_layout_gallery": "没入型ミュージックギャラリー",
+  "ui.music.spaceSwipe.gallery": "ドラッグでギャラリーを進む · ホイールで距離を調整 · クリックで注目して再生"
 }

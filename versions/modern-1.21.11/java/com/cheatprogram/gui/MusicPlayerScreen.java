@@ -24,13 +24,14 @@ public final class MusicPlayerScreen extends GuiBase {
     private final MusicCoverCarouselRenderer covers=new MusicCoverCarouselRenderer();
     private MusicCoverCarouselRenderer.Motion motion=new MusicCoverCarouselRenderer.Motion();
     private MusicCoverCarouselRenderer.RingMotion ringMotion=new MusicCoverCarouselRenderer.RingMotion();
+    private com.cheatprogram.render.AlbumSpaceModel space=new com.cheatprogram.render.AlbumSpaceModel();
     private AlbumWallModel wall=new AlbumWallModel();
     private final MusicCoverCarouselRenderer.ControlMotion controls=new MusicCoverCarouselRenderer.ControlMotion();
     private final MusicCoverCarouselRenderer.ContentFade<Track> footerFade=new MusicCoverCarouselRenderer.ContentFade<>(),titleFade=new MusicCoverCarouselRenderer.ContentFade<>();
     private Scroller songs=new Scroller(),playlists=new Scroller();
     private final SeekPreview seek=new SeekPreview();
     private final TextField searchField=new TextField(120);
-    private record SearchReturn(MusicPlayer.LibraryPage page,List<Track> tracks,Provider provider,String activePlaylist,boolean showPlaylists,String layout,MusicCoverCarouselRenderer.Motion motion,MusicCoverCarouselRenderer.RingMotion ringMotion,AlbumWallModel wall,Scroller songs,Scroller playlists) {}
+    private record SearchReturn(MusicPlayer.LibraryPage page,List<Track> tracks,Provider provider,String activePlaylist,boolean showPlaylists,String layout,MusicCoverCarouselRenderer.Motion motion,MusicCoverCarouselRenderer.RingMotion ringMotion,AlbumWallModel wall,com.cheatprogram.render.AlbumSpaceModel space,Scroller songs,Scroller playlists) {}
     private SearchReturn searchReturn;
     private List<Track> observed=List.of();private Provider provider;private String playingKey="";
     private static double volume=.8;private String activePlaylist="",layout="";private boolean showPlaylists,coverDragging,qualityMenu;private float carouselY,carouselH,coverStartX,coverStartY;
@@ -65,25 +66,28 @@ public final class MusicPlayerScreen extends GuiBase {
         if(provider!=data.provider()||!observed.equals(data.tracks())){
             qualityMenu=false;
             observed=data.tracks();provider=data.provider();resetCovers(Math.max(0,indexOf(current)));songs.target=0;
-        }else if(!key.equals(playingKey)){int index=Math.max(0,indexOf(current));motion.follow(index,observed.size());ringMotion.follow(index,observed.size());wall.select(index);}
+        }else if(!key.equals(playingKey)){int index=Math.max(0,indexOf(current));motion.follow(index,observed.size());ringMotion.follow(index,observed.size());wall.select(index);space.select(index);}
         String requestedLayout=player.layout();if(!layout.equals(requestedLayout)){int index=indexOf(current);if(index<0)index=frontIndex();layout=requestedLayout;resetCovers(index);}
         playingKey=key;
         // An inertial album animation must not turn playback back on after the module was disabled.
-        int commit=wallLayout()?-1:ringLayout()?ringMotion.update(dt):motion.update(dt);if(module.isEnabled()&&commit>=0&&commit<observed.size()&&(ringLayout()||!observed.get(commit).key().equals(key)))playTrack(commit);
-        if(wallLayout()){wall.update(dt);artwork.preload(data.tracks(),frontIndex(),0);artwork.preloadIdle(data.tracks(),frontIndex());}
+        space.update(dt);int commit=wallLayout()||spaceLayout()?-1:ringLayout()?ringMotion.update(dt):motion.update(dt);if(module.isEnabled()&&commit>=0&&commit<observed.size()&&(ringLayout()||!observed.get(commit).key().equals(key)))playTrack(commit);
+        if(wallLayout()){wall.update(dt);artwork.preloadIdle(data.tracks(),wall.selected());}
+        else if(spaceLayout()){artwork.preloadVisible(data.tracks(),space.preloadIndices());artwork.preloadIdle(data.tracks(),space.browseIndex());}
         else {artwork.preload(data.tracks(),frontIndex(),8);artwork.preloadIdle(data.tracks(),frontIndex());}
     }
+    private boolean spaceLayout(){return com.cheatprogram.render.AlbumSpaceModel.supports(layout);}
+    private void nextLayout(){var layouts=MusicPlayer.LAYOUTS;player.layout(layouts.get((layouts.indexOf(layout)+1)%layouts.size()));}
     private boolean ringLayout(){return layout.equals("ring");}
     private boolean wallLayout(){return layout.equals("wall");}
     private float coverPosition(){return ringLayout()?ringMotion.position():motion.position();}
-    private int frontIndex(){return wallLayout()?wall.selected():ringLayout()?MusicCoverCarouselRenderer.RingMotion.index(ringMotion.position(),observed.size()):Math.max(0,Math.min(Math.max(0,observed.size()-1),Math.round(motion.position())));}
-    private void resetCovers(int index){covers.clearHover();motion.reset(index,observed.size());ringMotion.reset(index,observed.size());wall.reset(index,observed.size());if(coverDragging)drag=null;coverDragging=false;}
-    private void moveCover(int delta){if(wallLayout()){if(!observed.isEmpty()){int index=Math.max(0,Math.min(observed.size()-1,wall.selected()+delta));wall.select(index);playTrack(index);}return;}enableMusic();if(ringLayout())ringMotion.move(delta);else motion.move(delta);}
+    private int frontIndex(){return spaceLayout()?space.selected():wallLayout()?wall.selected():ringLayout()?MusicCoverCarouselRenderer.RingMotion.index(ringMotion.position(),observed.size()):Math.max(0,Math.min(Math.max(0,observed.size()-1),Math.round(motion.position())));}
+    private void resetCovers(int index){covers.clearHover();motion.reset(index,observed.size());ringMotion.reset(index,observed.size());wall.reset(index,observed.size());space.reset(layout,index,observed.size());if(coverDragging)drag=null;coverDragging=false;}
+    private void moveCover(int delta){if(spaceLayout()){if(!observed.isEmpty()){int index=Math.max(0,Math.min(observed.size()-1,space.selected()+delta));space.select(index);playTrack(index);}return;}if(wallLayout()){if(!observed.isEmpty()){int index=Math.max(0,Math.min(observed.size()-1,wall.selected()+delta));wall.select(index);playTrack(index);}return;}enableMusic();if(ringLayout())ringMotion.move(delta);else motion.move(delta);}
     private int indexOf(Track track){if(track!=null)for(int i=0;i<observed.size();i++)if(observed.get(i).key().equals(track.key()))return i;return -1;}
     private void main(GuiGraphics graphics,Snapshot data,float h){
         c.textC(BOLD,data.provider().label,218,34,20,Theme.TEXT);
         c.textC(REG,c.ellipsize(REG,data.account()==null?Lang.t("ui.music.account"):data.account().name(),9,460),220,59,9,Theme.TEXT_3);
-        button("music.layout",c.ellipsize(REG,Lang.t("ui.music.layout")+" · "+Lang.t(wallLayout()?"mode.music_layout_wall":ringLayout()?"mode.music_layout_ring":"mode.music_layout_coverflow"),8,178),Icon.GEAR,620,23,208,30,false,()->player.layout(wallLayout()?"coverflow":ringLayout()?"wall":"ring"));
+        button("music.layout",c.ellipsize(REG,Lang.t("ui.music.layout")+" · "+Lang.t("mode.music_layout_"+layout),8,178),Icon.GEAR,620,23,208,30,false,this::nextLayout);
         button("music.auth",Lang.t(data.account()==null?"ui.music.login":"ui.music.logout"),Icon.USER,865,23,146,30,data.account()==null,()->{
             if(data.account()!=null)player.logout();
             else if(data.provider()==Provider.KUWO||data.provider()==Provider.SPOTIFY&&player.accountConfiguration().isBlank())mc.setScreen(new MusicAccountScreen(this,data.provider()));
@@ -104,9 +108,10 @@ public final class MusicPlayerScreen extends GuiBase {
         else c.textRight(REG,Lang.t("ui.musicPlayer.radioUnsupported"),1078,118,8,Theme.TEXT_4);
         if(notice)c.textC(REG,c.ellipsize(REG,Lang.t(requirement),8,866),220,146,8,Theme.TEXT_3);
         if(searchReturn!=null){String source=searchReturn.showPlaylists()?Lang.t("ui.music.playlists"):searchReturn.activePlaylist().isBlank()?Lang.t("ui.music.liked"):searchReturn.activePlaylist();button("music.search.back",c.ellipsize(REG,Lang.t("ui.music.backToLibrary")+" · "+source,8.5f,420),Icon.CHEVRON_LEFT,219,notice?162:142,465,26,false,this::returnFromSearch);}
-        carouselY=(notice?164:144)+(searchReturn==null?0:34);carouselH=wallLayout()?Math.min(420,Math.max(160,h-carouselY-256)):Math.min(260,Math.max(148,(h-330)*.58f));
+        carouselY=(notice?164:144)+(searchReturn==null?0:34);carouselH=wallLayout()||spaceLayout()?Math.min(420,Math.max(160,h-carouselY-256)):Math.min(260,Math.max(148,(h-330)*.58f));
         if(!data.tracks().isEmpty()){
             if(wallLayout())albumWall(data);
+            else if(spaceLayout())covers.drawSpace(graphics,c.px(214),c.py(carouselY),884*c.scale,carouselH*c.scale,data.tracks(),artwork,space,coverDragging?Float.NaN:c.px(mx),coverDragging?Float.NaN:c.py(my),dt);
             else covers.draw(graphics,c.px(214),c.py(carouselY),884*c.scale,carouselH*c.scale,data.tracks(),coverPosition(),artwork,ringLayout(),coverDragging?Float.NaN:c.px(mx),coverDragging?Float.NaN:c.py(my),dt);
             if(!wallLayout()&&covers.failed())c.textMid(REG,Lang.t("ui.music.coverUnavailable"),656,carouselY+carouselH/2,10,Theme.TEXT_3);
             int selected=frontIndex();Track preview=data.tracks().get(selected);
@@ -114,8 +119,9 @@ public final class MusicPlayerScreen extends GuiBase {
                 c.textMid(BOLD,c.ellipsize(BOLD,layer.value().title(),16,700),656,carouselY+carouselH+15+offset,16,Theme.TEXT);
                 c.textMid(REG,c.ellipsize(REG,layer.value().artist()+" · "+layer.value().album(),9,700),656,carouselY+carouselH+39+offset,9,Theme.TEXT_3);
             }finally{R2D.popAlpha();}}
-            c.textMid(REG,Lang.t(wallLayout()?"ui.music.wallSwipe":artwork.unavailable(preview.provider(),preview.cover())?"ui.music.coverUnavailable":ringLayout()?"ui.music.ringSwipe":"ui.music.swipe"),656,carouselY+carouselH+59,8,Theme.TEXT_4);
-            if(wallLayout())hit(214,carouselY,884,carouselH).left(()->{coverDragging=true;wall.begin(mx-214,my-carouselY);drag=(x,y)->wall.drag(x-214,y-carouselY);}).scroll(amount->wall.zoomAt(mx-214,my-carouselY,amount));
+            c.textMid(REG,Lang.t(spaceLayout()?"ui.music.spaceSwipe."+layout:wallLayout()?"ui.music.wallSwipe":artwork.unavailable(preview.provider(),preview.cover())?"ui.music.coverUnavailable":ringLayout()?"ui.music.ringSwipe":"ui.music.swipe"),656,carouselY+carouselH+59,8,Theme.TEXT_4);
+            if(spaceLayout())hit(214,carouselY,884,carouselH).left(()->{coverDragging=true;space.begin(mx,my);drag=(x,y)->space.drag(x,y);}).scroll(space::scroll);
+            else if(wallLayout())hit(214,carouselY,884,carouselH).left(()->{coverDragging=true;wall.begin(mx-214,my-carouselY);drag=(x,y)->wall.drag(x-214,y-carouselY);}).scroll(amount->wall.zoomAt(mx-214,my-carouselY,amount));
             else hit(214,carouselY,884,carouselH).left(()->{enableMusic();coverDragging=true;coverStartX=mx;coverStartY=my;if(ringLayout()){ringMotion.begin(mx);drag=(x,y)->ringMotion.drag(x);}else{motion.begin(mx);drag=(x,y)->motion.drag(x);}}).scroll(amount->moveCover(amount>0?-1:1));
         }else {titleFade.clear();empty(data,carouselY,carouselH+60);}
         float top=carouselY+carouselH+82,bottom=h-99;
@@ -124,7 +130,7 @@ public final class MusicPlayerScreen extends GuiBase {
     }
     private void albumWall(Snapshot data){
         wall.viewport(884,carouselH);wall.hoverAt(mx-214,my-carouselY);List<AlbumWallModel.Card> visible=wall.visible(0);
-        for(int index:wall.preloadIndices()){Track track=data.tracks().get(index);artwork.artwork(track.provider(),track.cover());}
+        artwork.preloadVisible(data.tracks(),wall.preloadIndices());
         c.rrect(214,carouselY,884,carouselH,10,0x25000000);
         covers.drawWall(c.px(214),c.py(carouselY),884*c.scale,carouselH*c.scale,c.scale,wall.zoom(),data.tracks(),visible,artwork);
         c.clip(214,carouselY,884,carouselH);try{for(AlbumWallModel.Card card:visible){
@@ -160,8 +166,8 @@ public final class MusicPlayerScreen extends GuiBase {
                 var rowCover=artwork.artwork(track.provider(),track.cover());
                 if(active||over(217,y,871,36))c.rrect(217,y,871,36,6,active?0x22ef5268:0x0fffffff);
                 c.textC(REG,active?"♫":String.valueOf(i+1),228,y+18,9,active?0xfffb7185:Theme.TEXT_4);
-                if(rowCover!=null)R2D.texture(rowCover,c.px(251),c.py(y+4),28*c.scale,28*c.scale,0,0,1,1,0xffffffff);
-                else {c.rrect(251,y+4,28,28,4,0x18ffffff);c.icon(Icon.MUSIC,265,y+18,13,Theme.TEXT_3);}
+                if(rowCover!=null)R2D.texture(rowCover,c.px(251),c.py(y+4),28*c.scale,28*c.scale,0,0,1,1,0xffffffff);
+                else {c.rrect(251,y+4,28,28,4,0x18ffffff);c.icon(Icon.MUSIC,265,y+18,13,Theme.TEXT_3);}
                 c.textC(active?MED:REG,c.ellipsize(REG,track.title(),10,306),286,y+18,10,active?0xfffb7185:Theme.TEXT);
                 c.textC(REG,c.ellipsize(REG,track.artist(),9,190),611,y+18,9,Theme.TEXT_3);
                 c.textC(REG,c.ellipsize(REG,track.album(),9,176),819,y+18,9,Theme.TEXT_3);c.textRight(REG,time(track.durationMs()),1077,y+18,9,Theme.TEXT_4);
@@ -207,15 +213,15 @@ public final class MusicPlayerScreen extends GuiBase {
     private void playTrack(int index){enableMusic();player.playIndex(index);}
     private void runSearch(){
         if(searchField.text.isBlank())return;
-        if(searchReturn==null){MusicPlayer.LibraryPage page=player.captureLibraryPage();if(page!=null){motion.cancelInteraction();ringMotion.cancelInteraction();wall.cancel();int selected=frontIndex();searchReturn=new SearchReturn(page,observed,provider,activePlaylist,showPlaylists,layout,motion,ringMotion,wall,songs,playlists);motion=new MusicCoverCarouselRenderer.Motion();ringMotion=new MusicCoverCarouselRenderer.RingMotion();wall=new AlbumWallModel();songs=new Scroller();playlists=new Scroller();resetCovers(selected);}}
+        if(searchReturn==null){MusicPlayer.LibraryPage page=player.captureLibraryPage();if(page!=null){motion.cancelInteraction();ringMotion.cancelInteraction();wall.cancel();space.cancel();int selected=frontIndex();searchReturn=new SearchReturn(page,observed,provider,activePlaylist,showPlaylists,layout,motion,ringMotion,wall,space,songs,playlists);motion=new MusicCoverCarouselRenderer.Motion();ringMotion=new MusicCoverCarouselRenderer.RingMotion();wall=new AlbumWallModel();space=new com.cheatprogram.render.AlbumSpaceModel();songs=new Scroller();playlists=new Scroller();resetCovers(selected);}}
         showPlaylists=false;activePlaylist="";focused=null;songs.target=0;player.search(searchField.text);
     }
     private void returnFromSearch(){
         SearchReturn saved=searchReturn;if(saved==null)return;
         if(!player.restoreLibraryPage(saved.page())){searchReturn=null;return;}
         searchReturn=null;observed=saved.tracks();provider=saved.provider();activePlaylist=saved.activePlaylist();showPlaylists=saved.showPlaylists();layout=saved.layout();player.layout(layout);
-        motion=saved.motion();ringMotion=saved.ringMotion();wall=saved.wall();songs=saved.songs();playlists=saved.playlists();focused=null;qualityMenu=false;coverDragging=false;drag=null;seek.cancel();titleFade.clear();searchField.text="";
-        Playback playback=player.snapshot().playback();playingKey=playback==null||playback.track()==null?"":playback.track().key();artwork.preload(observed,frontIndex(),8);
+        motion=saved.motion();ringMotion=saved.ringMotion();wall=saved.wall();space=saved.space();songs=saved.songs();playlists=saved.playlists();focused=null;qualityMenu=false;coverDragging=false;drag=null;seek.cancel();titleFade.clear();searchField.text="";
+        Playback playback=player.snapshot().playback();playingKey=playback==null||playback.track()==null?"":playback.track().key();if(spaceLayout())artwork.preloadVisible(observed,space.preloadIndices());else if(!wallLayout())artwork.preload(observed,frontIndex(),8);
     }
     private void togglePlayback(){controls.click(0);enableMusic();player.togglePlaying();}
     private void qualityControl(Snapshot data,float height){
@@ -263,7 +269,7 @@ public final class MusicPlayerScreen extends GuiBase {
     private static java.net.URI loginUri(Snapshot data){if(data.login()==null||data.login().complete())return null;try{java.net.URI uri=java.net.URI.create(data.login().url());return MusicNetwork.allowed(data.provider(),uri)?uri:null;}catch(RuntimeException invalid){return null;}}
     private static String time(long ms){long seconds=Math.max(0,ms/1000);return seconds/60+":"+String.format(java.util.Locale.ROOT,"%02d",seconds%60);}
     @Override public boolean mouseClicked(double x,double y,int button){if(!dispatchClick(x,y,button))focused=null;return true;}
-    @Override public boolean mouseReleased(double x,double y,int button){if(coverDragging&&button==0){mouseFromEvent(x,y);if(wallLayout()){int index=wall.release(mx-214,my-carouselY);if(index>=0){wall.select(index);playTrack(index);}}else if(ringLayout())ringMotion.release(Math.hypot(mx-coverStartX,my-coverStartY)<4&&mx>556&&mx<756);else motion.release();coverDragging=false;}if(button==0&&seek.active()){mouseFromEvent(x,y);if(drag!=null)drag.drag(mx,my);long target=seek.release(player.snapshot().playback());if(target>=0)player.seek(target);}return super.mouseReleased(x,y,button);}
+    @Override public boolean mouseReleased(double x,double y,int button){if(coverDragging&&button==0){mouseFromEvent(x,y);if(spaceLayout()){if(space.release(mx,my)){int index=covers.hitSpace(space,884,carouselH,mx-214,my-carouselY);if(index>=0){space.select(index);playTrack(index);}}}else if(wallLayout()){int index=wall.release(mx-214,my-carouselY);if(index>=0){wall.select(index);playTrack(index);}}else if(ringLayout())ringMotion.release(Math.hypot(mx-coverStartX,my-coverStartY)<4&&mx>556&&mx<756);else motion.release();coverDragging=false;}if(button==0&&seek.active()){mouseFromEvent(x,y);if(drag!=null)drag.drag(mx,my);long target=seek.release(player.snapshot().playback());if(target>=0)player.seek(target);}return super.mouseReleased(x,y,button);}
     @Override public boolean mouseScrolled(double x,double y,double horizontal,double vertical){mouseFromEvent(x,y);if(wallLayout()&&!observed.isEmpty()&&over(214,carouselY,884,carouselH)){if(Math.abs(horizontal)>.01)wall.pan((float)-horizontal*40,0);if(Math.abs(vertical)>.001)wall.zoomAt(mx-214,my-carouselY,vertical);return true;}if(!observed.isEmpty()&&over(214,carouselY,884,carouselH)&&Math.abs(horizontal)>.01){moveCover(horizontal>0?-1:1);return true;}return dispatchScroll(x,y,vertical);}
     @Override public boolean keyPressed(int key,int scan,int mods){if(key==GLFW.GLFW_KEY_ESCAPE){if(focused!=null)focused=null;else if(qualityMenu)qualityMenu=false;else if(searchReturn!=null)returnFromSearch();else onClose();return true;}if(focused!=null)return focused.keyPressed(key,mods);if(key==GLFW.GLFW_KEY_SPACE){togglePlayback();return true;}if(key==GLFW.GLFW_KEY_LEFT||key==GLFW.GLFW_KEY_RIGHT){moveCover(key==GLFW.GLFW_KEY_LEFT?-1:1);return true;}return false;}
     @Override public boolean charTyped(char character,int mods){return focused!=null&&focused.charTyped(character);}

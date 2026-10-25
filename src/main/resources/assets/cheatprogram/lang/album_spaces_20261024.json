@@ -1,0 +1,26 @@
+{
+  "mode.music_layout_floor": [
+    "唱片地板",
+    "Album floor"
+  ],
+  "mode.music_layout_stars": [
+    "漂浮星群",
+    "Floating constellation"
+  ],
+  "mode.music_layout_spiral": [
+    "螺旋阶梯",
+    "Spiral staircase"
+  ],
+  "ui.music.spaceSwipe.floor": [
+    "拖动浏览地板 · 滚轮缩放 · 点击升起专辑并播放",
+    "Drag to browse the floor · Scroll to zoom · Click to lift and play"
+  ],
+  "ui.music.spaceSwipe.stars": [
+    "拖动探索星群 · 滚轮缩放 · 点击聚焦并播放",
+    "Drag to explore · Scroll to zoom · Click to focus and play"
+  ],
+  "ui.music.spaceSwipe.spiral": [
+    "左右拖动旋转 · 上下拖动或滚轮浏览 · 点击播放",
+    "Drag sideways to rotate · Drag vertically or scroll to travel · Click to play"
+  ]
+}

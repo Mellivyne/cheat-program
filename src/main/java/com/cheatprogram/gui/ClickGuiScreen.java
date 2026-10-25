@@ -80,6 +80,7 @@ public class ClickGuiScreen extends GuiBase {
 	private boolean aiModelPicker;
 	private final TextField aiKey = new TextField(512);
 	private final TextField aiRequest = new TextField();
+    private final AiImagePicker aiImages=new AiImagePicker();
 	private final AiPlayersPanel aiPlayersPanel = new AiPlayersPanel(this);
 	private final Scroller aiScroll = new Scroller();
 	private List<AiController.Message> aiWrappedMessages = List.of();
@@ -367,7 +368,7 @@ public class ClickGuiScreen extends GuiBase {
 		button("ai.stop", Lang.t("ui.ai.stop"), Icon.POWER, rx + rw - 85, top + 8, 71, 25, state.running(), AiController::stop);
 		String status = state.status() + (state.steps() > 0 ? " · " + Lang.t("ui.ai.steps", state.steps()) : "");
 		c.textC(REG, c.ellipsize(REG, status, 9, rw - 28), rx + 14, top + 45, 9, Theme.TEXT_2);
-		float chatTop = top + 61, chatH = 204;
+		float chatTop = top + 61, chatH = 142;
 		List<AiController.Message> messages = AiController.messagesView();
 		boolean conversationChanged = !messages.equals(aiWrappedMessages);
 		if (conversationChanged || aiWrapScale != c.scale) {
@@ -411,7 +412,8 @@ public class ClickGuiScreen extends GuiBase {
 		}
 		c.unclip();
 		String action = state.currentAction().isBlank() ? Lang.t("ui.ai.actionIdle") : state.currentAction();
-		c.textC(REG, c.ellipsize(REG, action, 8.5f, rw - 28), rx + 14, top + 281, 8.5f, Theme.TEXT_3);
+		c.textC(REG, c.ellipsize(REG, action, 8.5f, rw - 28), rx + 14, top + 218, 8.5f, Theme.TEXT_3);
+        aiImages.draw(this,rx+12,bottom-107,rw-24);
 		textField(aiRequest, Lang.t("ui.ai.requestHint"), null, rx + 12, bottom - 43, rw - 90, 29);
 		button("ai.send", Lang.t("ui.ai.send"), Icon.CHEVRON_RIGHT, rx + rw - 69, bottom - 43, 57, 29, true, this::submitAiRequest);
 	}
@@ -483,7 +485,7 @@ public class ClickGuiScreen extends GuiBase {
 			return;
 		}
 		String request = aiRequest.text.trim();
-		if (!request.isEmpty() && AiController.submit(request)) { aiRequest.setText(""); focused = null; aiScroll.target = Float.MAX_VALUE; }
+		if((!request.isEmpty()||!aiImages.isEmpty())&&AiController.submit(request,aiImages.images())){aiRequest.setText("");aiImages.clear();focused=null;aiScroll.target=Float.MAX_VALUE;}
 	}
 
 	// ================================================================ modules tab
@@ -1541,7 +1543,7 @@ public class ClickGuiScreen extends GuiBase {
 	@Override
 	public void removed() {
 		transitions.close();customTransition=false;haloPreview.close();wearablePreview.close();
-		aiPlayersPanel.close();
+		aiPlayersPanel.close();aiImages.close();
 		aiKey.masked = true;
 		AiController.markAiScreen(null);
 		AiController.config().save();

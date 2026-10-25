@@ -806,5 +806,9 @@
   "ui.spatialAudio.capturePaused": [
     "已暂停，请重新连接",
     "Paused; reconnect to retry"
+  ],
+  "ui.spatial.env.status.waitingRestart": [
+    "已设置应用输出，但应用仍在使用旧音频流；请在该应用停止后重新播放，或把输出设备设为 CABLE Input",
+    "App output is configured, but its existing stream has not moved. Stop and restart playback, or select CABLE Input in the app."
   ]
 }

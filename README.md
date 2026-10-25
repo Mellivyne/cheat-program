@@ -26,9 +26,15 @@ Adjust the listening range, reflections, reverberation, volume, and sampling bud
 
 Create particle arrangements with native particle previews. Position emitters around the player, adjust their transforms, and animate them with lines, circles, helices, figure-eight paths, waves, spirals, or custom paths. Preview the result before using it in the world.
 
-### Building import and preview
+The AI particle designer can turn a text request and reference images into a native particle composition. Preview its rounds and motion paths, request changes, and copy the matching independent configuration code. Add it to your editor when ready; existing effects stay available.
 
-Select and save buildings, preview their placement, and import them into another location or world. Placement tools include position adjustments and air-replacement controls. Server-side placement requires the appropriate permissions.
+### Building import, analysis and AI design
+
+Import and preview buildings at their original proportions. The material list shows native 3D block icons, names and counts, alongside the maximum length, width and height. Inspect one horizontal layer at a time and see that layer's own block counts.
+
+Enter a building in a separate first-person preview, move with WASD, fly up with Space and down with Shift, and look around with the mouse. The preview camera is independent of your player in the live world.
+
+The AI architect connects directly to your chosen model provider using your own API key. Describe a building, attach reference images, inspect the generated blocks, and keep requesting revisions before saving or importing. Generated buildings use the same materials, layer analysis and visit controls. There is no fixed design-size preference; available memory, the Minecraft world and provider limits still apply.
 
 ### Configuration codes
 
@@ -38,11 +44,11 @@ Codes can preserve details such as placement, scale, rotation, and animation set
 
 ### Music and floating lyrics
 
-Browse music libraries with animated album layouts, search for songs, and display floating lyrics in the world. Customize lyric placement, appearance, transitions, translation display, and player-following behavior. Platform features and playback quality depend on the connected service and your account access.
+Browse music libraries with animated album layouts, search for songs, and display floating lyrics in the world. Eight layouts include coverflow, a ring, an album wall, an album floor, a floating constellation, a spiral staircase, a music planet, and a liquid-glass gallery. Artwork preloads around the visible area while background disk caching progresses through the library. Customize lyric placement, appearance, transitions, translation display, and player-following behavior. Platform features and playback quality depend on the connected service and your account access.
 
 ### AI control and AI players
 
-Connect a compatible model endpoint to direct bounded actions in your single-player world or on a multiplayer server from the **AI Control** tab. The **AI Players** tab lets you manage separate characters, personalities, model connections, and supported voice settings. Each connection uses your own provider credentials; available model features depend on that provider and your account access.
+Connect a compatible model endpoint to direct bounded actions in your single-player world or on a multiplayer server from the **AI Control** tab. The **AI Players** tab lets you manage separate characters, personalities, model connections, and supported voice settings. All AI workspaces support image attachments with preview and removal before sending. Images are sent only to the endpoint selected for that request. Each connection uses your own provider credentials; image understanding and other model features depend on that provider and your account access. Credentials and image attachments are excluded from configuration codes.
 
 ### Models, visuals, and everyday tools
 
@@ -58,11 +64,11 @@ Connect a compatible model endpoint to direct bounded actions in your single-pla
 3. Launch Minecraft and press **Right Shift** to open the control panel. You can assign another key in settings.
 4. Enable the features you want, adjust their settings, and save a profile.
 
-Each Minecraft version has a separate JAR. Install one matching build at a time.
+Each Minecraft version has a separate JAR. Install one matching build at a time. See the [v1.1 release notes](CHANGELOG.md) for additions, fixes and verification details.
 
 | Minecraft | Java |
 | --- | --- |
-| 1.21.4, 1.21.10, 1.21.11 | 21 or newer |
+| 1.20.1, 1.20.4, 1.21.4, 1.21.10, 1.21.11 | 21 or newer |
 | 26.1, 26.1.1, 26.1.2, 26.2 | 25 or newer |
 
 Settings are stored locally in `config/cheatprogram-open/`. Sign in to music services through their supported login flow when needed.
@@ -83,7 +89,7 @@ Native capture and audio helpers include their adjacent C# sources and PowerShel
 
 ## Ongoing development
 
-This project is actively being developed, with continued updates focused on compatibility, performance, interaction, and creative features. Bug reports, ideas, and feedback from real use help guide the work. The current builds compile for the versions listed above; the 1.21.4 interface and player/model preview have also been checked in game. Other version-specific behavior still benefits from testing and feedback.
+This project is actively being developed, with continued updates focused on compatibility, performance, interaction, and creative features. Bug reports, ideas, and feedback from real use help guide the work. Builds are verified separately for the exact Minecraft versions listed above. Isolated runtime checks cover the building, material, visit, AI image and particle workflows on 1.20.1, 1.20.4 and 1.21.4; complete gameplay, external applications and paid model-provider requests still benefit from testing and feedback.
 
 ## License
 

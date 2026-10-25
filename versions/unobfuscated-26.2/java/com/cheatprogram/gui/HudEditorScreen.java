@@ -225,6 +225,7 @@ public class HudEditorScreen extends GuiBase {
 
 	@Override
 	public void removed() {
+        super.removed();
 		GLFW.glfwSetCursor(mc.getWindow().handle(), 0);
 		for (long cursor : resizeCursors) if (cursor != 0) GLFW.glfwDestroyCursor(cursor);
 		java.util.Arrays.fill(resizeCursors, 0);

@@ -119,6 +119,7 @@ public final class MirrorEditorScreen extends GuiBase {
 	}
 	@Override public void onClose() { mc.gui.setScreen(parent); }
 	@Override public void removed() {
+        super.removed();
 		GLFW.glfwSetCursor(mc.getWindow().handle(), 0);
 		for (long cursor : cursors) if (cursor != 0) GLFW.glfwDestroyCursor(cursor);
 		java.util.Arrays.fill(cursors, 0); drag = null;

@@ -1,0 +1,102 @@
+{
+  "ui.building.materials": [
+    "材料统计",
+    "Materials"
+  ],
+  "ui.building.analyze": [
+    "逐层剖析",
+    "Layers"
+  ],
+  "ui.building.maxDimensions": [
+    "最大长 × 宽 × 高：{0} × {1} × {2}",
+    "Maximum L × W × H: {0} × {1} × {2}"
+  ],
+  "ui.building.allFloors": [
+    "全部楼层（不计空气）",
+    "All layers (air excluded)"
+  ],
+  "ui.building.floor": [
+    "第 {0} 层（不计空气）",
+    "Layer {0} (air excluded)"
+  ],
+  "ui.building.tour": [
+    "进入参观",
+    "Enter building"
+  ],
+  "ui.building.tourControls": [
+    "WASD 移动 · 空格上升 · Shift 下降 · 右键切换自由转头 · Esc 返回",
+    "WASD move · Space up · Shift down · Right-click toggles mouse look · Esc back"
+  ],
+  "ui.building.ai.title": [
+    "AI 建筑",
+    "AI architect"
+  ],
+  "ui.building.ai.endpoint": [
+    "API 地址",
+    "API endpoint"
+  ],
+  "ui.building.ai.model": [
+    "模型名称",
+    "Model name"
+  ],
+  "ui.building.ai.key": [
+    "API Key（仅存本机）",
+    "API key (local storage only)"
+  ],
+  "ui.building.ai.prompt": [
+    "建筑要求／修改意见",
+    "Building requirements / revisions"
+  ],
+  "ui.building.ai.generate": [
+    "生成建筑",
+    "Generate building"
+  ],
+  "ui.building.ai.revise": [
+    "按要求修改建筑",
+    "Revise building"
+  ],
+  "ui.building.ai.cancel": [
+    "取消生成",
+    "Cancel generation"
+  ],
+  "ui.building.ai.cancelled": [
+    "已取消，保留原建筑",
+    "Cancelled; previous building retained"
+  ],
+  "ui.building.ai.save": [
+    "保存到建筑库",
+    "Save to building library"
+  ],
+  "ui.building.ai.hint": [
+    "生成结果只在预览中显示。可持续提出修改；实际导入由你确认。尺寸不设固定上限，需有足够内存。",
+    "Results appear only in the preview. Keep requesting changes; import explicitly when ready. There is no fixed dimension cap; enough memory is required."
+  ],
+  "ui.building.ai.working": [
+    "正在生成建筑…",
+    "Generating building…"
+  ],
+  "ui.building.ai.ready": [
+    "建筑已生成，可以参观、统计材料或继续修改",
+    "Building ready: explore, inspect materials or request revisions"
+  ],
+  "ui.building.ai.needKey": [
+    "请填写当前平台的 API Key",
+    "Enter an API key for the selected provider"
+  ],
+  "ui.building.ai.failed": [
+    "生成失败，请检查接口、模型与网络后重试",
+    "Generation failed. Check endpoint, model and connection, then retry."
+  ],
+  "ui.building.ai.memory": [
+    "建筑超出当前可用内存，请增加游戏内存或缩小设计",
+    "Building exceeds available memory. Allocate more game memory or request a smaller design."
+  ],
+  "ui.building.ai.invalid": [
+    "AI 返回的方块或尺寸格式无效，原建筑已保留",
+    "The AI returned an invalid building plan. The previous building is retained."
+  ],
+  "ui.building.counting": [
+    "正在统计材料…",
+    "Counting materials…"
+  ]
+}

@@ -232,6 +232,8 @@ public final class ModuleManager {
 		if(Config.restartRequired())return;
 		Minecraft mc = Minecraft.getInstance();
 		if (action == GLFW.GLFW_REPEAT) return;
+        BuildingBlueprints buildings = get(BuildingBlueprints.class);
+        if (buildings != null && buildings.selectionKey(code, action)) return;
 		boolean press = action == GLFW.GLFW_PRESS;
 		if (press && code == ClientSettings.INSTANCE.guiKey && !KeyNames.isMouse(code)) {
 			if(com.cheatprogram.render.WorldControlPanel.ordinaryOpen())return;

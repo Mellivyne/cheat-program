@@ -32,6 +32,7 @@ public final class R2D {
 	private static float alpha = 1f;
 	private static int alphaDepth;
 	private static boolean active;
+	private static RenderStateSnapshot frameState;
 
 	private static GuiGraphics graphics;
 	/** White text gets a faint shadow so it stays readable on clear glass. */
@@ -49,19 +50,26 @@ public final class R2D {
 	}
 
 	public static void begin(GuiGraphics g) {
-		graphics = g;
-		com.cheatprogram.compat.GuiBridge.flush(g);
-		POSE.set(com.cheatprogram.compat.GuiBridge.pose(g));
-		guiScale = (float) MC.getWindow().getGuiScale();
-		fbWidth = MC.getWindow().getWidth();
-		fbHeight = MC.getWindow().getHeight();
-		alpha = 1f;
-		alphaDepth = 0;
-		SCISSORS.clear();
-		// This canvas owns the full frame. A vanilla widget's stale scissor must not crop captures.
-		RenderSystem.disableScissor();
-		active = true;
-		applyState();
+		if (frameState != null) throw new IllegalStateException("R2D canvas already active");
+		frameState = new RenderStateSnapshot();
+		try {
+			graphics = g;
+			com.cheatprogram.compat.GuiBridge.flush(g);
+			com.cheatprogram.compat.GuiBridge.beginCanvas();
+			POSE.set(com.cheatprogram.compat.GuiBridge.pose(g));
+			guiScale = (float) MC.getWindow().getGuiScale();
+			fbWidth = MC.getWindow().getWidth();
+			fbHeight = MC.getWindow().getHeight();
+			alpha = 1f;
+			alphaDepth = 0;
+			SCISSORS.clear();
+			RenderSystem.disableScissor();
+			active = true;
+			applyState();
+		} catch (RuntimeException | Error failure) {
+			end();
+			throw failure;
+		}
 	}
 
 	/** Re-applies the blend/depth state, e.g. after a backdrop capture touched it. */
@@ -76,17 +84,15 @@ public final class R2D {
 	}
 
 	public static void end() {
-		if (!SCISSORS.isEmpty()) {
+		RenderStateSnapshot saved = frameState;
+		frameState = null;
+		try {
 			SCISSORS.clear();
-			RenderSystem.disableScissor();
+			// Restore the caller's actual state instead of guessing a GUI baseline.
+			if (saved != null) saved.restore();
+		} finally {
+			active = false;
 		}
-		RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-		RenderSystem.depthMask(true);
-		RenderSystem.enableDepthTest();
-		RenderSystem.enableCull();
-		RenderSystem.defaultBlendFunc();
-		RenderSystem.disableBlend();
-		active = false;
 	}
 
 	public static boolean isActive() {

@@ -4,8 +4,77 @@
   "baseMinecraft": "1.21.4",
   "discoveredAt": "2026-10-20",
   "source": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json",
-  "scope": "Fabric only: Minecraft 1.21.4, and released stable versions >=1.21.10. 1.21.5 through 1.21.9 are excluded. Snapshots and future versions require new profiles.",
+  "scope": "Fabric only: Minecraft 1.20.1, 1.20.4, 1.21.4, and explicitly verified released stable profiles >=1.21.10. Snapshots, 1.21.5 through 1.21.9, and pending/future profiles are not released.",
   "targets": [
+    {
+      "minecraft": "1.20.4",
+      "loader": "fabric",
+      "java": 21,
+      "mapping": "intermediary",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "legacy-1.20.4"
+      ],
+      "releaseTime": "2023-12-07T12:56:20+00:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/ee2bc046cef978a91a7494e760a32d4f7f3e835c/1.20.4.json",
+      "manifestSha1": "ee2bc046cef978a91a7494e760a32d4f7f3e835c",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "buildingAnalysis": true,
+          "buildingVisit": true,
+          "aiImagePayload": true,
+          "aiParticleCode": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "verification/RESULTS-v1.1.md",
+        "limitations": "Isolated OpenGL runtime previews and local synthetic AI responses passed. Full gameplay, external applications, real paid model providers and servers have not been exhaustively retested."
+      }
+    },
+    {
+      "minecraft": "1.20.1",
+      "loader": "fabric",
+      "java": 21,
+      "mapping": "intermediary",
+      "state": "smoke-verified",
+      "sourceLayers": [
+        "legacy-1.20.4",
+        "legacy-1.20.1"
+      ],
+      "releaseTime": "2023-06-12T13:25:51+00:00",
+      "manifestUrl": "https://piston-meta.mojang.com/v1/packages/38d412af3b247e485c7f7e50ac25febc4e79ab1d/1.20.1.json",
+      "manifestSha1": "38d412af3b247e485c7f7e50ac25febc4e79ab1d",
+      "verification": {
+        "compiled": true,
+        "mixinSurface": true,
+        "clientStarted": true,
+        "gameplayRetested": false,
+        "smoke": {
+          "titleScreen": true,
+          "glassGui": true,
+          "isolatedWorld": true,
+          "avatarPreviews": true,
+          "nativeParticles": true,
+          "nativeMaterials": true,
+          "buildingAnalysis": true,
+          "buildingVisit": true,
+          "aiImagePayload": true,
+          "aiParticleCode": true,
+          "allFeaturesRetested": false
+        },
+        "evidence": "verification/RESULTS-v1.1.md",
+        "limitations": "Isolated OpenGL runtime previews and local synthetic AI responses passed. Full gameplay, external applications, real paid model providers and servers have not been exhaustively retested."
+      }
+    },
     {
       "minecraft": "1.21.4",
       "loader": "fabric",
