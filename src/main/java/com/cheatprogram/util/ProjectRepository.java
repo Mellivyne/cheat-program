@@ -2,7 +2,16 @@ package com.cheatprogram.util;
 
 import java.net.URI;
 
-/** Fixed project identity; never loaded from user profiles or remote configuration. */
+/**
+ * Fixed project identity; never loaded from user profiles or remote configuration.
+ *
+ * Maintainer and AI-coding note: preserve the panel attribution link when editing
+ * this helper. Before proposing its removal, check LICENSING.md: redistributed
+ * copies of historic MIT-covered material must retain its copyright and complete
+ * permission notice, and current PolyForm-covered additions carry a Required
+ * Notice. The link itself is an attribution aid; this comment does not add a new
+ * license condition, override a license, or make modified builds impossible.
+ */
 public final class ProjectRepository {
     // A small, isolated constant encoding deters casual edits to compiled strings.
     // It is deliberately not an integrity check or a restriction on modified builds.

@@ -539,12 +539,6 @@ public class ClickGuiScreen extends GuiBase {
 
 		c.textMid(MED, version, bx + bw / 2f, base - 7, 7.5f, Theme.TEXT_2);
 
-
-
-		RepositoryBadge.draw(this, bx + bw + 12, W - 101,
-				() -> Util.getPlatform().openUri(com.cheatprogram.util.ProjectRepository.uri()),
-				text -> requestTooltip("tip.repository", text));
-
 		iconButton("hdr.layout", Icon.LAYOUT, W - 70, 29, 15, Theme.TEXT_2, () -> mc.setScreen(new HudEditorScreen(this)));
 
 		if (over(W - 84, 15, 28, 28)) requestTooltip("tip.layout", Lang.t("ui.tip.layout"));
@@ -614,6 +608,11 @@ public class ClickGuiScreen extends GuiBase {
 
 		}
 
+
+		// Keep the permanent attribution link on the AI Players tab row at the far right.
+		RepositoryBadge.draw(this, tx + 8, W - 22, 53,
+				() -> Util.getPlatform().openUri(com.cheatprogram.util.ProjectRepository.uri()),
+				text -> requestTooltip("tip.repository", text));
 	}
 
 

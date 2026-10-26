@@ -1,18 +1,18 @@
 # Changelog
 
-## v1.1-r2 — project link and licensing revision
+## v1.1 distribution update — project link and licensing
 
-Project version remains **v1.1**. Release tag **v1.1-r2** identifies the rebuilt nine-version distribution separately from the original MIT-licensed v1.1 release.
+Project version remains **v1.1**. Downloads on both existing **v1.0** and **v1.1** release pages are replaced with the latest nine-version distribution. Every JAR filename and its embedded metadata identify the actual project version as **v1.1**, regardless of the release page label.
 
 ### Added
 
-- A fixed, clickable link to the official project repository on the right side of the control panel, shared by every supported Minecraft build. The compiled link is encoded to discourage casual replacement; it cannot make public source impossible to modify.
+- A fixed, clickable link to the official project repository at the far right of the control-panel row containing the AI Players tab, shared by every supported Minecraft build. The compiled link is encoded to discourage casual replacement; it cannot make public source impossible to modify.
 
 ### Licensing
 
 - New original changes in this revision use **PolyForm Noncommercial 1.0.0**, with a required project attribution notice. This is a source-available, noncommercial revision; commercial permission is not granted by this license.
-- Previously granted MIT rights remain in force for the original v1.1 and earlier MIT material. Their full notice is preserved in `LICENSE-LEGACY-MIT`. Third-party licenses are unchanged. See [LICENSING.md](LICENSING.md) for the exact boundary and required notice.
-- All nine matching JARs, the source archive and checksums are rebuilt for this revision. The original `v1.1` tag and release remain available.
+- The historic MIT grant already requires retaining its copyright and full permission notices in copies or substantial portions. Its original terms and attribution condition are preserved in `LICENSE-LEGACY-MIT`; the updated distribution does not change that historic grant. Third-party licenses are unchanged. See [LICENSING.md](LICENSING.md) for the exact boundary and required notice.
+- All nine matching JARs, the source archive and checksums are rebuilt for this update and replace the attachments on both existing release pages. Earlier MIT grants remain identifiable by the original immutable commit in Git history.
 
 ## v1.1
 
