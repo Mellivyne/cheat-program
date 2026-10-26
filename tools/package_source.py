@@ -1,4 +1,4 @@
-"""Create the Open source release from an explicit allowlist; never include runtime data."""
+"""Create the source release from an explicit allowlist; never include runtime data."""
 from pathlib import Path
 import zipfile,hashlib,json
 root=Path(__file__).resolve().parents[1]
@@ -6,7 +6,7 @@ out=root/'outputs';out.mkdir(exist_ok=True)
 version=next(line.partition('=')[2].strip() for line in (root/'gradle.properties').read_text().splitlines() if line.startswith('mod_version='))
 archive=out/f'cheat-program-v{version}-source.zip'
 folders=['docs','src','versions','gradle','compatibility','tools','verification/java','verification/legacy/java','verification/gameplay/java']
-files=[root/n for n in ['LICENSE','README.md','CHANGELOG.md','THIRD_PARTY_NOTICES.md','verification/README.md','verification/RESULTS-v1.1.md','.gitignore','build.gradle','settings.gradle','gradle.properties','gradlew','gradlew.bat']]
+files=[root/n for n in ['LICENSE','LICENSING.md','LICENSE-LEGACY-MIT','README.md','CHANGELOG.md','THIRD_PARTY_NOTICES.md','verification/README.md','verification/RESULTS-v1.1.md','.gitignore','build.gradle','settings.gradle','gradle.properties','gradlew','gradlew.bat']]
 for folder in folders:
  files.extend(p for p in (root/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix not in ['.pyc','.log'])
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:

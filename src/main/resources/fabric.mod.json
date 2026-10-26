@@ -5,7 +5,7 @@
   "name": "Cheat Program",
   "description": "Single-player utility client with a monochrome liquid-glass interface.",
   "authors": ["Cheat Program"],
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "icon": "assets/cheatprogram/icon.png",
   "environment": "client",
   "entrypoints": {

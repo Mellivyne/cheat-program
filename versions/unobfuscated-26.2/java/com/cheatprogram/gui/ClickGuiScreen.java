@@ -541,6 +541,10 @@ public class ClickGuiScreen extends GuiBase {
 
 
 
+		RepositoryBadge.draw(this, bx + bw + 12, W - 101,
+				() -> Util.getPlatform().openUri(com.cheatprogram.util.ProjectRepository.uri()),
+				text -> requestTooltip("tip.repository", text));
+
 		iconButton("hdr.layout", Icon.LAYOUT, W - 70, 29, 15, Theme.TEXT_2, () -> mc.gui.setScreen(new HudEditorScreen(this)));
 
 		if (over(W - 84, 15, 28, 28)) requestTooltip("tip.layout", Lang.t("ui.tip.layout"));

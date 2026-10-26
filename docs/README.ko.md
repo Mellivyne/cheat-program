@@ -34,6 +34,6 @@ https://github.com/user-attachments/assets/b7831d49-4c18-4f0f-940b-68d78249b736
 
 호환성, 성능, 조작감과 창작 기능을 계속 개선합니다. 모든 명시 버전은 빌드 검사를 통과했고 1.21.4의 인터페이스와 플레이어/모델 미리보기도 게임 안에서 확인했습니다. 다른 버전의 실제 동작 피드백도 환영합니다.
 
-[빌드 안내](../README.md#build-from-source) · [MIT 라이선스](../LICENSE) · [제삼자 고지](../THIRD_PARTY_NOTICES.md).
+[빌드 안내](../README.md#build-from-source). 현재 **v1.1-r2**는 [PolyForm Noncommercial 1.0.0](../LICENSE)을 적용하는 소스 공개 비상업용 버전입니다. 라이선스가 허용하는 목적으로 사용·수정·공유할 수 있으며 상업적 사용 권한은 부여하지 않습니다. 원래 v1.1 등 MIT로 이미 공개된 부분의 기존 권한은 유지됩니다. [적용 범위와 필수 고지](../LICENSING.md) · [제삼자 고지](../THIRD_PARTY_NOTICES.md)를 확인하세요.
 
 관심이 있다면 **Star**를 남겨 주세요. 도움이 되고 있다는 것을 알 수 있고 업데이트도 따라가기 좋습니다. 살펴보거나 사용해 주시고 생각을 나눠 주셔서 감사합니다.

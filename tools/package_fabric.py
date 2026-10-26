@@ -21,7 +21,9 @@ def main():
         artifact=libs/name
         with zipfile.ZipFile(artifact) as jar:
             mod=json.loads(jar.read('fabric.mod.json'))
-            assert mod['name']=='Cheat Program' and mod['license']=='MIT'
+            assert mod['name']=='Cheat Program' and mod['license']=='PolyForm-Noncommercial-1.0.0'
+            for notice in ['LICENSE','LICENSING.md','LICENSE-LEGACY-MIT','THIRD_PARTY_NOTICES.md']:
+                assert jar.read(notice)==(ROOT/notice).read_bytes(),f'Missing or stale license notice: {mc} / {notice}'
             assert not any(path.startswith('com/cheatprogram/dev/') and path.endswith('.class') and not path.endswith('/DevTools.class') for path in jar.namelist()), 'Development fixtures must not ship'
             assert not any('AiImageProtocolCheck' in path for path in jar.namelist())
             assert mod['id']=='cheatprogram' and mod['version']==version and mod['depends']['minecraft']==mc,mc

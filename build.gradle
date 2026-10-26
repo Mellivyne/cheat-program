@@ -104,7 +104,9 @@ if (providers.gradleProperty('gameplay_checks').isPresent()) {
     sourceSets.main.java.srcDir('verification/gameplay/java')
 }
 
-tasks.named("jar") { from("LICENSE") }
+tasks.named("jar") {
+    from("LICENSE", "LICENSING.md", "LICENSE-LEGACY-MIT", "THIRD_PARTY_NOTICES.md")
+}
 
 // Optional isolated runtime fixtures. These never enter normal release artifacts.
 if (providers.gradleProperty('legacy_checks').isPresent()) {

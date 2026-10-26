@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.1-r2 — project link and licensing revision
+
+Project version remains **v1.1**. Release tag **v1.1-r2** identifies the rebuilt nine-version distribution separately from the original MIT-licensed v1.1 release.
+
+### Added
+
+- A fixed, clickable link to the official project repository on the right side of the control panel, shared by every supported Minecraft build. The compiled link is encoded to discourage casual replacement; it cannot make public source impossible to modify.
+
+### Licensing
+
+- New original changes in this revision use **PolyForm Noncommercial 1.0.0**, with a required project attribution notice. This is a source-available, noncommercial revision; commercial permission is not granted by this license.
+- Previously granted MIT rights remain in force for the original v1.1 and earlier MIT material. Their full notice is preserved in `LICENSE-LEGACY-MIT`. Third-party licenses are unchanged. See [LICENSING.md](LICENSING.md) for the exact boundary and required notice.
+- All nine matching JARs, the source archive and checksums are rebuilt for this revision. The original `v1.1` tag and release remain available.
+
 ## v1.1
 
 v1.1 expands building and particle creation, adds five music-library layouts, and updates all nine supported Fabric builds. Minecraft **1.20.1** and **1.20.4** are newly supported.

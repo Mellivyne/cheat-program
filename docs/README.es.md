@@ -34,6 +34,6 @@ Instala Fabric Loader y descarga el JAR de tu versión exacta desde [Releases](h
 
 El proyecto seguirá mejorando compatibilidad, rendimiento, interacción y creatividad. Las versiones indicadas compilan; la interfaz y la vista previa de jugador/modelo de 1.21.4 también se comprobaron en el juego. Agradecemos pruebas y comentarios sobre otras versiones.
 
-[Compilación](../README.md#build-from-source) · [Licencia MIT](../LICENSE) · [Avisos de terceros](../THIRD_PARTY_NOTICES.md).
+[Compilación](../README.md#build-from-source). La revisión actual **v1.1-r2** tiene código visible para usos no comerciales bajo [PolyForm Noncommercial 1.0.0](../LICENSE). Permite los usos, modificaciones y redistribuciones que define la licencia; no concede permiso de uso comercial. El material ya publicado bajo MIT, incluida la v1.1 original, conserva esos derechos. Consulta [el alcance y el aviso obligatorio](../LICENSING.md) y [los avisos de terceros](../THIRD_PARTY_NOTICES.md).
 
 Si te interesa, considera dejar una **Star**. Me ayuda a saber que este trabajo es útil y te permite seguir sus avances. Gracias por probarlo, echar un vistazo o compartir una idea.

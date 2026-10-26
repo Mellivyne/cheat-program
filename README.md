@@ -93,6 +93,6 @@ This project is actively being developed, with continued updates focused on comp
 
 ## License
 
-Original project code is available under the [MIT License](LICENSE). Third-party components retain their own licenses; see [Third-party notices](THIRD_PARTY_NOTICES.md).
+The current **v1.1-r2** revision is source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE). You may use, modify and share it for the purposes permitted by that license; commercial use is not granted. Earlier material published under MIT, including the original v1.1 release, keeps its existing MIT permissions. See [licensing and required project notice](LICENSING.md) for the revision boundary and [third-party notices](THIRD_PARTY_NOTICES.md) for components with their own licenses.
 
 If this project interests you, consider leaving a **Star**. It is a simple way to let me know the work is useful and to follow its progress. Thank you for taking a look, trying it out, or sharing an idea.
