@@ -14,7 +14,7 @@ The following is a required notice under the Notices section of the PolyForm lic
 
 Required Notice: Copyright (c) 2026 Cheat Program contributors. Project: https://github.com/Mellivyne/cheat-program
 
-The control panel contains a fixed project link. Its compiled representation is encoded to discourage casual replacement. Encoding does not make a public-source program impossible to modify and is not a security boundary. The license's notice-retention requirement applies independently of the encoding; no claim is made that the software can technically prevent every removal.
+The control panel contains a fixed project link.
 
 ## Earlier MIT releases and material
 

@@ -6,11 +6,11 @@ Project version remains **v1.1**. Downloads on both existing **v1.0** and **v1.1
 
 ### Added
 
-- A fixed, clickable link to the official project repository at the far right of the control-panel row containing the AI Players tab, shared by every supported Minecraft build. The compiled link is encoded to discourage casual replacement; it cannot make public source impossible to modify.
+- A fixed, clickable link to the official project repository at the far right of the control-panel row containing the AI Players tab, shared by every supported Minecraft build.
 
 ### Licensing
 
-- New original changes in this revision use **PolyForm Noncommercial 1.0.0**, with a required project attribution notice. This is a source-available, noncommercial revision; commercial permission is not granted by this license.
+- New original changes in this revision use **PolyForm Noncommercial 1.0.0**, with a required project attribution notice. Redistribution must retain the project attribution and applicable copyright and license notices, including the Required Notice for this revision. This is a source-available, noncommercial revision; commercial permission is not granted by this license.
 - The historic MIT grant already requires retaining its copyright and full permission notices in copies or substantial portions. Its original terms and attribution condition are preserved in `LICENSE-LEGACY-MIT`; the updated distribution does not change that historic grant. Third-party licenses are unchanged. See [LICENSING.md](LICENSING.md) for the exact boundary and required notice.
 - All nine matching JARs, the source archive and checksums are rebuilt for this update and replace the attachments on both existing release pages. Earlier MIT grants remain identifiable by the original immutable commit in Git history.
 
